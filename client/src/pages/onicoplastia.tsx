@@ -23,9 +23,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 export default function Onicoplastia() {
   const [selectedImage, setSelectedImage] = useState<"before" | "after" | "collage">("before");
+  const [selectedCase, setSelectedCase] = useState<Case | null>(null);
 
   const { data: cases = [] } = useQuery<Case[]>({
     queryKey: ["/api/cases", { category: "onicoplastia" }],
@@ -129,6 +136,7 @@ export default function Onicoplastia() {
                             src={case_.beforeImage}
                             alt="Antes del tratamiento"
                             className="w-full h-full object-contain bg-black/5"
+                            onClick={() => setSelectedCase(case_)}
                           />
                         </div>
                       </TabsContent>
@@ -138,6 +146,7 @@ export default function Onicoplastia() {
                             src={case_.afterImage}
                             alt="Después del tratamiento"
                             className="w-full h-full object-contain bg-black/5"
+                            onClick={() => setSelectedCase(case_)}
                           />
                         </div>
                       </TabsContent>
@@ -147,6 +156,7 @@ export default function Onicoplastia() {
                             src={case_.collageImage}
                             alt="Proceso del tratamiento"
                             className="w-full h-full object-contain bg-black/5"
+                            onClick={() => setSelectedCase(case_)}
                           />
                         </div>
                       </TabsContent>
@@ -160,6 +170,27 @@ export default function Onicoplastia() {
           <CarouselNext />
         </Carousel>
       </section>
+
+      {/* Image Preview Dialog */}
+      {selectedCase && (
+        <Dialog open={!!selectedCase} onOpenChange={() => setSelectedCase(null)}>
+          <DialogContent>
+            <DialogTitle className="sr-only">
+              Vista Ampliada - {selectedCase.title}
+            </DialogTitle>
+            <DialogDescription className="sr-only">
+              Imagen ampliada del caso de tratamiento de onicoplastia
+            </DialogDescription>
+            <div className="w-full aspect-square">
+              <img
+                src={selectedCase[`${selectedImage}Image`]}
+                alt={`Vista ampliada - ${selectedCase.title}`}
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
 
       {/* FAQ Section */}
       <section className="container max-w-3xl">
