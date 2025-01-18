@@ -16,9 +16,9 @@ export default function Home() {
           Experiencia Premium en el Cuidado de tus Uñas
         </p>
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Onicoplastia Card */}
+          {/* Restauración Ungueal Card */}
           <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4">
-            <h3 className="text-xl font-semibold">Onicoplastia</h3>
+            <h3 className="text-xl font-semibold text-white">Restauración Ungueal</h3>
             <p className="text-gray-300">
               Restaura la salud natural de tus uñas y elimina hongos de raíz con nuestro tratamiento certificado internacionalmente.
             </p>
@@ -40,7 +40,7 @@ export default function Home() {
               href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block w-full text-center rounded-md bg-primary px-6 py-3 text-black font-semibold hover:opacity-90"
+              className="mt-8 inline-block w-full text-center rounded-md bg-[#F2E6D8] px-6 py-3 text-black font-semibold hover:bg-[#E6D0B8] transition-colors"
             >
               ¡RESERVA AHORA!
             </a>
@@ -48,7 +48,7 @@ export default function Home() {
 
           {/* Manicura Card */}
           <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4">
-            <h3 className="text-xl font-semibold">Manicura</h3>
+            <h3 className="text-xl font-semibold text-white">Manicura</h3>
             <p className="text-gray-300">
               Transforma tus manos en obras de arte con nuestro servicio premium de belleza y cuidado personalizado.
             </p>
@@ -70,7 +70,7 @@ export default function Home() {
               href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block w-full text-center rounded-md bg-primary px-6 py-3 text-black font-semibold hover:opacity-90"
+              className="mt-8 inline-block w-full text-center rounded-md bg-[#F2E6D8] px-6 py-3 text-black font-semibold hover:bg-[#E6D0B8] transition-colors"
             >
               ¡RESERVA AHORA!
             </a>
@@ -78,7 +78,7 @@ export default function Home() {
 
           {/* Pedicura Card */}
           <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4">
-            <h3 className="text-xl font-semibold">Pedicura</h3>
+            <h3 className="text-xl font-semibold text-white">Belleza para Pies</h3>
             <p className="text-gray-300">
               Dale a tus pies el mimo que merecen con nuestro tratamiento integral de belleza y bienestar.
             </p>
@@ -100,7 +100,7 @@ export default function Home() {
               href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block w-full text-center rounded-md bg-primary px-6 py-3 text-black font-semibold hover:opacity-90"
+              className="mt-8 inline-block w-full text-center rounded-md bg-[#F2E6D8] px-6 py-3 text-black font-semibold hover:bg-[#E6D0B8] transition-colors"
             >
               ¡RESERVA AHORA!
             </a>
@@ -151,7 +151,7 @@ export default function Home() {
         </p>
         <a
           href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-          className="mt-8 inline-block rounded-md bg-primary px-6 py-3 text-lg font-semibold text-black shadow-sm hover:opacity-90"
+          className="mt-8 inline-block rounded-md bg-[#F2E6D8] px-6 py-3 text-lg font-semibold text-black shadow-sm hover:bg-[#E6D0B8] transition-colors"
           target="_blank"
           rel="noopener noreferrer"
         >
