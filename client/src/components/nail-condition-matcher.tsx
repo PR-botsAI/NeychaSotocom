@@ -3,25 +3,33 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 
+// Import images using Vite's asset handling
+import condition1Before from "/assets/nails/condition1-before.jpg";
+import condition1After from "/assets/nails/condition1-after.jpg";
+import condition2Before from "/assets/nails/condition2-before.jpg";
+import condition2After from "/assets/nails/condition2-after.jpg";
+import condition3Before from "/assets/nails/condition3-before.jpg";
+import condition3After from "/assets/nails/condition3-after.jpg";
+
 const conditions = [
   {
     id: 1,
-    before: "/assets/nails/condition1-before.jpg",
-    after: "/assets/nails/condition1-after.jpg",
+    before: condition1Before,
+    after: condition1After,
     title: "Hongos en las Uñas",
     description: "¿Tienes manchas amarillas o blancas? ¿Uñas quebradizas?",
   },
   {
     id: 2,
-    before: "/assets/nails/condition2-before.jpg",
-    after: "/assets/nails/condition2-after.jpg",
+    before: condition2Before,
+    after: condition2After,
     title: "Uñas Débiles",
     description: "¿Se te parten o pelan las uñas fácilmente?",
   },
   {
     id: 3,
-    before: "/assets/nails/condition3-before.jpg",
-    after: "/assets/nails/condition3-after.jpg",
+    before: condition3Before,
+    after: condition3After,
     title: "Uñas Irregulares",
     description: "¿Notas que tus uñas crecen de forma irregular?",
   },
@@ -30,9 +38,26 @@ const conditions = [
 export default function NailConditionMatcher() {
   const [currentCondition, setCurrentCondition] = useState(0);
   const [sliderValue, setSliderValue] = useState([50]);
+  const [isDragging, setIsDragging] = useState(false);
 
   const handleSlide = (value: number[]) => {
     setSliderValue(value);
+  };
+
+  const handleTouchStart = () => {
+    setIsDragging(true);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    const touch = e.touches[0];
+    const container = e.currentTarget.getBoundingClientRect();
+    const position = ((touch.clientX - container.left) / container.width) * 100;
+    setSliderValue([Math.max(0, Math.min(100, position))]);
   };
 
   const condition = conditions[currentCondition];
@@ -50,12 +75,18 @@ export default function NailConditionMatcher() {
 
       <Card className="overflow-hidden bg-zinc-900/50 border-zinc-800">
         <CardContent className="p-6">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
+          <div 
+            className="relative aspect-[4/3] w-full overflow-hidden rounded-lg"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             <div className="absolute inset-0">
               <img
                 src={condition.after}
                 alt="Después"
                 className="h-full w-full object-cover"
+                loading="lazy"
               />
             </div>
             <div
@@ -68,6 +99,7 @@ export default function NailConditionMatcher() {
                 src={condition.before}
                 alt="Antes"
                 className="h-full w-full object-cover"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-black/20" />
             </div>
