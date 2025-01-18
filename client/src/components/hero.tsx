@@ -9,7 +9,7 @@ export default function Hero() {
           {/* Brand Logo */}
           <div className="mb-8 max-w-md mx-auto">
             <img 
-              src="/attached_assets/HeroLogoWhiteTrasparent.png"
+              src="/assets/HeroLogoWhiteTrasparent.png"
               alt="Neycha Soto Nail Artist"
               className="w-full h-auto"
             />
