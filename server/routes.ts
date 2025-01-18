@@ -13,15 +13,19 @@ export function registerRoutes(app: Express): Server {
 
   // Cases (Before/After Gallery)
   app.get("/api/cases", async (req, res) => {
-    const category = req.query.category as string;
-    let query = db.select().from(cases);
+    try {
+      const category = req.query.category as string;
+      const query = db.select().from(cases);
 
-    if (category) {
-      query = query.where(eq(cases.category, category));
+      const results = category 
+        ? await query.where(eq(cases.category, category))
+        : await query;
+
+      res.json(results);
+    } catch (error) {
+      console.error('Error fetching cases:', error);
+      res.status(500).json({ error: "Failed to fetch cases" });
     }
-
-    const items = await query;
-    res.json(items);
   });
 
   // Bookings
