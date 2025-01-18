@@ -30,28 +30,43 @@ const conditions = [
 export default function NailConditionMatcher() {
   const [currentCondition, setCurrentCondition] = useState(0);
   const [sliderValue, setSliderValue] = useState([50]);
+  const [isDragging, setIsDragging] = useState(false);
 
   const handleSlide = (value: number[]) => {
     setSliderValue(value);
   };
 
-  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(true);
     const container = e.currentTarget as HTMLDivElement;
-    const handleMove = (moveEvent: MouseEvent | TouchEvent) => {
+
+    const calculatePosition = (clientX: number) => {
       const rect = container.getBoundingClientRect();
+      const position = ((clientX - rect.left) / rect.width) * 100;
+      return Math.max(0, Math.min(100, position));
+    };
+
+    const handleMove = (moveEvent: MouseEvent | TouchEvent) => {
+      if (!isDragging) return;
       const clientX = 'touches' in moveEvent 
         ? moveEvent.touches[0].clientX 
         : moveEvent.clientX;
-      const position = ((clientX - rect.left) / rect.width) * 100;
-      setSliderValue([Math.max(0, Math.min(100, position))]);
+      setSliderValue([calculatePosition(clientX)]);
     };
 
     const handleEnd = () => {
+      setIsDragging(false);
       document.removeEventListener('mousemove', handleMove);
       document.removeEventListener('mouseup', handleEnd);
       document.removeEventListener('touchmove', handleMove);
       document.removeEventListener('touchend', handleEnd);
     };
+
+    // Set initial position on mouse/touch down
+    const clientX = 'touches' in e
+      ? e.touches[0].clientX
+      : e.clientX;
+    setSliderValue([calculatePosition(clientX)]);
 
     document.addEventListener('mousemove', handleMove);
     document.addEventListener('mouseup', handleEnd);
@@ -74,7 +89,11 @@ export default function NailConditionMatcher() {
 
       <Card className="overflow-hidden bg-zinc-900/50 border-zinc-800">
         <CardContent className="p-6">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg touch-none">
+          <div 
+            className="relative aspect-[4/3] w-full overflow-hidden rounded-lg cursor-ew-resize"
+            onMouseDown={handleMouseDown}
+            onTouchStart={handleMouseDown}
+          >
             <div className="absolute inset-0">
               <img
                 src={condition.after}
@@ -98,13 +117,11 @@ export default function NailConditionMatcher() {
               <div className="absolute inset-0 bg-black/20" />
             </div>
             <div
-              className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
+              className="absolute top-0 bottom-0 w-1 bg-white"
               style={{ left: `${sliderValue[0]}%` }}
-              onMouseDown={handleDragStart}
-              onTouchStart={handleDragStart}
             >
               <div className="absolute inset-y-0 -left-2 w-4 flex items-center justify-center">
-                <div className="h-8 w-8 rounded-full bg-white shadow-lg flex items-center justify-center cursor-ew-resize">
+                <div className="h-8 w-8 rounded-full bg-white shadow-lg flex items-center justify-center">
                   <div className="h-4 w-1 bg-gray-400 rounded-full" />
                 </div>
               </div>
