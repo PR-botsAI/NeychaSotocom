@@ -1,16 +1,6 @@
 import Hero from "@/components/hero";
 import NailConditionMatcher from "@/components/nail-condition-matcher";
-import ServiceCard from "@/components/service-card";
 import TestimonialCard from "@/components/testimonial-card";
-
-const onicoplastiaService = {
-  id: 1,
-  name: "Onicoplastia Profesional",
-  description: "Tratamiento profesional progresivo para restaurar la salud y apariencia de tus uñas afectadas.",
-  price: 4500,
-  category: "Restauración Ungueal",
-  image: "/assets/cases/Caso1_after.png"
-};
 
 export default function Home() {
   return (
@@ -28,13 +18,42 @@ export default function Home() {
           Nuestros Servicios
         </h2>
 
-        {/* Onicoplastia Service Card */}
-        <div className="max-w-2xl mx-auto mb-16">
-          <ServiceCard service={onicoplastiaService} />
-        </div>
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {/* Onicoplastia Card */}
+          <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4">
+            <h3 className="text-xl font-semibold text-white">Onicoplastia</h3>
+            <p className="text-gray-300">
+              Tratamiento progresivo profesional que restaura la salud y apariencia de tus uñas afectadas por hongos o daños.
+            </p>
+            <ul className="space-y-2">
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Procedimiento indoloro y no invasivo
+              </li>
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Mejora visible desde la primera sesión
+              </li>
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Compatible con decoraciones (acrílico/gel)
+              </li>
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">⚡</span>
+                Evaluación inicial requerida
+              </li>
+            </ul>
+            <a
+              href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-8 inline-block w-full text-center rounded-md bg-[#F2E6D8] px-6 py-3 text-black font-semibold hover:bg-[#E6D0B8] transition-colors"
+            >
+              ¡AGENDA TU EVALUACIÓN!
+            </a>
+          </div>
 
-        {/* Other Services Grid */}
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
           {/* Manicura Card */}
           <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4">
             <h3 className="text-xl font-semibold text-white">Manicura</h3>
