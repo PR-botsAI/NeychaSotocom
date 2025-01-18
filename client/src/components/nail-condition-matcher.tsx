@@ -3,61 +3,60 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
 
-// Import images using Vite's asset handling
-import condition1Before from "/assets/nails/condition1-before.jpg";
-import condition1After from "/assets/nails/condition1-after.jpg";
-import condition2Before from "/assets/nails/condition2-before.jpg";
-import condition2After from "/assets/nails/condition2-after.jpg";
-import condition3Before from "/assets/nails/condition3-before.jpg";
-import condition3After from "/assets/nails/condition3-after.jpg";
-
 const conditions = [
   {
     id: 1,
-    before: condition1Before,
-    after: condition1After,
     title: "Hongos en las Uñas",
     description: "¿Tienes manchas amarillas o blancas? ¿Uñas quebradizas?",
+    before: "/assets/Caso1_before.png",
+    after: "/assets/Caso1_after.png"
   },
   {
     id: 2,
-    before: condition2Before,
-    after: condition2After,
     title: "Uñas Débiles",
     description: "¿Se te parten o pelan las uñas fácilmente?",
+    before: "/assets/Caso2_before.png",
+    after: "/assets/Caso2_after.png"
   },
   {
     id: 3,
-    before: condition3Before,
-    after: condition3After,
     title: "Uñas Irregulares",
     description: "¿Notas que tus uñas crecen de forma irregular?",
-  },
+    before: "/assets/Caso3_before.png",
+    after: "/assets/Caso3_after.png"
+  }
 ];
 
 export default function NailConditionMatcher() {
   const [currentCondition, setCurrentCondition] = useState(0);
   const [sliderValue, setSliderValue] = useState([50]);
-  const [isDragging, setIsDragging] = useState(false);
 
   const handleSlide = (value: number[]) => {
     setSliderValue(value);
   };
 
-  const handleTouchStart = () => {
-    setIsDragging(true);
-  };
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    const container = e.currentTarget as HTMLDivElement;
+    const handleMove = (moveEvent: MouseEvent | TouchEvent) => {
+      const rect = container.getBoundingClientRect();
+      const clientX = 'touches' in moveEvent 
+        ? moveEvent.touches[0].clientX 
+        : moveEvent.clientX;
+      const position = ((clientX - rect.left) / rect.width) * 100;
+      setSliderValue([Math.max(0, Math.min(100, position))]);
+    };
 
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  };
+    const handleEnd = () => {
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('mouseup', handleEnd);
+      document.removeEventListener('touchmove', handleMove);
+      document.removeEventListener('touchend', handleEnd);
+    };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging) return;
-    const touch = e.touches[0];
-    const container = e.currentTarget.getBoundingClientRect();
-    const position = ((touch.clientX - container.left) / container.width) * 100;
-    setSliderValue([Math.max(0, Math.min(100, position))]);
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('mouseup', handleEnd);
+    document.addEventListener('touchmove', handleMove);
+    document.addEventListener('touchend', handleEnd);
   };
 
   const condition = conditions[currentCondition];
@@ -75,12 +74,7 @@ export default function NailConditionMatcher() {
 
       <Card className="overflow-hidden bg-zinc-900/50 border-zinc-800">
         <CardContent className="p-6">
-          <div 
-            className="relative aspect-[4/3] w-full overflow-hidden rounded-lg"
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg touch-none">
             <div className="absolute inset-0">
               <img
                 src={condition.after}
@@ -106,9 +100,11 @@ export default function NailConditionMatcher() {
             <div
               className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
               style={{ left: `${sliderValue[0]}%` }}
+              onMouseDown={handleDragStart}
+              onTouchStart={handleDragStart}
             >
               <div className="absolute inset-y-0 -left-2 w-4 flex items-center justify-center">
-                <div className="h-8 w-8 rounded-full bg-white shadow-lg flex items-center justify-center">
+                <div className="h-8 w-8 rounded-full bg-white shadow-lg flex items-center justify-center cursor-ew-resize">
                   <div className="h-4 w-1 bg-gray-400 rounded-full" />
                 </div>
               </div>
