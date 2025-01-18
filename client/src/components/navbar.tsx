@@ -70,41 +70,51 @@ export default function Navbar() {
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-zinc-500/10">
-                <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
-                    item.external ? (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <Button
-                          variant="default"
-                          className="w-full justify-start text-base bg-white text-black hover:bg-white/90"
+          <SheetContent
+            data-sidebar="sidebar"
+            data-mobile="true"
+            className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+            side="left"
+            aria-label="Navigation Menu"
+          >
+            <div className="sr-only" id="mobile-nav-title">Menú de Navegación</div>
+            <div className="sr-only" id="mobile-nav-description">Navegación principal del sitio</div>
+            <div className="flex h-full w-full flex-col">
+              <div className="mt-6 flow-root">
+                <div className="-my-6 divide-y divide-zinc-500/10">
+                  <div className="space-y-2 py-6">
+                    {navigation.map((item) => (
+                      item.external ? (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setIsOpen(false)}
                         >
-                          {item.name}
-                        </Button>
-                      </a>
-                    ) : (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <Button
-                          variant="ghost"
-                          className="w-full justify-start text-base text-white hover:text-white/80"
+                          <Button
+                            variant="default"
+                            className="w-full justify-start text-base bg-white text-black hover:bg-white/90"
+                          >
+                            {item.name}
+                          </Button>
+                        </a>
+                      ) : (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          onClick={() => setIsOpen(false)}
                         >
-                          {item.name}
-                        </Button>
-                      </Link>
-                    )
-                  ))}
+                          <Button
+                            variant="ghost"
+                            className="w-full justify-start text-base text-white hover:text-white/80"
+                          >
+                            {item.name}
+                          </Button>
+                        </Link>
+                      )
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
