@@ -6,6 +6,14 @@ export default function Hero() {
     <div className="relative overflow-hidden">
       <div className="container relative z-10 mx-auto px-4 py-24 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
+          {/* Brand Logo */}
+          <div className="mb-8 max-w-md mx-auto">
+            <img 
+              src="/attached_assets/HeroLogoWhiteTrasparent.png"
+              alt="Neycha Soto Nail Artist"
+              className="w-full h-auto"
+            />
+          </div>
           <div className="mb-8">
             <span className="inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
               IBX® Certified
@@ -30,23 +38,14 @@ export default function Hero() {
             >
               ¡RESERVA AHORA!
             </a>
-            <Link href="/onicoplastia">
+            <Link href="/servicios">
               <Button variant="outline" size="lg" className="text-lg text-primary border-primary hover:bg-primary/10">
-                Descubre el Proceso
+                Nuestros Servicios
               </Button>
             </Link>
           </div>
         </div>
       </div>
-      <div
-        className="absolute inset-0 -z-10 opacity-30"
-        style={{
-          backgroundImage: "url('https://neychasoto.com/images/logos/neychasoto_logo_hero_img.png')",
-          backgroundSize: "contain",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat"
-        }}
-      />
       <div className="absolute inset-0 -z-10 bg-black/70 backdrop-blur-sm" />
     </div>
   );

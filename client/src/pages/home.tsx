@@ -1,69 +1,11 @@
 import Hero from "@/components/hero";
-import ServiceCard from "@/components/service-card";
-import TestimonialCard from "@/components/testimonial-card";
-import { useQuery } from "@tanstack/react-query";
-import type { Service } from "@db/schema";
 import { Button } from "@/components/ui/button";
+import TestimonialCard from "@/components/testimonial-card";
 
 export default function Home() {
-  const { data: services = [] } = useQuery<Service[]>({
-    queryKey: ["/api/services"],
-  });
-
   return (
     <div className="space-y-24 pb-24 bg-black text-white">
       <Hero />
-
-      {/* Onicoplastia Professional Section */}
-      <section className="container">
-        <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl">
-          Onicoplastia Profesional
-        </h2>
-        <p className="mt-4 text-center text-lg text-gray-300">
-          Restaura la Salud y Belleza Natural de tus Uñas
-        </p>
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
-          <div className="space-y-4">
-            <img
-              src="/attached_assets/Caso1_collage.png"
-              alt="Tratamiento de Onicoplastia"
-              className="rounded-lg shadow-xl"
-            />
-            <p className="text-center text-sm text-gray-300">
-              Resultados reales de nuestro tratamiento profesional
-            </p>
-          </div>
-          <div className="flex flex-col justify-center space-y-6">
-            <div className="space-y-4">
-              <p className="flex items-center text-lg">
-                <span className="mr-2 text-primary">✓</span>
-                ¿Quieres lucir sandalias con confianza? ¡Nosotros te ayudamos!
-              </p>
-              <p className="flex items-center text-lg">
-                <span className="mr-2 text-primary">✓</span>
-                ¿Problemas con hongos? ¡Tenemos la solución definitiva!
-              </p>
-              <p className="flex items-center text-lg">
-                <span className="mr-2 text-primary">✓</span>
-                ¡Resultados visibles desde la primera visita!
-              </p>
-            </div>
-            <div className="flex gap-4">
-              <a
-                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-md bg-primary px-6 py-3 text-lg font-semibold text-black shadow-sm hover:opacity-90"
-              >
-                ¡RESERVA YA!
-              </a>
-              <Button variant="outline" size="lg" className="text-lg">
-                Ver Detalles
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Services Section */}
       <section className="container">
@@ -74,9 +16,95 @@ export default function Home() {
           Experiencia Premium en el Cuidado de tus Uñas
         </p>
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
+          {/* Onicoplastia Card */}
+          <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4">
+            <h3 className="text-xl font-semibold">Onicoplastia</h3>
+            <p className="text-gray-300">
+              Restaura la salud natural de tus uñas y elimina hongos de raíz con nuestro tratamiento certificado internacionalmente.
+            </p>
+            <ul className="space-y-2">
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Recupera la belleza natural de tus uñas
+              </li>
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Tratamiento sin dolor y efectivo
+              </li>
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Resultados duraderos
+              </li>
+            </ul>
+            <a
+              href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block w-full text-center rounded-md bg-primary px-6 py-3 text-black font-semibold hover:opacity-90"
+            >
+              ¡RESERVA AHORA!
+            </a>
+          </div>
+
+          {/* Manicura Card */}
+          <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4">
+            <h3 className="text-xl font-semibold">Manicura</h3>
+            <p className="text-gray-300">
+              Transforma tus manos en obras de arte con nuestro servicio premium de belleza y cuidado personalizado.
+            </p>
+            <ul className="space-y-2">
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Técnicas exclusivas de embellecimiento
+              </li>
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Productos premium para el cuidado
+              </li>
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Experiencia relajante y renovadora
+              </li>
+            </ul>
+            <a
+              href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block w-full text-center rounded-md bg-primary px-6 py-3 text-black font-semibold hover:opacity-90"
+            >
+              ¡RESERVA AHORA!
+            </a>
+          </div>
+
+          {/* Pedicura Card */}
+          <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4">
+            <h3 className="text-xl font-semibold">Pedicura</h3>
+            <p className="text-gray-300">
+              Dale a tus pies el mimo que merecen con nuestro tratamiento integral de belleza y bienestar.
+            </p>
+            <ul className="space-y-2">
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Spa completo para pies
+              </li>
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Masaje relajante incluido
+              </li>
+              <li className="flex items-center text-gray-300">
+                <span className="mr-2">✓</span>
+                Cuidado detallado y duradero
+              </li>
+            </ul>
+            <a
+              href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-block w-full text-center rounded-md bg-primary px-6 py-3 text-black font-semibold hover:opacity-90"
+            >
+              ¡RESERVA AHORA!
+            </a>
+          </div>
         </div>
       </section>
 

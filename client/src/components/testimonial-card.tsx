@@ -17,7 +17,7 @@ export default function TestimonialCard({
   date,
 }: TestimonialCardProps) {
   return (
-    <Card>
+    <Card className="bg-zinc-900/50 border-zinc-800">
       <CardHeader>
         <div className="flex items-center gap-1">
           {Array.from({ length: rating }).map((_, i) => (
@@ -26,10 +26,10 @@ export default function TestimonialCard({
         </div>
       </CardHeader>
       <CardContent>
-        <blockquote className="text-gray-700">{comment}</blockquote>
+        <blockquote className="text-gray-300">{comment}</blockquote>
         <footer className="mt-4">
-          <div className="font-semibold">{name}</div>
-          <div className="text-sm text-muted-foreground">
+          <div className="font-semibold text-white">{name}</div>
+          <div className="text-sm text-gray-400">
             {service} • {date}
           </div>
         </footer>
