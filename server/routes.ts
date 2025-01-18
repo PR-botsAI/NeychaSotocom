@@ -3,13 +3,8 @@ import { createServer, type Server } from "http";
 import { db } from "@db";
 import { services, bookings, cases } from "@db/schema";
 import { eq } from "drizzle-orm";
-import express from "express";
-import path from "path";
 
 export function registerRoutes(app: Express): Server {
-  // Serve static assets from the attached_assets directory
-  app.use('/attached_assets', express.static(path.join(process.cwd(), 'attached_assets')));
-
   // Services
   app.get("/api/services", async (_req, res) => {
     const allServices = await db.select().from(services);

@@ -48,21 +48,21 @@ export default function Onicoplastia() {
                   </TabsList>
                   <TabsContent value="before">
                     <img
-                      src={`/attached_assets/${case_.beforeImage}`}
+                      src={new URL(`/images/${case_.beforeImage}`, import.meta.url).href}
                       alt="Antes del tratamiento"
                       className="w-full h-64 object-cover rounded-md"
                     />
                   </TabsContent>
                   <TabsContent value="after">
                     <img
-                      src={`/attached_assets/${case_.afterImage}`}
+                      src={new URL(`/images/${case_.afterImage}`, import.meta.url).href}
                       alt="Después del tratamiento"
                       className="w-full h-64 object-cover rounded-md"
                     />
                   </TabsContent>
                   <TabsContent value="collage">
                     <img
-                      src={`/attached_assets/${case_.collageImage}`}
+                      src={new URL(`/images/${case_.collageImage}`, import.meta.url).href}
                       alt="Collage del proceso"
                       className="w-full h-64 object-cover rounded-md"
                     />
