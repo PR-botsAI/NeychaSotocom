@@ -25,7 +25,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-zinc-800 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60">
       <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center">
+        <div className="flex items-center ml-4">
           <Link href="/">
             <span className="text-xl font-bold text-white">neychasoto.com</span>
           </Link>
