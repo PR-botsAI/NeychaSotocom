@@ -13,7 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Onicoplastia() {
   const [selectedImage, setSelectedImage] = useState<"before" | "after" | "collage">("before");
-  
+
   const { data: cases = [] } = useQuery<Case[]>({
     queryKey: ["/api/cases", { category: "onicoplastia" }],
   });
