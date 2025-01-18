@@ -39,8 +39,8 @@ export default function Onicoplastia() {
           Onicoplastia Profesional
         </h1>
         <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
-          Transformamos uñas dañadas en uñas saludables y hermosas. 
-          Nuestro tratamiento profesional progresivo está diseñado para restaurar 
+          Transformamos uñas dañadas en uñas saludables y hermosas.
+          Nuestro tratamiento profesional progresivo está diseñado para restaurar
           la salud y apariencia de tus uñas afectadas.
         </p>
       </section>
@@ -124,25 +124,31 @@ export default function Onicoplastia() {
                         <TabsTrigger value="collage">Proceso</TabsTrigger>
                       </TabsList>
                       <TabsContent value="before">
-                        <img
-                          src={case_.beforeImage}
-                          alt="Antes del tratamiento"
-                          className="w-full h-64 object-cover rounded-md"
-                        />
+                        <div className="aspect-square w-full overflow-hidden rounded-md">
+                          <img
+                            src={case_.beforeImage}
+                            alt="Antes del tratamiento"
+                            className="w-full h-full object-contain bg-black/5"
+                          />
+                        </div>
                       </TabsContent>
                       <TabsContent value="after">
-                        <img
-                          src={case_.afterImage}
-                          alt="Después del tratamiento"
-                          className="w-full h-64 object-cover rounded-md"
-                        />
+                        <div className="aspect-square w-full overflow-hidden rounded-md">
+                          <img
+                            src={case_.afterImage}
+                            alt="Después del tratamiento"
+                            className="w-full h-full object-contain bg-black/5"
+                          />
+                        </div>
                       </TabsContent>
                       <TabsContent value="collage">
-                        <img
-                          src={case_.collageImage}
-                          alt="Proceso del tratamiento"
-                          className="w-full h-64 object-cover rounded-md"
-                        />
+                        <div className="aspect-square w-full overflow-hidden rounded-md">
+                          <img
+                            src={case_.collageImage}
+                            alt="Proceso del tratamiento"
+                            className="w-full h-full object-contain bg-black/5"
+                          />
+                        </div>
                       </TabsContent>
                     </Tabs>
                   </CardContent>
@@ -164,31 +170,31 @@ export default function Onicoplastia() {
           <AccordionItem value="item-1">
             <AccordionTrigger>¿Cuánto dura el tratamiento?</AccordionTrigger>
             <AccordionContent>
-              El tratamiento es progresivo y personalizado. Se realizan sesiones cada 45 días 
-              aproximadamente, y la duración total dependerá del estado inicial de tus uñas 
+              El tratamiento es progresivo y personalizado. Se realizan sesiones cada 45 días
+              aproximadamente, y la duración total dependerá del estado inicial de tus uñas
               y tu respuesta al tratamiento.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
             <AccordionTrigger>¿Es doloroso el procedimiento?</AccordionTrigger>
             <AccordionContent>
-              No, el procedimiento es completamente indoloro y no invasivo. Utilizamos 
+              No, el procedimiento es completamente indoloro y no invasivo. Utilizamos
               técnicas y productos especializados que respetan la integridad de tus uñas.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
             <AccordionTrigger>¿Puedo aplicar esmalte durante el tratamiento?</AccordionTrigger>
             <AccordionContent>
-              ¡Sí! Nuestro tratamiento es compatible con decoraciones como acrílico o gel. 
-              Sin embargo, es importante seguir las recomendaciones específicas de cuidado 
+              ¡Sí! Nuestro tratamiento es compatible con decoraciones como acrílico o gel.
+              Sin embargo, es importante seguir las recomendaciones específicas de cuidado
               que te daremos en cada sesión.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-4">
             <AccordionTrigger>¿Cuándo veré resultados?</AccordionTrigger>
             <AccordionContent>
-              Verás mejoras visibles desde la primera sesión. Sin embargo, para obtener 
-              resultados óptimos y duraderos, es importante completar el tratamiento según 
+              Verás mejoras visibles desde la primera sesión. Sin embargo, para obtener
+              resultados óptimos y duraderos, es importante completar el tratamiento según
               el plan personalizado que diseñaremos para ti.
             </AccordionContent>
           </AccordionItem>
