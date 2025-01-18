@@ -29,11 +29,11 @@ export default function Home() {
             <ul className="space-y-2">
               <li className="flex items-center text-gray-300">
                 <span className="mr-2">✓</span>
-                Procedimiento indoloro y no invasivo
+                Resultados visibles desde la 1ra sesión
               </li>
               <li className="flex items-center text-gray-300">
                 <span className="mr-2">✓</span>
-                Mejora visible desde la primera sesión
+                Procedimiento indoloro y no invasivo
               </li>
               <li className="flex items-center text-gray-300">
                 <span className="mr-2">✓</span>
