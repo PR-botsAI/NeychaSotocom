@@ -15,8 +15,11 @@ export default function Home() {
 
       <section className="container">
         <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Our Services
+          Nuestros Servicios
         </h2>
+        <p className="mt-4 text-center text-lg text-gray-600">
+          Experiencia Premium en el Cuidado de tus Uñas
+        </p>
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.slice(0, 3).map((service) => (
             <ServiceCard key={service.id} service={service} />
@@ -26,31 +29,51 @@ export default function Home() {
 
       <section className="container">
         <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          What Our Clients Say
+          Lo Que Dicen Nuestras Bellezas
         </h2>
+        <p className="mt-4 text-center text-lg text-gray-600">
+          ¡Calificación Perfecta 5.0/5 con 29 Reseñas Verificadas en Booksy!
+        </p>
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <TestimonialCard
-            name="Maria R."
+            name="Bixsa R."
             rating={5}
-            comment="Amazing service! My nails have never looked better."
-            service="Luxury Manicure"
-            date="March 2024"
+            comment="La mejor !! muy amable excelente trabajo en uñas de mano y pedicura recomendada!"
+            service="Esmaltado en Pies"
+            date="Noviembre 2024"
           />
           <TestimonialCard
-            name="Sarah L."
+            name="Wilmarie R."
             rating={5}
-            comment="The nail art is absolutely stunning. Worth every penny!"
-            service="Nail Art"
-            date="February 2024"
+            comment="Hermosas Me encantan los diseños y el servicio profesional."
+            service="Esmaltado en Manos"
+            date="Julio 2024"
           />
           <TestimonialCard
-            name="Jennifer K."
+            name="Esther R."
             rating={5}
-            comment="Professional staff and relaxing atmosphere. Will definitely return!"
-            service="Spa Pedicure"
-            date="January 2024"
+            comment="Me encanta el trabajo y la atención. ¡El mejor servicio!"
+            service="Esmaltado en Pies"
+            date="Septiembre 2024"
           />
         </div>
+      </section>
+
+      <section className="container text-center">
+        <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          ¿Lista Para Transformar Tus Uñas?
+        </h2>
+        <p className="mt-4 text-lg text-gray-600">
+          ¡No esperes más! Reserva tu cita ahora y déjanos crear la belleza que mereces
+        </p>
+        <a
+          href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+          className="mt-8 inline-block rounded-md bg-primary px-6 py-3 text-lg font-semibold text-white shadow-sm hover:opacity-90"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ¡RESERVA TU CITA AHORA!
+        </a>
       </section>
     </div>
   );
