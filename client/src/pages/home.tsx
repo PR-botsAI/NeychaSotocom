@@ -1,4 +1,5 @@
 import Hero from "@/components/hero";
+import NailConditionMatcher from "@/components/nail-condition-matcher";
 import { Button } from "@/components/ui/button";
 import TestimonialCard from "@/components/testimonial-card";
 
@@ -6,6 +7,11 @@ export default function Home() {
   return (
     <div className="space-y-24 pb-24 bg-black text-white">
       <Hero />
+
+      {/* Interactive Nail Condition Matcher */}
+      <section className="container py-12">
+        <NailConditionMatcher />
+      </section>
 
       {/* Services Section */}
       <section className="container">
