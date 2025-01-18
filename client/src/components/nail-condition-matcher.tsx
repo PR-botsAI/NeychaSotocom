@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Slider } from "@/components/ui/slider";
 
 const conditions = [
   {
@@ -32,35 +31,60 @@ export default function NailConditionMatcher() {
   const [sliderValue, setSliderValue] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
 
-  const handleMouseDown = (e: React.MouseEvent | React.TouchEvent) => {
+  const handleDragStart = useCallback((e: React.MouseEvent | React.TouchEvent) => {
     e.preventDefault();
+    const target = e.currentTarget as HTMLElement;
     setIsDragging(true);
 
-    const container = (e.currentTarget as HTMLElement).getBoundingClientRect();
-    const handleMove = (moveEvent: MouseEvent | TouchEvent) => {
-      if (!isDragging) return;
+    // Store the initial position to calculate the offset
+    const container = target.closest('.slider-container')?.getBoundingClientRect();
+    if (!container) return;
 
-      const clientX = 'touches' in moveEvent 
-        ? moveEvent.touches[0].clientX 
-        : moveEvent.clientX;
-
+    const updateSliderPosition = (clientX: number) => {
       const position = ((clientX - container.left) / container.width) * 100;
       setSliderValue(Math.max(0, Math.min(100, position)));
     };
 
-    const handleEnd = () => {
-      setIsDragging(false);
-      document.removeEventListener('mousemove', handleMove);
-      document.removeEventListener('mouseup', handleEnd);
-      document.removeEventListener('touchmove', handleMove);
-      document.removeEventListener('touchend', handleEnd);
+    // Get initial position
+    const initialX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    updateSliderPosition(initialX);
+
+    const handleDrag = (moveEvent: MouseEvent | TouchEvent) => {
+      if (!isDragging) return;
+      moveEvent.preventDefault();
+
+      const clientX = 'touches' in moveEvent ? 
+        moveEvent.touches[0].clientX : 
+        moveEvent.clientX;
+
+      updateSliderPosition(clientX);
     };
 
-    document.addEventListener('mousemove', handleMove);
-    document.addEventListener('mouseup', handleEnd);
-    document.addEventListener('touchmove', handleMove, { passive: false });
-    document.addEventListener('touchend', handleEnd);
-  };
+    const handleDragEnd = () => {
+      setIsDragging(false);
+    };
+
+    // Add event listeners
+    window.addEventListener('mousemove', handleDrag);
+    window.addEventListener('mouseup', handleDragEnd);
+    window.addEventListener('touchmove', handleDrag, { passive: false });
+    window.addEventListener('touchend', handleDragEnd);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('mousemove', handleDrag);
+      window.removeEventListener('mouseup', handleDragEnd);
+      window.removeEventListener('touchmove', handleDrag);
+      window.removeEventListener('touchend', handleDragEnd);
+    };
+  }, [isDragging]);
+
+  // Cleanup effect
+  useEffect(() => {
+    return () => {
+      setIsDragging(false);
+    };
+  }, []);
 
   const condition = conditions[currentCondition];
 
@@ -77,7 +101,7 @@ export default function NailConditionMatcher() {
 
       <Card className="overflow-hidden bg-zinc-900/50 border-zinc-800">
         <CardContent className="p-6">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg slider-container">
             {/* After image (background) */}
             <div className="absolute inset-0">
               <img
@@ -107,10 +131,14 @@ export default function NailConditionMatcher() {
             <div
               className="absolute top-0 bottom-0 w-0.5 bg-white cursor-ew-resize"
               style={{ left: `${sliderValue}%` }}
-              onMouseDown={handleMouseDown}
-              onTouchStart={handleMouseDown}
+              onMouseDown={handleDragStart}
+              onTouchStart={handleDragStart}
             >
-              <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-8 w-8 bg-white rounded-full shadow-lg flex items-center justify-center cursor-ew-resize">
+              <div 
+                className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 h-8 w-8 bg-white rounded-full shadow-lg flex items-center justify-center cursor-ew-resize"
+                onMouseDown={handleDragStart}
+                onTouchStart={handleDragStart}
+              >
                 <div className="h-4 w-0.5 bg-gray-400 rounded-full" />
               </div>
             </div>
