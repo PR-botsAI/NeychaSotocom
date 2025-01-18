@@ -8,6 +8,8 @@ interface ServiceCardProps {
 }
 
 export default function ServiceCard({ service }: ServiceCardProps) {
+  const isOnicoplastia = service.category === 'Restauración Ungueal';
+
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg">
       {service.image && (
@@ -27,36 +29,59 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-muted-foreground">{service.description}</p>
-        <div className="space-y-2">
-          {service.category === 'Restauración Ungueal' && (
-            <>
-              <p className="text-sm">✓ Recupera la belleza natural de tus uñas</p>
-              <p className="text-sm">✓ Tratamiento sin dolor y efectivo</p>
-              <p className="text-sm">✓ Resultados duraderos</p>
-            </>
-          )}
-          {service.category === 'Cuidado de Manos' && (
-            <>
-              <p className="text-sm">✓ Técnicas exclusivas de embellecimiento</p>
-              <p className="text-sm">✓ Productos premium para el cuidado</p>
-              <p className="text-sm">✓ Experiencia relajante y renovadora</p>
-            </>
-          )}
-          {service.category === 'Belleza para Pies' && (
-            <>
-              <p className="text-sm">✓ Spa completo para pies</p>
-              <p className="text-sm">✓ Masaje relajante incluido</p>
-              <p className="text-sm">✓ Cuidado detallado y duradero</p>
-            </>
-          )}
-        </div>
+
+        {isOnicoplastia ? (
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <h4 className="font-semibold">El Proceso incluye:</h4>
+              <p className="text-sm">✓ Evaluación personalizada completa</p>
+              <p className="text-sm">✓ Limpieza y eliminación de áreas afectadas</p>
+              <p className="text-sm">✓ Plan de tratamiento personalizado</p>
+              <p className="text-sm">✓ Seguimiento regular para resultados óptimos</p>
+            </div>
+
+            <div className="space-y-2">
+              <h4 className="font-semibold">Beneficios:</h4>
+              <p className="text-sm">✓ Tratamiento indoloro y profesional</p>
+              <p className="text-sm">✓ Productos antifúngicos hipoalergénicos</p>
+              <p className="text-sm">✓ Compatible con decoraciones (acrílico, polygel)</p>
+              <p className="text-sm">✓ Mejora visible desde la primera sesión</p>
+            </div>
+
+            <div className="bg-primary/10 p-3 rounded-md">
+              <p className="text-sm font-medium">
+                ⓘ Este es un tratamiento progresivo que requiere múltiples sesiones para resultados óptimos. Las citas de seguimiento deben realizarse dentro de 45 días.
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="space-y-2">
+            {service.category === 'Cuidado de Manos' && (
+              <>
+                <p className="text-sm">✓ Técnicas exclusivas de embellecimiento</p>
+                <p className="text-sm">✓ Productos premium para el cuidado</p>
+                <p className="text-sm">✓ Experiencia relajante y renovadora</p>
+              </>
+            )}
+            {service.category === 'Belleza para Pies' && (
+              <>
+                <p className="text-sm">✓ Spa completo para pies</p>
+                <p className="text-sm">✓ Masaje relajante incluido</p>
+                <p className="text-sm">✓ Cuidado detallado y duradero</p>
+              </>
+            )}
+          </div>
+        )}
+
         <a 
           href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
           target="_blank"
           rel="noopener noreferrer"
           className="block w-full"
         >
-          <Button className="w-full">¡RESERVA AHORA!</Button>
+          <Button className="w-full">
+            {isOnicoplastia ? '¡AGENDA TU EVALUACIÓN!' : '¡RESERVA AHORA!'}
+          </Button>
         </a>
       </CardContent>
     </Card>
