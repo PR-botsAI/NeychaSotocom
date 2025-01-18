@@ -25,7 +25,7 @@ export default function Home() {
         <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
           <div className="space-y-4">
             <img
-              src="https://neychasoto.com/images/gallery/Onicosplatia%20images/Onicosplatia_cases_0000%20(7).png"
+              src="/attached_assets/Caso1_collage.png"
               alt="Tratamiento de Onicoplastia"
               className="rounded-lg shadow-xl"
             />

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -9,10 +9,14 @@ import {
 } from "@/components/ui/sheet";
 
 const navigation = [
-  { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Book Now", href: "/booking" },
+  { name: "Inicio", href: "/" },
+  { name: "Onicoplastia", href: "/onicoplastia" },
+  { name: "Contacto", href: "/contact" },
+  { 
+    name: "Reservar Cita", 
+    href: "https://booksy.com",
+    external: true 
+  },
 ];
 
 export default function Navbar() {
@@ -23,18 +27,32 @@ export default function Navbar() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center">
           <Link href="/">
-            <span className="text-xl font-bold text-primary">Luxury Nails</span>
+            <span className="text-xl font-bold text-primary">Neycha Soto</span>
           </Link>
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:space-x-6">
           {navigation.map((item) => (
-            <Link key={item.name} href={item.href}>
-              <Button variant="ghost" className="text-base">
-                {item.name}
-              </Button>
-            </Link>
+            item.external ? (
+              <a
+                key={item.name}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center"
+              >
+                <Button variant="default" className="text-base">
+                  {item.name}
+                </Button>
+              </a>
+            ) : (
+              <Link key={item.name} href={item.href}>
+                <Button variant="ghost" className="text-base">
+                  {item.name}
+                </Button>
+              </Link>
+            )
           ))}
         </div>
 
@@ -51,18 +69,35 @@ export default function Navbar() {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <Button
-                        variant="ghost"
-                        className="w-full justify-start text-base"
+                    item.external ? (
+                      <a
+                        key={item.name}
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => setIsOpen(false)}
                       >
-                        {item.name}
-                      </Button>
-                    </Link>
+                        <Button
+                          variant="default"
+                          className="w-full justify-start text-base"
+                        >
+                          {item.name}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <Button
+                          variant="ghost"
+                          className="w-full justify-start text-base"
+                        >
+                          {item.name}
+                        </Button>
+                      </Link>
+                    )
                   ))}
                 </div>
               </div>

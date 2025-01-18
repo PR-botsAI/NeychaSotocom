@@ -4,27 +4,38 @@ import { queryClient } from "./lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import Navbar from "@/components/navbar";
 import Home from "@/pages/home";
-import Services from "@/pages/services";
-import Gallery from "@/pages/gallery";
-import Booking from "@/pages/booking";
+import Onicoplastia from "@/pages/onicoplastia";
+import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main>
+      <main className="container mx-auto px-4 py-8">
         <Switch>
           <Route path="/" component={Home} />
-          <Route path="/services" component={Services} />
-          <Route path="/gallery" component={Gallery} />
-          <Route path="/booking" component={Booking} />
+          <Route path="/onicoplastia" component={Onicoplastia} />
+          <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>
       </main>
-      <footer className="py-8 bg-muted/30">
-        <div className="container text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Luxury Nails. All rights reserved.
+      <footer className="mt-16 py-8 bg-muted/30">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Luxury Nails Puerto Rico
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Para citas, visítanos en{" "}
+            <a 
+              href="https://booksy.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary hover:underline"
+            >
+              Booksy
+            </a>
+          </p>
         </div>
       </footer>
     </div>

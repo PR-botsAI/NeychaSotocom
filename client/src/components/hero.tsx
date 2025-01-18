@@ -30,7 +30,7 @@ export default function Hero() {
             >
               ¡RESERVA AHORA!
             </a>
-            <Link href="/servicios">
+            <Link href="/onicoplastia">
               <Button variant="outline" size="lg" className="text-lg text-primary border-primary hover:bg-primary/10">
                 Descubre el Proceso
               </Button>

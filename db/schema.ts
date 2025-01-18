@@ -11,6 +11,18 @@ export const services = pgTable("services", {
   category: text("category").notNull()
 });
 
+export const cases = pgTable("cases", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  beforeImage: text("before_image").notNull(),
+  afterImage: text("after_image").notNull(),
+  collageImage: text("collage_image").notNull(),
+  serviceId: integer("service_id").references(() => services.id),
+  category: text("category").notNull(),
+  createdAt: timestamp("created_at").defaultNow()
+});
+
 export const bookings = pgTable("bookings", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
@@ -22,17 +34,14 @@ export const bookings = pgTable("bookings", {
   createdAt: timestamp("created_at").defaultNow()
 });
 
-export const gallery = pgTable("gallery", {
-  id: serial("id").primaryKey(),
-  title: text("title").notNull(),
-  image: text("image").notNull(),
-  category: text("category").notNull()
-});
-
 export type Service = typeof services.$inferSelect;
+export type Case = typeof cases.$inferSelect;
 export type Booking = typeof bookings.$inferSelect;
-export type GalleryItem = typeof gallery.$inferSelect;
 
 export const insertServiceSchema = createInsertSchema(services);
+export const insertCaseSchema = createInsertSchema(cases);
 export const insertBookingSchema = createInsertSchema(bookings);
-export const insertGallerySchema = createInsertSchema(gallery);
+
+export type InsertService = typeof services.$inferInsert;
+export type InsertCase = typeof cases.$inferInsert;
+export type InsertBooking = typeof bookings.$inferInsert;
