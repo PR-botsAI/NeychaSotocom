@@ -18,8 +18,7 @@ export default function Contact() {
             <DialogTrigger asChild>
               <Button 
                 size="lg" 
-                variant="outline"
-                className="w-full max-w-md border-zinc-700 hover:bg-zinc-800 text-lg py-6"
+                className="w-full max-w-md bg-[#25D366] hover:bg-[#20bd59] text-white text-lg py-6"
               >
                 <MessageSquare className="mr-3 h-5 w-5" />
                 Consultas por WhatsApp
