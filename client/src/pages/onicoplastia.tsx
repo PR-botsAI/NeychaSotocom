@@ -34,7 +34,7 @@ type ImageType = "before" | "after" | "collage";
 export default function Onicoplastia() {
   const [selectedImage, setSelectedImage] = useState<ImageType>("before");
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
-  const [imageError, setImageError] = useState<Record<string, boolean>>({});
+  const [imageError, setImageError] = useState<Record<string, { error: boolean; message: string }>>({});
 
   const onicoplastiaCases = cases.filter(c => c.category === "onicoplastia");
 
@@ -56,7 +56,13 @@ export default function Onicoplastia() {
     console.error(`Failed to load image for case ${caseId}, type: ${imageType}`);
     setImageError(prev => ({
       ...prev,
-      [`${caseId}-${imageType}`]: true
+      [`${caseId}-${imageType}`]: {
+        error: true,
+        message: `No se pudo cargar la imagen ${
+          imageType === "before" ? "inicial" : 
+          imageType === "after" ? "final" : "del proceso"
+        }`
+      }
     }));
   };
 
@@ -175,8 +181,8 @@ export default function Onicoplastia() {
                       </div>
 
                       <div 
-                        className="aspect-square w-full overflow-hidden rounded-md select-none"
-                        onClick={() => !imageError[`${case_.id}-${selectedImage}`] && setSelectedCase(case_)}
+                        className="aspect-square w-full overflow-hidden rounded-md select-none relative"
+                        onClick={() => !imageError[`${case_.id}-${selectedImage}`]?.error && setSelectedCase(case_)}
                         onDragStart={(e) => e.preventDefault()}
                         onMouseDown={(e) => e.preventDefault()}
                         style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
@@ -184,9 +190,27 @@ export default function Onicoplastia() {
                         tabIndex={0}
                         aria-label={`Ver detalle de ${case_.title}`}
                       >
-                        {imageError[`${case_.id}-${selectedImage}`] ? (
-                          <div className="w-full h-full flex items-center justify-center bg-black/5">
-                            <p className="text-sm text-muted-foreground">Error al cargar la imagen</p>
+                        {imageError[`${case_.id}-${selectedImage}`]?.error ? (
+                          <div className="w-full h-full flex flex-col items-center justify-center bg-black/5 p-4">
+                            <p className="text-sm text-muted-foreground text-center">
+                              {imageError[`${case_.id}-${selectedImage}`]?.message}
+                            </p>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="mt-2"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                // Reset error and retry loading
+                                setImageError(prev => {
+                                  const newState = { ...prev };
+                                  delete newState[`${case_.id}-${selectedImage}`];
+                                  return newState;
+                                });
+                              }}
+                            >
+                              Reintentar
+                            </Button>
                           </div>
                         ) : (
                           <img
