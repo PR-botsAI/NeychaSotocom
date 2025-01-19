@@ -300,9 +300,15 @@ export default function Onicoplastia() {
                       {/* Educational Note */}
                       <div className="bg-primary/5 p-4 rounded-lg border border-primary/10">
                         <p className="text-sm text-muted-foreground">
-                          Nuestro tratamiento es completamente seguro, indoloro y personalizado. 
-                          Te ayudamos a recuperar la salud de tus uñas y tu confianza sin procedimientos 
-                          invasivos ni efectos secundarios.
+                          {case_.id === 1 && "¿Te sientes identificada? No estás sola. Miles de personas han recuperado su confianza con nuestro tratamiento."}
+                          {case_.id === 2 && "La salud de tus uñas no tiene que ser una preocupación constante. Hay una solución segura y efectiva."}
+                          {case_.id === 3 && "No permitas que el estado de tus uñas limite tu vida social. Tenemos la solución que has estado buscando."}
+                          {case_.id === 4 && "El cambio que deseas es posible. Nuestro tratamiento especializado te ayuda a recuperar la salud de tus uñas."}
+                          {case_.id === 5 && "Da el primer paso hacia la transformación. Tu bienestar y confianza son nuestra prioridad."}
+                          {case_.id === 6 && "Imagina poder mostrar tus pies sin preocupaciones. Ese momento está más cerca de lo que crees."}
+                          {case_.id === 7 && "Cada historia de éxito comenzó con una decisión. ¿Lista para comenzar la tuya?"}
+                          {case_.id === 8 && "Tu transformación comienza hoy. Agenda tu evaluación y descubre cómo podemos ayudarte."}
+                          {case_.id > 8 && "Nuestro tratamiento es completamente seguro, indoloro y personalizado. Te ayudamos a recuperar la salud de tus uñas y tu confianza sin procedimientos invasivos ni efectos secundarios."}
                         </p>
                       </div>
                     </CardContent>
@@ -317,8 +323,8 @@ export default function Onicoplastia() {
                 <button
                   key={index}
                   className={`h-[3px] rounded-full transition-all duration-300 ${
-                    index === current 
-                      ? "bg-primary w-8 scale-y-150" 
+                    index === current
+                      ? "bg-primary w-8 scale-y-150"
                       : "bg-primary/30 w-4 hover:bg-primary/50 hover:w-6"
                   }`}
                   onClick={() => api?.scrollTo(index)}
