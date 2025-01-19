@@ -1,53 +1,65 @@
 import * as React from "react"
 import * as SliderPrimitive from "@radix-ui/react-slider"
-
 import { cn } from "@/lib/utils"
 
 const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>
->(({ className, ...props }, ref) => {
+>(({ className, onValueChange, ...props }, ref) => {
   const [isDragging, setIsDragging] = React.useState(false)
+  const initialValueRef = React.useRef(props.defaultValue || props.value || [0])
+
+  const handleValueChange = React.useCallback((newValue: number[]) => {
+    if (!isDragging) {
+      // Reset to initial value if not dragging
+      onValueChange?.(initialValueRef.current)
+      return
+    }
+    onValueChange?.(newValue)
+  }, [isDragging, onValueChange])
 
   return (
     <SliderPrimitive.Root
       ref={ref}
+      onValueChange={handleValueChange}
       className={cn(
         "relative flex w-full touch-none select-none items-center",
         className
       )}
-      onMouseDown={() => setIsDragging(true)}
-      onMouseUp={() => setIsDragging(false)}
-      onMouseLeave={() => setIsDragging(false)}
-      onPointerMove={(e) => {
-        if (!isDragging) {
-          e.preventDefault()
-          e.stopPropagation()
-          return false
+      onPointerDown={(e) => {
+        if (e.buttons === 1) { // Only primary mouse button
+          setIsDragging(true)
         }
       }}
-      onValueChange={(value) => {
-        if (!isDragging) {
-          return
-        }
-        props.onValueChange?.(value)
-      }}
+      onPointerUp={() => setIsDragging(false)}
+      onPointerLeave={() => setIsDragging(false)}
       {...props}
     >
       <SliderPrimitive.Track 
         className="relative h-2 w-full grow overflow-hidden rounded-full bg-secondary"
+        onPointerMove={(e) => {
+          if (!isDragging) {
+            e.preventDefault()
+            e.stopPropagation()
+          }
+        }}
       >
         <SliderPrimitive.Range className="absolute h-full bg-primary" />
       </SliderPrimitive.Track>
       <SliderPrimitive.Thumb 
         className="block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:cursor-grab active:cursor-grabbing data-[dragging]:bg-accent"
-        style={{ touchAction: 'none', pointerEvents: isDragging ? 'auto' : 'none' }}
+        style={{ 
+          touchAction: 'none',
+          pointerEvents: isDragging ? 'auto' : 'none',
+          cursor: isDragging ? 'grabbing' : 'grab'
+        }}
         aria-label="Slider thumb"
         data-dragging={isDragging}
       />
     </SliderPrimitive.Root>
   )
 })
+
 Slider.displayName = SliderPrimitive.Root.displayName
 
 export { Slider }
