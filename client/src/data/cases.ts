@@ -20,7 +20,7 @@ export const cases: Case[] = [
   {
     id: 2,
     title: "Un Nuevo Comienzo",
-    description: "Tratamiento efectivo y natural que respeta la salud de tus uñas. Una solución perfecta para recuperar su belleza natural.",
+    description: "Tratamiento efectivo que respeta la salud de tus uñas. Una solución perfecta para recuperar su belleza natural.",
     beforeImage: "/cases/Caso2_before.png",
     afterImage: "/cases/Caso2_after.png",
     collageImage: "/cases/Caso2_collage.png",
