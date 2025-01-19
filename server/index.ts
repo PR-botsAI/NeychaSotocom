@@ -6,6 +6,9 @@ import { z } from "zod";
 
 const app = express();
 
+// Trust proxy - required for proper rate limiting behind a proxy
+app.set('trust proxy', 1);
+
 // Basic security and performance middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false }));

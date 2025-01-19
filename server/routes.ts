@@ -7,12 +7,12 @@ import { z } from "zod";
 
 // Validation schemas
 const bookingSchema = z.object({
+  name: z.string().min(1),
+  email: z.string().email(),
+  phone: z.string(),
   serviceId: z.number(),
   date: z.string().datetime(),
-  clientName: z.string().min(1),
-  clientEmail: z.string().email(),
-  clientPhone: z.string().optional(),
-  notes: z.string().optional(),
+  status: z.string().optional().default("pending")
 });
 
 class ApiError extends Error {
@@ -53,7 +53,11 @@ export function registerRoutes(app: Express): Server {
   app.post("/api/bookings", async (req, res, next) => {
     try {
       const validatedData = bookingSchema.parse(req.body);
-      const booking = await db.insert(bookings).values(validatedData).returning();
+      const booking = await db.insert(bookings).values({
+        ...validatedData,
+        date: new Date(validatedData.date), // Convert string to Date object
+        createdAt: new Date()
+      }).returning();
       res.json(booking[0]);
     } catch (error) {
       if (error instanceof z.ZodError) {
