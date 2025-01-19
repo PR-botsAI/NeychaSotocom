@@ -1,8 +1,25 @@
+import { useQuery } from "@tanstack/react-query";
 import ServiceCard from "@/components/service-card";
 import { ErrorBoundary } from "@/components/error-boundary";
-import { services } from "@/data/services";
+import type { Service } from "@/types/schema";
 
 function ServicesContent() {
+  const { data: services, error, isLoading } = useQuery<Service[]>({
+    queryKey: ["/api/services"],
+  });
+
+  if (isLoading) {
+    return (
+      <div className="container py-24 text-center">
+        <p>Loading services...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    throw error;
+  }
+
   return (
     <div className="container py-24">
       <h1 className="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
@@ -12,7 +29,7 @@ function ServicesContent() {
         Discover our range of premium nail care services
       </p>
       <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
+        {services?.map((service) => (
           <ServiceCard key={service.id} service={service} />
         ))}
       </div>
