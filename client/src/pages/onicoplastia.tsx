@@ -81,9 +81,10 @@ export default function Onicoplastia() {
           Onicoplastia Profesional
         </h1>
         <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
-          Transformamos uñas dañadas en uñas saludables y hermosas.
-          Nuestro tratamiento profesional progresivo está diseñado para restaurar
-          la salud y apariencia de tus uñas afectadas.
+          Con certificación IBX y respaldada por experiencia en enfermería registrada,
+          ofrecemos un tratamiento profesional y seguro para restaurar la salud de tus uñas.
+          Nuestra misión es educar y ayudar a todos a superar los problemas de hongos
+          en las uñas de una manera efectiva y accesible.
         </p>
       </section>
 
@@ -93,26 +94,26 @@ export default function Onicoplastia() {
         <div className="grid gap-8 md:grid-cols-2">
           <Card className="bg-primary/5">
             <CardHeader>
-              <CardTitle>Beneficios del Tratamiento</CardTitle>
-              <CardDescription>Ventajas desde tu primera visita</CardDescription>
+              <CardTitle>Nuestro Compromiso</CardTitle>
+              <CardDescription>Profesionalismo y calidez en cada visita</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="space-y-3" role="list">
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
-                  <span>Resultados estéticos inmediatos con nuestra prótesis hipoalergénica</span>
+                  <span>Personal certificado en IBX y con experiencia en enfermería</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
-                  <span>Procedimiento indoloro y no invasivo</span>
+                  <span>Atención cálida y educativa para cada cliente</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
-                  <span>¡Usa zapatos abiertos desde la primera sesión!</span>
+                  <span>Ambiente acogedor y profesional</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
-                  <span>Tratamiento progresivo para eliminar hongos</span>
+                  <span>Compromiso con tu bienestar y satisfacción</span>
                 </li>
               </ul>
             </CardContent>
