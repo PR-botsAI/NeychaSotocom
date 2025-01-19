@@ -6,6 +6,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogTrigger,
 } from "@/components/ui/dialog";
 
@@ -27,18 +28,18 @@ export default function Contact() {
             <DialogContent className="bg-zinc-900 border-zinc-800">
               <DialogHeader>
                 <DialogTitle>Mensaje Importante</DialogTitle>
+                <DialogDescription>
+                  Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.
+                </DialogDescription>
               </DialogHeader>
-              <div className="py-4">
-                <p>Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.</p>
-                <div className="mt-6 flex justify-end">
-                  <a 
-                    href="https://wa.me/19394290292"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button>Continuar a WhatsApp</Button>
-                  </a>
-                </div>
+              <div className="mt-6 flex justify-end">
+                <a 
+                  href="https://wa.me/19394290292"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button>Continuar a WhatsApp</Button>
+                </a>
               </div>
             </DialogContent>
           </Dialog>
