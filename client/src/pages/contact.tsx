@@ -13,6 +13,38 @@ export default function Contact() {
   return (
     <div className="min-h-screen bg-black text-white py-12 px-4">
       <div className="container mx-auto max-w-4xl">
+        <div className="mb-12 text-center">
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="w-full max-w-md border-zinc-700 hover:bg-zinc-800 text-lg py-6"
+              >
+                <MessageSquare className="mr-3 h-5 w-5" />
+                Consultas por WhatsApp
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="bg-zinc-900 border-zinc-800">
+              <DialogHeader>
+                <DialogTitle>Mensaje Importante</DialogTitle>
+              </DialogHeader>
+              <div className="py-4">
+                <p>Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.</p>
+                <div className="mt-6 flex justify-end">
+                  <a 
+                    href="https://wa.me/19394290292"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button>Continuar a WhatsApp</Button>
+                  </a>
+                </div>
+              </div>
+            </DialogContent>
+          </Dialog>
+        </div>
+
         <h2 className="text-2xl font-semibold mb-8">¿Cómo Podemos Ayudarte?</h2>
 
         <div className="space-y-6">
@@ -67,43 +99,12 @@ export default function Contact() {
           <div className="mt-12 text-center">
             <h3 className="text-2xl mb-4">¿Lista para transformar tus uñas?</h3>
             <p className="mb-6">Agenda tu cita hoy y comienza tu transformación</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-[#E6D5BA] text-black hover:bg-[#d4c3a8]"
-              >
-                ¡AGENDA TU CITA AHORA!
-              </Button>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button 
-                    variant="outline" 
-                    size="lg" 
-                    className="border-zinc-700 hover:bg-zinc-800"
-                  >
-                    <MessageSquare className="mr-2 h-4 w-4" />
-                    Consultas por WhatsApp
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="bg-zinc-900 border-zinc-800">
-                  <DialogHeader>
-                    <DialogTitle>Mensaje Importante</DialogTitle>
-                  </DialogHeader>
-                  <div className="py-4">
-                    <p>Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.</p>
-                    <div className="mt-6 flex justify-end">
-                      <a 
-                        href="https://wa.me/19394290292"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Button>Continuar a WhatsApp</Button>
-                      </a>
-                    </div>
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </div>
+            <Button 
+              size="lg" 
+              className="bg-[#E6D5BA] text-black hover:bg-[#d4c3a8]"
+            >
+              ¡AGENDA TU CITA AHORA!
+            </Button>
           </div>
         </div>
       </div>
