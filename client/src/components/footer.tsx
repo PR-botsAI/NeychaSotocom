@@ -7,7 +7,7 @@ export default function Footer() {
             © 2025 Neycha Nails
           </div>
           <div className="text-sm text-muted-foreground">
-            Powered by: <a href="https://prbots.ai" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">PRbots.AI</a>
+            Powered by: <a href="https://prbots.ai" target="_blank" rel="noopener noreferrer" className="text-[#FF00FF] hover:text-[#CC00CC] transition-colors">PRbots.AI</a>
           </div>
         </div>
       </div>
