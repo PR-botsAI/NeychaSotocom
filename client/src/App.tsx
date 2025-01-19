@@ -7,7 +7,6 @@ import Footer from "@/components/footer";
 import Home from "@/pages/home";
 import Onicoplastia from "@/pages/onicoplastia";
 import Contact from "@/pages/contact";
-import Services from "@/pages/services";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -18,7 +17,6 @@ function Router() {
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/onicoplastia" component={Onicoplastia} />
-          <Route path="/servicios" component={Services} />
           <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>

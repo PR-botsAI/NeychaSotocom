@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
 
 export default function Hero() {
   return (
@@ -29,7 +28,7 @@ export default function Hero() {
             Restauración Premium Exclusivo para tus uñas. Experiencia única y resultados excepcionales
             con nuestro servicio profesional certificado.
           </p>
-          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-x-6">
+          <div className="mt-8 sm:mt-10 flex justify-center">
             <a
               href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
               target="_blank"
@@ -42,14 +41,6 @@ export default function Hero() {
                 ¡RESERVA AHORA!
               </Button>
             </a>
-            <Link href="/servicios" className="w-full sm:w-auto">
-              <Button 
-                variant="outline" 
-                className="w-full sm:w-auto text-base sm:text-lg px-6 py-3 text-primary border-primary hover:bg-primary/10"
-              >
-                Nuestros Servicios
-              </Button>
-            </Link>
           </div>
         </div>
       </div>

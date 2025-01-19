@@ -15,16 +15,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Featured Services */}
       <section className="px-4">
         <div className="container mx-auto">
           <h2 className="text-center text-3xl font-bold tracking-tight sm:text-4xl mb-12">
             Nuestros Servicios
           </h2>
 
-          {/* Services Grid */}
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {/* Onicoplastia Card */}
+            {/* Onicoplastia */}
             <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
               <h3 className="text-xl font-semibold text-white">Onicoplastia</h3>
               <p className="text-gray-300">
@@ -56,7 +55,7 @@ export default function Home() {
               </Button>
             </div>
 
-            {/* Manicura Card */}
+            {/* Manicura */}
             <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
               <h3 className="text-xl font-semibold text-white">Manicura</h3>
               <p className="text-gray-300">
@@ -84,7 +83,7 @@ export default function Home() {
               </Button>
             </div>
 
-            {/* Pedicura Card */}
+            {/* Belleza para Pies */}
             <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
               <h3 className="text-xl font-semibold text-white">Belleza para Pies</h3>
               <p className="text-gray-300">
