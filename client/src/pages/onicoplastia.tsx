@@ -145,6 +145,21 @@ export default function Onicoplastia() {
         <h2 id="transformations-heading" className="text-2xl font-semibold mb-8 text-center">
           Transformaciones Reales
         </h2>
+
+        {/* Instrucciones de Navegación */}
+        <div className="text-center mb-6 text-muted-foreground">
+          <p className="text-sm md:text-base">
+            Desliza las imágenes hacia los lados o usa los botones para ver más casos
+          </p>
+          <div className="flex items-center justify-center gap-2 mt-2">
+            <span className="hidden md:inline">←</span>
+            <span className="md:hidden">⟵</span>
+            <span>Deslizar</span>
+            <span className="hidden md:inline">→</span>
+            <span className="md:hidden">⟶</span>
+          </div>
+        </div>
+
         <div className="relative">
           <Carousel
             setApi={setApi}
@@ -244,50 +259,59 @@ export default function Onicoplastia() {
               ))}
             </CarouselContent>
 
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+            {/* Indicadores de posición mejorados */}
+            <div className="absolute -bottom-8 left-0 right-0 flex justify-center gap-3">
               {Array.from({ length: count }).map((_, index) => (
                 <button
                   key={index}
-                  className={`h-2 w-2 rounded-full transition-all ${
-                    index === current ? "bg-primary w-4" : "bg-primary/50"
+                  className={`h-3 rounded-full transition-all ${
+                    index === current 
+                      ? "bg-primary w-6" 
+                      : "bg-primary/40 w-3 hover:bg-primary/60"
                   }`}
                   onClick={() => api?.scrollTo(index)}
-                  aria-label={`Ir a caso ${index + 1}`}
-                />
+                  aria-label={`Ir a caso ${index + 1} de ${count}`}
+                >
+                  <span className="sr-only">
+                    {index === current 
+                      ? `Caso actual: ${index + 1} de ${count}` 
+                      : `Ver caso ${index + 1} de ${count}`}
+                  </span>
+                </button>
               ))}
             </div>
 
-            <div className="absolute -left-4 -right-4 top-1/2 flex justify-between items-center -translate-y-1/2">
+            {/* Botones de navegación más grandes y visibles */}
+            <div className="absolute -left-3 -right-3 top-1/2 flex justify-between items-center -translate-y-1/2">
               <CarouselPrevious
-                variant="ghost"
-                className="relative left-0 top-0 translate-y-0 h-12 w-12 rounded-full opacity-70 hover:opacity-100 transition-opacity"
+                variant="default"
+                size="lg"
+                className="relative left-0 top-0 translate-y-0 h-14 w-14 rounded-full bg-background/90 hover:bg-background shadow-md border-2"
                 aria-label="Ver caso anterior"
-              />
+              >
+                <span className="sr-only">Anterior</span>
+              </CarouselPrevious>
               <CarouselNext
-                variant="ghost"
-                className="relative right-0 top-0 translate-y-0 h-12 w-12 rounded-full opacity-70 hover:opacity-100 transition-opacity"
+                variant="default"
+                size="lg"
+                className="relative right-0 top-0 translate-y-0 h-14 w-14 rounded-full bg-background/90 hover:bg-background shadow-md border-2"
                 aria-label="Ver siguiente caso"
-              />
+              >
+                <span className="sr-only">Siguiente</span>
+              </CarouselNext>
             </div>
           </Carousel>
 
-          {/* Añadir indicación de deslizamiento */}
-          <div className="absolute top-1/2 right-2 -translate-y-1/2 text-muted-foreground animate-pulse hidden md:block">
-            <span className="sr-only">Desliza para ver más casos</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="opacity-50"
-            >
-              <path d="M9 18l6-6-6-6" />
-            </svg>
+          {/* Indicador de contenido adicional */}
+          <div className="mt-4 text-center text-sm text-muted-foreground">
+            <p>
+              <span className="font-medium">Caso {current + 1}</span> de {count}
+            </p>
+            {current < count - 1 && (
+              <p className="mt-1 animate-pulse">
+                ↓ Hay más casos para explorar ↓
+              </p>
+            )}
           </div>
         </div>
       </section>
