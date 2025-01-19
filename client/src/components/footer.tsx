@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Neycha Nails • Establecido en 2020
+            © Neycha Nails • Establecido en 2020
           </div>
           <div className="text-sm text-muted-foreground">
             Powered by: <a href="https://prbots.ai" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">PRbots.AI</a>
