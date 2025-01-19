@@ -1,6 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Clock, MapPin, MessageSquare, Instagram, Facebook } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function Contact() {
   return (
@@ -10,7 +17,7 @@ export default function Contact() {
 
         <div className="space-y-6">
           {/* Contact Information */}
-          <div className="grid grid-cols-1 gap-6"> {/* Changed to grid-cols-1 */}
+          <div className="grid grid-cols-1 gap-6">
             <Card className="bg-zinc-900 border-zinc-800">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-2">
@@ -67,20 +74,35 @@ export default function Contact() {
               >
                 ¡AGENDA TU CITA AHORA!
               </Button>
-              <a 
-                href="https://wa.me/19394290292"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="border-zinc-700 hover:bg-zinc-800"
-                >
-                  <MessageSquare className="mr-2 h-4 w-4" />
-                  Consultas por WhatsApp
-                </Button>
-              </a>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="border-zinc-700 hover:bg-zinc-800"
+                  >
+                    <MessageSquare className="mr-2 h-4 w-4" />
+                    Consultas por WhatsApp
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="bg-zinc-900 border-zinc-800">
+                  <DialogHeader>
+                    <DialogTitle>Mensaje Importante</DialogTitle>
+                  </DialogHeader>
+                  <div className="py-4">
+                    <p>Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.</p>
+                    <div className="mt-6 flex justify-end">
+                      <a 
+                        href="https://wa.me/19394290292"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button>Continuar a WhatsApp</Button>
+                      </a>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
