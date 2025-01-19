@@ -23,8 +23,10 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
+type ImageType = "before" | "after" | "collage";
+
 export default function Onicoplastia() {
-  const [selectedImage, setSelectedImage] = useState<"before" | "after" | "collage">("before");
+  const [selectedImage, setSelectedImage] = useState<ImageType>("before");
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
 
   const { data: cases = [], isLoading, error } = useQuery<Case[]>({
@@ -38,6 +40,10 @@ export default function Onicoplastia() {
       </div>
     );
   }
+
+  const handleImageClick = (type: ImageType) => {
+    setSelectedImage(type);
+  };
 
   return (
     <div className="space-y-16 pb-16">
@@ -126,64 +132,57 @@ export default function Onicoplastia() {
           <Carousel className="w-full max-w-5xl mx-auto">
             <CarouselContent>
               {cases.map((case_) => (
-                <CarouselItem key={case_.id}>
-                  <Card className="overflow-hidden">
+                <CarouselItem key={case_.id} className="cursor-default">
+                  <Card>
                     <CardHeader>
                       <CardTitle>{case_.title}</CardTitle>
                       <CardDescription>{case_.description}</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <div className="relative">
-                        <div className="flex gap-4 mb-4 justify-center">
+                      <div className="space-y-4">
+                        <div className="flex justify-center gap-4">
                           <Button
                             variant={selectedImage === "before" ? "default" : "outline"}
-                            onClick={() => setSelectedImage("before")}
-                            aria-pressed={selectedImage === "before"}
+                            onClick={() => handleImageClick("before")}
+                            className="min-w-[100px]"
                           >
                             Antes
                           </Button>
                           <Button
                             variant={selectedImage === "after" ? "default" : "outline"}
-                            onClick={() => setSelectedImage("after")}
-                            aria-pressed={selectedImage === "after"}
+                            onClick={() => handleImageClick("after")}
+                            className="min-w-[100px]"
                           >
                             Después
                           </Button>
                           <Button
                             variant={selectedImage === "collage" ? "default" : "outline"}
-                            onClick={() => setSelectedImage("collage")}
-                            aria-pressed={selectedImage === "collage"}
+                            onClick={() => handleImageClick("collage")}
+                            className="min-w-[100px]"
                           >
                             Proceso
                           </Button>
                         </div>
 
-                        <div className="aspect-square w-full overflow-hidden rounded-md">
-                          <button
-                            onClick={() => {
-                              setSelectedCase(case_);
-                            }}
-                            className="w-full h-full"
-                            aria-label={`Ver imagen ${
+                        <div 
+                          className="aspect-square w-full overflow-hidden rounded-md cursor-pointer"
+                          onClick={() => setSelectedCase(case_)}
+                          onMouseOver={(e) => e.preventDefault()}
+                          role="button"
+                          tabIndex={0}
+                          aria-label={`Ver detalle de ${case_.title}`}
+                        >
+                          <img
+                            src={case_[`${selectedImage}Image`]}
+                            alt={`${
                               selectedImage === "before"
-                                ? "antes del tratamiento"
+                                ? "Estado inicial antes del tratamiento"
                                 : selectedImage === "after"
-                                ? "después del tratamiento"
-                                : "del proceso"
+                                ? "Resultado final después del tratamiento"
+                                : "Proceso completo del tratamiento"
                             } - ${case_.title}`}
-                          >
-                            <img
-                              src={case_[`${selectedImage}Image`]}
-                              alt={`${
-                                selectedImage === "before"
-                                  ? "Estado inicial antes del tratamiento"
-                                  : selectedImage === "after"
-                                  ? "Resultado final después del tratamiento"
-                                  : "Proceso completo del tratamiento"
-                              } - ${case_.title}`}
-                              className="w-full h-full object-contain bg-black/5"
-                            />
-                          </button>
+                            className="w-full h-full object-contain bg-black/5"
+                          />
                         </div>
                       </div>
                     </CardContent>
@@ -191,41 +190,39 @@ export default function Onicoplastia() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious aria-label="Ver caso anterior" />
-            <CarouselNext aria-label="Ver siguiente caso" />
+            <CarouselPrevious />
+            <CarouselNext />
           </Carousel>
         )}
       </section>
 
       {/* Image Preview Dialog */}
-      {selectedCase && (
-        <Dialog
-          open={!!selectedCase}
-          onOpenChange={(open) => !open && setSelectedCase(null)}
-        >
-          <DialogContent className="max-w-3xl">
-            <DialogTitle>
-              {selectedCase.title}
-            </DialogTitle>
-            <DialogDescription>
-              {selectedCase.description}
-            </DialogDescription>
-            <div className="w-full aspect-square">
-              <img
-                src={selectedCase[`${selectedImage}Image`]}
-                alt={`${
-                  selectedImage === "before"
-                    ? "Estado inicial antes del tratamiento"
-                    : selectedImage === "after"
-                    ? "Resultado final después del tratamiento"
-                    : "Proceso completo del tratamiento"
-                } - ${selectedCase.title}`}
-                className="w-full h-full object-contain"
-              />
-            </div>
-          </DialogContent>
-        </Dialog>
-      )}
+      <Dialog
+        open={!!selectedCase}
+        onOpenChange={(open) => !open && setSelectedCase(null)}
+      >
+        <DialogContent className="max-w-3xl">
+          <DialogTitle>
+            {selectedCase?.title}
+          </DialogTitle>
+          <DialogDescription>
+            {selectedCase?.description}
+          </DialogDescription>
+          <div className="w-full aspect-square">
+            <img
+              src={selectedCase?.[`${selectedImage}Image`]}
+              alt={`${
+                selectedImage === "before"
+                  ? "Estado inicial antes del tratamiento"
+                  : selectedImage === "after"
+                  ? "Resultado final después del tratamiento"
+                  : "Proceso completo del tratamiento"
+              } - ${selectedCase?.title}`}
+              className="w-full h-full object-contain"
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
 
       {/* FAQ Section */}
       <section className="container max-w-3xl" aria-labelledby="faq-heading">
