@@ -20,12 +20,3 @@ export interface Case {
   createdAt: string;
   highlights?: string[];
 }
-
-export interface GalleryItem {
-  id: number;
-  title: string;
-  image: string;
-  category: string;
-  description?: string;
-  createdAt: string;
-}
