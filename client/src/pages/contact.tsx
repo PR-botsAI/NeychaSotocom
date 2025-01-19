@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { PhoneCall, Clock, MapPin, MessageSquare, Instagram, Facebook } from "lucide-react";
+import { Clock, MapPin, MessageSquare, Instagram, Facebook } from "lucide-react";
 
 export default function Contact() {
   return (
@@ -10,17 +10,7 @@ export default function Contact() {
 
         <div className="space-y-6">
           {/* Contact Information */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Card className="bg-zinc-900 border-zinc-800">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-2">
-                  <PhoneCall className="h-5 w-5" />
-                  <span>939 429 0292</span>
-                </div>
-                <p className="text-sm text-zinc-400 ml-8">Prefiero mensajes de texto o WhatsApp 👋</p>
-              </CardContent>
-            </Card>
-
+          <div className="grid grid-cols-1 gap-6"> {/* Changed to grid-cols-1 */}
             <Card className="bg-zinc-900 border-zinc-800">
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-2">
@@ -77,14 +67,20 @@ export default function Contact() {
               >
                 ¡AGENDA TU CITA AHORA!
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-zinc-700 hover:bg-zinc-800"
+              <a 
+                href="https://wa.me/19394290292"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <MessageSquare className="mr-2 h-4 w-4" />
-                Consultas por WhatsApp
-              </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-zinc-700 hover:bg-zinc-800"
+                >
+                  <MessageSquare className="mr-2 h-4 w-4" />
+                  Consultas por WhatsApp
+                </Button>
+              </a>
             </div>
           </div>
         </div>
