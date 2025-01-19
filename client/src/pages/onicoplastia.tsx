@@ -81,10 +81,9 @@ export default function Onicoplastia() {
           Onicoplastia Profesional
         </h1>
         <p className="mt-6 text-lg leading-8 text-muted-foreground max-w-3xl mx-auto">
-          Con certificación IBX y respaldada por experiencia en enfermería registrada,
-          ofrecemos un tratamiento profesional y seguro para restaurar la salud de tus uñas.
-          Nuestra misión es educar y ayudar a todos a superar los problemas de hongos
-          en las uñas de una manera efectiva y accesible.
+          Como profesional certificada en IBX y RN, me dedico a ayudarte a recuperar la salud 
+          de tus uñas. Nuestra misión es brindarte un tratamiento efectivo y accesible, 
+          educándote en cada paso del proceso para que juntos superemos los problemas de hongos.
         </p>
       </section>
 
@@ -95,25 +94,25 @@ export default function Onicoplastia() {
           <Card className="bg-primary/5">
             <CardHeader>
               <CardTitle>Nuestro Compromiso</CardTitle>
-              <CardDescription>Profesionalismo y calidez en cada visita</CardDescription>
+              <CardDescription>Atención profesional y cercana</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="space-y-3" role="list">
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
-                  <span>Personal certificado en IBX y con experiencia en enfermería</span>
+                  <span>Atención profesional certificada</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
-                  <span>Atención cálida y educativa para cada cliente</span>
+                  <span>Ambiente acogedor y tranquilo</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
-                  <span>Ambiente acogedor y profesional</span>
+                  <span>Explicación clara de cada paso</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
-                  <span>Compromiso con tu bienestar y satisfacción</span>
+                  <span>Acompañamiento durante el proceso</span>
                 </li>
               </ul>
             </CardContent>

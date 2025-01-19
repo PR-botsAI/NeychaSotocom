@@ -36,7 +36,7 @@ export const cases: Case[] = [
   {
     id: 3,
     title: "Belleza Natural",
-    description: "Transforma tus uñas con nuestro método exclusivo. Un tratamiento seguro para recuperar su belleza natural.",
+    description: "Transforma tus uñas con nuestro método seguro. Un tratamiento efectivo para recuperar su belleza natural.",
     beforeImage: "/cases/Caso3_before.png",
     afterImage: "/cases/Caso3_after.png",
     collageImage: "/cases/Caso3_collage.png",
@@ -44,7 +44,7 @@ export const cases: Case[] = [
     createdAt: new Date("2024-01-19").toISOString(),
     serviceId: 1,
     highlights: [
-      "Método exclusivo",
+      "Método probado",
       "Proceso natural",
       "Belleza duradera"
     ]
