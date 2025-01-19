@@ -300,15 +300,14 @@ export default function Onicoplastia() {
                       {/* Educational Note */}
                       <div className="bg-primary/5 p-4 rounded-lg border border-primary/10">
                         <p className="text-sm text-muted-foreground">
-                          {case_.id === 1 && "¿Te sientes identificada? No estás sola. Miles de personas han recuperado su confianza con nuestro tratamiento."}
-                          {case_.id === 2 && "La salud de tus uñas no tiene que ser una preocupación constante. Hay una solución segura y efectiva."}
-                          {case_.id === 3 && "No permitas que el estado de tus uñas limite tu vida social. Tenemos la solución que has estado buscando."}
-                          {case_.id === 4 && "El cambio que deseas es posible. Nuestro tratamiento especializado te ayuda a recuperar la salud de tus uñas."}
-                          {case_.id === 5 && "Da el primer paso hacia la transformación. Tu bienestar y confianza son nuestra prioridad."}
-                          {case_.id === 6 && "Imagina poder mostrar tus pies sin preocupaciones. Ese momento está más cerca de lo que crees."}
-                          {case_.id === 7 && "Cada historia de éxito comenzó con una decisión. ¿Lista para comenzar la tuya?"}
-                          {case_.id === 8 && "Tu transformación comienza hoy. Agenda tu evaluación y descubre cómo podemos ayudarte."}
-                          {case_.id > 8 && "Nuestro tratamiento es completamente seguro, indoloro y personalizado. Te ayudamos a recuperar la salud de tus uñas y tu confianza sin procedimientos invasivos ni efectos secundarios."}
+                          {case_.id === 1 && "¿Buscas una solución natural? Descubre cómo podemos ayudarte a recuperar la salud de tus uñas."}
+                          {case_.id === 2 && "Un tratamiento seguro y efectivo que respeta la salud natural de tus uñas."}
+                          {case_.id === 3 && "La belleza natural de tus uñas está más cerca de lo que piensas."}
+                          {case_.id === 4 && "Cada día más personas descubren los beneficios de nuestro tratamiento especializado."}
+                          {case_.id === 5 && "Un proceso natural y efectivo para recuperar la salud de tus uñas."}
+                          {case_.id === 6 && "Transforma tus uñas con un tratamiento seguro y personalizado."}
+                          {case_.id === 7 && "Descubre cómo nuestro método progresivo puede ayudarte."}
+                          {case_.id === 8 && "Da el primer paso hacia uñas más saludables. ¡Te acompañamos en el proceso!"}
                         </p>
                       </div>
                     </CardContent>
