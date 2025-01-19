@@ -1,6 +1,6 @@
 import { QueryClient } from "@tanstack/react-query";
 
-class QueryError extends Error {
+export class QueryError extends Error {
   constructor(
     message: string,
     public status: number,
@@ -10,6 +10,9 @@ class QueryError extends Error {
     this.name = 'QueryError';
   }
 }
+
+const MAX_RETRIES = 3;
+const RETRY_DELAY = 1000; // 1 second
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -42,7 +45,8 @@ export const queryClient = new QueryClient({
             );
           }
 
-          return res.json();
+          const data = await res.json();
+          return data;
         } catch (error) {
           if (error instanceof QueryError) {
             throw error;
@@ -52,7 +56,7 @@ export const queryClient = new QueryClient({
             throw new QueryError('Request timeout', 408);
           }
 
-          if (error instanceof TypeError && error.message === 'Failed to fetch') {
+          if (error instanceof TypeError && error.message.includes('fetch')) {
             throw new QueryError('Network error - Please check your connection', 0);
           }
 
@@ -69,14 +73,24 @@ export const queryClient = new QueryClient({
         if (error instanceof QueryError) {
           // Don't retry client errors (4xx)
           if (error.status >= 400 && error.status < 500) return false;
-          // Retry server errors up to 3 times
-          return failureCount < 3;
+          // Retry server errors up to MAX_RETRIES times
+          return failureCount < MAX_RETRIES;
         }
         return false;
       },
+      retryDelay: (attemptIndex) => Math.min(1000 * Math.pow(2, attemptIndex), 30000),
     },
     mutations: {
       retry: false,
+      onError: (error: unknown) => {
+        if (error instanceof QueryError) {
+          console.error('Mutation error:', {
+            status: error.status,
+            message: error.message,
+            data: error.data
+          });
+        }
+      }
     }
   },
 });

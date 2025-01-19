@@ -3,16 +3,38 @@ import { createServer, type Server } from "http";
 import { db } from "@db";
 import { services, bookings, cases } from "@db/schema";
 import { eq } from "drizzle-orm";
+import { z } from "zod";
+
+// Validation schemas
+const bookingSchema = z.object({
+  serviceId: z.number(),
+  date: z.string().datetime(),
+  clientName: z.string().min(1),
+  clientEmail: z.string().email(),
+  clientPhone: z.string().optional(),
+  notes: z.string().optional(),
+});
+
+class ApiError extends Error {
+  constructor(public status: number, message: string) {
+    super(message);
+    this.name = 'ApiError';
+  }
+}
 
 export function registerRoutes(app: Express): Server {
   // Services
-  app.get("/api/services", async (_req, res) => {
-    const allServices = await db.select().from(services);
-    res.json(allServices);
+  app.get("/api/services", async (_req, res, next) => {
+    try {
+      const allServices = await db.select().from(services);
+      res.json(allServices);
+    } catch (error) {
+      next(new ApiError(500, "Failed to fetch services"));
+    }
   });
 
   // Cases (Before/After Gallery)
-  app.get("/api/cases", async (req, res) => {
+  app.get("/api/cases", async (req, res, next) => {
     try {
       const category = req.query.category as string;
       const query = db.select().from(cases);
@@ -23,18 +45,22 @@ export function registerRoutes(app: Express): Server {
 
       res.json(results);
     } catch (error) {
-      console.error('Error fetching cases:', error);
-      res.status(500).json({ error: "Failed to fetch cases" });
+      next(new ApiError(500, "Failed to fetch cases"));
     }
   });
 
   // Bookings
-  app.post("/api/bookings", async (req, res) => {
+  app.post("/api/bookings", async (req, res, next) => {
     try {
-      const booking = await db.insert(bookings).values(req.body).returning();
+      const validatedData = bookingSchema.parse(req.body);
+      const booking = await db.insert(bookings).values(validatedData).returning();
       res.json(booking[0]);
     } catch (error) {
-      res.status(400).json({ error: "Invalid booking data" });
+      if (error instanceof z.ZodError) {
+        next(new ApiError(400, `Invalid booking data: ${error.errors[0].message}`));
+      } else {
+        next(new ApiError(500, "Failed to create booking"));
+      }
     }
   });
 

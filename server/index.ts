@@ -1,10 +1,22 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+import rateLimit from "express-rate-limit";
+import { z } from "zod";
 
 const app = express();
-app.use(express.json());
+
+// Basic security and performance middleware
+app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false }));
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: { error: { message: "Too many requests, please try again later", status: 429 } }
+});
+app.use("/api", limiter);
 
 // Request logging middleware
 app.use((req, res, next) => {
@@ -40,25 +52,39 @@ app.use((req, res, next) => {
 (async () => {
   const server = registerRoutes(app);
 
-  // Global error handling middleware
-  app.use((err: any, req: Request, res: Response, next: NextFunction) => {
-    // Log the error for debugging
-    console.error('Error:', err);
+  // Enhanced error handling middleware
+  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+    // Log error for debugging
+    console.error('Error:', {
+      name: err.name,
+      message: err.message,
+      stack: err.stack,
+      status: err.status
+    });
 
     // Don't expose internal error details in production
     const isProduction = process.env.NODE_ENV === 'production';
 
-    const status = err.status || err.statusCode || 500;
-    const message = isProduction && status === 500 
-      ? 'Internal Server Error'
-      : err.message || 'Internal Server Error';
+    let status = err.status || 500;
+    let message = err.message || 'Internal Server Error';
+
+    // Handle specific error types
+    if (err instanceof z.ZodError) {
+      status = 400;
+      message = `Validation error: ${err.errors[0].message}`;
+    } else if (err.name === 'ApiError') {
+      status = err.status;
+      message = err.message;
+    } else if (err.code === '23505') { // PostgreSQL unique violation
+      status = 409;
+      message = 'Resource already exists';
+    }
 
     // Send error response
     res.status(status).json({
       error: {
-        message,
+        message: isProduction && status === 500 ? 'Internal Server Error' : message,
         status,
-        // Only include stack trace in development
         ...((!isProduction && err.stack) ? { stack: err.stack } : {})
       }
     });
