@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Case } from "@/types/schema";
 import { Button } from "@/components/ui/button";
 import {
@@ -38,11 +38,22 @@ export default function Onicoplastia() {
 
   const onicoplastiaCases = cases.filter(c => c.category === "onicoplastia");
 
+  // Debug logs for image paths
+  useEffect(() => {
+    console.log('Current cases:', onicoplastiaCases.map(c => ({
+      id: c.id,
+      beforeImage: c.beforeImage,
+      afterImage: c.afterImage,
+      collageImage: c.collageImage
+    })));
+  }, []);
+
   const handleImageClick = (type: ImageType) => {
     setSelectedImage(type);
   };
 
   const handleImageError = (caseId: number, imageType: string) => {
+    console.error(`Failed to load image for case ${caseId}, type: ${imageType}`);
     setImageError(prev => ({
       ...prev,
       [`${caseId}-${imageType}`]: true
