@@ -8,8 +8,11 @@ import Home from "@/pages/home";
 import Onicoplastia from "@/pages/onicoplastia";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
+import { useScrollTop } from "@/hooks/use-scroll-top";
 
 function Router() {
+  useScrollTop(); 
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
