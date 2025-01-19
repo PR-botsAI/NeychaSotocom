@@ -1,31 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { Loader2 } from "lucide-react";
 import ServiceCard from "@/components/service-card";
 import { ErrorBoundary } from "@/components/error-boundary";
-import type { Service } from "@db/schema";
+import { services } from "@/data/services";
 
 function ServicesContent() {
-  const { 
-    data: services = [], 
-    isLoading,
-    isError,
-    error
-  } = useQuery<Service[]>({
-    queryKey: ["/api/services"],
-  });
-
-  if (isLoading) {
-    return (
-      <div className="min-h-[400px] flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
-  if (isError) {
-    throw error;
-  }
-
   return (
     <div className="container py-24">
       <h1 className="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">

@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import type { Case } from "@db/schema";
+import type { Case } from "@/types/schema";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -15,13 +14,20 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, } from "@/components/ui/carousel";
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from "@/components/ui/carousel";
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { cases } from "@/data/cases";
 
 type ImageType = "before" | "after" | "collage";
 
@@ -29,17 +35,7 @@ export default function Onicoplastia() {
   const [selectedImage, setSelectedImage] = useState<ImageType>("before");
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
 
-  const { data: cases = [], isLoading, error } = useQuery<Case[]>({
-    queryKey: ["/api/cases", { category: "onicoplastia" }],
-  });
-
-  if (error) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]" role="alert">
-        <p className="text-destructive">Error al cargar los casos. Por favor, intente más tarde.</p>
-      </div>
-    );
-  }
+  const onicoplastiaCases = cases.filter(c => c.category === "onicoplastia");
 
   const handleImageClick = (type: ImageType) => {
     setSelectedImage(type);
@@ -124,79 +120,73 @@ export default function Onicoplastia() {
         <h2 id="transformations-heading" className="text-2xl font-semibold mb-8 text-center">
           Transformaciones Reales
         </h2>
-        {isLoading ? (
-          <div className="flex items-center justify-center min-h-[400px]">
-            <p className="text-muted-foreground">Cargando casos...</p>
-          </div>
-        ) : (
-          <Carousel className="w-full max-w-5xl mx-auto">
-            <CarouselContent>
-              {cases.map((case_) => (
-                <CarouselItem key={case_.id} className="cursor-default select-none">
-                  <Card>
-                    <CardHeader>
-                      <CardTitle>{case_.title}</CardTitle>
-                      <CardDescription>{case_.description}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-4">
-                        <div className="flex justify-center gap-4">
-                          <Button
-                            variant={selectedImage === "before" ? "default" : "outline"}
-                            onClick={() => handleImageClick("before")}
-                            className="min-w-[100px] select-none"
-                          >
-                            Antes
-                          </Button>
-                          <Button
-                            variant={selectedImage === "after" ? "default" : "outline"}
-                            onClick={() => handleImageClick("after")}
-                            className="min-w-[100px] select-none"
-                          >
-                            Después
-                          </Button>
-                          <Button
-                            variant={selectedImage === "collage" ? "default" : "outline"}
-                            onClick={() => handleImageClick("collage")}
-                            className="min-w-[100px] select-none"
-                          >
-                            Proceso
-                          </Button>
-                        </div>
-
-                        <div 
-                          className="aspect-square w-full overflow-hidden rounded-md select-none"
-                          onClick={() => setSelectedCase(case_)}
-                          onDragStart={(e) => e.preventDefault()}
-                          onMouseDown={(e) => e.preventDefault()}
-                          style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
-                          role="button"
-                          tabIndex={0}
-                          aria-label={`Ver detalle de ${case_.title}`}
+        <Carousel className="w-full max-w-5xl mx-auto">
+          <CarouselContent>
+            {onicoplastiaCases.map((case_) => (
+              <CarouselItem key={case_.id} className="cursor-default select-none">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{case_.title}</CardTitle>
+                    <CardDescription>{case_.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      <div className="flex justify-center gap-4">
+                        <Button
+                          variant={selectedImage === "before" ? "default" : "outline"}
+                          onClick={() => handleImageClick("before")}
+                          className="min-w-[100px] select-none"
                         >
-                          <img
-                            src={case_[`${selectedImage}Image`]}
-                            alt={`${
-                              selectedImage === "before"
-                                ? "Estado inicial antes del tratamiento"
-                                : selectedImage === "after"
-                                ? "Resultado final después del tratamiento"
-                                : "Proceso completo del tratamiento"
-                            } - ${case_.title}`}
-                            className="w-full h-full object-contain bg-black/5"
-                            draggable="false"
-                          />
-                        </div>
+                          Antes
+                        </Button>
+                        <Button
+                          variant={selectedImage === "after" ? "default" : "outline"}
+                          onClick={() => handleImageClick("after")}
+                          className="min-w-[100px] select-none"
+                        >
+                          Después
+                        </Button>
+                        <Button
+                          variant={selectedImage === "collage" ? "default" : "outline"}
+                          onClick={() => handleImageClick("collage")}
+                          className="min-w-[100px] select-none"
+                        >
+                          Proceso
+                        </Button>
                       </div>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        )}
+
+                      <div 
+                        className="aspect-square w-full overflow-hidden rounded-md select-none"
+                        onClick={() => setSelectedCase(case_)}
+                        onDragStart={(e) => e.preventDefault()}
+                        onMouseDown={(e) => e.preventDefault()}
+                        style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`Ver detalle de ${case_.title}`}
+                      >
+                        <img
+                          src={case_[`${selectedImage}Image`]}
+                          alt={`${
+                            selectedImage === "before"
+                              ? "Estado inicial antes del tratamiento"
+                              : selectedImage === "after"
+                              ? "Resultado final después del tratamiento"
+                              : "Proceso completo del tratamiento"
+                          } - ${case_.title}`}
+                          className="w-full h-full object-contain bg-black/5"
+                          draggable="false"
+                        />
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </section>
 
       {/* Image Preview Dialog */}
