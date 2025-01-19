@@ -1,4 +1,4 @@
-import { pgTable, text, serial, timestamp, integer, boolean } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, timestamp, integer } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
 export const services = pgTable("services", {
@@ -23,25 +23,11 @@ export const cases = pgTable("cases", {
   createdAt: timestamp("created_at").defaultNow()
 });
 
-export const bookings = pgTable("bookings", {
-  id: serial("id").primaryKey(),
-  name: text("name").notNull(),
-  email: text("email").notNull(),
-  phone: text("phone").notNull(),
-  serviceId: integer("service_id").references(() => services.id),
-  date: timestamp("date").notNull(),
-  status: text("status").notNull().default("pending"),
-  createdAt: timestamp("created_at").defaultNow()
-});
-
 export type Service = typeof services.$inferSelect;
 export type Case = typeof cases.$inferSelect;
-export type Booking = typeof bookings.$inferSelect;
 
 export const insertServiceSchema = createInsertSchema(services);
 export const insertCaseSchema = createInsertSchema(cases);
-export const insertBookingSchema = createInsertSchema(bookings);
 
 export type InsertService = typeof services.$inferInsert;
 export type InsertCase = typeof cases.$inferInsert;
-export type InsertBooking = typeof bookings.$inferInsert;
