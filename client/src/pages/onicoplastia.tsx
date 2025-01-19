@@ -132,7 +132,7 @@ export default function Onicoplastia() {
           <Carousel className="w-full max-w-5xl mx-auto">
             <CarouselContent>
               {cases.map((case_) => (
-                <CarouselItem key={case_.id} className="cursor-default">
+                <CarouselItem key={case_.id} className="cursor-default select-none">
                   <Card>
                     <CardHeader>
                       <CardTitle>{case_.title}</CardTitle>
@@ -144,30 +144,32 @@ export default function Onicoplastia() {
                           <Button
                             variant={selectedImage === "before" ? "default" : "outline"}
                             onClick={() => handleImageClick("before")}
-                            className="min-w-[100px]"
+                            className="min-w-[100px] select-none"
                           >
                             Antes
                           </Button>
                           <Button
                             variant={selectedImage === "after" ? "default" : "outline"}
                             onClick={() => handleImageClick("after")}
-                            className="min-w-[100px]"
+                            className="min-w-[100px] select-none"
                           >
                             Después
                           </Button>
                           <Button
                             variant={selectedImage === "collage" ? "default" : "outline"}
                             onClick={() => handleImageClick("collage")}
-                            className="min-w-[100px]"
+                            className="min-w-[100px] select-none"
                           >
                             Proceso
                           </Button>
                         </div>
 
                         <div 
-                          className="aspect-square w-full overflow-hidden rounded-md cursor-pointer"
+                          className="aspect-square w-full overflow-hidden rounded-md select-none"
                           onClick={() => setSelectedCase(case_)}
-                          onMouseOver={(e) => e.preventDefault()}
+                          onDragStart={(e) => e.preventDefault()}
+                          onMouseDown={(e) => e.preventDefault()}
+                          style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
                           role="button"
                           tabIndex={0}
                           aria-label={`Ver detalle de ${case_.title}`}
@@ -182,6 +184,7 @@ export default function Onicoplastia() {
                                 : "Proceso completo del tratamiento"
                             } - ${case_.title}`}
                             className="w-full h-full object-contain bg-black/5"
+                            draggable="false"
                           />
                         </div>
                       </div>
@@ -208,7 +211,7 @@ export default function Onicoplastia() {
           <DialogDescription>
             {selectedCase?.description}
           </DialogDescription>
-          <div className="w-full aspect-square">
+          <div className="w-full aspect-square select-none">
             <img
               src={selectedCase?.[`${selectedImage}Image`]}
               alt={`${
@@ -219,6 +222,7 @@ export default function Onicoplastia() {
                   : "Proceso completo del tratamiento"
               } - ${selectedCase?.title}`}
               className="w-full h-full object-contain"
+              draggable="false"
             />
           </div>
         </DialogContent>
