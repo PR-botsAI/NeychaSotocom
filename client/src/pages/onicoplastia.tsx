@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { Case } from "@/types/schema";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,7 +19,8 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious
+  CarouselPrevious,
+  type CarouselApi
 } from "@/components/ui/carousel";
 import {
   Dialog,
@@ -35,6 +36,9 @@ export default function Onicoplastia() {
   const [selectedImage, setSelectedImage] = useState<ImageType>("before");
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
   const [imageError, setImageError] = useState<Record<string, boolean>>({});
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
 
   const onicoplastiaCases = cases.filter(c => c.category === "onicoplastia");
 
@@ -48,6 +52,19 @@ export default function Onicoplastia() {
       [`${caseId}-${imageType}`]: true
     }));
   };
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap());
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
 
   return (
     <div className="space-y-16 pb-16">
@@ -124,104 +141,155 @@ export default function Onicoplastia() {
       </section>
 
       {/* Before & After Section */}
-      <section className="container max-w-6xl" aria-labelledby="transformations-heading">
+      <section className="container max-w-6xl relative" aria-labelledby="transformations-heading">
         <h2 id="transformations-heading" className="text-2xl font-semibold mb-8 text-center">
           Transformaciones Reales
         </h2>
-        <Carousel className="w-full max-w-5xl mx-auto">
-          <CarouselContent>
-            {onicoplastiaCases.map((case_) => (
-              <CarouselItem key={case_.id} className="cursor-default select-none">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{case_.title}</CardTitle>
-                    <CardDescription>{case_.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex justify-center gap-4">
-                        <Button
-                          variant={selectedImage === "before" ? "default" : "outline"}
-                          onClick={() => handleImageClick("before")}
-                          className="min-w-[100px] select-none"
-                        >
-                          Antes
-                        </Button>
-                        <Button
-                          variant={selectedImage === "after" ? "default" : "outline"}
-                          onClick={() => handleImageClick("after")}
-                          className="min-w-[100px] select-none"
-                        >
-                          Después
-                        </Button>
-                        <Button
-                          variant={selectedImage === "collage" ? "default" : "outline"}
-                          onClick={() => handleImageClick("collage")}
-                          className="min-w-[100px] select-none"
-                        >
-                          Proceso
-                        </Button>
-                      </div>
+        <div className="relative">
+          <Carousel
+            setApi={setApi}
+            className="w-full max-w-5xl mx-auto"
+            opts={{
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {onicoplastiaCases.map((case_, index) => (
+                <CarouselItem key={case_.id} className="cursor-default select-none">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>{case_.title}</CardTitle>
+                      <CardDescription>{case_.description}</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div className="flex justify-center gap-4">
+                          <Button
+                            variant={selectedImage === "before" ? "default" : "outline"}
+                            onClick={() => handleImageClick("before")}
+                            className="min-w-[100px] select-none"
+                          >
+                            Antes
+                          </Button>
+                          <Button
+                            variant={selectedImage === "after" ? "default" : "outline"}
+                            onClick={() => handleImageClick("after")}
+                            className="min-w-[100px] select-none"
+                          >
+                            Después
+                          </Button>
+                          <Button
+                            variant={selectedImage === "collage" ? "default" : "outline"}
+                            onClick={() => handleImageClick("collage")}
+                            className="min-w-[100px] select-none"
+                          >
+                            Proceso
+                          </Button>
+                        </div>
 
-                      <div
-                        className="aspect-square w-full overflow-hidden rounded-md select-none relative"
-                        onClick={() => !imageError[`${case_.id}-${selectedImage}`] && setSelectedCase(case_)}
-                        onDragStart={(e) => e.preventDefault()}
-                        onMouseDown={(e) => e.preventDefault()}
-                        style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`Ver detalle de ${case_.title}`}
-                      >
-                        {imageError[`${case_.id}-${selectedImage}`] ? (
-                          <div className="w-full h-full flex flex-col items-center justify-center bg-black/5 p-4">
-                            <p className="text-sm text-muted-foreground text-center">
-                              No se pudo cargar la imagen {
-                                selectedImage === "before" ? "inicial" :
-                                  selectedImage === "after" ? "final" : "del proceso"
-                              }
-                            </p>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="mt-2"
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                setImageError(prev => {
-                                  const newState = { ...prev };
-                                  delete newState[`${case_.id}-${selectedImage}`];
-                                  return newState;
-                                });
-                              }}
-                            >
-                              Reintentar
-                            </Button>
-                          </div>
-                        ) : (
-                          <img
-                            src={case_[`${selectedImage}Image`]}
-                            alt={`${
-                              selectedImage === "before"
-                                ? "Estado inicial antes del tratamiento"
-                                : selectedImage === "after"
-                                  ? "Resultado final después del tratamiento"
-                                  : "Proceso completo del tratamiento"
-                            } - ${case_.title}`}
-                            className="w-full h-full object-contain bg-black/5"
-                            draggable="false"
-                            onError={() => handleImageError(case_.id, selectedImage)}
-                          />
-                        )}
+                        <div
+                          className="aspect-square w-full overflow-hidden rounded-md select-none relative"
+                          onClick={() => !imageError[`${case_.id}-${selectedImage}`] && setSelectedCase(case_)}
+                          onDragStart={(e) => e.preventDefault()}
+                          onMouseDown={(e) => e.preventDefault()}
+                          style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+                          role="button"
+                          tabIndex={0}
+                          aria-label={`Ver detalle de ${case_.title}`}
+                        >
+                          {imageError[`${case_.id}-${selectedImage}`] ? (
+                            <div className="w-full h-full flex flex-col items-center justify-center bg-black/5 p-4">
+                              <p className="text-sm text-muted-foreground text-center">
+                                No se pudo cargar la imagen {
+                                  selectedImage === "before" ? "inicial" :
+                                    selectedImage === "after" ? "final" : "del proceso"
+                                }
+                              </p>
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="mt-2"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setImageError(prev => {
+                                    const newState = { ...prev };
+                                    delete newState[`${case_.id}-${selectedImage}`];
+                                    return newState;
+                                  });
+                                }}
+                              >
+                                Reintentar
+                              </Button>
+                            </div>
+                          ) : (
+                            <img
+                              src={case_[`${selectedImage}Image`]}
+                              alt={`${
+                                selectedImage === "before"
+                                  ? "Estado inicial antes del tratamiento"
+                                  : selectedImage === "after"
+                                    ? "Resultado final después del tratamiento"
+                                    : "Proceso completo del tratamiento"
+                              } - ${case_.title}`}
+                              className="w-full h-full object-contain bg-black/5"
+                              draggable="false"
+                              onError={() => handleImageError(case_.id, selectedImage)}
+                            />
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+              {Array.from({ length: count }).map((_, index) => (
+                <button
+                  key={index}
+                  className={`h-2 w-2 rounded-full transition-all ${
+                    index === current ? "bg-primary w-4" : "bg-primary/50"
+                  }`}
+                  onClick={() => api?.scrollTo(index)}
+                  aria-label={`Ir a caso ${index + 1}`}
+                />
+              ))}
+            </div>
+
+            <div className="absolute -left-4 -right-4 top-1/2 flex justify-between items-center -translate-y-1/2">
+              <CarouselPrevious
+                variant="ghost"
+                className="relative left-0 top-0 translate-y-0 h-12 w-12 rounded-full opacity-70 hover:opacity-100 transition-opacity"
+                aria-label="Ver caso anterior"
+              />
+              <CarouselNext
+                variant="ghost"
+                className="relative right-0 top-0 translate-y-0 h-12 w-12 rounded-full opacity-70 hover:opacity-100 transition-opacity"
+                aria-label="Ver siguiente caso"
+              />
+            </div>
+          </Carousel>
+
+          {/* Añadir indicación de deslizamiento */}
+          <div className="absolute top-1/2 right-2 -translate-y-1/2 text-muted-foreground animate-pulse hidden md:block">
+            <span className="sr-only">Desliza para ver más casos</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="opacity-50"
+            >
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </div>
+        </div>
       </section>
 
       {/* Image Preview Dialog */}
