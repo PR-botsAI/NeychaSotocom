@@ -22,5 +22,16 @@ export const cases: Case[] = [
     category: "onicoplastia",
     createdAt: new Date("2024-01-19").toISOString(),
     serviceId: 1
+  },
+  {
+    id: 3,
+    title: "Tratamiento Avanzado",
+    description: "Proceso de recuperación y fortalecimiento",
+    beforeImage: "/cases/Caso3_before.png",
+    afterImage: "/cases/Caso3_after.png",
+    collageImage: "/cases/Caso3_collage.png",
+    category: "onicoplastia",
+    createdAt: new Date("2024-01-19").toISOString(),
+    serviceId: 1
   }
 ];

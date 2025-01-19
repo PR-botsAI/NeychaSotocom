@@ -14,12 +14,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { 
-  Carousel, 
-  CarouselContent, 
-  CarouselItem, 
-  CarouselNext, 
-  CarouselPrevious 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
 } from "@/components/ui/carousel";
 import {
   Dialog,
@@ -34,11 +34,19 @@ type ImageType = "before" | "after" | "collage";
 export default function Onicoplastia() {
   const [selectedImage, setSelectedImage] = useState<ImageType>("before");
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
+  const [imageError, setImageError] = useState<Record<string, boolean>>({});
 
   const onicoplastiaCases = cases.filter(c => c.category === "onicoplastia");
 
   const handleImageClick = (type: ImageType) => {
     setSelectedImage(type);
+  };
+
+  const handleImageError = (caseId: number, imageType: string) => {
+    setImageError(prev => ({
+      ...prev,
+      [`${caseId}-${imageType}`]: true
+    }));
   };
 
   return (
@@ -157,7 +165,7 @@ export default function Onicoplastia() {
 
                       <div 
                         className="aspect-square w-full overflow-hidden rounded-md select-none"
-                        onClick={() => setSelectedCase(case_)}
+                        onClick={() => !imageError[`${case_.id}-${selectedImage}`] && setSelectedCase(case_)}
                         onDragStart={(e) => e.preventDefault()}
                         onMouseDown={(e) => e.preventDefault()}
                         style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
@@ -165,18 +173,25 @@ export default function Onicoplastia() {
                         tabIndex={0}
                         aria-label={`Ver detalle de ${case_.title}`}
                       >
-                        <img
-                          src={case_[`${selectedImage}Image`]}
-                          alt={`${
-                            selectedImage === "before"
-                              ? "Estado inicial antes del tratamiento"
-                              : selectedImage === "after"
-                              ? "Resultado final después del tratamiento"
-                              : "Proceso completo del tratamiento"
-                          } - ${case_.title}`}
-                          className="w-full h-full object-contain bg-black/5"
-                          draggable="false"
-                        />
+                        {imageError[`${case_.id}-${selectedImage}`] ? (
+                          <div className="w-full h-full flex items-center justify-center bg-black/5">
+                            <p className="text-sm text-muted-foreground">Error al cargar la imagen</p>
+                          </div>
+                        ) : (
+                          <img
+                            src={case_[`${selectedImage}Image`]}
+                            alt={`${
+                              selectedImage === "before"
+                                ? "Estado inicial antes del tratamiento"
+                                : selectedImage === "after"
+                                ? "Resultado final después del tratamiento"
+                                : "Proceso completo del tratamiento"
+                            } - ${case_.title}`}
+                            className="w-full h-full object-contain bg-black/5"
+                            draggable="false"
+                            onError={() => handleImageError(case_.id, selectedImage)}
+                          />
+                        )}
                       </div>
                     </div>
                   </CardContent>
