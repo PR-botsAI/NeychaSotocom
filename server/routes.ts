@@ -18,7 +18,6 @@ export function registerRoutes(app: Express): Server {
       const allServices = await db.select().from(services);
       res.json(allServices);
     } catch (error) {
-      console.error('Error fetching services:', error);
       next(new ApiError(500, "Failed to fetch services"));
     }
   });
@@ -28,7 +27,6 @@ export function registerRoutes(app: Express): Server {
     try {
       const category = req.query.category as string;
 
-      // Validate category if provided
       if (category && typeof category !== 'string') {
         throw new ApiError(400, "Invalid category parameter");
       }
@@ -38,20 +36,12 @@ export function registerRoutes(app: Express): Server {
         ? await query.where(eq(cases.category, category))
         : await query;
 
-      // Check if we got any results
       if (results.length === 0 && category) {
-        return res.status(404).json({
-          error: {
-            message: `No cases found for category: ${category}`,
-            status: 404
-          }
-        });
+        throw new ApiError(404, `No cases found for category: ${category}`);
       }
 
       res.json(results);
     } catch (error) {
-      console.error('Error fetching cases:', error);
-
       if (error instanceof ApiError) {
         next(error);
       } else {

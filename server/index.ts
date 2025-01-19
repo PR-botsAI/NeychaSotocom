@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 100, // Limit each IP to 100 requests per windowMs
-  message: { error: { message: "Too many requests, please try again later", status: 429 } }
+  message: { error: "Too many requests, please try again later" }
 });
 app.use("/api", limiter);
 
@@ -37,14 +37,9 @@ app.use((req, res, next) => {
     const duration = Date.now() - start;
     if (path.startsWith("/api")) {
       let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
-      if (capturedJsonResponse) {
-        logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
+      if (capturedJsonResponse?.error) {
+        logLine += ` :: ${JSON.stringify(capturedJsonResponse.error)}`;
       }
-
-      if (logLine.length > 80) {
-        logLine = logLine.slice(0, 79) + "…";
-      }
-
       log(logLine);
     }
   });
@@ -57,50 +52,32 @@ app.use((req, res, next) => {
 
   // Enhanced error handling middleware
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    // Log error for debugging
-    console.error('Error:', {
-      name: err.name,
-      message: err.message,
-      stack: err.stack,
-      status: err.status
-    });
-
-    // Don't expose internal error details in production
     const isProduction = process.env.NODE_ENV === 'production';
-
     let status = err.status || 500;
     let message = err.message || 'Internal Server Error';
 
-    // Handle specific error types
     if (err instanceof z.ZodError) {
       status = 400;
       message = `Validation error: ${err.errors[0].message}`;
-    } else if (err.name === 'ApiError') {
-      status = err.status;
-      message = err.message;
     } else if (err.code === '23505') { // PostgreSQL unique violation
       status = 409;
       message = 'Resource already exists';
     }
 
-    // Send error response
     res.status(status).json({
       error: {
         message: isProduction && status === 500 ? 'Internal Server Error' : message,
-        status,
-        ...((!isProduction && err.stack) ? { stack: err.stack } : {})
+        status
       }
     });
   });
 
-  // Setup vite or static file serving
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  // Start server
   const PORT = 5000;
   server.listen(PORT, "0.0.0.0", () => {
     log(`serving on port ${PORT}`);
