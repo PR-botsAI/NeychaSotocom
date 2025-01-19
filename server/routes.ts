@@ -12,6 +12,11 @@ class ApiError extends Error {
 }
 
 export function registerRoutes(app: Express): Server {
+  // Test endpoint for error handling
+  app.get("/api/test-error", (_req, res) => {
+    res.json({ message: "Test endpoint working" });
+  });
+
   // Services
   app.get("/api/services", async (_req, res, next) => {
     try {
