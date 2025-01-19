@@ -146,20 +146,6 @@ export default function Onicoplastia() {
           Transformaciones Reales
         </h2>
 
-        {/* Instrucciones de Navegación */}
-        <div className="text-center mb-6 text-muted-foreground">
-          <p className="text-sm md:text-base">
-            Desliza las imágenes hacia los lados o usa los botones para ver más casos
-          </p>
-          <div className="flex items-center justify-center gap-2 mt-2">
-            <span className="hidden md:inline">←</span>
-            <span className="md:hidden">⟵</span>
-            <span>Deslizar</span>
-            <span className="hidden md:inline">→</span>
-            <span className="md:hidden">⟶</span>
-          </div>
-        </div>
-
         <div className="relative">
           <Carousel
             setApi={setApi}
@@ -259,60 +245,36 @@ export default function Onicoplastia() {
               ))}
             </CarouselContent>
 
-            {/* Indicadores de posición mejorados */}
-            <div className="absolute -bottom-8 left-0 right-0 flex justify-center gap-3">
+            {/* Indicadores de posición simplificados */}
+            <div className="absolute -bottom-4 left-0 right-0 flex justify-center gap-2">
               {Array.from({ length: count }).map((_, index) => (
                 <button
                   key={index}
-                  className={`h-3 rounded-full transition-all ${
+                  className={`h-[3px] rounded-full transition-all ${
                     index === current 
-                      ? "bg-primary w-6" 
-                      : "bg-primary/40 w-3 hover:bg-primary/60"
+                      ? "bg-primary w-8" 
+                      : "bg-primary/30 w-4 hover:bg-primary/50"
                   }`}
                   onClick={() => api?.scrollTo(index)}
                   aria-label={`Ir a caso ${index + 1} de ${count}`}
-                >
-                  <span className="sr-only">
-                    {index === current 
-                      ? `Caso actual: ${index + 1} de ${count}` 
-                      : `Ver caso ${index + 1} de ${count}`}
-                  </span>
-                </button>
+                />
               ))}
             </div>
 
-            {/* Botones de navegación más grandes y visibles */}
-            <div className="absolute -left-3 -right-3 top-1/2 flex justify-between items-center -translate-y-1/2">
+            {/* Botones de navegación solo visibles en desktop */}
+            <div className="absolute -left-4 -right-4 top-1/2 hidden md:flex justify-between items-center -translate-y-1/2">
               <CarouselPrevious
-                variant="default"
-                size="lg"
-                className="relative left-0 top-0 translate-y-0 h-14 w-14 rounded-full bg-background/90 hover:bg-background shadow-md border-2"
+                variant="outline"
+                className="relative left-0 top-0 translate-y-0 h-10 w-10 rounded-full bg-background/80 hover:bg-background"
                 aria-label="Ver caso anterior"
-              >
-                <span className="sr-only">Anterior</span>
-              </CarouselPrevious>
+              />
               <CarouselNext
-                variant="default"
-                size="lg"
-                className="relative right-0 top-0 translate-y-0 h-14 w-14 rounded-full bg-background/90 hover:bg-background shadow-md border-2"
+                variant="outline"
+                className="relative right-0 top-0 translate-y-0 h-10 w-10 rounded-full bg-background/80 hover:bg-background"
                 aria-label="Ver siguiente caso"
-              >
-                <span className="sr-only">Siguiente</span>
-              </CarouselNext>
+              />
             </div>
           </Carousel>
-
-          {/* Indicador de contenido adicional */}
-          <div className="mt-4 text-center text-sm text-muted-foreground">
-            <p>
-              <span className="font-medium">Caso {current + 1}</span> de {count}
-            </p>
-            {current < count - 1 && (
-              <p className="mt-1 animate-pulse">
-                ↓ Hay más casos para explorar ↓
-              </p>
-            )}
-          </div>
         </div>
       </section>
 
