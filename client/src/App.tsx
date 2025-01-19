@@ -12,9 +12,9 @@ import NotFound from "@/pages/not-found";
 
 function Router() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
-      <main>
+      <main className="flex-1">
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/onicoplastia" component={Onicoplastia} />
