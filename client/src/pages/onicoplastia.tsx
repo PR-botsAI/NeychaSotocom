@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import type { Case } from "@/types/schema";
 import { Button } from "@/components/ui/button";
 import {
@@ -34,35 +34,18 @@ type ImageType = "before" | "after" | "collage";
 export default function Onicoplastia() {
   const [selectedImage, setSelectedImage] = useState<ImageType>("before");
   const [selectedCase, setSelectedCase] = useState<Case | null>(null);
-  const [imageError, setImageError] = useState<Record<string, { error: boolean; message: string }>>({});
+  const [imageError, setImageError] = useState<Record<string, boolean>>({});
 
   const onicoplastiaCases = cases.filter(c => c.category === "onicoplastia");
-
-  // Debug logs for image paths
-  useEffect(() => {
-    console.log('Current cases:', onicoplastiaCases.map(c => ({
-      id: c.id,
-      beforeImage: c.beforeImage,
-      afterImage: c.afterImage,
-      collageImage: c.collageImage
-    })));
-  }, []);
 
   const handleImageClick = (type: ImageType) => {
     setSelectedImage(type);
   };
 
   const handleImageError = (caseId: number, imageType: string) => {
-    console.error(`Failed to load image for case ${caseId}, type: ${imageType}`);
     setImageError(prev => ({
       ...prev,
-      [`${caseId}-${imageType}`]: {
-        error: true,
-        message: `No se pudo cargar la imagen ${
-          imageType === "before" ? "inicial" : 
-          imageType === "after" ? "final" : "del proceso"
-        }`
-      }
+      [`${caseId}-${imageType}`]: true
     }));
   };
 
@@ -180,9 +163,9 @@ export default function Onicoplastia() {
                         </Button>
                       </div>
 
-                      <div 
+                      <div
                         className="aspect-square w-full overflow-hidden rounded-md select-none relative"
-                        onClick={() => !imageError[`${case_.id}-${selectedImage}`]?.error && setSelectedCase(case_)}
+                        onClick={() => !imageError[`${case_.id}-${selectedImage}`] && setSelectedCase(case_)}
                         onDragStart={(e) => e.preventDefault()}
                         onMouseDown={(e) => e.preventDefault()}
                         style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
@@ -190,10 +173,13 @@ export default function Onicoplastia() {
                         tabIndex={0}
                         aria-label={`Ver detalle de ${case_.title}`}
                       >
-                        {imageError[`${case_.id}-${selectedImage}`]?.error ? (
+                        {imageError[`${case_.id}-${selectedImage}`] ? (
                           <div className="w-full h-full flex flex-col items-center justify-center bg-black/5 p-4">
                             <p className="text-sm text-muted-foreground text-center">
-                              {imageError[`${case_.id}-${selectedImage}`]?.message}
+                              No se pudo cargar la imagen {
+                                selectedImage === "before" ? "inicial" :
+                                  selectedImage === "after" ? "final" : "del proceso"
+                              }
                             </p>
                             <Button
                               variant="outline"
@@ -201,7 +187,6 @@ export default function Onicoplastia() {
                               className="mt-2"
                               onClick={(e) => {
                                 e.stopPropagation();
-                                // Reset error and retry loading
                                 setImageError(prev => {
                                   const newState = { ...prev };
                                   delete newState[`${case_.id}-${selectedImage}`];
@@ -219,8 +204,8 @@ export default function Onicoplastia() {
                               selectedImage === "before"
                                 ? "Estado inicial antes del tratamiento"
                                 : selectedImage === "after"
-                                ? "Resultado final después del tratamiento"
-                                : "Proceso completo del tratamiento"
+                                  ? "Resultado final después del tratamiento"
+                                  : "Proceso completo del tratamiento"
                             } - ${case_.title}`}
                             className="w-full h-full object-contain bg-black/5"
                             draggable="false"
@@ -258,8 +243,8 @@ export default function Onicoplastia() {
                 selectedImage === "before"
                   ? "Estado inicial antes del tratamiento"
                   : selectedImage === "after"
-                  ? "Resultado final después del tratamiento"
-                  : "Proceso completo del tratamiento"
+                    ? "Resultado final después del tratamiento"
+                    : "Proceso completo del tratamiento"
               } - ${selectedCase?.title}`}
               className="w-full h-full object-contain"
               draggable="false"
