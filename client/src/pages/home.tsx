@@ -4,6 +4,10 @@ import TestimonialCard from "@/components/testimonial-card";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
+  const handleBookingClick = () => {
+    window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank");
+  };
+
   return (
     <div className="space-y-24 pb-24 bg-black text-white">
       <Hero />
@@ -49,7 +53,7 @@ export default function Home() {
               </ul>
               <Button 
                 className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]"
-                onClick={() => window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank")}
+                onClick={handleBookingClick}
               >
                 ¡AGENDA TU EVALUACIÓN!
               </Button>
@@ -77,7 +81,7 @@ export default function Home() {
               </ul>
               <Button 
                 className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]"
-                onClick={() => window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank")}
+                onClick={handleBookingClick}
               >
                 ¡RESERVA AHORA!
               </Button>
@@ -105,7 +109,7 @@ export default function Home() {
               </ul>
               <Button 
                 className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]"
-                onClick={() => window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank")}
+                onClick={handleBookingClick}
               >
                 ¡RESERVA AHORA!
               </Button>
@@ -160,7 +164,7 @@ export default function Home() {
           </p>
           <Button
             className="mt-8 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-6 py-3 text-lg font-semibold"
-            onClick={() => window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank")}
+            onClick={handleBookingClick}
           >
             ¡RESERVA TU CITA AHORA!
           </Button>

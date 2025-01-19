@@ -24,12 +24,16 @@ const navigation = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleExternalClick = (href: string) => {
+    window.open(href, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-zinc-800 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center ml-4">
           <Link href="/">
-            <span className="text-xl font-bold text-white">neychasoto.com</span>
+            <span className="text-xl font-bold text-white cursor-pointer">neychasoto.com</span>
           </Link>
         </div>
 
@@ -37,20 +41,14 @@ export default function Navbar() {
         <div className="hidden md:flex md:items-center md:space-x-6">
           {navigation.map((item) => (
             item.external ? (
-              <a
+              <Button 
                 key={item.name}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center"
+                variant="default" 
+                className="text-base bg-white text-black hover:bg-white/90"
+                onClick={() => handleExternalClick(item.href)}
               >
-                <Button 
-                  variant="default" 
-                  className="text-base bg-white text-black hover:bg-white/90"
-                >
-                  {item.name}
-                </Button>
-              </a>
+                {item.name}
+              </Button>
             ) : (
               <Link key={item.name} href={item.href}>
                 <Button 
@@ -85,20 +83,17 @@ export default function Navbar() {
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
                     item.external ? (
-                      <a
+                      <Button
                         key={item.name}
-                        href={item.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => setIsOpen(false)}
+                        variant="default"
+                        className="w-full justify-start text-base bg-white text-black hover:bg-white/90"
+                        onClick={() => {
+                          handleExternalClick(item.href);
+                          setIsOpen(false);
+                        }}
                       >
-                        <Button
-                          variant="default"
-                          className="w-full justify-start text-base bg-white text-black hover:bg-white/90"
-                        >
-                          {item.name}
-                        </Button>
-                      </a>
+                        {item.name}
+                      </Button>
                     ) : (
                       <Link
                         key={item.name}

@@ -18,4 +18,14 @@ export interface Case {
   serviceId?: number;
   category: string;
   createdAt: string;
+  highlights?: string[];
+}
+
+export interface GalleryItem {
+  id: number;
+  title: string;
+  image: string;
+  category: string;
+  description?: string;
+  createdAt: string;
 }
