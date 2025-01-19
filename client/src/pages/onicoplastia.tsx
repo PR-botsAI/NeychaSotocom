@@ -404,8 +404,8 @@ export default function Onicoplastia() {
             <AccordionTrigger>¿Cuánto dura el tratamiento?</AccordionTrigger>
             <AccordionContent>
               El tratamiento es progresivo y personalizado. Se realizan sesiones cada 45 días
-              aproximadamente, y la duración total dependerá del estado inicial de tus uñas
-              y tu respuesta al tratamiento.
+              aproximadamente, y la duración total dependerá del estado inicial y tu respuesta
+              al tratamiento.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
