@@ -1,5 +1,13 @@
 import { Facebook, Instagram } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   return (
@@ -26,18 +34,32 @@ export default function Footer() {
             >
               <Instagram className="h-5 w-5" />
             </a>
-            <a
-              href="https://api.whatsapp.com/send/?phone=19394290292"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors group relative"
-              aria-label="Contáctanos por WhatsApp (Solo mensajes de texto)"
-            >
-              <SiWhatsapp className="h-5 w-5" />
-              <span className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-background px-2 py-1 text-xs text-muted-foreground opacity-0 shadow transition-opacity group-hover:opacity-100">
-                Solo mensajes de texto
-              </span>
-            </a>
+            <Dialog>
+              <DialogTrigger asChild>
+                <button
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                  aria-label="Contáctanos por WhatsApp (Solo mensajes de texto)"
+                >
+                  <SiWhatsapp className="h-5 w-5" />
+                </button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogTitle>Mensaje Importante</DialogTitle>
+                <DialogDescription className="py-4">
+                  Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.
+                </DialogDescription>
+                <div className="flex justify-end">
+                  <a
+                    href="https://api.whatsapp.com/send/?phone=19394290292"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block"
+                  >
+                    <Button>Continuar a WhatsApp</Button>
+                  </a>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
           {/* Divider */}
