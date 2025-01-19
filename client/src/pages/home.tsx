@@ -1,7 +1,6 @@
 import Hero from "@/components/hero";
 import NailConditionMatcher from "@/components/nail-condition-matcher";
 import TestimonialCard from "@/components/testimonial-card";
-import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -49,19 +48,12 @@ export default function Home() {
                   Evaluación inicial requerida
                 </li>
               </ul>
-              <div className="flex gap-4 mt-6">
-                <Link href="/onicoplastia" className="flex-1">
-                  <Button variant="outline" className="w-full">
-                    Ver Detalles
-                  </Button>
-                </Link>
-                <Button 
-                  className="flex-1"
-                  onClick={() => window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank")}
-                >
-                  ¡AGENDA TU EVALUACIÓN!
-                </Button>
-              </div>
+              <Button 
+                className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]"
+                onClick={() => window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank")}
+              >
+                ¡AGENDA TU EVALUACIÓN!
+              </Button>
             </div>
 
             {/* Manicura Card */}
@@ -84,19 +76,12 @@ export default function Home() {
                   Experiencia relajante y renovadora
                 </li>
               </ul>
-              <div className="flex gap-4 mt-6">
-                <Link href="/servicios" className="flex-1">
-                  <Button variant="outline" className="w-full">
-                    Ver Detalles
-                  </Button>
-                </Link>
-                <Button 
-                  className="flex-1"
-                  onClick={() => window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank")}
-                >
-                  ¡RESERVA AHORA!
-                </Button>
-              </div>
+              <Button 
+                className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]"
+                onClick={() => window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank")}
+              >
+                ¡RESERVA AHORA!
+              </Button>
             </div>
 
             {/* Pedicura Card */}
@@ -119,19 +104,12 @@ export default function Home() {
                   Cuidado detallado y duradero
                 </li>
               </ul>
-              <div className="flex gap-4 mt-6">
-                <Link href="/servicios" className="flex-1">
-                  <Button variant="outline" className="w-full">
-                    Ver Detalles
-                  </Button>
-                </Link>
-                <Button 
-                  className="flex-1"
-                  onClick={() => window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank")}
-                >
-                  ¡RESERVA AHORA!
-                </Button>
-              </div>
+              <Button 
+                className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]"
+                onClick={() => window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank")}
+              >
+                ¡RESERVA AHORA!
+              </Button>
             </div>
           </div>
         </div>
