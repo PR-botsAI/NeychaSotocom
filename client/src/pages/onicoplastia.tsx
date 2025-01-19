@@ -131,15 +131,15 @@ export default function Onicoplastia() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">2.</span>
-                  <span>Aplicación de prótesis hipoalergénica</span>
+                  <span>Limpieza profunda y eliminación del área afectada</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">3.</span>
-                  <span>Restauración estética inmediata</span>
+                  <span>Reconstrucción inmediata con prótesis hipoalergénica</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">4.</span>
-                  <span>Plan de tratamiento personalizado</span>
+                  <span>Plan de tratamiento antifúngico personalizado</span>
                 </li>
               </ul>
             </CardContent>
@@ -401,22 +401,31 @@ export default function Onicoplastia() {
         </h2>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
-            <AccordionTrigger>¿Cuánto dura el tratamiento?</AccordionTrigger>
+            <AccordionTrigger>¿Qué incluye la primera sesión?</AccordionTrigger>
             <AccordionContent>
-              ¡Los resultados estéticos son inmediatos! En tu primera sesión aplicamos una prótesis 
-              hipoalergénica que te permite lucir zapatos abiertos inmediatamente. El tratamiento 
-              completo para eliminar los hongos requiere sesiones adicionales cada 45 días, 
-              dependiendo de la severidad del caso.
+              En tu primera visita realizamos una limpieza completa y detallada, eliminando toda el área afectada 
+              por hongos. Luego reconstruimos tu uña con nuestra prótesis hipoalergénica, permitiéndote lucir 
+              zapatos abiertos inmediatamente. También diseñamos un plan de tratamiento personalizado para 
+              continuar combatiendo el hongo en sesiones posteriores.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
+            <AccordionTrigger>¿Cuánto dura el tratamiento completo?</AccordionTrigger>
+            <AccordionContent>
+              La transformación estética es inmediata desde la primera sesión gracias a nuestra prótesis 
+              hipoalergénica. El tratamiento posterior para combatir el hongo requiere sesiones adicionales 
+              cada 45 días, y su duración dependerá de la severidad del caso. En cada sesión evaluamos el 
+              progreso y ajustamos el tratamiento según sea necesario.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem value="item-3">
             <AccordionTrigger>¿Es doloroso el procedimiento?</AccordionTrigger>
             <AccordionContent>
               No, el procedimiento es completamente indoloro y no invasivo. Utilizamos
               técnicas y productos especializados que respetan la integridad de tus uñas.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-3">
+          <AccordionItem value="item-4">
             <AccordionTrigger>¿Puedo usar zapatos abiertos después de la primera sesión?</AccordionTrigger>
             <AccordionContent>
               ¡Sí! Gracias a nuestra prótesis hipoalergénica, podrás lucir zapatos abiertos 
@@ -424,7 +433,7 @@ export default function Onicoplastia() {
               eliminar los hongos de manera progresiva y efectiva.
             </AccordionContent>
           </AccordionItem>
-          <AccordionItem value="item-4">
+          <AccordionItem value="item-5">
             <AccordionTrigger>¿Cuándo veré resultados?</AccordionTrigger>
             <AccordionContent>
               ¡Los resultados estéticos son inmediatos desde la primera sesión! Podrás lucir 

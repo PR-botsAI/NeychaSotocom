@@ -4,7 +4,7 @@ export const cases: Case[] = [
   {
     id: 1,
     title: "Renovación Inmediata",
-    description: "¡Resultados visibles desde la primera sesión! Nuestra prótesis hipoalergénica te permite lucir zapatos abiertos inmediatamente.",
+    description: "¡Transformación total desde la primera sesión! Eliminamos el área afectada y reconstruimos tu uña con nuestra prótesis hipoalergénica.",
     beforeImage: "/cases/Caso1_before.png",
     afterImage: "/cases/Caso1_After.png",
     collageImage: "/cases/Caso1_collage.png",
@@ -12,15 +12,15 @@ export const cases: Case[] = [
     createdAt: new Date("2024-01-19").toISOString(),
     serviceId: 1,
     highlights: [
-      "Resultados inmediatos",
-      "Prótesis hipoalergénica",
+      "Limpieza completa del área afectada",
+      "Reconstrucción inmediata",
       "Usa zapatos abiertos hoy mismo"
     ]
   },
   {
     id: 2,
-    title: "Transformación Inmediata",
-    description: "Recupera tu confianza desde el primer día con nuestra prótesis hipoalergénica, mientras tratamos el hongo de manera progresiva.",
+    title: "Transformación Total",
+    description: "Eliminamos completamente el área afectada y reconstruimos tu uña en la primera sesión, mientras continuamos el tratamiento antifúngico.",
     beforeImage: "/cases/Caso2_before.png",
     afterImage: "/cases/Caso2_after.png",
     collageImage: "/cases/Caso2_collage.png",
@@ -28,9 +28,9 @@ export const cases: Case[] = [
     createdAt: new Date("2024-01-19").toISOString(),
     serviceId: 1,
     highlights: [
-      "Resultados desde día uno",
-      "Tratamiento progresivo",
-      "Solución inmediata"
+      "Eliminación total del área afectada",
+      "Reconstrucción inmediata",
+      "Tratamiento antifúngico progresivo"
     ]
   },
   {
