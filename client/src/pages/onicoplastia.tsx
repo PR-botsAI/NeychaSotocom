@@ -463,17 +463,20 @@ export default function Onicoplastia() {
             <p className="mb-8 text-base md:text-lg text-muted-foreground">
               Da el primer paso hacia uñas más saludables y hermosas.
             </p>
-            <a
-              href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block"
-              aria-label="Reservar evaluación inicial en Booksy"
+            <Button
+              size="lg"
+              className="text-lg"
+              asChild
             >
-              <Button size="lg" className="text-lg">
+              <a
+                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Reservar evaluación inicial en Booksy"
+              >
                 ¡Reserva tu Evaluación Inicial!
-              </Button>
-            </a>
+              </a>
+            </Button>
           </div>
         </div>
       </section>

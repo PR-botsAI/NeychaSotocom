@@ -121,14 +121,18 @@ export default function NailConditionMatcher() {
           </div>
 
           <div className="mt-8 text-center">
-            <a
-              href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block w-full sm:w-auto rounded-md bg-[#F2E6D8] px-6 py-3 text-black font-semibold hover:bg-[#E6D0B8] transition-colors"
+            <Button
+              asChild
+              className="w-full sm:w-auto rounded-md bg-[#F2E6D8] px-6 py-3 text-black font-semibold hover:bg-[#E6D0B8] transition-colors"
             >
-              ¡TRANSFORMA TUS UÑAS AHORA!
-            </a>
+              <a
+                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ¡TRANSFORMA TUS UÑAS AHORA!
+              </a>
+            </Button>
           </div>
         </CardContent>
       </Card>
