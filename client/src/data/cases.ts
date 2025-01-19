@@ -3,8 +3,8 @@ import type { Case } from "@/types/schema";
 export const cases: Case[] = [
   {
     id: 1,
-    title: "Renovación Natural",
-    description: "Descubre cómo nuestro tratamiento progresivo y personalizado puede ayudarte a recuperar la belleza natural de tus uñas.",
+    title: "Renovación Inmediata",
+    description: "¡Resultados visibles desde la primera sesión! Nuestra prótesis hipoalergénica te permite lucir zapatos abiertos inmediatamente.",
     beforeImage: "/cases/Caso1_before.png",
     afterImage: "/cases/Caso1_After.png",
     collageImage: "/cases/Caso1_collage.png",
@@ -12,15 +12,15 @@ export const cases: Case[] = [
     createdAt: new Date("2024-01-19").toISOString(),
     serviceId: 1,
     highlights: [
-      "Proceso totalmente natural",
-      "Resultados duraderos",
-      "Sin molestias ni dolor"
+      "Resultados inmediatos",
+      "Prótesis hipoalergénica",
+      "Usa zapatos abiertos hoy mismo"
     ]
   },
   {
     id: 2,
-    title: "Un Nuevo Comienzo",
-    description: "Tratamiento efectivo que respeta la salud de tus uñas. Una solución perfecta para recuperar su belleza natural.",
+    title: "Transformación Inmediata",
+    description: "Recupera tu confianza desde el primer día con nuestra prótesis hipoalergénica, mientras tratamos el hongo de manera progresiva.",
     beforeImage: "/cases/Caso2_before.png",
     afterImage: "/cases/Caso2_after.png",
     collageImage: "/cases/Caso2_collage.png",
@@ -28,9 +28,9 @@ export const cases: Case[] = [
     createdAt: new Date("2024-01-19").toISOString(),
     serviceId: 1,
     highlights: [
-      "Recuperación gradual",
-      "Tratamiento personalizado",
-      "Resultados visibles"
+      "Resultados desde día uno",
+      "Tratamiento progresivo",
+      "Solución inmediata"
     ]
   },
   {

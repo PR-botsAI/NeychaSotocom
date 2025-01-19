@@ -94,13 +94,13 @@ export default function Onicoplastia() {
           <Card className="bg-primary/5">
             <CardHeader>
               <CardTitle>Beneficios del Tratamiento</CardTitle>
-              <CardDescription>Ventajas de elegir nuestra Onicoplastia</CardDescription>
+              <CardDescription>Ventajas desde tu primera visita</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="space-y-3" role="list">
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
-                  <span>Resultados visibles desde la primera sesión</span>
+                  <span>Resultados estéticos inmediatos con nuestra prótesis hipoalergénica</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
@@ -108,11 +108,11 @@ export default function Onicoplastia() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
-                  <span>Compatible con decoraciones (acrílico/gel)</span>
+                  <span>¡Usa zapatos abiertos desde la primera sesión!</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">✓</span>
-                  <span>Previene la reaparición de hongos</span>
+                  <span>Tratamiento progresivo para eliminar hongos</span>
                 </li>
               </ul>
             </CardContent>
@@ -121,7 +121,7 @@ export default function Onicoplastia() {
           <Card className="bg-primary/5">
             <CardHeader>
               <CardTitle>Primera Sesión</CardTitle>
-              <CardDescription>Qué esperar en tu primera visita</CardDescription>
+              <CardDescription>Transformación inmediata</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="space-y-3" role="list">
@@ -131,15 +131,15 @@ export default function Onicoplastia() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">2.</span>
-                  <span>Limpieza y eliminación de áreas afectadas</span>
+                  <span>Aplicación de prótesis hipoalergénica</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">3.</span>
-                  <span>Plan de tratamiento personalizado</span>
+                  <span>Restauración estética inmediata</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-primary" aria-hidden="true">4.</span>
-                  <span>Recomendaciones para cuidado en casa</span>
+                  <span>Plan de tratamiento personalizado</span>
                 </li>
               </ul>
             </CardContent>
@@ -403,9 +403,10 @@ export default function Onicoplastia() {
           <AccordionItem value="item-1">
             <AccordionTrigger>¿Cuánto dura el tratamiento?</AccordionTrigger>
             <AccordionContent>
-              El tratamiento es progresivo y personalizado. Se realizan sesiones cada 45 días
-              aproximadamente, y la duración total dependerá del estado inicial y tu respuesta
-              al tratamiento.
+              ¡Los resultados estéticos son inmediatos! En tu primera sesión aplicamos una prótesis 
+              hipoalergénica que te permite lucir zapatos abiertos inmediatamente. El tratamiento 
+              completo para eliminar los hongos requiere sesiones adicionales cada 45 días, 
+              dependiendo de la severidad del caso.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
@@ -416,19 +417,20 @@ export default function Onicoplastia() {
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-3">
-            <AccordionTrigger>¿Puedo aplicar esmalte durante el tratamiento?</AccordionTrigger>
+            <AccordionTrigger>¿Puedo usar zapatos abiertos después de la primera sesión?</AccordionTrigger>
             <AccordionContent>
-              ¡Sí! Nuestro tratamiento es compatible con decoraciones como acrílico o gel.
-              Sin embargo, es importante seguir las recomendaciones específicas de cuidado
-              que te daremos en cada sesión.
+              ¡Sí! Gracias a nuestra prótesis hipoalergénica, podrás lucir zapatos abiertos 
+              desde la primera sesión. Mientras tanto, continuaremos con el tratamiento para 
+              eliminar los hongos de manera progresiva y efectiva.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-4">
             <AccordionTrigger>¿Cuándo veré resultados?</AccordionTrigger>
             <AccordionContent>
-              Verás mejoras visibles desde la primera sesión. Sin embargo, para obtener
-              resultados óptimos y duraderos, es importante completar el tratamiento según
-              el plan personalizado que diseñaremos para ti.
+              ¡Los resultados estéticos son inmediatos desde la primera sesión! Podrás lucir 
+              zapatos abiertos el mismo día gracias a nuestra prótesis hipoalergénica. El 
+              tratamiento completo para eliminar los hongos continuará en las siguientes 
+              sesiones para asegurar resultados duraderos.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
