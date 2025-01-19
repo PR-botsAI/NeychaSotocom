@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Social Media Links */}
           <div className="flex items-center gap-6">
             <a
-              href="https://facebook.com/neychanails"
+              href="https://www.facebook.com/neychanailscom"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -18,7 +18,7 @@ export default function Footer() {
               <Facebook className="h-5 w-5" />
             </a>
             <a
-              href="https://instagram.com/neychanails"
+              href="https://www.instagram.com/neychanails"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -27,13 +27,16 @@ export default function Footer() {
               <Instagram className="h-5 w-5" />
             </a>
             <a
-              href="https://wa.me/1234567890" // Replace with actual WhatsApp number
+              href="https://api.whatsapp.com/send/?phone=19394290292"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Contáctanos por WhatsApp"
+              className="text-muted-foreground hover:text-primary transition-colors group relative"
+              aria-label="Contáctanos por WhatsApp (Solo mensajes de texto)"
             >
               <SiWhatsapp className="h-5 w-5" />
+              <span className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded bg-background px-2 py-1 text-xs text-muted-foreground opacity-0 shadow transition-opacity group-hover:opacity-100">
+                Solo mensajes de texto
+              </span>
             </a>
           </div>
 
