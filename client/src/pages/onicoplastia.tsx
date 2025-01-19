@@ -189,7 +189,7 @@ export default function Onicoplastia() {
                         </div>
 
                         <div
-                          className="aspect-square w-full overflow-hidden rounded-md select-none relative"
+                          className="aspect-square w-full overflow-hidden rounded-md select-none relative group"
                           onClick={() => !imageError[`${case_.id}-${selectedImage}`] && setSelectedCase(case_)}
                           onDragStart={(e) => e.preventDefault()}
                           onMouseDown={(e) => e.preventDefault()}
@@ -198,6 +198,12 @@ export default function Onicoplastia() {
                           tabIndex={0}
                           aria-label={`Ver detalle de ${case_.title}`}
                         >
+                          {/* Indicadores de deslizamiento en los lados */}
+                          <div className="absolute inset-0 pointer-events-none md:hidden">
+                            <div className="absolute left-0 inset-y-0 w-12 bg-gradient-to-r from-black/10 to-transparent" />
+                            <div className="absolute right-0 inset-y-0 w-12 bg-gradient-to-l from-black/10 to-transparent" />
+                          </div>
+
                           {imageError[`${case_.id}-${selectedImage}`] ? (
                             <div className="w-full h-full flex flex-col items-center justify-center bg-black/5 p-4">
                               <p className="text-sm text-muted-foreground text-center">
@@ -237,6 +243,17 @@ export default function Onicoplastia() {
                               onError={() => handleImageError(case_.id, selectedImage)}
                             />
                           )}
+
+                          {/* Overlay con instrucciones de deslizamiento */}
+                          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 md:hidden">
+                            <div className="text-white text-center px-4 py-2 rounded-lg bg-black/40 backdrop-blur-sm">
+                              <p className="text-sm">Desliza para ver más casos</p>
+                              <div className="flex justify-center gap-2 mt-1">
+                                <span>←</span>
+                                <span>→</span>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </CardContent>
@@ -275,6 +292,21 @@ export default function Onicoplastia() {
               />
             </div>
           </Carousel>
+
+          {/* Indicador de exploración de casos */}
+          <div className="mt-6 text-center">
+            <p className="text-sm text-muted-foreground mb-2">
+              {current + 1} de {count} casos • Toca para ampliar
+            </p>
+            <Button
+              variant="outline"
+              size="sm"
+              className="text-xs"
+              onClick={() => api?.scrollNext()}
+            >
+              Ver más casos de éxito →
+            </Button>
+          </div>
         </div>
       </section>
 
