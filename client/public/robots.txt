@@ -1,10 +1,25 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://neychanails.com/sitemap.xml
+# Main pages
+Allow: /onicoplastia
+Allow: /servicios
+Allow: /contacto
+Allow: /galeria
 
-# Common crawl optimization
+# Block sensitive areas
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
+
+# Regional targeting
+Geo-Location: PR
+
+# Language targeting
+Language: es-PR
+
+# Sitemaps
+Sitemap: https://neychanails.com/sitemap.xml
+
+# Optimization directives
+Crawl-delay: 1
