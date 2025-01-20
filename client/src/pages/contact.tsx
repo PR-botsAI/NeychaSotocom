@@ -33,13 +33,17 @@ export default function Contact() {
                 </DialogDescription>
               </DialogHeader>
               <div className="mt-6 flex justify-end">
-                <a 
-                  href="https://wa.me/19394290292"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Button 
+                  asChild
                 >
-                  <Button>Continuar a WhatsApp</Button>
-                </a>
+                  <a 
+                    href="https://wa.me/19394290292"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Continuar a WhatsApp
+                  </a>
+                </Button>
               </div>
             </DialogContent>
           </Dialog>
@@ -74,24 +78,36 @@ export default function Contact() {
           <div className="mt-8">
             <h3 className="text-xl mb-4">Síguenos en Redes Sociales</h3>
             <div className="flex gap-4">
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
+              <Button 
+                variant="ghost" 
+                asChild 
+                className="text-zinc-400 hover:text-white transition-colors"
               >
-                <Instagram className="h-5 w-5" />
-                <span>Instagram</span>
-              </a>
-              <a 
-                href="https://facebook.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
+                <a 
+                  href="https://instagram.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <Instagram className="h-5 w-5" />
+                  <span>Instagram</span>
+                </a>
+              </Button>
+              <Button 
+                variant="ghost" 
+                asChild 
+                className="text-zinc-400 hover:text-white transition-colors"
               >
-                <Facebook className="h-5 w-5" />
-                <span>Facebook</span>
-              </a>
+                <a 
+                  href="https://facebook.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <Facebook className="h-5 w-5" />
+                  <span>Facebook</span>
+                </a>
+              </Button>
             </div>
           </div>
 
@@ -100,10 +116,17 @@ export default function Contact() {
             <h3 className="text-2xl mb-4">¿Lista para transformar tus uñas?</h3>
             <p className="mb-6">Agenda tu cita hoy y comienza tu transformación</p>
             <Button 
+              asChild
               size="lg" 
               className="bg-[#E6D5BA] text-black hover:bg-[#d4c3a8]"
             >
-              ¡AGENDA TU CITA AHORA!
+              <a 
+                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ¡AGENDA TU CITA AHORA!
+              </a>
             </Button>
           </div>
         </div>

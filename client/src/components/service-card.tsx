@@ -84,16 +84,18 @@ export default function ServiceCard({ service }: ServiceCardProps) {
               </div>
             </div>
 
-            <a 
-              href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full"
+            <Button 
+              asChild
+              className="w-full font-semibold"
             >
-              <Button className="w-full font-semibold">
+              <a 
+                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 ¡AGENDA TU EVALUACIÓN INICIAL!
-              </Button>
-            </a>
+              </a>
+            </Button>
           </>
         ) : (
           <>
@@ -114,14 +116,18 @@ export default function ServiceCard({ service }: ServiceCardProps) {
                 </>
               )}
             </div>
-            <a 
-              href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full"
+            <Button 
+              asChild
+              className="w-full"
             >
-              <Button className="w-full">¡RESERVA AHORA!</Button>
-            </a>
+              <a 
+                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ¡RESERVA AHORA!
+              </a>
+            </Button>
           </>
         )}
       </CardContent>
