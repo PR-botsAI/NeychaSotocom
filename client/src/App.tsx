@@ -9,6 +9,7 @@ import Onicoplastia from "@/pages/onicoplastia";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import { ErrorBoundary } from "@/components/error-boundary";
+import SEODebug from "@/components/seo-debug";
 import { useEffect } from "react";
 
 function Router() {
@@ -31,6 +32,7 @@ function Router() {
         </Switch>
       </main>
       <Footer />
+      <SEODebug />
     </div>
   );
 }
