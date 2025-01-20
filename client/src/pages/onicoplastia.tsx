@@ -378,10 +378,10 @@ export default function Onicoplastia() {
       >
         <DialogContent className="max-w-3xl">
           <DialogTitle>
-            {selectedCase?.title}
+            {selectedCase?.title || "Vista detallada"}
           </DialogTitle>
           <DialogDescription>
-            {selectedCase?.description}
+            {selectedCase?.description || "Detalles del tratamiento de onicoplastia"}
           </DialogDescription>
           <div className="w-full aspect-square select-none">
             <img
