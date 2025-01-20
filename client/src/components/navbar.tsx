@@ -28,38 +28,43 @@ export default function Navbar() {
     window.open(href, "_blank", "noopener,noreferrer");
   };
 
+  const renderNavItem = (item: typeof navigation[0]) => {
+    if (item.external) {
+      return (
+        <Button 
+          key={item.name}
+          variant="default" 
+          className="text-base bg-white text-black hover:bg-white/90"
+          onClick={() => handleExternalClick(item.href)}
+        >
+          {item.name}
+        </Button>
+      );
+    }
+
+    return (
+      <span key={item.name}>
+        <Link href={item.href}>
+          <a className="text-base text-white hover:text-white/80 px-4 py-2 rounded-md">
+            {item.name}
+          </a>
+        </Link>
+      </span>
+    );
+  };
+
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-zinc-800 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center ml-4">
           <Link href="/">
-            <span className="text-xl font-bold text-white cursor-pointer">neychasoto.com</span>
+            <a className="text-xl font-bold text-white">neychasoto.com</a>
           </Link>
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:space-x-6">
-          {navigation.map((item) => (
-            item.external ? (
-              <Button 
-                key={item.name}
-                variant="default" 
-                className="text-base bg-white text-black hover:bg-white/90"
-                onClick={() => handleExternalClick(item.href)}
-              >
-                {item.name}
-              </Button>
-            ) : (
-              <Link key={item.name} href={item.href}>
-                <Button 
-                  variant="ghost" 
-                  className="text-base text-white hover:text-white/80"
-                >
-                  {item.name}
-                </Button>
-              </Link>
-            )
-          ))}
+          {navigation.map(renderNavItem)}
         </div>
 
         {/* Mobile Navigation */}
@@ -82,32 +87,29 @@ export default function Navbar() {
               <div className="-my-6 divide-y divide-zinc-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    item.external ? (
-                      <Button
-                        key={item.name}
-                        variant="default"
-                        className="w-full justify-start text-base bg-white text-black hover:bg-white/90"
-                        onClick={() => {
-                          handleExternalClick(item.href);
-                          setIsOpen(false);
-                        }}
-                      >
-                        {item.name}
-                      </Button>
-                    ) : (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setIsOpen(false)}
-                      >
+                    <div key={item.name} className="w-full">
+                      {item.external ? (
                         <Button
-                          variant="ghost"
-                          className="w-full justify-start text-base text-white hover:text-white/80"
+                          variant="default"
+                          className="w-full justify-start text-base bg-white text-black hover:bg-white/90"
+                          onClick={() => {
+                            handleExternalClick(item.href);
+                            setIsOpen(false);
+                          }}
                         >
                           {item.name}
                         </Button>
-                      </Link>
-                    )
+                      ) : (
+                        <Link href={item.href}>
+                          <a
+                            className="block w-full px-4 py-2 text-base text-white hover:bg-zinc-800 rounded-md"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {item.name}
+                          </a>
+                        </Link>
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
