@@ -7,7 +7,9 @@ import {
   SheetContent,
   SheetTrigger,
   SheetHeader,
+  SheetTitle,
 } from "@/components/ui/sheet";
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 const navigation = [
   { name: "Inicio", href: "/" },
@@ -84,8 +86,12 @@ export default function Navbar() {
           <SheetContent 
             side="left" 
             className="w-[280px] sm:w-[340px] border-r border-zinc-800 bg-black/95 backdrop-blur-lg"
+            aria-describedby="navigation-menu-description"
           >
             <SheetHeader className="border-b border-zinc-800">
+              <VisuallyHidden asChild>
+                <SheetTitle>Menú de Navegación</SheetTitle>
+              </VisuallyHidden>
               <div className="flex items-center justify-center py-6">
                 <Link 
                   href="/"
@@ -96,6 +102,9 @@ export default function Navbar() {
                 </Link>
               </div>
             </SheetHeader>
+            <VisuallyHidden id="navigation-menu-description">
+              Navegación principal del sitio
+            </VisuallyHidden>
 
             <div className="mt-8 px-2">
               <div className="space-y-4">
