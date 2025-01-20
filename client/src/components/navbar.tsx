@@ -7,7 +7,6 @@ import {
   SheetContent,
   SheetTrigger,
   SheetHeader,
-  SheetTitle,
 } from "@/components/ui/sheet";
 
 const navigation = [
@@ -86,9 +85,8 @@ export default function Navbar() {
             side="left" 
             className="w-[280px] sm:w-[340px] border-r border-zinc-800 bg-black/95 backdrop-blur-lg"
           >
-            <SheetHeader className="pb-6 border-b border-zinc-800">
-              <SheetTitle className="text-white">Menú de Navegación</SheetTitle>
-              <div className="flex items-center justify-start px-2 pt-2">
+            <SheetHeader className="border-b border-zinc-800">
+              <div className="flex items-center justify-center py-6">
                 <Link 
                   href="/"
                   className="text-xl font-bold text-white"
