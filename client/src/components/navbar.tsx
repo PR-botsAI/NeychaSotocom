@@ -8,7 +8,6 @@ import {
   SheetTrigger,
   SheetHeader,
   SheetTitle,
-  SheetDescription,
 } from "@/components/ui/sheet";
 
 const navigation = [
@@ -89,9 +88,6 @@ export default function Navbar() {
           >
             <SheetHeader className="pb-6 border-b border-zinc-800">
               <SheetTitle className="text-white">Menú de Navegación</SheetTitle>
-              <SheetDescription className="text-zinc-400">
-                Navegación principal del sitio
-              </SheetDescription>
               <div className="flex items-center justify-start px-2 pt-2">
                 <Link 
                   href="/"
