@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://neychanails.com/sitemap.xml
+
+# Common crawl optimization
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
