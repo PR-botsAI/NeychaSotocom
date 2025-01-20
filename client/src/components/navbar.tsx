@@ -6,8 +6,7 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
-  SheetTitle,
-  SheetDescription,
+  SheetHeader,
 } from "@/components/ui/sheet";
 
 const navigation = [
@@ -72,48 +71,58 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon" className="text-white">
-              <Menu className="h-6 w-6" />
-              <span className="sr-only">Toggle menu</span>
+          <SheetTrigger asChild className="md:hidden mr-4">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="text-white hover:bg-white/10 transition-colors"
+            >
+              <Menu className="h-7 w-7" />
+              <span className="sr-only">Abrir menú</span>
             </Button>
           </SheetTrigger>
           <SheetContent 
             side="left" 
-            className="w-[280px] sm:w-[340px]"
+            className="w-[280px] sm:w-[340px] border-r border-zinc-800 bg-black/95 backdrop-blur-lg"
           >
-            <SheetTitle>Menú de Navegación</SheetTitle>
-            <SheetDescription>
-              Navegación principal del sitio
-            </SheetDescription>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-zinc-500/10">
-                <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
-                    <div key={item.name} className="w-full">
-                      {item.external ? (
-                        <Button
-                          variant="default"
-                          className="w-full justify-start text-base bg-white text-black hover:bg-white/90"
-                          onClick={() => {
-                            handleExternalClick(item.href);
-                            setIsOpen(false);
-                          }}
-                        >
-                          {item.name}
-                        </Button>
-                      ) : (
-                        <Link 
-                          href={item.href}
-                          className="block w-full px-4 py-2 text-base text-white hover:bg-zinc-800 rounded-md"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {item.name}
-                        </Link>
-                      )}
-                    </div>
-                  ))}
-                </div>
+            <SheetHeader className="pb-6 border-b border-zinc-800">
+              <div className="flex items-center justify-start px-2 pt-2">
+                <Link 
+                  href="/"
+                  className="text-xl font-bold text-white"
+                  onClick={() => setIsOpen(false)}
+                >
+                  neychasoto.com
+                </Link>
+              </div>
+            </SheetHeader>
+
+            <div className="mt-8 px-2">
+              <div className="space-y-4">
+                {navigation.map((item) => (
+                  <div key={item.name} className="w-full">
+                    {item.external ? (
+                      <Button
+                        variant="default"
+                        className="w-full justify-center text-base font-medium bg-white text-black hover:bg-white/90 transition-colors"
+                        onClick={() => {
+                          handleExternalClick(item.href);
+                          setIsOpen(false);
+                        }}
+                      >
+                        {item.name}
+                      </Button>
+                    ) : (
+                      <Link 
+                        href={item.href}
+                        className="flex w-full px-4 py-3 text-base text-white hover:bg-white/10 rounded-md transition-colors"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </SheetContent>
