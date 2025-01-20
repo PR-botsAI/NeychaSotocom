@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu } from "lucide-react";
+import { Menu, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -35,9 +35,10 @@ export default function Navbar() {
         <Button 
           key={item.name}
           variant="default" 
-          className="text-base bg-white text-black hover:bg-white/90"
+          className="text-base bg-white text-black hover:bg-white/90 hover:scale-105 transition-all duration-300 flex items-center gap-2"
           onClick={() => handleExternalClick(item.href)}
         >
+          <Calendar className="w-4 h-4" />
           {item.name}
         </Button>
       );
@@ -108,30 +109,31 @@ export default function Navbar() {
 
             <div className="mt-8 px-2">
               <div className="space-y-4">
-                {navigation.map((item) => (
+                {navigation.slice(0, -1).map((item) => (
                   <div key={item.name} className="w-full">
-                    {item.external ? (
-                      <Button
-                        variant="default"
-                        className="w-full justify-center text-base font-medium bg-white text-black hover:bg-white/90 transition-colors"
-                        onClick={() => {
-                          handleExternalClick(item.href);
-                          setIsOpen(false);
-                        }}
-                      >
-                        {item.name}
-                      </Button>
-                    ) : (
-                      <Link 
-                        href={item.href}
-                        className="flex w-full px-4 py-3 text-base text-white hover:bg-white/10 rounded-md transition-colors"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    )}
+                    <Link 
+                      href={item.href}
+                      className="flex w-full px-4 py-3 text-base text-white hover:bg-white/10 rounded-md transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
                   </div>
                 ))}
+                {/* Special styling for Reservar Cita */}
+                <div className="w-full pt-4">
+                  <Button
+                    variant="default"
+                    className="w-full justify-center text-base font-medium bg-white text-black hover:bg-white/90 hover:scale-105 transition-all duration-300 py-6 flex items-center gap-2"
+                    onClick={() => {
+                      handleExternalClick(navigation[3].href);
+                      setIsOpen(false);
+                    }}
+                  >
+                    <Calendar className="w-5 h-5" />
+                    {navigation[3].name}
+                  </Button>
+                </div>
               </div>
             </div>
           </SheetContent>
