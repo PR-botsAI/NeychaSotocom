@@ -43,13 +43,13 @@ export default function Navbar() {
     }
 
     return (
-      <span key={item.name}>
-        <Link href={item.href}>
-          <a className="text-base text-white hover:text-white/80 px-4 py-2 rounded-md">
-            {item.name}
-          </a>
-        </Link>
-      </span>
+      <Link 
+        key={item.name} 
+        href={item.href}
+        className="text-base text-white hover:text-white/80 px-4 py-2 rounded-md"
+      >
+        {item.name}
+      </Link>
     );
   };
 
@@ -57,8 +57,11 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b border-zinc-800 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center ml-4">
-          <Link href="/">
-            <a className="text-xl font-bold text-white">neychasoto.com</a>
+          <Link 
+            href="/"
+            className="text-xl font-bold text-white"
+          >
+            neychasoto.com
           </Link>
         </div>
 
@@ -100,13 +103,12 @@ export default function Navbar() {
                           {item.name}
                         </Button>
                       ) : (
-                        <Link href={item.href}>
-                          <a
-                            className="block w-full px-4 py-2 text-base text-white hover:bg-zinc-800 rounded-md"
-                            onClick={() => setIsOpen(false)}
-                          >
-                            {item.name}
-                          </a>
+                        <Link 
+                          href={item.href}
+                          className="block w-full px-4 py-2 text-base text-white hover:bg-zinc-800 rounded-md"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.name}
                         </Link>
                       )}
                     </div>
