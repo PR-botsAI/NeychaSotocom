@@ -39,7 +39,7 @@ export const queryClient = new QueryClient({
             }
 
             throw new QueryError(
-              errorData?.error?.message || `HTTP Error: ${res.status} ${res.statusText}`,
+              errorData?.error?.message || `Error HTTP: ${res.status} ${res.statusText}`,
               res.status,
               errorData
             );
@@ -53,22 +53,22 @@ export const queryClient = new QueryClient({
           }
 
           if (error instanceof DOMException && error.name === 'AbortError') {
-            throw new QueryError('Request timeout', 408);
+            throw new QueryError('Tiempo de espera agotado', 408);
           }
 
           if (error instanceof TypeError && error.message.includes('fetch')) {
-            throw new QueryError('Network error - Please check your connection', 0);
+            throw new QueryError('Error de red - Por favor verifica tu conexión', 0);
           }
 
           throw new QueryError(
-            error instanceof Error ? error.message : 'Unknown error occurred',
+            error instanceof Error ? error.message : 'Ocurrió un error desconocido',
             500
           );
         }
       },
       refetchInterval: false,
       refetchOnWindowFocus: false,
-      staleTime: Infinity,
+      staleTime: 30000, // Set to 30 seconds instead of Infinity
       retry: (failureCount, error) => {
         if (error instanceof QueryError) {
           // Don't retry client errors (4xx)
@@ -84,7 +84,7 @@ export const queryClient = new QueryClient({
       retry: false,
       onError: (error: unknown) => {
         if (error instanceof QueryError) {
-          console.error('Mutation error:', {
+          console.error('Error de mutación:', {
             status: error.status,
             message: error.message,
             data: error.data

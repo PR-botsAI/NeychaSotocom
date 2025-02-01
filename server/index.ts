@@ -13,11 +13,11 @@ app.set('trust proxy', 1);
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false }));
 
-// Rate limiting
+// Rate limiting - increased for healthcare platform needs
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
-  message: { error: "Too many requests, please try again later" }
+  max: 300, // Increased limit for healthcare platform
+  message: { error: "Demasiadas solicitudes. Por favor, inténtalo más tarde." }
 });
 app.use("/api", limiter);
 
@@ -50,23 +50,23 @@ app.use((req, res, next) => {
 (async () => {
   const server = registerRoutes(app);
 
-  // Enhanced error handling middleware
+  // Enhanced error handling middleware with Spanish messages
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const isProduction = process.env.NODE_ENV === 'production';
     let status = err.status || 500;
-    let message = err.message || 'Internal Server Error';
+    let message = err.message || 'Error interno del servidor';
 
     if (err instanceof z.ZodError) {
       status = 400;
-      message = `Validation error: ${err.errors[0].message}`;
+      message = `Error de validación: ${err.errors[0].message}`;
     } else if (err.code === '23505') { // PostgreSQL unique violation
       status = 409;
-      message = 'Resource already exists';
+      message = 'El recurso ya existe';
     }
 
     res.status(status).json({
       error: {
-        message: isProduction && status === 500 ? 'Internal Server Error' : message,
+        message: isProduction && status === 500 ? 'Error interno del servidor' : message,
         status
       }
     });
@@ -80,6 +80,6 @@ app.use((req, res, next) => {
 
   const PORT = 5000;
   server.listen(PORT, "0.0.0.0", () => {
-    log(`serving on port ${PORT}`);
+    log(`Servidor ejecutándose en el puerto ${PORT}`);
   });
 })();
