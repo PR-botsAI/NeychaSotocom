@@ -1,1 +1,1 @@
-// This file is being removed as it's unused
+// File removed - using navigation-menu component instead
