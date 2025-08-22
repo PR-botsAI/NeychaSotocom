@@ -6,7 +6,7 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // MCP Client setup
 let mcpClient: Client | null = null;
-const MCP_SERVER_URL = "http://localhost:8000/sse";
+const MCP_SERVER_URL = process.env.MCP_SERVER_URL || "http://localhost:8000/sse";
 
 async function initializeMCPClient() {
   if (mcpClient) return mcpClient;

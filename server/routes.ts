@@ -5,6 +5,7 @@ import { services, cases } from "@db/schema";
 import { eq } from "drizzle-orm";
 import { processUserMessage } from "./shopify-mcp";
 import { processUserMessageWithMCP } from "./mcp-client";
+import { processSmartMessage } from "./product-search";
 
 class ApiError extends Error {
   constructor(public status: number, message: string) {
@@ -52,7 +53,7 @@ export function registerRoutes(app: Express): Server {
     }
   });
 
-  // Shop Assistant API with MCP Integration
+  // Shop Assistant API with Smart Product Search
   app.post("/api/shop-assistant", async (req, res, next) => {
     try {
       const { message, conversationHistory } = req.body;
@@ -61,8 +62,8 @@ export function registerRoutes(app: Express): Server {
         throw new ApiError(400, "Message is required");
       }
 
-      console.log('[API] Processing message with MCP integration');
-      const result = await processUserMessageWithMCP(
+      console.log('[API] Processing message with smart search');
+      const result = await processSmartMessage(
         message,
         conversationHistory || []
       );
@@ -70,20 +71,7 @@ export function registerRoutes(app: Express): Server {
       res.json(result);
     } catch (error) {
       console.error("Shop assistant error:", error);
-      
-      // Fallback to old system if MCP fails
-      try {
-        console.log('[API] MCP failed, falling back to basic system');
-        const fallbackResult = await processUserMessage(
-          req.body.message,
-          req.body.conversationHistory || [],
-          req.body.cartId
-        );
-        res.json(fallbackResult);
-      } catch (fallbackError) {
-        console.error("Fallback also failed:", fallbackError);
-        next(new ApiError(500, "Failed to process message"));
-      }
+      next(new ApiError(500, "Failed to process message"));
     }
   });
 
