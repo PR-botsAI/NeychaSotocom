@@ -73,6 +73,39 @@ export function registerRoutes(app: Express): Server {
     }
   });
 
+  // MCP Server control endpoint
+  app.post("/api/mcp/start", async (req, res, next) => {
+    try {
+      console.log('[MCP] Starting Python MCP server for OpenAI integration...');
+      
+      // Start the Python MCP server
+      const { spawn } = await import('child_process');
+      const mcpProcess = spawn('python3', ['mcp_server.py'], {
+        stdio: 'pipe',
+        env: { ...process.env, PYTHONUNBUFFERED: '1' }
+      });
+      
+      mcpProcess.stdout?.on('data', (data) => {
+        console.log('[MCP Server]', data.toString());
+      });
+      
+      mcpProcess.stderr?.on('data', (data) => {
+        console.log('[MCP Server Error]', data.toString());
+      });
+      
+      res.json({ 
+        success: true, 
+        message: "MCP Server started successfully",
+        endpoint: "http://localhost:8000/sse",
+        tools: ["search", "fetch"],
+        integration: "Connect this URL in OpenAI ChatGPT MCP settings"
+      });
+    } catch (error) {
+      console.error("MCP server start error:", error);
+      next(new ApiError(500, "Failed to start MCP server"));
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
