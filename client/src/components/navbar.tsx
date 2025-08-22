@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Menu, Calendar } from "lucide-react";
+import { Menu, Calendar, ShoppingBag, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -11,9 +11,20 @@ import {
 } from "@/components/ui/sheet";
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
-const navigation = [
+const navigation: Array<{
+  name: string;
+  href: string;
+  external?: boolean;
+  highlight?: boolean;
+}> = [
   { name: "Inicio", href: "/" },
   { name: "Onicopastia", href: "/onicoplastia" },
+  { 
+    name: "Tienda", 
+    href: "https://shop.neychasoto.com",
+    external: true,
+    highlight: true 
+  },
   { name: "Contacto", href: "/contact" },
   { 
     name: "Reservar Cita", 
@@ -31,6 +42,23 @@ export default function Navbar() {
 
   const renderNavItem = (item: typeof navigation[0]) => {
     if (item.external) {
+      // Special styling for shop link
+      if (item.highlight) {
+        return (
+          <Button 
+            key={item.name}
+            variant="default" 
+            className="text-base bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 hover:scale-105 transition-all duration-300 flex items-center gap-2 relative"
+            onClick={() => handleExternalClick(item.href)}
+          >
+            <ShoppingBag className="w-4 h-4" />
+            {item.name}
+            <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-300 animate-pulse" />
+          </Button>
+        );
+      }
+      
+      // Regular external link (booking)
       return (
         <Button 
           key={item.name}

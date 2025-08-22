@@ -9,7 +9,11 @@ import Onicoplastia from "@/pages/onicoplastia";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import { ErrorBoundary } from "@/components/error-boundary";
-import { useEffect } from "react";
+import ShopBanner from "@/components/shop-banner";
+import SEODebug from "@/components/seo-debug";
+import ScrollToTop from "@/components/scroll-to-top";
+import PerformanceOptimizer from "@/components/performance-optimizer";
+import { useEffect, lazy, Suspense } from "react";
 
 function Router() {
   const [location] = useLocation();
@@ -21,6 +25,7 @@ function Router() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <ShopBanner />
       <Navbar />
       <main className="flex-1">
         <Switch>
@@ -39,7 +44,10 @@ function App() {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
+        <PerformanceOptimizer />
+        <SEODebug />
         <Router />
+        <ScrollToTop />
         <Toaster />
       </QueryClientProvider>
     </ErrorBoundary>

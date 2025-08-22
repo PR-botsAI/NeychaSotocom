@@ -1,6 +1,7 @@
 import Hero from "@/components/hero";
 import NailConditionMatcher from "@/components/nail-condition-matcher";
 import TestimonialCard from "@/components/testimonial-card";
+import ShopPromotion from "@/components/shop-promotion";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -117,6 +118,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Shop Promotion Section */}
+      <ShopPromotion />
 
       {/* Testimonials Section */}
       <section className="px-4">
