@@ -134,25 +134,25 @@ export default function Home() {
           </p>
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <TestimonialCard
-              name="Bixsa R."
+              name="Betty V."
               rating={5}
-              comment="La mejor !! muy amable excelente trabajo en uñas de mano y pedicura recomendada!"
-              service="Esmaltado en Pies"
-              date="Noviembre 2024"
+              comment="Excelente vibra desde que entras al spa y su servicio inigualable … altamente recomendada !!!"
+              service="Gel Manos"
+              date="Febrero 2025"
             />
             <TestimonialCard
-              name="Wilmarie R."
+              name="Lourdes R."
               rating={5}
-              comment="Hermosas Me encantan los diseños y el servicio profesional."
-              service="Esmaltado en Manos"
-              date="Julio 2024"
+              comment="Ella es amorosa no importa la clienta, te complace en lo que pides, que más puedo pedir, hasta café ☕️ te dan, es profesional en su trabajo"
+              service="Esmaltado en Pies"
+              date="Diciembre 2024"
             />
             <TestimonialCard
-              name="Esther R."
+              name="Tana L."
               rating={5}
-              comment="Me encanta el trabajo y la atención. ¡El mejor servicio!"
-              service="Esmaltado en Pies"
-              date="Septiembre 2024"
+              comment="Un trabajo sin duda alguna de alta calidad y un trato excelente..💫"
+              service="Gel Tips"
+              date="Marzo 2024"
             />
           </div>
         </div>
