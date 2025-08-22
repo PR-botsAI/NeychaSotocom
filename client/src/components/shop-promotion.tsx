@@ -1,23 +1,23 @@
-import { ShoppingBag, Package, Star, CheckCircle } from "lucide-react";
+import { ShoppingBag, Package, Star, CheckCircle, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function ShopPromotion() {
   const benefits = [
     {
+      icon: Award,
+      title: "Probado en Mi Salón",
+      description: "Productos que uso diariamente en mis tratamientos profesionales"
+    },
+    {
       icon: CheckCircle,
-      title: "Productos Aprobados por Neycha",
-      description: "Solo productos que uso personalmente en mi salón"
+      title: "Resultados Comprobados",
+      description: "Meses de pruebas con mis clientas antes de recomendarlos"
     },
     {
       icon: Star,
-      title: "Calidad Profesional Garantizada",
-      description: "Marcas premium seleccionadas cuidadosamente"
-    },
-    {
-      icon: Package,
-      title: "Envío a Todo Puerto Rico",
-      description: "Lleva la calidad del salón a tu hogar"
+      title: "Estándares Profesionales",
+      description: "Solo productos que cumplen mis exigencias de calidad"
     }
   ];
 
@@ -26,17 +26,17 @@ export default function ShopPromotion() {
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 mb-4">
-            <ShoppingBag className="h-8 w-8 text-purple-500" />
+            <Award className="h-8 w-8 text-purple-500" />
             <span className="text-sm font-semibold text-purple-400 uppercase tracking-wider">
-              Tienda Online Oficial
+              Recomendaciones Profesionales
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Productos Profesionales Para Tu Hogar
+            Productos Que Uso y Recomiendo
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Lleva a casa los mismos productos profesionales que uso en mi salón. 
-            Cada producto ha sido personalmente seleccionado y probado para garantizar resultados excepcionales.
+            Como profesional certificada, he probado estos productos durante meses en mi salón. 
+            Ahora los comparto contigo para que puedas mantener la calidad de mis tratamientos en casa.
           </p>
         </div>
 
@@ -59,11 +59,11 @@ export default function ShopPromotion() {
             <CardContent className="p-8 text-center">
               <div className="mb-6">
                 <h3 className="text-2xl font-bold text-white mb-4">
-                  Productos Recomendados por Neycha Soto
+                  Mi Selección Personal de Productos
                 </h3>
                 <p className="text-gray-300 mb-6">
-                  Como profesional certificada en IBX® y especialista en onicoplastia, 
-                  solo recomiendo productos que cumplen con los más altos estándares de calidad.
+                  Después de años probando diferentes marcas, estos son los únicos productos 
+                  que han pasado mis rigurosas pruebas de calidad y durabilidad en el salón.
                 </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto mb-8">
@@ -71,28 +71,28 @@ export default function ShopPromotion() {
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-white font-medium">Limas Nano Glass Premium</p>
-                      <p className="text-gray-400 text-sm">Para un acabado perfecto sin dañar</p>
+                      <p className="text-gray-400 text-sm">Las que uso en cada tratamiento</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-white font-medium">Aceites de Cutícula Dadi' Oil</p>
-                      <p className="text-gray-400 text-sm">Hidratación profesional diaria</p>
+                      <p className="text-gray-400 text-sm">Mi recomendación #1 para casa</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-white font-medium">Guantes UV Protectores</p>
-                      <p className="text-gray-400 text-sm">Protección durante el secado</p>
+                      <p className="text-gray-400 text-sm">Protección que uso y recomiendo</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-white font-medium">Aceites LEpro Profesionales</p>
-                      <p className="text-gray-400 text-sm">Tratamiento nutritivo especializado</p>
+                      <p className="text-gray-400 text-sm">Probados en cientos de clientas</p>
                     </div>
                   </div>
                 </div>
@@ -110,12 +110,12 @@ export default function ShopPromotion() {
                   className="flex items-center gap-2"
                 >
                   <ShoppingBag className="h-5 w-5" />
-                  Visitar Tienda Online
+                  Ver Mis Recomendaciones
                 </a>
               </Button>
               
               <p className="mt-4 text-sm text-purple-400">
-                Ofertas exclusivas para clientes del salón
+                Productos probados y aprobados por una profesional IBX®
               </p>
             </CardContent>
           </Card>
