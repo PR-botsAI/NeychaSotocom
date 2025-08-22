@@ -1,0 +1,114 @@
+Based on my comprehensive analysis of your codebase, I've identified numerous redundancies, unused dependencies, and potential optimization opportunities. Here's my detailed audit report:
+
+📁 File & Folder Cleanup Recommendations
+Safe to Remove:
+
+client/src/components/ui/sidebar.tsx → Empty file with comment indicating removal
+client/src/components/ui/pagination.tsx → Contains only removal comment
+attached_assets/Pasted-*.txt files → Multiple pasted text files (5 files)
+Duplicate image files in attached_assets/ and client/public/ directories
+Review for Deletion:
+
+server/shopify-mcp.ts → Incomplete Shopify MCP implementation with no actual usage
+client/src/components/seo-debug.tsx → Debug component that should be development-only
+client/src/components/performance-optimizer.tsx → If not actively optimizing performance
+🧠 Unused Functions / Variables / Imports
+Multiple UI Components Never Referenced:
+
+@radix-ui/react-accordion → No accordion usage found
+@radix-ui/react-alert-dialog → No alert dialogs implemented
+@radix-ui/react-collapsible → No collapsible components
+@radix-ui/react-context-menu → No context menus
+@radix-ui/react-menubar → No menubar implementation
+@radix-ui/react-progress → No progress bars
+@radix-ui/react-radio-group → No radio groups
+@radix-ui/react-toggle → No toggle components
+@radix-ui/react-toggle-group → No toggle groups
+@radix-ui/react-visually-hidden → No accessibility hiding
+Unused Form Components:
+
+input-otp → OTP input not implemented
+@radix-ui/react-checkbox → No checkboxes in forms
+Chart/Data Visualization:
+
+recharts → No charts implemented in current pages
+d3-* dependencies → Chart library dependencies unused
+Animation & Interaction:
+
+embla-carousel-react → No carousels implemented
+Framer Motion causing React context errors (see logs)
+📦 Dependency Audit
+High-Priority Removals:
+
+@jridgewell/trace-mapping → Redundant with build tools
+cmdk → Command palette not implemented
+date-fns → Could use native Date if simple operations
+react-day-picker → No date pickers in current UI
+react-resizable-panels → No resizable panels
+vaul → Drawer component unused
+input-otp → OTP functionality not needed
+Backend Dependencies to Review:
+
+express-rate-limit → No rate limiting configured
+express-session → Session management unused
+memorystore → Session store unused
+passport + passport-local → Authentication not implemented
+openai → Used in shop assistant but could be optional
+Development Dependencies:
+
+@tailwindcss/typography → Typography styles unused
+@replit/vite-plugin-runtime-error-modal → Development only
+♻️ Code Logic Duplication
+Image Handling:
+
+Duplicate case images in both attached_assets/ and client/public/cases/
+Similar image loading logic in multiple components
+Form Components:
+
+FormDescription and FormMessage have similar error handling patterns
+Could be consolidated into a single error component
+Navigation:
+
+Navigation logic spread across navbar and potential unused navigation-menu component
+🚨 Critical Issues Requiring Immediate Attention
+React Hook Errors (from logs):
+
+"Invalid hook call. Hooks can only be called inside of the body of a function component"
+"Cannot read properties of null (reading 'useContext')"
+Framer Motion causing context issues
+Potential React version conflicts
+Runtime Errors:
+
+"Uncaught ReferenceError: products is not defined"
+ShopPromotion component has undefined variable reference
+Missing Error Handling:
+
+Shop data fetching failures not properly handled
+No fallback UI for failed API calls
+🧽 Optimization Summary
+Estimated Removable Content:
+
+Dependencies: ~25 unused packages (estimated 50MB+ reduction)
+Files: 8+ unused/empty files
+Code: ~300+ lines of unused component code
+High-Priority Cleanup Areas:
+
+Fix React hook call errors in Framer Motion usage
+Remove unused Radix UI components (accordion, alert-dialog, etc.)
+Clean up duplicate image assets
+Remove incomplete Shopify MCP implementation
+Consolidate form error handling components
+Optional Improvements:
+
+Implement tree-shaking for better bundle optimization
+Add proper error boundaries for API failures
+Create auto-cleanup script for unused imports
+Modular restructure of UI components into feature-based folders
+Build performance tuning by removing unused dev dependencies
+Immediate Action Items:
+
+Fix the products is not defined error in ShopPromotion component
+Resolve React context issues with Framer Motion
+Remove empty/commented UI component files
+Clean up unused Radix UI dependencies to reduce bundle size
+This analysis shows significant opportunities for codebase optimization while maintaining functionality. I recommend addressing the critical runtime errors first, then systematically removing unused dependencies and files.
