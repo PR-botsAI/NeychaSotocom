@@ -126,27 +126,31 @@ export async function processUserMessage(
   cartId: string | null
 ) {
   try {
-    const systemPrompt = `You are a shopping assistant for Neycha Soto's nail art and onicoplastia store.
+    const systemPrompt = `You are Neycha Soto's nail care assistant. You help customers with:
+    1. Onicoplastia treatment for nail fungus problems
+    2. General nail care services and advice
+    3. Booking appointments 
+    4. Product recommendations from the shop
     
-    Analyze the user's message and determine what action to take. Return a JSON object with:
+    Respond in JSON format:
     {
-      "intent": "search_products" | "search_policies" | "general_chat",
-      "searchQuery": "query to search if intent is search_products",
-      "policyQuery": "query for policies if intent is search_policies",
-      "response": "your response in Spanish to the user"
+      "intent": "nail_care_advice" | "search_products" | "booking_help" | "general_chat",
+      "searchQuery": "product search terms if needed",
+      "response": "helpful response in Spanish"
     }
     
-    IMPORTANT: Always respond in Spanish. Be friendly and professional.
-    - If user asks about products, nail care, or shopping: set intent to "search_products"
-    - If user asks about shipping, returns, policies: set intent to "search_policies"
-    - Otherwise: set intent to "general_chat" and provide helpful information`;
+    For nail problems like "hongos" or "cutícula":
+    - Recommend onicoplastia treatment
+    - Suggest booking evaluation
+    - Mention professional services
+    
+    For products: Try searching the shop catalog`;
 
-    // Analyze user intent with OpenAI
     const completion = await openai.chat.completions.create({
       model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
       messages: [
         { role: "system", content: systemPrompt },
-        ...conversationHistory.slice(-3), // Keep last 3 messages for context
+        ...conversationHistory.slice(-3),
         { role: "user", content: message }
       ],
       response_format: { type: "json_object" },
@@ -155,48 +159,80 @@ export async function processUserMessage(
     });
 
     const aiResponse = JSON.parse(completion.choices[0].message.content || "{}");
-    
     let products = null;
-    let responseMessage = aiResponse.response || "¿En qué puedo ayudarte hoy?";
+    let responseMessage = aiResponse.response;
 
-    // Handle based on intent
-    if (aiResponse.intent === "search_products" && aiResponse.searchQuery) {
+    // Handle nail care advice and booking
+    if (aiResponse.intent === "nail_care_advice" || message.toLowerCase().includes("hongos") || message.toLowerCase().includes("hongo")) {
+      responseMessage = `Para problemas de hongos en las uñas, te recomiendo nuestro tratamiento de **Onicoplastia**:
+
+✨ **Beneficios del tratamiento:**
+• Elimina hongos de forma segura y eficaz
+• Mejora visible desde la primera sesión  
+• Procedimiento indoloro y no invasivo
+• Compatible con decoraciones
+
+📅 **¿Cómo empezar?**
+Necesitas una evaluación inicial para determinar el mejor plan de tratamiento.
+
+💰 **Precios:**
+• Primera cita (evaluación): $75
+• Seguimientos: $40-$50
+
+🔗 **Reserva tu cita:** https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo
+
+📱 **WhatsApp:** +1 939-429-0292 (envía fotos de las uñas afectadas para evaluación)`;
+    }
+    // Handle product searches  
+    else if (aiResponse.intent === "search_products" && aiResponse.searchQuery) {
       try {
         const searchResult = await searchProducts(aiResponse.searchQuery, message);
         if (searchResult && searchResult.products && searchResult.products.length > 0) {
           products = searchResult.products.slice(0, 3);
-          responseMessage = `Encontré estos productos relacionados con tu búsqueda:\n\n`;
+          responseMessage = `Encontré estos productos en nuestra tienda:\n\n`;
           products.forEach((product: any) => {
-            responseMessage += `📦 **${product.title}** - ${product.price}\n`;
+            responseMessage += `🛍️ **${product.title}** - ${product.price}\n`;
             if (product.description) {
-              responseMessage += `${product.description.substring(0, 80)}...\n`;
+              responseMessage += `${product.description.substring(0, 100)}...\n`;
             }
             responseMessage += `\n`;
           });
-          responseMessage += "Haz clic en cualquier producto para ver más detalles o visita shop.neychasoto.com para ver todo el catálogo.";
+          responseMessage += "\n🛒 **Visita nuestra tienda completa:** https://shop.neychasoto.com";
         } else {
-          responseMessage = "No encontré productos específicos, pero puedes explorar todo nuestro catálogo en shop.neychasoto.com. ¿Hay algo más específico que estés buscando?";
+          responseMessage = `No encontré productos específicos con "${aiResponse.searchQuery}", pero tenemos muchos productos profesionales en nuestra tienda.
+
+🛒 **Explora nuestro catálogo completo:** https://shop.neychasoto.com
+
+💬 **¿Buscas algo específico?** Puedes ser más detallado y te ayudo mejor.`;
         }
       } catch (error) {
         console.error("Error searching products:", error);
-        responseMessage = aiResponse.response || "Puedo ayudarte a encontrar productos de nail art y onicoplastia. Visita shop.neychasoto.com para ver nuestro catálogo completo.";
+        responseMessage = `Puedo ayudarte a encontrar productos de nail art y cuidado de uñas.
+
+🛒 **Nuestra tienda:** https://shop.neychasoto.com
+💬 **WhatsApp:** +1 939-429-0292`;
       }
-    } else if (aiResponse.intent === "search_policies" && aiResponse.policyQuery) {
-      try {
-        const policyResult = await searchPolicies(aiResponse.policyQuery, message);
-        if (policyResult && policyResult.answer) {
-          responseMessage = policyResult.answer;
-        } else {
-          responseMessage = aiResponse.response || "Para información sobre políticas específicas, te recomiendo contactar directamente al WhatsApp +1 939-429-0292.";
-        }
-      } catch (error) {
-        console.error("Error searching policies:", error);
-        responseMessage = aiResponse.response || "Para consultas sobre políticas y envíos, contáctanos al WhatsApp +1 939-429-0292.";
-      }
+    }
+    // Handle booking help
+    else if (aiResponse.intent === "booking_help") {
+      responseMessage = `📅 **Para agendar tu cita:**
+
+🔗 **Booksy:** https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo
+
+📍 **Ubicación:** 166 Avenida Dr Susoni, Unit 166, Hatillo, PR 00659
+
+📱 **WhatsApp:** +1 939-429-0292
+
+⭐ **Servicios populares:**
+• Onicoplastia (hongos) - $75 primera cita
+• Manicura en Gel - $35-$45
+• Esmaltado en Pies - $25+
+
+¿Qué servicio te interesa?`;
     }
 
     return {
-      message: responseMessage,
+      message: responseMessage || "¡Hola! Soy tu asistente virtual de Neycha Nails. ¿En qué puedo ayudarte? 💅✨",
       products: products,
       cartInfo: null,
       cartId: cartId
@@ -205,7 +241,7 @@ export async function processUserMessage(
   } catch (error) {
     console.error("Error processing message:", error);
     return {
-      message: "Estoy aquí para ayudarte con productos de nail art y onicoplastia. ¿Qué te gustaría saber sobre nuestros servicios o productos?",
+      message: "¡Hola! Puedo ayudarte con:\n\n💅 Tratamientos de onicoplastia\n🛍️ Productos de la tienda\n📅 Agendar citas\n\n¿Qué te interesa?",
       products: null,
       cartInfo: null,
       cartId
