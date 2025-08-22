@@ -1,0 +1,66 @@
+yes, there are a few solid ways to pull your Shopify product data and render it on your website. Pick the approach that fits your setup and how much control you want.
+
+Quick options
+
+Easiest (no backend): Shopify Buy Button (embed script)
+Most flexible (headless or custom site): Shopify Storefront API (GraphQL)
+If your site is a Shopify theme: use Liquid (built-in)
+Option A — Use Shopify Storefront API (GraphQL)
+Best if you want full control over layout, filtering, and SEO.
+
+Create a Storefront API token
+Shopify Admin > Settings > Apps and sales channels > Develop apps > Create app
+Configure Storefront API access > Enable “Read products and collections”
+Copy the Storefront access token
+2. Use the GraphQL endpoint
+
+POST https://YOUR-STORE.myshopify.com/api/2024-07/graphql.json
+Headers:
+Content-Type: application/json
+X-Shopify-Storefront-Access-Token: YOUR_TOKEN
+3. Example: fetch products and render them
+Paste this into your site (replace domain and token). This uses vanilla JS and creates simple product cards.
+
+HTML
+
+<div id="products"></div> <button id="loadMore" style="display:none">Load more</button>
+JS
+
+<script> const SHOP_DOMAIN = 'shop.neychasoto.com'; const API_URL = `https://${SHOP_DOMAIN}/api/2024-07/graphql.json`; const STOREFRONT_TOKEN = 'YOUR_STOREFRONT_ACCESS_TOKEN'; let endCursor = null; let hasNextPage = true; const PRODUCTS_QUERY = ` query Products($num: Int!, $cursor: String) { products(first: $num, after: $cursor, sortKey: TITLE) { pageInfo { hasNextPage } edges { cursor node { id title handle availableForSale productType tags description(truncateAt: 140) onlineStoreUrl images(first: 1) { edges { node { url altText } } } priceRange { minVariantPrice { amount currencyCode } maxVariantPrice { amount currencyCode } } variants(first: 10) { edges { node { id title availableForSale price { amount currencyCode } image { url altText } } } } } } } } `; async function fetchProducts() { if (!hasNextPage) return; const res = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': STOREFRONT_TOKEN }, body: JSON.stringify({ query: PRODUCTS_QUERY, variables: { num: 10, cursor: endCursor } }) }); const json = await res.json(); const { edges, pageInfo } = json.data.products; renderProducts(edges.map(e => e.node)); hasNextPage = pageInfo.hasNextPage; endCursor = edges.length ? edges[edges.length - 1].cursor : null; document.getElementById('loadMore').style.display = hasNextPage ? 'inline-block' : 'none'; } function productUrl(handle, onlineStoreUrl) { // Prefer onlineStoreUrl if returned, otherwise build it return onlineStoreUrl || `https://${SHOP_DOMAIN}/products/${handle}`; } function toPrice(amount, currency) { return new Intl.NumberFormat(undefined, { style: 'currency', currency }).format(amount); } function renderProducts(products) { const container = document.getElementById('products'); products.forEach(p => { const img = p.images?.edges?.[0]?.node; const min = p.priceRange.minVariantPrice; const max = p.priceRange.maxVariantPrice; const priceText = (min.amount === max.amount) ? toPrice(min.amount, min.currencyCode) : `${toPrice(min.amount, min.currencyCode)} – ${toPrice(max.amount, max.currencyCode)}`; const card = document.createElement('a'); card.href = productUrl(p.handle, p.onlineStoreUrl); card.target = '_blank'; card.rel = 'noopener'; card.style = ` display:block;padding:12px;border:1px solid #e5e7eb;border-radius:10px; text-decoration:none;color:inherit;margin:8px 0;max-width:560px `; card.innerHTML = ` <div style="display:flex;gap:12px;align-items:center"> <img src="${img?.url || ''}" alt="${img?.altText || p.title}" style="width:96px;height:96px;object-fit:cover;border-radius:8px;background:#f6f7f8" /> <div style="flex:1"> <div style="font-weight:700">${p.title}</div> <div style="color:#6b7280;font-size:14px;margin:4px 0">${p.description || ''}</div> <div style="display:flex;gap:8px;align-items:center"> <span style="font-weight:600">${priceText}</span> <span style="font-size:12px;color:${p.availableForSale ? '#16a34a' : '#ef4444'}"> ${p.availableForSale ? 'In stock' : 'Out of stock'} </span> </div> </div> </div> `; container.appendChild(card); }); } document.getElementById('loadMore').addEventListener('click', fetchProducts); // Initial load fetchProducts(); </script>
+Notes
+
+This is client-side only; if you want better performance/SEO, fetch on your server (Node/Next.js) and render HTML.
+Rate limits exist—cache responses where possible.
+The Storefront token is “public” (read-only), but it’s still a good idea to proxy via your server if you’ll do a lot of traffic or want to hide the token.
+Option B — Embed with Shopify Buy Button (no code build-out)
+This injects product/collection UIs you can style lightly. Great for WordPress, Webflow, or static sites.
+
+In Shopify Admin, add the “Buy Button” sales channel, create a Buy Button for a product or collection, and copy the generated code. Or use the SDK:
+<script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script> <div id="collection"></div> <script> (function () { var client = ShopifyBuy.buildClient({ domain: 'shop.neychasoto.com', storefrontAccessToken: 'YOUR_STOREFRONT_ACCESS_TOKEN' });
+ShopifyBuy.UI.onReady(client).then(function (ui) {
+ui.createComponent('collection', {
+id: 'YOUR_COLLECTION_ID', // get from Shopify
+node: document.getElementById('collection'),
+moneyFormat: '%24%7B%7Bamount%7D%7D',
+options: {
+product: {
+buttonDestination: 'checkout',
+isButton: true
+}
+}
+});
+});
+})();
+</script>
+
+Option C — If your site is a Shopify theme (Liquid)
+Use Liquid to loop products:
+{% for product in collections['frontpage'].products %}
+<a href="{{ product.url }}">
+<img src="{{ product.featured_image | img_url: '360x' }}" alt="{{ product.title }}">
+<h3>{{ product.title }}</h3>
+<p>{{ product.price | money }}</p>
+</a>
+{% endfor %}
+
+What do you prefer?
