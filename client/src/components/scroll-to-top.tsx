@@ -30,7 +30,7 @@ export default function ScrollToTop() {
     <Button
       onClick={scrollToTop}
       className={cn(
-        "fixed bottom-4 left-4 z-50 h-12 w-12 rounded-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-600 shadow-lg transition-all duration-300",
+        "fixed bottom-20 left-4 z-50 h-12 w-12 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border border-purple-400 shadow-xl transition-all duration-300 hover:scale-110",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
       )}
       size="icon"
