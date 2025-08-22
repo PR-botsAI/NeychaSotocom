@@ -1,32 +1,12 @@
-import { ShoppingBag, Package, Truck, Star } from "lucide-react";
+import { ShoppingBag, Package, Truck, Star, AlertCircle, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useShopData } from "@/hooks/use-shop-data";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ShopPromotion() {
-  const products = [
-    {
-      id: 1,
-      name: "Kit Profesional de Onicoplastia",
-      description: "Todo lo necesario para el cuidado profesional en casa",
-      price: "$89.99",
-      image: "/assets/shop-product-1.jpg"
-    },
-    {
-      id: 2,
-      name: "Esmaltes Premium IBX®",
-      description: "Colección exclusiva de esmaltes certificados",
-      price: "$24.99",
-      image: "/assets/shop-product-2.jpg"
-    },
-    {
-      id: 3,
-      name: "Aceites Nutritivos",
-      description: "Tratamiento intensivo para uñas dañadas",
-      price: "$19.99",
-      image: "/assets/shop-product-3.jpg"
-    }
-  ];
-
+  const { data: shopData, isLoading, error } = useShopData();
+  
   const features = [
     {
       icon: Package,
@@ -77,28 +57,78 @@ export default function ShopPromotion() {
           ))}
         </div>
 
-        {/* Featured Products Preview */}
+        {/* Products Section */}
         <div className="mb-12">
           <h3 className="text-2xl font-semibold text-white mb-6 text-center">
-            Productos Destacados
+            Visita Nuestra Tienda Online
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.map((product) => (
-              <Card key={product.id} className="bg-zinc-900/50 border-zinc-800 overflow-hidden group hover:border-purple-600 transition-colors">
-                <div className="aspect-square bg-gradient-to-br from-purple-600/20 to-pink-600/20 p-8 flex items-center justify-center">
-                  <Package className="h-24 w-24 text-purple-500/50" />
-                </div>
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-white mb-2">{product.name}</h4>
-                  <p className="text-gray-400 text-sm mb-3">{product.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-purple-400">{product.price}</span>
-                    <span className="text-sm text-gray-500">Disponible</span>
+          
+          {isLoading ? (
+            // Loading state
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <Card key={i} className="bg-zinc-900/50 border-zinc-800">
+                  <Skeleton className="aspect-square bg-zinc-800" />
+                  <CardContent className="p-6 space-y-3">
+                    <Skeleton className="h-6 w-3/4 bg-zinc-800" />
+                    <Skeleton className="h-4 w-full bg-zinc-800" />
+                    <Skeleton className="h-8 w-1/3 bg-zinc-800" />
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            // Show simplified shop promotion
+            <div className="max-w-2xl mx-auto">
+              <Card className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border-purple-600">
+                <CardContent className="p-8 text-center">
+                  <div className="mb-6">
+                    <ShoppingBag className="h-16 w-16 text-purple-400 mx-auto mb-4" />
+                    <h4 className="text-xl font-semibold text-white mb-3">
+                      Productos Profesionales de Nail Art
+                    </h4>
+                    <p className="text-gray-300 mb-4">
+                      Encuentra todo lo que necesitas para el cuidado profesional de tus uñas:
+                    </p>
+                    <ul className="text-left text-gray-300 space-y-2 max-w-md mx-auto mb-6">
+                      <li className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-purple-400 flex-shrink-0" />
+                        <span>Kits profesionales de onicoplastia</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-purple-400 flex-shrink-0" />
+                        <span>Esmaltes premium IBX® certificados</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-purple-400 flex-shrink-0" />
+                        <span>Aceites nutritivos y tratamientos</span>
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <Star className="h-4 w-4 text-purple-400 flex-shrink-0" />
+                        <span>Herramientas y accesorios profesionales</span>
+                      </li>
+                    </ul>
                   </div>
+                  
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-white text-purple-600 hover:bg-gray-100 font-semibold"
+                  >
+                    <a
+                      href="https://shop.neychasoto.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <ExternalLink className="h-5 w-5" />
+                      Explorar Productos en la Tienda
+                    </a>
+                  </Button>
                 </CardContent>
               </Card>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* CTA */}
@@ -115,7 +145,7 @@ export default function ShopPromotion() {
               className="flex items-center gap-2"
             >
               <ShoppingBag className="h-5 w-5" />
-              Explorar Toda la Tienda
+              Visitar Tienda Completa
             </a>
           </Button>
           <p className="mt-4 text-sm text-gray-400">
