@@ -1,14 +1,11 @@
-import { useState } from "react";
 import Hero from "@/components/hero";
 import NailConditionMatcher from "@/components/nail-condition-matcher";
 import TestimonialCard from "@/components/testimonial-card";
 import ShopPromotion from "@/components/shop-promotion";
-import ShopAssistant from "@/components/shop-assistant";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Sparkles } from "lucide-react";
+import { ShoppingBag, Calendar, Phone } from "lucide-react";
 
 export default function Home() {
-  const [isChatOpen, setIsChatOpen] = useState(false);
   const handleBookingClick = () => {
     window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank");
   };
@@ -179,25 +176,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Floating Chat Assistant Button */}
-      {!isChatOpen && (
-        <div className="fixed bottom-4 right-4 z-40 animate-bounce-in">
-          <Button
-            onClick={() => setIsChatOpen(true)}
-            className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-full p-4 shadow-2xl transition-all hover:scale-110"
-          >
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-200"></div>
-            <div className="relative flex items-center gap-2">
-              <MessageCircle className="h-5 w-5" />
-              <span className="hidden sm:inline text-sm font-medium">Asistente de Compras</span>
-              <Sparkles className="h-3 w-3 text-yellow-300 absolute -top-1 -right-1" />
-            </div>
-          </Button>
-        </div>
-      )}
-
-      {/* Shop Assistant Chat */}
-      <ShopAssistant isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
+      {/* Fixed Action Buttons */}
+      <div className="fixed bottom-4 right-4 z-40 flex flex-col gap-3">
+        {/* Shop Button */}
+        <Button
+          onClick={() => window.open('https://shop.neychasoto.com', '_blank')}
+          className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-full px-4 py-3 shadow-2xl transition-all hover:scale-110"
+        >
+          <div className="flex items-center gap-2">
+            <ShoppingBag className="h-5 w-5" />
+            <span className="text-sm font-medium">Tienda</span>
+          </div>
+        </Button>
+        
+        {/* Book Appointment Button */}
+        <Button
+          onClick={handleBookingClick}
+          className="group relative bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white rounded-full px-4 py-3 shadow-2xl transition-all hover:scale-110"
+        >
+          <div className="flex items-center gap-2">
+            <Calendar className="h-5 w-5" />
+            <span className="text-sm font-medium">Cita</span>
+          </div>
+        </Button>
+        
+        {/* WhatsApp Button */}
+        <Button
+          onClick={() => window.open('https://wa.me/19394290292', '_blank')}
+          className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-4 py-3 shadow-2xl transition-all hover:scale-110"
+        >
+          <div className="flex items-center gap-2">
+            <Phone className="h-5 w-5" />
+            <span className="text-sm font-medium">Chat</span>
+          </div>
+        </Button>
+      </div>
     </div>
   );
 }

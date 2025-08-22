@@ -3,9 +3,6 @@ import { createServer, type Server } from "http";
 import { db } from "@db";
 import { services, cases } from "@db/schema";
 import { eq } from "drizzle-orm";
-import { processUserMessage } from "./shopify-mcp";
-import { processUserMessageWithMCP } from "./mcp-client";
-import { processSmartMessage } from "./product-search";
 
 class ApiError extends Error {
   constructor(public status: number, message: string) {
@@ -53,60 +50,6 @@ export function registerRoutes(app: Express): Server {
     }
   });
 
-  // Shop Assistant API with Smart Product Search
-  app.post("/api/shop-assistant", async (req, res, next) => {
-    try {
-      const { message, conversationHistory } = req.body;
-      
-      if (!message || typeof message !== 'string') {
-        throw new ApiError(400, "Message is required");
-      }
-
-      console.log('[API] Processing message with smart search');
-      const result = await processSmartMessage(
-        message,
-        conversationHistory || []
-      );
-
-      res.json(result);
-    } catch (error) {
-      console.error("Shop assistant error:", error);
-      next(new ApiError(500, "Failed to process message"));
-    }
-  });
-
-  // MCP Server control endpoint
-  app.post("/api/mcp/start", async (req, res, next) => {
-    try {
-      console.log('[MCP] Starting Python MCP server for OpenAI integration...');
-      
-      // Start the Python MCP server
-      const { spawn } = await import('child_process');
-      const mcpProcess = spawn('python3', ['mcp_server.py'], {
-        stdio: 'pipe',
-        env: { ...process.env, PYTHONUNBUFFERED: '1' }
-      });
-      
-      mcpProcess.stdout?.on('data', (data) => {
-        console.log('[MCP Server]', data.toString());
-      });
-      
-      mcpProcess.stderr?.on('data', (data) => {
-        console.log('[MCP Server Error]', data.toString());
-      });
-      
-      res.json({ 
-        success: true, 
-        message: "MCP Server started successfully",
-        endpoint: "http://localhost:8000/sse",
-        tools: ["search", "fetch"],
-        integration: "Connect this URL in OpenAI ChatGPT MCP settings"
-      });
-    } catch (error) {
-      console.error("MCP server start error:", error);
-      next(new ApiError(500, "Failed to start MCP server"));
-    }
-  });
 
   const httpServer = createServer(app);
   return httpServer;
