@@ -1,10 +1,14 @@
+import { useState } from "react";
 import Hero from "@/components/hero";
 import NailConditionMatcher from "@/components/nail-condition-matcher";
 import TestimonialCard from "@/components/testimonial-card";
 import ShopPromotion from "@/components/shop-promotion";
+import ShopAssistant from "@/components/shop-assistant";
 import { Button } from "@/components/ui/button";
+import { MessageCircle, Sparkles } from "lucide-react";
 
 export default function Home() {
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const handleBookingClick = () => {
     window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank");
   };
@@ -174,6 +178,26 @@ export default function Home() {
           </Button>
         </div>
       </section>
+
+      {/* Floating Chat Assistant Button */}
+      {!isChatOpen && (
+        <div className="fixed bottom-4 right-4 z-40 animate-bounce-in">
+          <Button
+            onClick={() => setIsChatOpen(true)}
+            className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-full p-4 shadow-2xl transition-all hover:scale-110"
+          >
+            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-40 transition duration-200"></div>
+            <div className="relative flex items-center gap-2">
+              <MessageCircle className="h-5 w-5" />
+              <span className="hidden sm:inline text-sm font-medium">Asistente de Compras</span>
+              <Sparkles className="h-3 w-3 text-yellow-300 absolute -top-1 -right-1" />
+            </div>
+          </Button>
+        </div>
+      )}
+
+      {/* Shop Assistant Chat */}
+      <ShopAssistant isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </div>
   );
 }

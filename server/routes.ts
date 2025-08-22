@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { db } from "@db";
 import { services, cases } from "@db/schema";
 import { eq } from "drizzle-orm";
+import { processUserMessage } from "./shopify-mcp";
 
 class ApiError extends Error {
   constructor(public status: number, message: string) {
@@ -47,6 +48,28 @@ export function registerRoutes(app: Express): Server {
       } else {
         next(new ApiError(500, "Failed to fetch cases"));
       }
+    }
+  });
+
+  // Shop Assistant API
+  app.post("/api/shop-assistant", async (req, res, next) => {
+    try {
+      const { message, conversationHistory, cartId } = req.body;
+      
+      if (!message || typeof message !== 'string') {
+        throw new ApiError(400, "Message is required");
+      }
+
+      const result = await processUserMessage(
+        message,
+        conversationHistory || [],
+        cartId
+      );
+
+      res.json(result);
+    } catch (error) {
+      console.error("Shop assistant error:", error);
+      next(new ApiError(500, "Failed to process message"));
     }
   });
 
