@@ -33,7 +33,7 @@ export default function Home() {
             <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
               <h3 className="text-xl font-semibold text-white">Onicoplastia</h3>
               <p className="text-gray-300">
-                Tratamiento progresivo profesional que restaura la salud y apariencia de tus uñas afectadas por hongos o daños.
+                Tratamiento profesional diseñado para restaurar la salud de tus uñas afectadas por hongos. Primera cita $75, seguimientos $40-50.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center text-gray-300">
@@ -65,7 +65,7 @@ export default function Home() {
             <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
               <h3 className="text-xl font-semibold text-white">Manicura</h3>
               <p className="text-gray-300">
-                Transforma tus manos en obras de arte con nuestro servicio premium de belleza y cuidado personalizado.
+                Uñas impecables y brillantes con nivelación y limpieza profunda de cutículas. Desde $35-45 según longitud.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center text-gray-300">
@@ -93,7 +93,7 @@ export default function Home() {
             <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
               <h3 className="text-xl font-semibold text-white">Belleza para Pies</h3>
               <p className="text-gray-300">
-                Dale a tus pies el mimo que merecen con nuestro tratamiento integral de belleza y bienestar.
+                Cuidado rápido con limpieza de cutículas y esmaltado en gel para un look perfecto. Desde $25.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center text-gray-300">
@@ -130,7 +130,7 @@ export default function Home() {
             Lo Que Dicen Nuestras Bellezas
           </h2>
           <p className="mt-4 text-center text-lg text-gray-300">
-            ¡Calificación Perfecta 5.0/5 con 29 Reseñas Verificadas en Booksy!
+            ¡Calificación Perfecta 5.0/5 con 37 Reseñas Verificadas en Booksy!
           </p>
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             <TestimonialCard
