@@ -17,33 +17,34 @@ export default function ShopBanner() {
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+      <div className="container mx-auto px-4 py-2 sm:py-3">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
             <div className="relative">
-              <ShoppingBag className="h-6 w-6" />
-              <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-300 animate-pulse" />
+              <ShoppingBag className="h-5 w-5" />
+              <Sparkles className="absolute -top-1 -right-1 h-2 w-2 text-yellow-300 animate-pulse" />
             </div>
-            <div className="text-center sm:text-left">
-              <h3 className="font-bold text-lg">¡Nueva Tienda Online!</h3>
-              <p className="text-sm opacity-90">
-                Productos exclusivos de nail art y cuidado profesional
+            <div>
+              <h3 className="font-bold text-sm sm:text-base">Productos Que Uso en Mi Salón</h3>
+              <p className="text-xs opacity-90 hidden sm:block">
+                Ahora disponibles para ti
               </p>
             </div>
           </div>
           
           <Button
             asChild
-            className="bg-white text-purple-600 hover:bg-gray-100 font-semibold group"
+            size="sm"
+            className="bg-white text-purple-600 hover:bg-gray-100 font-semibold group text-xs sm:text-sm"
           >
             <a
               href="https://shop.neychasoto.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2"
+              className="flex items-center gap-1 sm:gap-2"
             >
-              Visitar Tienda
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              Ver Tienda
+              <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </Button>
         </div>

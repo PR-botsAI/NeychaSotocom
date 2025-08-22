@@ -137,31 +137,57 @@ export default function Navbar() {
 
             <div className="mt-8 px-2">
               <div className="space-y-4">
-                {navigation.slice(0, -1).map((item) => (
-                  <div key={item.name} className="w-full">
-                    <Link 
-                      href={item.href}
-                      className="flex w-full px-4 py-3 text-base text-white hover:bg-white/10 rounded-md transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  </div>
-                ))}
-                {/* Special styling for Reservar Cita */}
-                <div className="w-full pt-4">
-                  <Button
-                    variant="default"
-                    className="w-full justify-center text-base font-medium bg-white text-black hover:bg-white/90 hover:scale-105 transition-all duration-300 py-6 flex items-center gap-2"
-                    onClick={() => {
-                      handleExternalClick(navigation[3].href);
-                      setIsOpen(false);
-                    }}
-                  >
-                    <Calendar className="w-5 h-5" />
-                    {navigation[3].name}
-                  </Button>
-                </div>
+                {navigation.map((item, index) => {
+                  if (item.external && item.highlight) {
+                    // TIENDA button - special styling
+                    return (
+                      <div key={item.name} className="w-full">
+                        <Button
+                          variant="default"
+                          className="w-full justify-center text-base font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 hover:scale-105 transition-all duration-300 py-6 flex items-center gap-2 relative"
+                          onClick={() => {
+                            handleExternalClick(item.href);
+                            setIsOpen(false);
+                          }}
+                        >
+                          <ShoppingBag className="w-5 h-5" />
+                          {item.name}
+                          <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-300 animate-pulse" />
+                        </Button>
+                      </div>
+                    );
+                  } else if (item.external && !item.highlight) {
+                    // RESERVAR CITA button - different styling
+                    return (
+                      <div key={item.name} className="w-full pt-4">
+                        <Button
+                          variant="default"
+                          className="w-full justify-center text-base font-medium bg-white text-black hover:bg-white/90 hover:scale-105 transition-all duration-300 py-6 flex items-center gap-2"
+                          onClick={() => {
+                            handleExternalClick(item.href);
+                            setIsOpen(false);
+                          }}
+                        >
+                          <Calendar className="w-5 h-5" />
+                          {item.name}
+                        </Button>
+                      </div>
+                    );
+                  } else {
+                    // Regular internal links
+                    return (
+                      <div key={item.name} className="w-full">
+                        <Link 
+                          href={item.href}
+                          className="flex w-full px-4 py-3 text-base text-white hover:bg-white/10 rounded-md transition-colors"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      </div>
+                    );
+                  }
+                })}
               </div>
             </div>
           </SheetContent>
