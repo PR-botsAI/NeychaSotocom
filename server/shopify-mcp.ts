@@ -126,25 +126,27 @@ export async function processUserMessage(
   cartId: string | null
 ) {
   try {
-    const systemPrompt = `You are Neycha Soto's nail care assistant. You help customers with:
-    1. Onicoplastia treatment for nail fungus problems
-    2. General nail care services and advice
-    3. Booking appointments 
-    4. Product recommendations from the shop
-    
-    Respond in JSON format:
-    {
-      "intent": "nail_care_advice" | "search_products" | "booking_help" | "general_chat",
-      "searchQuery": "product search terms if needed",
-      "response": "helpful response in Spanish"
-    }
-    
-    For nail problems like "hongos" or "cutícula":
-    - Recommend onicoplastia treatment
-    - Suggest booking evaluation
-    - Mention professional services
-    
-    For products: Try searching the shop catalog`;
+    const systemPrompt = `GOAL: Convert every question into a sale with Neycha Soto's positive vibe! 
+
+You are Neycha's sales assistant. Your mission:
+1. Always be positive and helpful 😊
+2. If they ask about onicoplastia products → redirect to SERVICES (not products)
+3. For other products → search shop and show real products
+4. If unsure → give shop link and encourage browsing
+5. Match their language (Spanish/English)
+
+Respond in JSON:
+{
+  "intent": "onicoplastia_service" | "search_products" | "booking_help" | "general_sales",
+  "searchQuery": "product search terms if searching products",
+  "response": "sales-focused response in user's language"
+}
+
+KEY RULES:
+- "onicoplastia" questions = recommend SERVICE booking, not products
+- Product questions = search shop catalog  
+- Always include shop link when appropriate
+- Be enthusiastic and sales-focused 💅✨`;
 
     const completion = await openai.chat.completions.create({
       model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
@@ -162,26 +164,32 @@ export async function processUserMessage(
     let products = null;
     let responseMessage = aiResponse.response;
 
-    // Handle nail care advice and booking
-    if (aiResponse.intent === "nail_care_advice" || message.toLowerCase().includes("hongos") || message.toLowerCase().includes("hongo")) {
-      responseMessage = `Para problemas de hongos en las uñas, te recomiendo nuestro tratamiento de **Onicoplastia**:
+    // Handle onicoplastia service questions
+    if (aiResponse.intent === "onicoplastia_service" || 
+        message.toLowerCase().includes("onicoplastia") ||
+        message.toLowerCase().includes("hongos") || 
+        message.toLowerCase().includes("hongo")) {
+      responseMessage = `¡Hola mi amor! 😊 ¿Buscas productos para onicoplastia? 
 
-✨ **Beneficios del tratamiento:**
-• Elimina hongos de forma segura y eficaz
-• Mejora visible desde la primera sesión  
-• Procedimiento indoloro y no invasivo
+Tengo algo MEJOR para ti - nuestro **servicio profesional de Onicoplastia**:
+
+✨ **¿Por qué elegir nuestro servicio?**
+• Tratamiento profesional IBX® certificado
+• Resultados visibles desde la 1ra sesión
+• Procedimiento seguro e indoloro
 • Compatible con decoraciones
 
-📅 **¿Cómo empezar?**
-Necesitas una evaluación inicial para determinar el mejor plan de tratamiento.
-
-💰 **Precios:**
-• Primera cita (evaluación): $75
+💰 **Precios especiales:**
+• Primera cita + evaluación: $75
 • Seguimientos: $40-$50
 
-🔗 **Reserva tu cita:** https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo
+🛍️ **¿Prefieres productos?** Visita nuestra tienda: https://shop.neychasoto.com
 
-📱 **WhatsApp:** +1 939-429-0292 (envía fotos de las uñas afectadas para evaluación)`;
+📅 **¡Agenda ahora!** https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo
+
+📱 **WhatsApp:** +1 939-429-0292
+
+¿Te gustaría agendar tu evaluación? 💅✨`;
     }
     // Handle product searches  
     else if (aiResponse.intent === "search_products" && aiResponse.searchQuery) {
@@ -199,11 +207,20 @@ Necesitas una evaluación inicial para determinar el mejor plan de tratamiento.
           });
           responseMessage += "\n🛒 **Visita nuestra tienda completa:** https://shop.neychasoto.com";
         } else {
-          responseMessage = `No encontré productos específicos con "${aiResponse.searchQuery}", pero tenemos muchos productos profesionales en nuestra tienda.
+          responseMessage = `¡Hola mi amor! 😊 No encontré "${aiResponse.searchQuery}" específicamente, pero tenemos muchísimos productos profesionales increíbles.
 
-🛒 **Explora nuestro catálogo completo:** https://shop.neychasoto.com
+🛍️ **¡Explora TODO nuestro catálogo!** 
+👉 https://shop.neychasoto.com
 
-💬 **¿Buscas algo específico?** Puedes ser más detallado y te ayudo mejor.`;
+✨ **Tenemos:**
+• Esmaltes premium IBX® certificados
+• Herramientas profesionales de nail art  
+• Aceites nutritivos y tratamientos
+• Kits completos para profesionales
+
+💬 **¿Necesitas algo específico?** ¡Cuéntame más detalles y te ayudo a encontrarlo!
+
+📱 **WhatsApp:** +1 939-429-0292 para ayuda personalizada 💅`;
         }
       } catch (error) {
         console.error("Error searching products:", error);
