@@ -1,0 +1,160 @@
+Short answer
+
+You don’t call an MCP server “directly” from the browser.
+You put a tiny backend in front of it that:
+talks to OpenAI’s API, and
+when the model asks to use a tool, forwards that tool call to your MCP server and returns the result.
+Your website’s chatbot widget just calls your backend.
+Architecture
+
+Browser (chat widget) -> your backend /api/chat
+Backend:
+OpenAI API: handles chat and tool_calls
+MCP client: bridges tool calls to your MCP server (e.g., the NeychaSoto MCP server)
+MCP server: actually executes store-specific tools (search, get_cart, etc.)
+Why a backend?
+
+You must keep your OpenAI API key and any MCP credentials private.
+The OpenAI API does not directly “speak MCP”; you translate tool calls in your backend.
+Backend example (Node.js + Express)
+
+This example:
+Dynamically pulls available tools from your MCP server (so you don’t hardcode schemas)
+Exposes POST /api/chat
+Loops on tool calls from OpenAI and resolves them via MCP
+You’ll need an MCP client library for your server’s transport (SSE/WebSocket/stdio). The exact import names may vary depending on your MCP SDK; the shape below shows the pattern.
+Install
+npm i express openai
+
+plus your MCP client SDK, e.g.:
+npm i @modelcontextprotocol/sdk
+env
+OPENAI_API_KEY=sk-...
+MCP_SERVER_URL=https://your-mcp-server.example.com/sse
+MCP_AUTH_TOKEN=optional-if-your-mcp-needs-it
+
+server.js
+import express from 'express';
+import OpenAI from 'openai';
+
+// Pseudocode imports for an MCP client. Adjust per your MCP SDK.
+import { Client as MCPClient } from '@modelcontextprotocol/sdk/client';
+import { SSEClientTransport } from '@modelcontextprotocol/sdk/client/sse';
+
+const app = express();
+app.use(express.json());
+
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+// Connect to your MCP server (SSE example)
+const transport = new SSEClientTransport(new URL(process.env.MCP_SERVER_URL), {
+headers: process.env.MCP_AUTH_TOKEN ? { Authorization: Bearer ${process.env.MCP_AUTH_TOKEN} } : {}
+});
+const mcp = new MCPClient(transport);
+await mcp.connect();
+
+// Convert MCP tool list to OpenAI function-tools
+async function getOpenAIToolsFromMCP() {
+const tools = await mcp.listTools(); // Expecting { name, description, inputSchema }[]
+return tools.map(t => ({
+type: 'function',
+function: {
+name: t.name,                // e.g., "search_shop_catalog"
+description: t.description,  // optional but helpful
+parameters: t.inputSchema || { type: 'object', properties: {} }
+}
+}));
+}
+
+// Execute an MCP tool by name
+async function callMCPTool(name, args) {
+// Many SDKs provide a callTool API; adapt as needed:
+// return mcp.callTool(name, args);
+// If your SDK differs, implement the RPC to tools/call here.
+const result = await mcp.callTool(name, args);
+return result; // should be JSON-serializable
+}
+
+app.post('/api/chat', async (req, res) => {
+try {
+const userMessages = req.body?.messages || [];
+const openaiTools = await getOpenAIToolsFromMCP();
+
+const model = 'gpt-4o-mini'; // pick your model
+
+// Build message array; include your system prompt if you want
+let messages = [
+  { role: 'system', content: 'You are a helpful assistant for the NeychaSoto store. Use tools when useful.' },
+  ...userMessages
+];
+
+// First response
+let completion = await openai.chat.completions.create({
+  model,
+  messages,
+  tools: openaiTools,
+  tool_choice: 'auto'
+});
+
+// Tool loop
+while (true) {
+  const msg = completion.choices[0].message;
+
+  // If the model asked to use tools, execute them via MCP
+  if (msg.tool_calls && msg.tool_calls.length > 0) {
+    messages.push(msg);
+    for (const tc of msg.tool_calls) {
+      const toolName = tc.function.name;
+      const toolArgs = safeParse(tc.function.arguments);
+
+      const toolResult = await callMCPTool(toolName, toolArgs);
+
+      messages.push({
+        role: 'tool',
+        tool_call_id: tc.id,
+        content: JSON.stringify(toolResult)
+      });
+    }
+
+    // Ask the model to continue with tool results included
+    completion = await openai.chat.completions.create({
+      model,
+      messages,
+      tools: openaiTools
+    });
+  } else {
+    // No tool calls; return the assistant message
+    res.json({ reply: msg.content });
+    return;
+  }
+}
+} catch (err) {
+console.error(err);
+res.status(500).json({ error: 'Chat failed' });
+}
+});
+
+function safeParse(s) {
+try { return JSON.parse(s || '{}'); } catch { return {}; }
+}
+
+app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+
+Minimal frontend widget
+
+This creates a basic floating chat bubble that posts to /api/chat.
+Keep your API key on the server—this front-end only calls your backend.
+<script> (function() { const root = document.createElement('div'); root.style = 'position:fixed;bottom:20px;right:20px;width:360px;max-width:90vw;height:520px;max-height:80vh;background:#fff;border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.1);display:flex;flex-direction:column;font-family:system-ui, sans-serif;z-index:99999'; root.innerHTML = ` <div style="padding:10px 12px;border-bottom:1px solid #f1f5f9;font-weight:700">NeychaSoto Chat</div> <div id="ns-chat-log" style="flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:10px;background:#fafafa"></div> <form id="ns-chat-form" style="display:flex;gap:8px;padding:10px;border-top:1px solid #f1f5f9"> <input id="ns-chat-input" placeholder="Ask about products..." style="flex:1;padding:10px;border:1px solid #e5e7eb;border-radius:8px" /> <button style="padding:10px 14px;border:none;background:#111827;color:#fff;border-radius:8px">Send</button> </form> `; document.body.appendChild(root); const log = root.querySelector('#ns-chat-log'); const form = root.querySelector('#ns-chat-form'); const input = root.querySelector('#ns-chat-input'); const history = []; function addBubble(text, who) { const div = document.createElement('div'); div.style = `align-self:${who==='user'?'flex-end':'flex-start'};background:${who==='user'?'#111827':'#fff'};color:${who==='user'?'#fff':'#111'};padding:10px 12px;border-radius:10px;max-width:80%`; div.textContent = text; log.appendChild(div); log.scrollTop = log.scrollHeight; } form.addEventListener('submit', async (e) => { e.preventDefault(); const text = input.value.trim(); if (!text) return; input.value = ''; addBubble(text, 'user'); history.push({ role: 'user', content: text }); const resp = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: history }) }); const data = await resp.json(); addBubble(data.reply || 'No reply', 'assistant'); history.push({ role: 'assistant', content: data.reply || '' }); }); })(); </script>
+Notes and best practices
+
+Keep secrets server-side: OPENAI_API_KEY, MCP tokens/URL.
+Rate limit /api/chat to protect costs and abuse.
+Add auth if you want only your site to use the endpoint (e.g., a site secret or session).
+Caching: If your tool calls fetch catalog data, cache common queries briefly (e.g., 30–120s).
+Streaming: For a snappier feel, switch /api/chat to streaming (Server-Sent Events) and stream OpenAI deltas; same tool loop still applies.
+Tool schemas: The example dynamically pulls tool schemas from your MCP server. If your SDK doesn’t expose schemas, you can statically define OpenAI function-tools that match your MCP tool names and parameter JSON schemas.
+If you share:
+
+your MCP server’s transport (SSE, WebSocket, stdio) and URL,
+whether it needs auth,
+your preferred framework (Express, Next.js, etc.), I can tailor the exact code (including streaming and deployment tips).
