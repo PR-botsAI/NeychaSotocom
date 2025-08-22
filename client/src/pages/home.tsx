@@ -3,11 +3,34 @@ import NailConditionMatcher from "@/components/nail-condition-matcher";
 import TestimonialCard from "@/components/testimonial-card";
 import ShopPromotion from "@/components/shop-promotion";
 import { Button } from "@/components/ui/button";
-import { ShoppingBag, Calendar } from "lucide-react";
+import { ShoppingBag, Calendar, ArrowUp } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
   const handleBookingClick = () => {
     window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank");
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   };
 
   return (
@@ -200,6 +223,18 @@ export default function Home() {
           </div>
         </Button>
         
+        {/* Scroll to Top Button - Only show when scrolled */}
+        {showScrollTop && (
+          <Button
+            onClick={scrollToTop}
+            className="group relative bg-gradient-to-r from-zinc-600 to-zinc-700 hover:from-zinc-700 hover:to-zinc-800 text-white rounded-full px-4 py-3 shadow-2xl transition-all hover:scale-110 animate-in slide-in-from-bottom-5 duration-300"
+          >
+            <div className="flex items-center gap-2">
+              <ArrowUp className="h-5 w-5" />
+              <span className="text-sm font-medium">Arriba</span>
+            </div>
+          </Button>
+        )}
       </div>
     </div>
   );

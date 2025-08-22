@@ -11,7 +11,6 @@ import NotFound from "@/pages/not-found";
 import { ErrorBoundary } from "@/components/error-boundary";
 import ShopBanner from "@/components/shop-banner";
 import SEODebug from "@/components/seo-debug";
-import ScrollToTop from "@/components/scroll-to-top";
 import PerformanceOptimizer from "@/components/performance-optimizer";
 import { useEffect, lazy, Suspense } from "react";
 
@@ -47,7 +46,6 @@ function App() {
         <PerformanceOptimizer />
         <SEODebug />
         <Router />
-        <ScrollToTop />
         <Toaster />
       </QueryClientProvider>
     </ErrorBoundary>
