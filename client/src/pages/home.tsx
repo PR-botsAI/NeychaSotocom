@@ -3,7 +3,7 @@ import NailConditionMatcher from "@/components/nail-condition-matcher";
 import TestimonialCard from "@/components/testimonial-card";
 import ShopPromotion from "@/components/shop-promotion";
 import { Button } from "@/components/ui/button";
-import { ShoppingBag, Calendar, Phone } from "lucide-react";
+import { ShoppingBag, Calendar } from "lucide-react";
 
 export default function Home() {
   const handleBookingClick = () => {
@@ -200,16 +200,6 @@ export default function Home() {
           </div>
         </Button>
         
-        {/* WhatsApp Button */}
-        <Button
-          onClick={() => window.open('https://wa.me/19394290292', '_blank')}
-          className="group relative bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white rounded-full px-4 py-3 shadow-2xl transition-all hover:scale-110"
-        >
-          <div className="flex items-center gap-2">
-            <Phone className="h-5 w-5" />
-            <span className="text-sm font-medium">Chat</span>
-          </div>
-        </Button>
       </div>
     </div>
   );

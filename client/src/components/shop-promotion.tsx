@@ -1,27 +1,23 @@
-import { ShoppingBag, Package, Truck, Star, AlertCircle, ExternalLink } from "lucide-react";
+import { ShoppingBag, Package, Star, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { useShopData } from "@/hooks/use-shop-data";
-import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ShopPromotion() {
-  const { data: shopData, isLoading, error } = useShopData();
-  
-  const features = [
+  const benefits = [
     {
-      icon: Package,
-      title: "Productos Exclusivos",
-      description: "Marcas profesionales certificadas"
-    },
-    {
-      icon: Truck,
-      title: "Envío a Todo PR",
-      description: "Entrega rápida y segura"
+      icon: CheckCircle,
+      title: "Productos Aprobados por Neycha",
+      description: "Solo productos que uso personalmente en mi salón"
     },
     {
       icon: Star,
-      title: "Calidad Garantizada",
-      description: "100% productos originales"
+      title: "Calidad Profesional Garantizada",
+      description: "Marcas premium seleccionadas cuidadosamente"
+    },
+    {
+      icon: Package,
+      title: "Envío a Todo Puerto Rico",
+      description: "Lleva la calidad del salón a tu hogar"
     }
   ];
 
@@ -32,125 +28,97 @@ export default function ShopPromotion() {
           <div className="inline-flex items-center gap-2 mb-4">
             <ShoppingBag className="h-8 w-8 text-purple-500" />
             <span className="text-sm font-semibold text-purple-400 uppercase tracking-wider">
-              Nueva Tienda Online
+              Tienda Online Oficial
             </span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Lleva el Salón a Tu Casa
+            Productos Profesionales Para Tu Hogar
           </h2>
           <p className="text-gray-300 max-w-2xl mx-auto">
-            Descubre nuestra colección exclusiva de productos profesionales para el cuidado
-            y embellecimiento de tus uñas. Calidad de salón, ahora disponible online.
+            Lleva a casa los mismos productos profesionales que uso en mi salón. 
+            Cada producto ha sido personalmente seleccionado y probado para garantizar resultados excepcionales.
           </p>
         </div>
 
-        {/* Features */}
+        {/* Benefits Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {features.map((feature) => (
-            <Card key={feature.title} className="bg-zinc-900/50 border-zinc-800">
+          {benefits.map((benefit) => (
+            <Card key={benefit.title} className="bg-zinc-900/50 border-zinc-800">
               <CardContent className="p-6 text-center">
-                <feature.icon className="h-10 w-10 text-purple-500 mx-auto mb-3" />
-                <h3 className="font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-400 text-sm">{feature.description}</p>
+                <benefit.icon className="h-10 w-10 text-purple-500 mx-auto mb-3" />
+                <h3 className="font-semibold text-white mb-2">{benefit.title}</h3>
+                <p className="text-gray-400 text-sm">{benefit.description}</p>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Products Section */}
-        <div className="mb-12">
-          <h3 className="text-2xl font-semibold text-white mb-6 text-center">
-            Visita Nuestra Tienda Online
-          </h3>
-          
-          {isLoading ? (
-            // Loading state
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3].map((i) => (
-                <Card key={i} className="bg-zinc-900/50 border-zinc-800">
-                  <Skeleton className="aspect-square bg-zinc-800" />
-                  <CardContent className="p-6 space-y-3">
-                    <Skeleton className="h-6 w-3/4 bg-zinc-800" />
-                    <Skeleton className="h-4 w-full bg-zinc-800" />
-                    <Skeleton className="h-8 w-1/3 bg-zinc-800" />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : (
-            // Show simplified shop promotion
-            <div className="max-w-2xl mx-auto">
-              <Card className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border-purple-600">
-                <CardContent className="p-8 text-center">
-                  <div className="mb-6">
-                    <ShoppingBag className="h-16 w-16 text-purple-400 mx-auto mb-4" />
-                    <h4 className="text-xl font-semibold text-white mb-3">
-                      Productos Profesionales de Nail Art
-                    </h4>
-                    <p className="text-gray-300 mb-4">
-                      Encuentra todo lo que necesitas para el cuidado profesional de tus uñas:
-                    </p>
-                    <ul className="text-left text-gray-300 space-y-2 max-w-md mx-auto mb-6">
-                      <li className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-purple-400 flex-shrink-0" />
-                        <span>Kits profesionales de onicoplastia</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-purple-400 flex-shrink-0" />
-                        <span>Esmaltes premium IBX® certificados</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-purple-400 flex-shrink-0" />
-                        <span>Aceites nutritivos y tratamientos</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <Star className="h-4 w-4 text-purple-400 flex-shrink-0" />
-                        <span>Herramientas y accesorios profesionales</span>
-                      </li>
-                    </ul>
+        {/* Main CTA Card */}
+        <div className="max-w-3xl mx-auto mb-12">
+          <Card className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border-purple-600">
+            <CardContent className="p-8 text-center">
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Productos Recomendados por Neycha Soto
+                </h3>
+                <p className="text-gray-300 mb-6">
+                  Como profesional certificada en IBX® y especialista en onicoplastia, 
+                  solo recomiendo productos que cumplen con los más altos estándares de calidad.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-2xl mx-auto mb-8">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-white font-medium">Limas Nano Glass Premium</p>
+                      <p className="text-gray-400 text-sm">Para un acabado perfecto sin dañar</p>
+                    </div>
                   </div>
-                  
-                  <Button
-                    asChild
-                    size="lg"
-                    className="bg-white text-purple-600 hover:bg-gray-100 font-semibold"
-                  >
-                    <a
-                      href="https://shop.neychasoto.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2"
-                    >
-                      <ExternalLink className="h-5 w-5" />
-                      Explorar Productos en la Tienda
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
-          )}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center">
-          <Button
-            asChild
-            size="lg"
-            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold px-8 py-4 text-lg"
-          >
-            <a
-              href="https://shop.neychasoto.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2"
-            >
-              <ShoppingBag className="h-5 w-5" />
-              Visitar Tienda Completa
-            </a>
-          </Button>
-          <p className="mt-4 text-sm text-gray-400">
-            Ofertas especiales para clientes del salón
-          </p>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-white font-medium">Aceites de Cutícula Dadi' Oil</p>
+                      <p className="text-gray-400 text-sm">Hidratación profesional diaria</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-white font-medium">Guantes UV Protectores</p>
+                      <p className="text-gray-400 text-sm">Protección durante el secado</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="text-white font-medium">Aceites LEpro Profesionales</p>
+                      <p className="text-gray-400 text-sm">Tratamiento nutritivo especializado</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <Button
+                asChild
+                size="lg"
+                className="bg-white text-purple-600 hover:bg-gray-100 font-semibold px-8 py-4"
+              >
+                <a
+                  href="https://shop.neychasoto.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <ShoppingBag className="h-5 w-5" />
+                  Visitar Tienda Online
+                </a>
+              </Button>
+              
+              <p className="mt-4 text-sm text-purple-400">
+                Ofertas exclusivas para clientes del salón
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
