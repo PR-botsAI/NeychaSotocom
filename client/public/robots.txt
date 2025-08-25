@@ -19,7 +19,7 @@ Geo-Location: PR
 Language: es-PR
 
 # Sitemaps
-Sitemap: https://neychanails.com/sitemap.xml
+Sitemap: https://neychasoto.com/sitemap.xml
 
 # Optimization directives
 Crawl-delay: 1

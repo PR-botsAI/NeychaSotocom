@@ -67,7 +67,7 @@ export default function Footer() {
 
           {/* Copyright and Powered By */}
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-sm text-muted-foreground">
-            <span>© 2025 Neycha Nails</span>
+            <span>© 2025 Neycha Soto</span>
             <span>
               Powered by:{" "}
               <a
