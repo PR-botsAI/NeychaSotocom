@@ -72,10 +72,12 @@ app.use((req, res, next) => {
     });
   });
 
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  } else {
+  // Set up static serving for production or Vite for development
+  const isProduction = process.env.NODE_ENV === "production";
+  if (isProduction) {
     serveStatic(app);
+  } else {
+    await setupVite(app, server);
   }
 
   const PORT = 5000;

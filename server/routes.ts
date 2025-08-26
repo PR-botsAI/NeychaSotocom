@@ -12,6 +12,24 @@ class ApiError extends Error {
 }
 
 export function registerRoutes(app: Express): Server {
+  // Health check endpoint for deployment
+  app.get("/health", (_req, res) => {
+    res.status(200).json({ 
+      status: "ok", 
+      timestamp: new Date().toISOString(),
+      uptime: process.uptime()
+    });
+  });
+
+  // Root endpoint
+  app.get("/api/health", (_req, res) => {
+    res.status(200).json({ 
+      status: "ok", 
+      message: "API is running",
+      timestamp: new Date().toISOString()
+    });
+  });
+
   // Services
   app.get("/api/services", async (_req, res, next) => {
     try {
