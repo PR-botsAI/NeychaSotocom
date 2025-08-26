@@ -51,39 +51,39 @@ export default function SEODebug() {
 function getPageTitle(location: string): string {
   switch (location) {
     case '/':
-      return '🔥 TOP Nail Artist en Hatillo 2025 | Neycha Soto - 5⭐ Reviews';
+      return 'Neycha Soto | Especialista en Nail Art y Onicoplastia | Hatillo, Puerto Rico';
     case '/onicoplastia':
-      return '✨ Onicoplastia $75 Hatillo PR | Neycha Soto - Elimina Hongos 2025';
+      return 'Onicoplastia Profesional | Neycha Soto | Especialista Certificada IBX® Hatillo PR';
     case '/contact':
-      return '📞 Reserva AHORA | Neycha Soto Hatillo PR - Citas Disponibles 2025';
+      return 'Contacto y Citas | Neycha Soto | Nail Specialist Hatillo Puerto Rico';
     default:
-      return 'Neycha Soto | #1 Nail Specialist Hatillo Puerto Rico 2025';
+      return 'Neycha Soto | Professional Nail Artist | Hatillo, Puerto Rico';
   }
 }
 
 function getPageDescription(location: string): string {
   switch (location) {
     case '/':
-      return '💎 ¡TRANSFORM tus uñas HOY! Neycha Soto, #1 en Hatillo PR. ✅ 20+ años experiencia ✅ IBX® certificada ✅ 37 reviews 5⭐ ✅ Productos ÚNICOS. ¡Reserva YA!';
+      return 'Especialista profesional en nail art y onicoplastia en Hatillo, Puerto Rico. Neycha Soto ofrece servicios de alta calidad con más de 20 años de experiencia. Certificada IBX® con productos premium. Agenda tu consulta.';
     case '/onicoplastia':
-      return '🚀 ELIMINA hongos en uñas ¡SIN DOLOR! Onicoplastia profesional $75 en Hatillo. ✅ Resultados desde 1ª sesión ✅ IBX® certificado. ¡Agenda HOY mismo!';
+      return 'Tratamiento profesional de onicoplastia en Hatillo, Puerto Rico. Neycha Soto, especialista certificada IBX®, ofrece soluciones efectivas para hongos en uñas. Procedimiento seguro con resultados comprobados.';
     case '/contact':
-      return '📱 RESERVA tu cita con Neycha Soto ¡En 30 segundos! 📍 166 Av Dr Susoni, Hatillo ⏰ Mar-Sáb ✅ WhatsApp directo ✅ Solo texto. ¡Contáctanos AHORA!';
+      return 'Agenda tu cita con Neycha Soto en Hatillo, Puerto Rico. Consultas personalizadas disponibles en 166 Avenida Dr Susoni. Contacto directo por WhatsApp. Horarios flexibles de martes a sábado.';
     default:
-      return '⚡ Descubre la MEJOR nail artist de Hatillo PR. Neycha Soto transforma tus uñas con técnicas avanzadas y productos premium. ¡Experiencia única garantizada!';
+      return 'Neycha Soto, especialista profesional en cuidado de uñas en Hatillo, Puerto Rico. Servicios de onicoplastia, manicura y nail art con productos de la más alta calidad.';
   }
 }
 
 function getPageKeywords(location: string): string {
-  const baseKeywords = 'Neycha Soto, neychasoto.com, nail salon Hatillo 2025, mejor salón uñas Hatillo, manicura profesional Puerto Rico, pedicura Hatillo PR, nail art premium, uñas gel acrílicas, IBX certificada, productos profesionales';
+  const baseKeywords = 'Neycha Soto, neychasoto.com, nail specialist Hatillo, especialista uñas Puerto Rico, onicoplastia profesional, manicura Hatillo PR, nail art Puerto Rico, IBX certificada, salon profesional Hatillo';
   
   switch (location) {
     case '/':
-      return `${baseKeywords}, top nail artist Puerto Rico, best nail salon Hatillo PR 2025, manicure pedicure expert, nail specialist reviews 5 stars, beauty salon Hatillo, professional nail care PR`;
+      return `${baseKeywords}, professional nail care, beauty salon Hatillo Puerto Rico, nail artist PR, manicure pedicure specialist, premium nail services`;
     case '/onicoplastia':
-      return `onicoplastia Hatillo 2025, tratamiento hongos uñas Puerto Rico, nail fungus treatment PR, onicoplastia profesional $75, eliminar hongos uñas Hatillo, restauración uñas dañadas, onicomicosis tratamiento, nail restoration Puerto Rico`;
+      return `onicoplastia Hatillo Puerto Rico, nail fungus treatment PR, IBX certified specialist, professional nail restoration, hongos uñas tratamiento, nail health Puerto Rico, certified nail therapist`;
     case '/contact':
-      return `citas nail salon Hatillo, reservar manicura Puerto Rico, contacto Neycha Soto, WhatsApp nail artist PR, 166 Avenida Dr Susoni Hatillo, appointment booking nail salon, nail salon near me Puerto Rico`;
+      return `nail salon appointment Hatillo, contacto Neycha Soto, 166 Avenida Dr Susoni, nail consultation Puerto Rico, professional nail services booking, Hatillo beauty salon`;
     default:
       return baseKeywords;
   }
@@ -95,12 +95,12 @@ function updateOpenGraphTags(title: string, description: string) {
     { property: 'og:description', content: description },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: window.location.href },
-    { property: 'og:image', content: 'https://neychasoto.com/assets/og-image-2025.jpg' },
+    { property: 'og:image', content: 'https://neychasoto.com/assets/og-image-professional.jpg' },
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
     { property: 'og:locale', content: 'es_PR' },
     { property: 'og:locale:alternate', content: 'en_US' },
-    { property: 'og:site_name', content: 'Neycha Soto - neychasoto.com' },
+    { property: 'og:site_name', content: 'Neycha Soto - Professional Nail Specialist' },
   ];
 
   ogTags.forEach(tag => {
@@ -119,7 +119,7 @@ function updateTwitterCardTags(title: string, description: string) {
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
-    { name: 'twitter:image', content: 'https://neychasoto.com/assets/twitter-card-2025.jpg' },
+    { name: 'twitter:image', content: 'https://neychasoto.com/assets/twitter-card-professional.jpg' },
     { name: 'twitter:image:alt', content: 'Neycha Soto - Professional Nail Services in Hatillo, Puerto Rico' },
     { name: 'twitter:site', content: '@neychanails' },
     { name: 'twitter:creator', content: '@neychanails' },
@@ -149,8 +149,8 @@ function addStructuredData(location: string) {
     structuredData = {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      name: 'Onicoplastia - Tratamiento Profesional de Hongos en Uñas',
-      description: 'Tratamiento especializado de onicoplastia para eliminar hongos en uñas. Procedimiento indoloro y no invasivo con resultados visibles desde la primera sesión.',
+      name: 'Onicoplastia Profesional',
+      description: 'Tratamiento especializado de onicoplastia para cuidado y restauración de uñas. Servicio profesional certificado IBX® con resultados comprobados.',
       provider: {
         '@type': 'LocalBusiness',
         name: 'Neycha Soto',
@@ -170,39 +170,6 @@ function addStructuredData(location: string) {
           '@type': 'City',
           name: 'Hatillo',
           addressRegion: 'PR'
-        },
-        {
-          '@type': 'City', 
-          name: 'Arecibo',
-          addressRegion: 'PR'
-        },
-        {
-          '@type': 'City',
-          name: 'Utuado', 
-          addressRegion: 'PR'
-        }
-      ],
-      offers: [
-        {
-          '@type': 'Offer',
-          name: 'Primera Cita - Evaluación Completa',
-          price: '75.00',
-          priceCurrency: 'USD',
-          availability: 'https://schema.org/InStock'
-        },
-        {
-          '@type': 'Offer',
-          name: 'Seguimiento 2 Semanas',
-          price: '40.00',
-          priceCurrency: 'USD',
-          availability: 'https://schema.org/InStock'
-        },
-        {
-          '@type': 'Offer',
-          name: 'Seguimiento Mensual',
-          price: '50.00',
-          priceCurrency: 'USD',
-          availability: 'https://schema.org/InStock'
         }
       ]
     };
@@ -210,18 +177,13 @@ function addStructuredData(location: string) {
     structuredData = {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'Neycha Soto - neychasoto.com',
+      name: 'Neycha Soto - Professional Nail Specialist',
       url: 'https://neychasoto.com',
-      description: 'Top nail artist en Hatillo, Puerto Rico. Especialista en onicoplastia, manicura y pedicura profesional.',
+      description: 'Especialista profesional en cuidado de uñas en Hatillo, Puerto Rico. Servicios de onicoplastia y nail art con productos premium.',
       potentialAction: {
         '@type': 'SearchAction',
         target: 'https://neychasoto.com/?s={search_term_string}',
         'query-input': 'required name=search_term_string'
-      },
-      about: {
-        '@type': 'Thing',
-        name: 'Nail Care Services',
-        description: 'Professional nail care, onicoplastia, and beauty services in Puerto Rico'
       }
     };
   }
@@ -243,13 +205,13 @@ function addLocalBusinessSchema() {
     '@id': 'https://neychasoto.com/#business',
     name: 'Neycha Soto',
     image: [
-      'https://neychasoto.com/assets/salon-image-1.jpg',
-      'https://neychasoto.com/assets/salon-image-2.jpg', 
-      'https://neychasoto.com/assets/nail-work-gallery.jpg'
+      'https://neychasoto.com/assets/salon-professional-1.jpg',
+      'https://neychasoto.com/assets/nail-work-portfolio.jpg'
     ],
     logo: 'https://neychasoto.com/assets/logo-neychasoto.png',
     url: 'https://neychasoto.com',
     telephone: '+1-939-429-0292',
+    description: 'Especialista profesional en cuidado de uñas con más de 20 años de experiencia. Servicios de onicoplastia, manicura y nail art con certificación IBX® en Hatillo, Puerto Rico.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '166 Avenida Dr Susoni, Unit 166',
@@ -272,28 +234,17 @@ function addLocalBusinessSchema() {
       }
     ],
     priceRange: '$$',
-    servesCuisine: 'Beauty Services',
-    paymentAccepted: ['Cash', 'Credit Card', 'Debit Card', 'Zelle', 'PayPal'],
+    paymentAccepted: ['Cash', 'Credit Card', 'Debit Card'],
     currenciesAccepted: 'USD',
     amenityFeature: [
       {
         '@type': 'LocationFeatureSpecification',
-        name: 'Wheelchair accessible',
+        name: 'Professional consultation',
         value: true
       },
       {
         '@type': 'LocationFeatureSpecification',
-        name: 'Free parking',
-        value: true
-      },
-      {
-        '@type': 'LocationFeatureSpecification',
-        name: 'Air conditioning',
-        value: true
-      },
-      {
-        '@type': 'LocationFeatureSpecification',
-        name: 'Wi-Fi',
+        name: 'Premium products',
         value: true
       }
     ],
@@ -309,53 +260,7 @@ function addLocalBusinessSchema() {
       reviewCount: '37',
       bestRating: '5',
       worstRating: '1'
-    },
-    review: [
-      {
-        '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5'
-        },
-        author: {
-          '@type': 'Person',
-          name: 'Cliente Verificado'
-        },
-        reviewBody: 'Excelente servicio profesional. Neycha es una artista con las uñas.'
-      }
-    ],
-    makesOffer: [
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Onicoplastia Profesional',
-          description: 'Tratamiento especializado para hongos y restauración de uñas'
-        },
-        price: '75.00',
-        priceCurrency: 'USD'
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Manicura en Gel',
-          description: 'Manicura profesional con productos de alta calidad'
-        },
-        priceRange: '$35-45',
-        priceCurrency: 'USD'
-      },
-      {
-        '@type': 'Offer',
-        itemOffered: {
-          '@type': 'Service',
-          name: 'Esmaltado en Pies',
-          description: 'Servicio completo de pedicura con esmaltado profesional'
-        },
-        price: '25.00',
-        priceCurrency: 'USD'
-      }
-    ]
+    }
   };
 
   const script = document.createElement('script');
