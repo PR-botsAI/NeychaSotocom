@@ -51,39 +51,39 @@ export default function SEODebug() {
 function getPageTitle(location: string): string {
   switch (location) {
     case '/':
-      return 'Neycha Soto | Finally End Nail Fungus Problems Forever | Onicoplastia Hatillo PR';
+      return 'Neycha Soto | Termina con los Problemas de Hongos en las Uñas Para Siempre | Onicoplastia Hatillo PR';
     case '/onicoplastia':
-      return 'Stop Hiding Your Nails | Professional Onicoplastia Treatment | Neycha Soto Hatillo';
+      return 'Deja de Esconder Tus Uñas | Tratamiento Profesional de Onicoplastia | Neycha Soto Hatillo';
     case '/contact':
-      return 'Book Your Onicoplastia Consultation | Neycha Soto | Transform Your Nails Today';
+      return 'Reserva Tu Consulta de Onicoplastia | Neycha Soto | Transforma Tus Uñas Hoy';
     default:
-      return 'Neycha Soto | Onicoplastia Specialist | Transform Problem Nails | Hatillo PR';
+      return 'Neycha Soto | Especialista en Onicoplastia | Transforma Uñas Problemáticas | Hatillo PR';
   }
 }
 
 function getPageDescription(location: string): string {
   switch (location) {
     case '/':
-      return 'Tired of hiding your nails? Neycha Soto has helped hundreds transform their nail problems with professional onicoplastia. 20+ years experience, IBX® certified. See results in your first session. Book your consultation in Hatillo, PR.';
+      return '¿Cansada de esconder tus uñas? Neycha Soto ha ayudado a cientos a transformar sus problemas de uñas con onicoplastia profesional. 20+ años de experiencia, certificada IBX®. Ve resultados en tu primera sesión. Reserva tu consulta en Hatillo, PR.';
     case '/onicoplastia':
-      return 'Stop letting nail problems control your life. Professional onicoplastia treatment that actually works. Neycha Soto, IBX® certified specialist in Hatillo, PR. Proven results, safe procedure, transform your nails permanently.';
+      return 'Deja que los problemas de uñas controlen tu vida. Tratamiento profesional de onicoplastia que realmente funciona. Neycha Soto, especialista certificada IBX® en Hatillo, PR. Resultados comprobados, procedimiento seguro, transforma tus uñas permanentemente.';
     case '/contact':
-      return 'Ready to fix your nail problems for good? Book your onicoplastia consultation with Neycha Soto in Hatillo, Puerto Rico. 20+ years transforming problem nails. Limited appointments available - secure yours today.';
+      return '¿Lista para arreglar tus problemas de uñas de una vez por todas? Reserva tu consulta de onicoplastia con Neycha Soto en Hatillo, Puerto Rico. 20+ años transformando uñas problemáticas. Citas limitadas disponibles - asegura la tuya hoy.';
     default:
-      return 'Transform your problem nails with proven onicoplastia treatment. Neycha Soto specializes in permanent nail solutions in Hatillo, Puerto Rico. Stop hiding - start living confidently.';
+      return 'Transforma tus uñas problemáticas con tratamiento comprobado de onicoplastia. Neycha Soto se especializa en soluciones permanentes para uñas en Hatillo, Puerto Rico. Deja de esconderte - comienza a vivir con confianza.';
   }
 }
 
 function getPageKeywords(location: string): string {
-  const baseKeywords = 'Neycha Soto, neychasoto.com, onicoplastia Hatillo Puerto Rico, nail fungus treatment PR, nail problems solution, professional nail restoration, IBX certified specialist, nail transformation Hatillo';
+  const baseKeywords = 'Neycha Soto, neychasoto.com, onicoplastia Hatillo Puerto Rico, tratamiento hongos uñas PR, solución problemas uñas, restauración profesional uñas, especialista certificada IBX, transformación uñas Hatillo';
   
   switch (location) {
     case '/':
-      return `${baseKeywords}, nail fungus specialist Puerto Rico, permanent nail solution, nail confidence, transform problem nails, professional nail care Hatillo, nail health expert PR`;
+      return `${baseKeywords}, especialista hongos uñas Puerto Rico, solución permanente uñas, confianza uñas, transformar uñas problemáticas, cuidado profesional uñas Hatillo, experta salud uñas PR`;
     case '/onicoplastia':
-      return `onicoplastia treatment Puerto Rico, nail fungus removal Hatillo, nail restoration specialist, professional nail therapy PR, nail health transformation, certified nail treatment, nail problem solution Puerto Rico`;
+      return `tratamiento onicoplastia Puerto Rico, eliminación hongos uñas Hatillo, especialista restauración uñas, terapia profesional uñas PR, transformación salud uñas, tratamiento certificado uñas, solución problemas uñas Puerto Rico`;
     case '/contact':
-      return `onicoplastia consultation Hatillo, book nail treatment PR, nail specialist appointment, Neycha Soto contact, professional nail consultation Puerto Rico, nail transformation booking`;
+      return `consulta onicoplastia Hatillo, reservar tratamiento uñas PR, cita especialista uñas, contacto Neycha Soto, consulta profesional uñas Puerto Rico, reserva transformación uñas`;
     default:
       return baseKeywords;
   }
@@ -100,7 +100,7 @@ function updateOpenGraphTags(title: string, description: string) {
     { property: 'og:image:height', content: '630' },
     { property: 'og:locale', content: 'es_PR' },
     { property: 'og:locale:alternate', content: 'en_US' },
-    { property: 'og:site_name', content: 'Neycha Soto - Onicoplastia Specialist' },
+    { property: 'og:site_name', content: 'Neycha Soto - Especialista en Onicoplastia' },
   ];
 
   ogTags.forEach(tag => {
@@ -120,7 +120,7 @@ function updateTwitterCardTags(title: string, description: string) {
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
     { name: 'twitter:image', content: 'https://neychasoto.com/assets/nail-transformation-twitter.jpg' },
-    { name: 'twitter:image:alt', content: 'Professional nail transformation results by Neycha Soto' },
+    { name: 'twitter:image:alt', content: 'Resultados profesionales de transformación de uñas por Neycha Soto' },
     { name: 'twitter:site', content: '@neychanails' },
     { name: 'twitter:creator', content: '@neychanails' },
   ];
@@ -149,17 +149,17 @@ function addStructuredData(location: string) {
     structuredData = {
       '@context': 'https://schema.org',
       '@type': 'MedicalProcedure',
-      name: 'Professional Onicoplastia Treatment',
-      description: 'Specialized nail restoration treatment for fungal infections and damaged nails. Safe, effective procedure performed by IBX® certified specialist.',
-      procedureType: 'Therapeutic nail restoration',
-      bodyLocation: 'Nails',
-      preparation: 'Consultation and nail assessment',
-      howPerformed: 'Professional application of specialized products and techniques',
-      followup: 'Follow-up appointments to monitor progress',
+      name: 'Tratamiento Profesional de Onicoplastia',
+      description: 'Tratamiento especializado de restauración de uñas para infecciones por hongos y uñas dañadas. Procedimiento seguro y efectivo realizado por especialista certificada IBX®.',
+      procedureType: 'Restauración terapéutica de uñas',
+      bodyLocation: 'Uñas',
+      preparation: 'Consulta y evaluación de uñas',
+      howPerformed: 'Aplicación profesional de productos y técnicas especializadas',
+      followup: 'Citas de seguimiento para monitorear el progreso',
       provider: {
         '@type': 'Person',
         name: 'Neycha Soto',
-        jobTitle: 'Certified Nail Specialist',
+        jobTitle: 'Especialista Certificada en Uñas',
         worksFor: {
           '@type': 'LocalBusiness',
           name: 'Neycha Soto Nail Specialist',
@@ -171,9 +171,9 @@ function addStructuredData(location: string) {
     structuredData = {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'Neycha Soto - Onicoplastia Specialist',
+      name: 'Neycha Soto - Especialista en Onicoplastia',
       url: 'https://neychasoto.com',
-      description: 'Professional onicoplastia treatment for nail problems. Transform your nails with proven techniques and 20+ years of expertise.',
+      description: 'Tratamiento profesional de onicoplastia para problemas de uñas. Transforma tus uñas con técnicas comprobadas y más de 20 años de experiencia.',
       potentialAction: {
         '@type': 'SearchAction',
         target: 'https://neychasoto.com/?s={search_term_string}',
@@ -198,7 +198,7 @@ function addLocalBusinessSchema() {
     '@type': 'NailSalon',
     '@id': 'https://neychasoto.com/#business',
     name: 'Neycha Soto',
-    alternateName: 'Neycha Soto Onicoplastia Specialist',
+    alternateName: 'Neycha Soto Especialista en Onicoplastia',
     image: [
       'https://neychasoto.com/assets/nail-transformation-gallery.jpg',
       'https://neychasoto.com/assets/professional-consultation.jpg'
@@ -206,7 +206,7 @@ function addLocalBusinessSchema() {
     logo: 'https://neychasoto.com/assets/logo-neychasoto.png',
     url: 'https://neychasoto.com',
     telephone: '+1-939-429-0292',
-    description: 'Professional onicoplastia specialist helping people transform nail problems permanently. 20+ years experience, IBX® certified, proven results in Hatillo, Puerto Rico.',
+    description: 'Especialista profesional en onicoplastia ayudando a personas a transformar problemas de uñas permanentemente. 20+ años de experiencia, certificada IBX®, resultados comprobados en Hatillo, Puerto Rico.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '166 Avenida Dr Susoni, Unit 166',
@@ -233,22 +233,22 @@ function addLocalBusinessSchema() {
     currenciesAccepted: 'USD',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Nail Transformation Services',
+      name: 'Servicios de Transformación de Uñas',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Onicoplastia Treatment',
-            description: 'Professional nail restoration and fungus treatment that transforms problem nails permanently'
+            name: 'Tratamiento de Onicoplastia',
+            description: 'Restauración profesional de uñas y tratamiento de hongos que transforma uñas problemáticas permanentemente'
           }
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Nail Health Consultation',
-            description: 'Comprehensive assessment and personalized treatment plan for your nail concerns'
+            name: 'Consulta de Salud de Uñas',
+            description: 'Evaluación integral y plan de tratamiento personalizado para tus problemas de uñas'
           }
         }
       ]
