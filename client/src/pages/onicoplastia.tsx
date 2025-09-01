@@ -525,21 +525,35 @@ export default function Onicoplastia() {
               </a>
             </Button>
             
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-zinc-700 text-white hover:bg-zinc-900 font-light text-lg px-12 py-6" 
-              asChild
-            >
-              <a 
-                href="https://wa.me/19394290292?text=Hola%20Neycha,%20me%20interesa%20el%20tratamiento%20de%20onicoplastia" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="mr-2 h-5 w-5" />
-                CONSULTA POR WHATSAPP
-              </a>
-            </Button>
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-zinc-700 text-white hover:bg-zinc-900 font-light text-lg px-12 py-6"
+                >
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  CONSULTA POR WHATSAPP
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="bg-zinc-900 border-zinc-800">
+                <DialogTitle>Mensaje Importante</DialogTitle>
+                <DialogDescription>
+                  Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.
+                </DialogDescription>
+                <div className="mt-6 flex justify-end">
+                  <Button asChild>
+                    <a 
+                      href="https://wa.me/19394290292?text=Hola%20Neycha,%20me%20interesa%20el%20tratamiento%20de%20onicoplastia" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      Continuar a WhatsApp
+                    </a>
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
           
           <div className="text-sm text-gray-500 space-y-2">
