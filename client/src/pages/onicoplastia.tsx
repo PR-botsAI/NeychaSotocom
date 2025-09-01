@@ -323,8 +323,8 @@ export default function Onicoplastia() {
               </CardHeader>
               <CardContent>
                 <div className="bg-green-50 p-4 rounded-lg mb-4">
-                  <p className="font-bold text-green-800 text-lg mb-2">Solo $75 Primera Sesión</p>
-                  <p className="text-sm text-green-700">Compara con los $300+ que has gastado en cremas que no funcionan</p>
+                  <p className="font-bold text-green-800 text-lg mb-2">Primera Evaluación $100</p>
+                  <p className="text-sm text-green-700">Seguimientos mensuales $60</p>
                 </div>
                 <p className="font-semibold mb-3">Todo esto incluido:</p>
                 <ul className="space-y-3">
@@ -449,12 +449,12 @@ export default function Onicoplastia() {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
-              <AccordionTrigger>"$75 me parece mucho para una primera cita"</AccordionTrigger>
+              <AccordionTrigger>"¿Cuál es la inversión del tratamiento?"</AccordionTrigger>
               <AccordionContent>
-                Entiendo tu preocupación. Pero piensa: ¿cuánto has gastado ya en cremas y tratamientos que no funcionaron? 
-                ¿Cuánto vale para ti volver a usar sandalias? ¿Ir a la playa sin vergüenza? Mis clientas me dicen que 
-                hubieran pagado 10 veces más por recuperar su confianza. Además, incluye GEL Polish de $25, 
-                sales con uñas perfectas HOY MISMO. Es una inversión en tu calidad de vida.
+                La primera evaluación es $100 e incluye todo el tratamiento completo de 90 minutos con GEL Polish incluido (valor $25). 
+                Los seguimientos mensuales son $60. Piensa: ¿cuánto has gastado ya en cremas que no funcionaron? 
+                ¿Cuánto vale para ti volver a usar sandalias? Mis clientas me dicen que hubieran pagado 10 veces más 
+                por recuperar su confianza. Sales con uñas perfectas HOY MISMO.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-5">
