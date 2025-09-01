@@ -99,36 +99,123 @@ export default function Onicoplastia() {
             Restauración profesional de uñas con tratamiento IBX®
           </p>
           
-          {/* Before/After Images - Visual Impact */}
+          {/* Interactive Gallery - Moved to top for immediate visual impact */}
           <div className="mb-16">
-            <p className="text-[#F2E6D8] font-light mb-8 text-lg">
+            <p className="text-[#F2E6D8] font-light mb-8 text-lg text-center">
               Una imagen vale más que mil palabras
             </p>
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div>
-                <p className="text-[#F2E6D8] font-light mb-4 text-center">Antes</p>
-                <div className="aspect-square rounded-lg overflow-hidden bg-zinc-900/30 border border-zinc-800">
-                  <img 
-                    src="/cases/Caso1_before.png" 
-                    alt="Antes del tratamiento" 
-                    className="w-full h-full object-contain"
-                  />
+            
+            <div className="relative max-w-2xl mx-auto">
+              <Carousel
+                setApi={setApi}
+                className="w-full"
+                opts={{
+                  loop: true,
+                  dragFree: true,
+                }}
+              >
+                <CarouselContent>
+                  {onicoplastiaCases.map((case_) => {
+                    const currentImage = getSelectedImage(case_.id);
+                    return (
+                      <CarouselItem key={case_.id}>
+                        <Card className="bg-zinc-900/50 border-zinc-800">
+                          <CardHeader className="pb-4">
+                            <CardTitle className="text-xl font-light text-[#F2E6D8]">{case_.title}</CardTitle>
+                            <CardDescription className="text-gray-400">{case_.description}</CardDescription>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="flex justify-center gap-2 mb-4">
+                              <Button
+                                variant={currentImage === "before" ? "default" : "outline"}
+                                onClick={() => handleImageClick(case_.id, "before")}
+                                size="sm"
+                                className={currentImage === "before" 
+                                  ? "bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]" 
+                                  : "border-zinc-700 text-gray-300 hover:bg-zinc-800"}
+                              >
+                                Antes
+                              </Button>
+                              <Button
+                                variant={currentImage === "after" ? "default" : "outline"}
+                                onClick={() => handleImageClick(case_.id, "after")}
+                                size="sm"
+                                className={currentImage === "after" 
+                                  ? "bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]" 
+                                  : "border-zinc-700 text-gray-300 hover:bg-zinc-800"}
+                              >
+                                Después
+                              </Button>
+                              <Button
+                                variant={currentImage === "collage" ? "default" : "outline"}
+                                onClick={() => handleImageClick(case_.id, "collage")}
+                                size="sm"
+                                className={currentImage === "collage" 
+                                  ? "bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]" 
+                                  : "border-zinc-700 text-gray-300 hover:bg-zinc-800"}
+                              >
+                                Proceso
+                              </Button>
+                            </div>
+
+                            <div
+                              className="aspect-square w-full overflow-hidden rounded-md relative bg-zinc-950"
+                              onClick={() => !imageError[`${case_.id}-${currentImage}`] && setSelectedCase(case_)}
+                            >
+                              {imageError[`${case_.id}-${currentImage}`] ? (
+                                <div className="w-full h-full flex items-center justify-center">
+                                  <p className="text-sm text-gray-500">
+                                    Imagen no disponible
+                                  </p>
+                                </div>
+                              ) : (
+                                <img
+                                  src={case_[`${currentImage}Image`]}
+                                  alt={`${currentImage === "before" ? "Antes" : currentImage === "after" ? "Después" : "Proceso"} - ${case_.title}`}
+                                  className="w-full h-full object-contain cursor-pointer hover:scale-105 transition-transform"
+                                  onError={() => handleImageError(case_.id, currentImage)}
+                                />
+                              )}
+                            </div>
+
+                            {case_.highlights && (
+                              <div className="mt-4 space-y-2">
+                                {case_.highlights.map((highlight, idx) => (
+                                  <div key={idx} className="flex items-start gap-2">
+                                    <CheckCircle className="w-4 h-4 text-[#F2E6D8] mt-0.5" />
+                                    <span className="text-sm text-gray-300">{highlight}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </CardContent>
+                        </Card>
+                      </CarouselItem>
+                    );
+                  })}
+                </CarouselContent>
+
+                <div className="absolute -bottom-8 left-0 right-0 flex justify-center gap-2">
+                  {Array.from({ length: count }).map((_, index) => (
+                    <button
+                      key={index}
+                      className={`h-[2px] rounded-full transition-all ${
+                        index === current
+                          ? "bg-[#F2E6D8] w-8"
+                          : "bg-zinc-700 w-4"
+                      }`}
+                      onClick={() => api?.scrollTo(index)}
+                      aria-label={`Ir a caso ${index + 1}`}
+                    />
+                  ))}
                 </div>
-              </div>
-              <div>
-                <p className="text-[#F2E6D8] font-light mb-4 text-center">Después</p>
-                <div className="aspect-square rounded-lg overflow-hidden bg-zinc-900/30 border border-zinc-800">
-                  <img 
-                    src="/cases/Caso1_after.png" 
-                    alt="Después del tratamiento" 
-                    className="w-full h-full object-contain"
-                  />
+
+                <div className="absolute -left-4 -right-4 top-1/2 hidden md:flex justify-between -translate-y-1/2">
+                  <CarouselPrevious className="bg-zinc-900/80 border-zinc-700 text-white hover:bg-zinc-800" />
+                  <CarouselNext className="bg-zinc-900/80 border-zinc-700 text-white hover:bg-zinc-800" />
                 </div>
-              </div>
+              </Carousel>
             </div>
-            <p className="text-gray-400 mt-6 font-light text-center">
-              Transformación real en una sola sesión
-            </p>
           </div>
           
           {/* Elegant Service Details */}
@@ -235,130 +322,6 @@ export default function Onicoplastia() {
                 en el color de tu preferencia.
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section className="px-4 py-16">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-light text-center mb-4">
-            <span className="text-[#F2E6D8]">Transformaciones</span> Reales
-          </h2>
-          <p className="text-center text-gray-400 mb-12 font-light">
-            Resultados de clientas en Puerto Rico
-          </p>
-
-          <div className="relative">
-            <Carousel
-              setApi={setApi}
-              className="w-full max-w-5xl mx-auto"
-              opts={{
-                loop: true,
-                dragFree: true,
-              }}
-            >
-              <CarouselContent>
-                {onicoplastiaCases.map((case_) => {
-                  const currentImage = getSelectedImage(case_.id);
-                  return (
-                    <CarouselItem key={case_.id}>
-                      <Card className="bg-zinc-900/50 border-zinc-800">
-                        <CardHeader className="pb-4">
-                          <CardTitle className="text-xl font-light text-[#F2E6D8]">{case_.title}</CardTitle>
-                          <CardDescription className="text-gray-400">{case_.description}</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="flex justify-center gap-2 mb-4">
-                            <Button
-                              variant={currentImage === "before" ? "default" : "outline"}
-                              onClick={() => handleImageClick(case_.id, "before")}
-                              size="sm"
-                              className={currentImage === "before" 
-                                ? "bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]" 
-                                : "border-zinc-700 text-gray-300 hover:bg-zinc-800"}
-                            >
-                              Antes
-                            </Button>
-                            <Button
-                              variant={currentImage === "after" ? "default" : "outline"}
-                              onClick={() => handleImageClick(case_.id, "after")}
-                              size="sm"
-                              className={currentImage === "after" 
-                                ? "bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]" 
-                                : "border-zinc-700 text-gray-300 hover:bg-zinc-800"}
-                            >
-                              Después
-                            </Button>
-                            <Button
-                              variant={currentImage === "collage" ? "default" : "outline"}
-                              onClick={() => handleImageClick(case_.id, "collage")}
-                              size="sm"
-                              className={currentImage === "collage" 
-                                ? "bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]" 
-                                : "border-zinc-700 text-gray-300 hover:bg-zinc-800"}
-                            >
-                              Proceso
-                            </Button>
-                          </div>
-
-                          <div
-                            className="aspect-square w-full overflow-hidden rounded-md relative bg-zinc-950"
-                            onClick={() => !imageError[`${case_.id}-${currentImage}`] && setSelectedCase(case_)}
-                          >
-                            {imageError[`${case_.id}-${currentImage}`] ? (
-                              <div className="w-full h-full flex items-center justify-center">
-                                <p className="text-sm text-gray-500">
-                                  Imagen no disponible
-                                </p>
-                              </div>
-                            ) : (
-                              <img
-                                src={case_[`${currentImage}Image`]}
-                                alt={`${currentImage === "before" ? "Antes" : currentImage === "after" ? "Después" : "Proceso"} - ${case_.title}`}
-                                className="w-full h-full object-contain cursor-pointer hover:scale-105 transition-transform"
-                                onError={() => handleImageError(case_.id, currentImage)}
-                              />
-                            )}
-                          </div>
-
-                          {case_.highlights && (
-                            <div className="mt-4 space-y-2">
-                              {case_.highlights.map((highlight, idx) => (
-                                <div key={idx} className="flex items-start gap-2">
-                                  <CheckCircle className="w-4 h-4 text-[#F2E6D8] mt-0.5" />
-                                  <span className="text-sm text-gray-300">{highlight}</span>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </CardContent>
-                      </Card>
-                    </CarouselItem>
-                  );
-                })}
-              </CarouselContent>
-
-              <div className="absolute -bottom-8 left-0 right-0 flex justify-center gap-2">
-                {Array.from({ length: count }).map((_, index) => (
-                  <button
-                    key={index}
-                    className={`h-[2px] rounded-full transition-all ${
-                      index === current
-                        ? "bg-[#F2E6D8] w-8"
-                        : "bg-zinc-700 w-4"
-                    }`}
-                    onClick={() => api?.scrollTo(index)}
-                    aria-label={`Ir a caso ${index + 1}`}
-                  />
-                ))}
-              </div>
-
-              <div className="absolute -left-4 -right-4 top-1/2 hidden md:flex justify-between -translate-y-1/2">
-                <CarouselPrevious className="bg-zinc-900/80 border-zinc-700 text-white hover:bg-zinc-800" />
-                <CarouselNext className="bg-zinc-900/80 border-zinc-700 text-white hover:bg-zinc-800" />
-              </div>
-            </Carousel>
           </div>
         </div>
       </section>
