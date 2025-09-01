@@ -348,10 +348,6 @@ export default function Onicoplastia() {
                     <span className="text-primary">✓</span>
                     <span>Plan de mantenimiento personalizado</span>
                   </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">✓</span>
-                    <span>Garantía de satisfacción o te devuelvo tu dinero</span>
-                  </li>
                 </ul>
                 <div className="mt-4 p-3 bg-purple-50 rounded-lg text-center">
                   <p className="text-sm font-semibold text-purple-800">⚡ Sales lista para mostrar tus pies HOY</p>
@@ -440,9 +436,8 @@ export default function Onicoplastia() {
               <AccordionContent>
                 Lo sé, es frustrante. La diferencia es que otros tratamientos solo atacan los síntomas superficiales. 
                 Mi método IBX® elimina el ambiente húmedo donde viven los hongos - es como quitarles su casa. 
-                Por eso tengo un 98% de éxito donde otros fallan. Además, soy la única RN certificada en IBX® 
-                en el área, lo que me permite tratar casos que otros no pueden. Si no funciona (nunca ha pasado), 
-                te devuelvo tu dinero.
+                Además, soy la única RN certificada en IBX® en el área, lo que me permite tratar casos 
+                que otros no pueden. Mi experiencia médica marca la diferencia real.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-3">
@@ -458,8 +453,8 @@ export default function Onicoplastia() {
               <AccordionContent>
                 Entiendo tu preocupación. Pero piensa: ¿cuánto has gastado ya en cremas y tratamientos que no funcionaron? 
                 ¿Cuánto vale para ti volver a usar sandalias? ¿Ir a la playa sin vergüenza? Mis clientas me dicen que 
-                hubieran pagado 10 veces más por recuperar su confianza. Además, incluye GEL Polish de $25, sales con 
-                uñas perfectas HOY MISMO, y si no quedas satisfecha, te devuelvo todo.
+                hubieran pagado 10 veces más por recuperar su confianza. Además, incluye GEL Polish de $25, 
+                sales con uñas perfectas HOY MISMO. Es una inversión en tu calidad de vida.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-5">
@@ -484,35 +479,34 @@ export default function Onicoplastia() {
         </div>
       </section>
 
-      {/* Exclusivity & Urgency */}
+      {/* Why Choose Me */}
       <section className="px-4 py-8">
         <div className="container mx-auto max-w-4xl">
-          <Card className="bg-gradient-to-r from-red-50 to-orange-50 border-red-200">
+          <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
             <CardContent className="p-8 text-center">
-              <h2 className="text-2xl font-bold mb-4 text-red-800">
-                ⚠️ Importante: Solo Acepto 12 Casos Nuevos al Mes
+              <h2 className="text-2xl font-bold mb-4 text-blue-800">
+                🏆 Por Qué Mis Clientas Me Eligen
               </h2>
               <p className="text-lg mb-6 text-gray-700">
-                No es marketing, es la realidad. Cada cliente requiere mi atención personalizada 
-                y seguimiento detallado. No soy una fábrica, soy una profesional que se compromete 
-                con tu transformación.
+                Soy la única RN certificada en IBX® en el área oeste. Esta combinación única 
+                me permite tratar casos complejos que otros no pueden resolver.
               </p>
               <div className="grid md:grid-cols-3 gap-4 mb-6">
                 <div className="bg-white p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-red-600">3</p>
-                  <p className="text-sm">Espacios restantes este mes</p>
+                  <p className="text-3xl font-bold text-blue-600">500+</p>
+                  <p className="text-sm">Clientas transformadas</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-orange-600">47</p>
-                  <p className="text-sm">Personas en lista de espera</p>
+                  <p className="text-3xl font-bold text-purple-600">5</p>
+                  <p className="text-sm">Años de experiencia</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-green-600">98%</p>
-                  <p className="text-sm">De éxito garantizado</p>
+                  <p className="text-3xl font-bold text-green-600">IBX®</p>
+                  <p className="text-sm">Certificación exclusiva</p>
                 </div>
               </div>
               <p className="text-sm italic text-gray-600">
-                "Esperé 2 meses por mi cita y valió la pena cada día de espera" - Ana, San Juan
+                "Viajo desde San Juan porque no hay nadie más con esta técnica" - María, Guaynabo
               </p>
             </CardContent>
           </Card>
@@ -540,7 +534,7 @@ export default function Onicoplastia() {
                 <li>✓ Kit de mantenimiento para casa</li>
                 <li>✓ Consulta de seguimiento gratuita</li>
                 <li>✓ Acceso directo a mi WhatsApp personal</li>
-                <li>✓ Garantía de satisfacción 100%</li>
+                <li>✓ Prioridad en citas de seguimiento</li>
               </ul>
             </div>
 
