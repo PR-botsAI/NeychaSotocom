@@ -53,7 +53,7 @@ function getPageTitle(location: string): string {
     case '/':
       return 'Neycha Soto | Termina con los Problemas de Hongos en las Uñas Para Siempre | Onicoplastia Hatillo PR';
     case '/onicoplastia':
-      return 'Deja de Esconder Tus Uñas | Tratamiento Profesional de Onicoplastia | Neycha Soto Hatillo';
+      return 'Ve las Transformaciones Reales | Onicoplastia Premium Antes y Después | Neycha Soto Hatillo';
     case '/contact':
       return 'Reserva Tu Consulta de Onicoplastia | Neycha Soto | Transforma Tus Uñas Hoy';
     default:
@@ -66,7 +66,7 @@ function getPageDescription(location: string): string {
     case '/':
       return '¿Cansada de esconder tus uñas? Neycha Soto ha ayudado a cientos a transformar sus problemas de uñas con onicoplastia profesional. 20+ años de experiencia, certificada IBX®. Ve resultados en tu primera sesión. Reserva tu consulta en Hatillo, PR.';
     case '/onicoplastia':
-      return 'Deja que los problemas de uñas controlen tu vida. Tratamiento profesional de onicoplastia que realmente funciona. Neycha Soto, especialista certificada IBX® en Hatillo, PR. Resultados comprobados, procedimiento seguro, transforma tus uñas permanentemente.';
+      return 'Una imagen vale más que mil palabras. Ve transformaciones reales de onicoplastia antes y después. Neycha Soto, especialista certificada IBX® en Hatillo, PR. Resultados visibles en una sola sesión, galería de casos reales, $100 primera evaluación.';
     case '/contact':
       return '¿Lista para arreglar tus problemas de uñas de una vez por todas? Reserva tu consulta de onicoplastia con Neycha Soto en Hatillo, Puerto Rico. 20+ años transformando uñas problemáticas. Citas limitadas disponibles - asegura la tuya hoy.';
     default:
@@ -81,7 +81,7 @@ function getPageKeywords(location: string): string {
     case '/':
       return `${baseKeywords}, especialista hongos uñas Puerto Rico, solución permanente uñas, confianza uñas, transformar uñas problemáticas, cuidado profesional uñas Hatillo, experta salud uñas PR`;
     case '/onicoplastia':
-      return `tratamiento onicoplastia Puerto Rico, eliminación hongos uñas Hatillo, especialista restauración uñas, terapia profesional uñas PR, transformación salud uñas, tratamiento certificado uñas, solución problemas uñas Puerto Rico`;
+      return `${baseKeywords}, onicoplastia antes y después Puerto Rico, transformaciones reales uñas Hatillo, galería resultados onicoplastia PR, casos reales transformación uñas, onicoplastia premium Puerto Rico, resultados visibles una sesión, fotos antes después uñas Hatillo`;
     case '/contact':
       return `consulta onicoplastia Hatillo, reservar tratamiento uñas PR, cita especialista uñas, contacto Neycha Soto, consulta profesional uñas Puerto Rico, reserva transformación uñas`;
     default:
@@ -120,7 +120,7 @@ function updateTwitterCardTags(title: string, description: string) {
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
     { name: 'twitter:image', content: 'https://neychasoto.com/assets/nail-transformation-twitter.jpg' },
-    { name: 'twitter:image:alt', content: 'Resultados profesionales de transformación de uñas por Neycha Soto' },
+    { name: 'twitter:image:alt', content: 'Galería antes y después de transformaciones reales de onicoplastia por Neycha Soto' },
     { name: 'twitter:site', content: '@neychanails' },
     { name: 'twitter:creator', content: '@neychanails' },
   ];
@@ -149,8 +149,8 @@ function addStructuredData(location: string) {
     structuredData = {
       '@context': 'https://schema.org',
       '@type': 'MedicalProcedure',
-      name: 'Tratamiento Profesional de Onicoplastia',
-      description: 'Tratamiento especializado de restauración de uñas para infecciones por hongos y uñas dañadas. Procedimiento seguro y efectivo realizado por especialista certificada IBX®.',
+      name: 'Onicoplastia Premium - Transformaciones Visibles',
+      description: 'Ve las transformaciones reales con nuestra galería antes y después. Tratamiento de onicoplastia con resultados visibles en una sola sesión. Especialista certificada IBX® con casos documentados en Hatillo, PR.',
       procedureType: 'Restauración terapéutica de uñas',
       bodyLocation: 'Uñas',
       preparation: 'Consulta y evaluación de uñas',
