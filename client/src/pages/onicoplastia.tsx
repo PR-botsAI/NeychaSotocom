@@ -95,16 +95,43 @@ export default function Onicoplastia() {
           <h1 className="text-4xl md:text-6xl font-light mb-6 tracking-tight">
             Onicoplastia <span className="text-[#F2E6D8]">Premium</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-300 font-light">
+          <p className="text-xl md:text-2xl mb-12 text-gray-300 font-light">
             Restauración profesional de uñas con tratamiento IBX®
           </p>
+          
+          {/* Before/After Preview - Moved to top */}
+          <div className="mb-12">
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <div>
+                <p className="text-[#F2E6D8] font-light mb-4">Antes</p>
+                <div className="aspect-square rounded-lg overflow-hidden bg-zinc-900/30 border border-zinc-800">
+                  <img 
+                    src="/cases/Caso1_before.png" 
+                    alt="Antes del tratamiento" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+              <div>
+                <p className="text-[#F2E6D8] font-light mb-4">Después</p>
+                <div className="aspect-square rounded-lg overflow-hidden bg-zinc-900/30 border border-zinc-800">
+                  <img 
+                    src="/cases/Caso1_after.png" 
+                    alt="Después del tratamiento" 
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+            </div>
+            <p className="text-gray-400 mt-6 font-light">Transformación real en una sola sesión</p>
+          </div>
           
           {/* Elegant Service Details */}
           <div className="bg-zinc-900/30 backdrop-blur border border-zinc-800 p-8 rounded-lg mb-12 max-w-2xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div className="text-left">
                 <p className="text-[#F2E6D8] font-light mb-2">Duración</p>
-                <p className="text-lg">90 minutos</p>
+                <p className="text-lg">Hasta 2 horas</p>
               </div>
               <div className="text-left">
                 <p className="text-[#F2E6D8] font-light mb-2">Inversión</p>
@@ -469,7 +496,7 @@ export default function Onicoplastia() {
                 ¿Cuánto tiempo dura el tratamiento?
               </AccordionTrigger>
               <AccordionContent className="text-gray-400 font-light">
-                La sesión completa dura aproximadamente 90 minutos. Durante este tiempo realizamos 
+                La sesión completa dura hasta 2 horas. Durante este tiempo realizamos 
                 la evaluación, el tratamiento IBX®, la aplicación de la prótesis y el GEL Polish. 
                 Sales con uñas perfectas el mismo día.
               </AccordionContent>
@@ -480,7 +507,7 @@ export default function Onicoplastia() {
                 ¿Cuál es la inversión?
               </AccordionTrigger>
               <AccordionContent className="text-gray-400 font-light">
-                La primera evaluación completa es de $100 e incluye todo el tratamiento de 90 minutos 
+                La primera evaluación completa es de $100 e incluye todo el tratamiento (hasta 2 horas) 
                 con GEL Polish profesional. Los seguimientos mensuales tienen un costo de $60. 
                 Es una inversión en tu salud y bienestar.
               </AccordionContent>
