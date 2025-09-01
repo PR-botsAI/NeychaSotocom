@@ -27,6 +27,7 @@ import {
   DialogContent,
   DialogTitle,
   DialogDescription,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Calendar, MessageCircle, Clock, CheckCircle, Star, Sparkles, Heart, Shield } from "lucide-react";
 import { cases } from "@/data/cases";
