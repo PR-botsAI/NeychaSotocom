@@ -96,7 +96,7 @@ export default function Onicoplastia() {
             Onicoplastia <span className="text-[#F2E6D8]">Premium</span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-300 font-light">
-            Restauración profesional de uñas con tecnología alemana IBX®
+            Restauración profesional de uñas con tratamiento IBX®
           </p>
           
           {/* Elegant Service Details */}
@@ -118,15 +118,15 @@ export default function Onicoplastia() {
               <div className="space-y-2">
                 <div className="flex items-center gap-3">
                   <Sparkles className="w-4 h-4 text-[#F2E6D8]" />
-                  <span className="text-gray-300">Evaluación profesional por RN certificada</span>
+                  <span className="text-gray-300">Evaluación completa y personalizada</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Sparkles className="w-4 h-4 text-[#F2E6D8]" />
-                  <span className="text-gray-300">Tratamiento IBX® exclusivo</span>
+                  <span className="text-gray-300">Tratamiento IBX® certificado</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Sparkles className="w-4 h-4 text-[#F2E6D8]" />
-                  <span className="text-gray-300">Prótesis anti-humedad de última generación</span>
+                  <span className="text-gray-300">Reconstrucción con prótesis especializada</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Heart className="w-4 h-4 text-[#F2E6D8]" />
@@ -175,10 +175,10 @@ export default function Onicoplastia() {
               <div className="bg-zinc-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border border-zinc-800">
                 <span className="text-2xl text-[#F2E6D8]">1</span>
               </div>
-              <h3 className="text-xl font-light mb-3 text-[#F2E6D8]">Evaluación Profesional</h3>
+              <h3 className="text-xl font-light mb-3 text-[#F2E6D8]">Evaluación Completa</h3>
               <p className="text-gray-400 font-light">
-                Como enfermera registrada, realizo un diagnóstico completo para identificar 
-                la causa raíz y crear un plan personalizado.
+                Evaluamos tu caso específico para identificar el problema 
+                y crear un plan de tratamiento personalizado.
               </p>
             </div>
             
@@ -188,8 +188,8 @@ export default function Onicoplastia() {
               </div>
               <h3 className="text-xl font-light mb-3 text-[#F2E6D8]">Tratamiento IBX®</h3>
               <p className="text-gray-400 font-light">
-                Aplicación de tecnología alemana de última generación. Soy la única 
-                certificada en el área oeste de Puerto Rico.
+                Sistema de fortalecimiento que penetra y sella la uña desde adentro, 
+                creando una barrera protectora duradera.
               </p>
             </div>
             
@@ -335,47 +335,47 @@ export default function Onicoplastia() {
       <section className="px-4 py-16 bg-zinc-950">
         <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-light text-center mb-16">
-            Por Qué <span className="text-[#F2E6D8]">Elegirnos</span>
+            Beneficios del <span className="text-[#F2E6D8]">Tratamiento</span>
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-zinc-900/30 p-8 rounded-lg border border-zinc-800">
               <h3 className="text-xl font-light mb-4 text-[#F2E6D8]">
-                Experiencia Médica
+                Resultados Visibles
               </h3>
               <p className="text-gray-400 font-light">
-                Como enfermera registrada (RN), aporto conocimiento médico profesional 
-                a cada tratamiento, garantizando resultados seguros y efectivos.
+                Sales con uñas hermosas el mismo día. No tienes que esperar 
+                meses para ver cambios - la transformación es inmediata.
               </p>
             </div>
             
             <div className="bg-zinc-900/30 p-8 rounded-lg border border-zinc-800">
               <h3 className="text-xl font-light mb-4 text-[#F2E6D8]">
-                Tecnología Exclusiva
+                Tratamiento IBX®
               </h3>
               <p className="text-gray-400 font-light">
-                Certificada en IBX®, técnica alemana de última generación. 
-                Soy la única profesional con esta certificación en el área oeste.
+                Sistema profesional que fortalece y protege tus uñas desde adentro, 
+                ayudando a prevenir futuros problemas.
               </p>
             </div>
             
             <div className="bg-zinc-900/30 p-8 rounded-lg border border-zinc-800">
               <h3 className="text-xl font-light mb-4 text-[#F2E6D8]">
-                Resultados Inmediatos
+                Sin Dolor
               </h3>
               <p className="text-gray-400 font-light">
-                A diferencia de tratamientos convencionales que toman meses, 
-                nuestro método ofrece resultados visibles en una sola sesión.
+                Procedimiento completamente indoloro y relajante. 
+                Muchas clientas lo comparan con un spa para sus uñas.
               </p>
             </div>
             
             <div className="bg-zinc-900/30 p-8 rounded-lg border border-zinc-800">
               <h3 className="text-xl font-light mb-4 text-[#F2E6D8]">
-                Atención Personalizada
+                Seguimiento Incluido
               </h3>
               <p className="text-gray-400 font-light">
-                Cada tratamiento es adaptado a las necesidades específicas 
-                de cada cliente, con seguimiento continuo incluido.
+                Te acompañamos en todo el proceso con seguimientos mensuales 
+                para asegurar que tus uñas se mantengan saludables.
               </p>
             </div>
           </div>
@@ -488,13 +488,12 @@ export default function Onicoplastia() {
             
             <AccordionItem value="item-5" className="bg-zinc-900/30 border border-zinc-800 rounded-lg px-6">
               <AccordionTrigger className="text-left font-light hover:text-[#F2E6D8]">
-                ¿Por qué elegir Neycha Soto?
+                ¿Qué hace especial este tratamiento?
               </AccordionTrigger>
               <AccordionContent className="text-gray-400 font-light">
-                Soy la única profesional RN certificada en IBX® en el área oeste de Puerto Rico. 
-                Esta combinación única de conocimiento médico y tecnología avanzada garantiza 
-                resultados superiores. Tengo clientas que viajan desde toda la isla por este 
-                tratamiento exclusivo.
+                Combinamos el tratamiento IBX® con técnicas profesionales de reconstrucción. 
+                Como enfermera registrada, entiendo la importancia de un tratamiento seguro y efectivo. 
+                Nuestro enfoque integral asegura no solo uñas hermosas, sino también saludables.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -550,7 +549,7 @@ export default function Onicoplastia() {
           
           <div className="text-sm text-gray-500 space-y-2">
             <p>📍 166 Ave Dr Susoni, Hatillo, PR 00659</p>
-            <p>🏥 RN Certificada • 🏆 IBX® Exclusiva • ⭐ 37 Reseñas 5 Estrellas</p>
+            <p>🏥 RN Certificada • 🏆 IBX® Certificada • ⭐ 37 Reseñas 5 Estrellas</p>
           </div>
         </div>
       </section>
