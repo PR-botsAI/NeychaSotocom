@@ -75,7 +75,7 @@ export default function Onicoplastia() {
             Onicoplastia Profesional
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-2">
-            Tratamiento preventivo certificado IBX® que elimina hongos de raíz
+            Tratamiento preventivo IBX® que ataca el problema desde la raíz
           </p>
           <p className="text-base text-muted-foreground mb-6">
             Resultados inmediatos • GEL Polish incluido • Completamente indoloro
@@ -255,29 +255,29 @@ export default function Onicoplastia() {
                   <div className="flex gap-3">
                     <span className="text-primary font-bold">1.</span>
                     <div>
-                      <p className="font-semibold">Evaluación (15 min)</p>
-                      <p className="text-sm text-muted-foreground">Analizamos tu caso específico</p>
+                      <p className="font-semibold">Evaluación Detallada (20 min)</p>
+                      <p className="text-sm text-muted-foreground">Analizamos tu caso específico y planificamos el tratamiento</p>
                     </div>
                   </div>
                   <div className="flex gap-3">
                     <span className="text-primary font-bold">2.</span>
                     <div>
-                      <p className="font-semibold">Limpieza Profesional (15 min)</p>
-                      <p className="text-sm text-muted-foreground">Eliminamos áreas afectadas - sin dolor</p>
+                      <p className="font-semibold">Limpieza y Preparación (25 min)</p>
+                      <p className="text-sm text-muted-foreground">Removemos áreas afectadas y preparamos la uña - sin dolor</p>
                     </div>
                   </div>
                   <div className="flex gap-3">
                     <span className="text-primary font-bold">3.</span>
                     <div>
-                      <p className="font-semibold">Reconstrucción (20 min)</p>
-                      <p className="text-sm text-muted-foreground">Aplicamos prótesis hipoalergénica</p>
+                      <p className="font-semibold">Proceso IBX® y Reconstrucción (30 min)</p>
+                      <p className="text-sm text-muted-foreground">Sellamos, aplicamos primer y prótesis hipoalergénica anti-humedad</p>
                     </div>
                   </div>
                   <div className="flex gap-3">
                     <span className="text-primary font-bold">4.</span>
                     <div>
-                      <p className="font-semibold">GEL Polish Incluido (15 min)</p>
-                      <p className="text-sm text-muted-foreground">Elige tu color favorito - incluido en el precio</p>
+                      <p className="font-semibold">Acabado con GEL Polish (15 min)</p>
+                      <p className="text-sm text-muted-foreground">Aplicación profesional en el color de tu elección - incluido</p>
                     </div>
                   </div>
                 </div>
@@ -296,11 +296,11 @@ export default function Onicoplastia() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary">✓</span>
-                    <span>Eliminación de hongos y bacterias</span>
+                    <span>Remoción del área afectada y sellado IBX®</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary">✓</span>
-                    <span>Prótesis hipoalergénica de alta calidad</span>
+                    <span>Prótesis hipoalergénica anti-humedad que elimina el ambiente ideal para hongos</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-primary">✓</span>
@@ -316,7 +316,7 @@ export default function Onicoplastia() {
                   </li>
                 </ul>
                 <div className="mt-4 p-3 bg-yellow-50/50 rounded-lg">
-                  <p className="text-sm font-semibold">⏱️ Duración: 60-75 minutos</p>
+                  <p className="text-sm font-semibold">⏱️ Duración: 90 minutos (1.5 horas)</p>
                   <p className="text-sm">💎 Sales con uñas perfectas el mismo día</p>
                 </div>
               </CardContent>
@@ -350,24 +350,25 @@ export default function Onicoplastia() {
               <AccordionTrigger>¿Cuánto dura el tratamiento completo?</AccordionTrigger>
               <AccordionContent>
                 La transformación estética es inmediata. El tratamiento preventivo continúa con 
-                sesiones cada 45 días según tu caso específico. La mayoría ve mejoras significativas 
-                en 3-4 sesiones.
+                sesiones cada 45 días. La cantidad de visitas depende del caso específico, las uñas 
+                afectadas y el nivel de afectación. Cada persona es diferente.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-4">
               <AccordionTrigger>¿Qué incluye el precio?</AccordionTrigger>
               <AccordionContent>
-                Primera evaluación $75 incluye: limpieza profunda, eliminación de áreas afectadas, 
-                prótesis hipoalergénica, GEL Polish en el color que elijas y plan personalizado. 
-                Seguimientos $40-50.
+                Primera evaluación $75 incluye: limpieza profunda, remoción de áreas afectadas, 
+                proceso IBX® de sellado, prótesis hipoalergénica anti-humedad, GEL Polish en el 
+                color que elijas y plan personalizado. Seguimientos $40-50.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="item-5">
-              <AccordionTrigger>¿Por qué elegir este tratamiento?</AccordionTrigger>
+              <AccordionTrigger>¿Cómo funciona el tratamiento?</AccordionTrigger>
               <AccordionContent>
-                Soy la única en el área certificada en IBX® y RN. Mi tratamiento preventivo está 
-                diseñado específicamente para el clima húmedo de Puerto Rico. Miles de clientas 
-                satisfechas con resultados reales.
+                Removemos el área afectada, sellamos con IBX® y aplicamos una prótesis hipoalergénica 
+                con función anti-humedad. Esto elimina el ambiente perfecto para que vivan los hongos, 
+                atacando el problema desde la raíz. Como RN certificada en IBX®, adapto el tratamiento 
+                al clima húmedo de Puerto Rico.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
