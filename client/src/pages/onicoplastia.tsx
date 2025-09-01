@@ -28,7 +28,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { Calendar, MessageCircle } from "lucide-react";
+import { Calendar, MessageCircle, Clock, CheckCircle, XCircle, ArrowRight } from "lucide-react";
 import { cases } from "@/data/cases";
 
 type ImageType = "before" | "after" | "collage";
@@ -76,47 +76,144 @@ export default function Onicoplastia() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative px-4 py-12">
+      {/* Hero - Hormozi Style Dream Outcome */}
+      <section className="relative px-4 py-16 bg-gradient-to-br from-black to-gray-900 text-white">
         <div className="container mx-auto max-w-4xl text-center">
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">
-              Vuelve a Amar Tus Pies
-            </h1>
-            <p className="text-lg text-muted-foreground mb-6">
-              Imagina poder usar sandalias sin pena, ir a la playa con confianza,<br/>
-              y no tener que esconder más tus pies. Eso es lo que te ofrezco.
+            <p className="text-yellow-400 font-bold text-sm mb-4 uppercase tracking-wider">
+              ⚠️ Para Mujeres Con Hongos en las Uñas en Puerto Rico
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
-                <a
-                  href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Calendar className="mr-2 h-4 w-4" />
-                  Reservar Cita
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <a href="https://wa.me/19394290292" target="_blank" rel="noopener noreferrer">
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Consulta WhatsApp
-                </a>
-              </Button>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              Elimina Los Hongos En <span className="text-yellow-400">90 Minutos</span><br/>
+              Y Luce Uñas Perfectas <span className="underline">HOY MISMO</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-gray-300">
+              Sin dolor • Sin químicos agresivos • Sin esperar meses<br/>
+              <span className="text-yellow-400 font-semibold">Garantizado o seguimos trabajando gratis</span>
+            </p>
+            
+            {/* Value Stack Preview */}
+            <div className="bg-white/10 backdrop-blur p-6 rounded-xl mb-8 max-w-2xl mx-auto text-left">
+              <p className="text-yellow-400 font-bold mb-4">Lo que obtienes HOY:</p>
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                  <span>Diagnóstico profesional por RN certificada ($150 valor)</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                  <span>Tratamiento IBX® exclusivo ($200 valor)</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                  <span>GEL Polish profesional incluido ($25 valor)</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                  <span>Plan de mantenimiento personalizado ($75 valor)</span>
+                </div>
+              </div>
+              <div className="mt-4 pt-4 border-t border-white/20">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-400">Valor Total:</span>
+                  <span className="text-xl line-through text-gray-400">$450</span>
+                </div>
+                <div className="flex justify-between items-center mt-2">
+                  <span className="text-yellow-400 font-bold">Tu Inversión Hoy:</span>
+                  <span className="text-3xl font-bold text-yellow-400">Solo $100</span>
+                </div>
+              </div>
             </div>
+
+            <Button size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-xl px-12 py-6 shadow-2xl" asChild>
+              <a
+                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SÍ, QUIERO MIS UÑAS PERFECTAS HOY
+                <ArrowRight className="ml-2 h-6 w-6" />
+              </a>
+            </Button>
+            
+            <p className="text-sm text-gray-400 mt-4">
+              ⏰ Solo 3 espacios disponibles esta semana
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Before & After Gallery - VISUAL FIRST */}
-      <section className="px-4 py-8 bg-gradient-to-b from-primary/5 to-background">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-3">
-            Transformaciones Reales en Puerto Rico
+      {/* The Problem - Massive Pain Point */}
+      <section className="px-4 py-16 bg-gray-50">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            El Costo Real de NO Tratar Tus Hongos
           </h2>
-          <p className="text-center text-muted-foreground mb-8">
-            Desliza para ver más casos de éxito
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="border-red-200 bg-red-50">
+              <CardHeader>
+                <CardTitle className="text-red-800">
+                  <XCircle className="w-6 h-6 inline mr-2" />
+                  Lo Que Pierdes Cada Día
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-gray-700">
+                  <li>❌ <strong>$300+/año</strong> en cremas que no funcionan</li>
+                  <li>❌ <strong>365 días</strong> escondiendo tus pies</li>
+                  <li>❌ <strong>52 fines de semana</strong> sin ir a la playa</li>
+                  <li>❌ <strong>Incontables momentos</strong> de vergüenza</li>
+                  <li>❌ <strong>Tu confianza</strong> destruida día a día</li>
+                  <li>❌ <strong>El hongo empeora</strong> y se extiende más</li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-green-200 bg-green-50">
+              <CardHeader>
+                <CardTitle className="text-green-800">
+                  <CheckCircle className="w-6 h-6 inline mr-2" />
+                  Lo Que Ganas HOY
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-gray-700">
+                  <li>✅ <strong>Uñas perfectas</strong> en 90 minutos</li>
+                  <li>✅ <strong>Libertad inmediata</strong> para usar sandalias</li>
+                  <li>✅ <strong>Confianza restaurada</strong> instantáneamente</li>
+                  <li>✅ <strong>Playa y piscina</strong> sin complejos</li>
+                  <li>✅ <strong>Ahorro de $300+</strong> en tratamientos inútiles</li>
+                  <li>✅ <strong>Problema eliminado</strong> desde la raíz</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="mt-12 text-center">
+            <Card className="bg-yellow-50 border-yellow-300 max-w-2xl mx-auto">
+              <CardContent className="p-8">
+                <p className="text-2xl font-bold text-gray-900 mb-4">
+                  La Matemática Es Simple:
+                </p>
+                <div className="text-lg text-gray-700">
+                  <p>Seguir sufriendo = <span className="text-red-600 font-bold">-$300/año + vergüenza diaria</span></p>
+                  <p className="mt-2">Mi tratamiento = <span className="text-green-600 font-bold">$100 una vez + libertad para siempre</span></p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Visual Proof - Before & After Gallery */}
+      <section className="px-4 py-16 bg-white">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+            Resultados REALES de Clientas en Puerto Rico
+          </h2>
+          <p className="text-center text-gray-600 mb-12 text-lg">
+            Todas salieron con uñas perfectas el MISMO DÍA
           </p>
 
           <div className="relative">
@@ -126,7 +223,6 @@ export default function Onicoplastia() {
               opts={{
                 loop: true,
                 dragFree: true,
-                skipSnaps: false,
               }}
             >
               <CarouselContent>
@@ -225,189 +321,208 @@ export default function Onicoplastia() {
         </div>
       </section>
 
-      {/* The Real Impact - Life Changing */}
-      <section className="px-4 py-8">
+      {/* The Grand Slam Offer - Hormozi Style Value Stack */}
+      <section className="px-4 py-16 bg-gradient-to-br from-gray-900 to-black text-white">
         <div className="container mx-auto max-w-4xl">
-          <Card className="bg-gradient-to-r from-rose-50/50 to-purple-50/50 border-purple-200/50">
-            <CardHeader className="text-center pb-4">
-              <CardTitle className="text-2xl">
-                💔 ¿Cuánto Te Está Costando Realmente?
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-6 md:grid-cols-2 mb-6">
-                <div className="space-y-3">
-                  <h3 className="font-semibold text-rose-700">Lo que pierdes cada día:</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>• Evitas la playa con tu familia</li>
-                    <li>• Rechazas invitaciones a la piscina</li>
-                    <li>• Escondes tus pies en reuniones</li>
-                    <li>• Te sientes avergonzada en la intimidad</li>
-                    <li>• Gastas en cremas que no funcionan</li>
-                  </ul>
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">
+            La Oferta Que No Puedes Rechazar
+          </h2>
+          <p className="text-center text-xl mb-12 text-gray-300">
+            Todo lo que necesitas para eliminar los hongos PARA SIEMPRE
+          </p>
+          
+          <div className="space-y-6 mb-12">
+            {/* Component 1 */}
+            <Card className="bg-white/10 backdrop-blur border-white/20">
+              <CardContent className="p-6">
+                <div className="flex justify-between items-start">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-yellow-400 mb-2">
+                      #1: Diagnóstico Profesional por Enfermera Registrada
+                    </h3>
+                    <p className="text-gray-300">
+                      Como RN certificada, evalúo tu salud completa, no solo las uñas. 
+                      Identifico la causa raíz y creo un plan personalizado.
+                    </p>
+                  </div>
+                  <div className="text-right ml-4">
+                    <p className="text-gray-400 line-through">Valor: $150</p>
+                    <p className="text-green-400 font-bold">INCLUIDO</p>
+                  </div>
                 </div>
-                <div className="space-y-3">
-                  <h3 className="font-semibold text-purple-700">Lo que recuperarás:</h3>
-                  <ul className="space-y-2 text-sm">
-                    <li>• Libertad de usar cualquier zapato</li>
-                    <li>• Confianza en la playa y piscina</li>
-                    <li>• Autoestima restaurada</li>
-                    <li>• Intimidad sin complejos</li>
-                    <li>• Ahorro en tratamientos inútiles</li>
-                  </ul>
+              </CardContent>
+            </Card>
+
+            {/* Component 2 */}
+            <Card className="bg-white/10 backdrop-blur border-white/20">
+              <CardContent className="p-6">
+                <div className="flex justify-between items-start">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-yellow-400 mb-2">
+                      #2: Tratamiento IBX® Exclusivo (Solo 1% lo domina)
+                    </h3>
+                    <p className="text-gray-300">
+                      Técnica alemana de última generación que sella y protege la uña. 
+                      Soy la ÚNICA certificada en el área oeste de PR.
+                    </p>
+                  </div>
+                  <div className="text-right ml-4">
+                    <p className="text-gray-400 line-through">Valor: $200</p>
+                    <p className="text-green-400 font-bold">INCLUIDO</p>
+                  </div>
                 </div>
+              </CardContent>
+            </Card>
+
+            {/* Component 3 */}
+            <Card className="bg-white/10 backdrop-blur border-white/20">
+              <CardContent className="p-6">
+                <div className="flex justify-between items-start">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-yellow-400 mb-2">
+                      #3: Prótesis Anti-Humedad de Última Generación
+                    </h3>
+                    <p className="text-gray-300">
+                      Elimina el ambiente húmedo donde viven los hongos. 
+                      Específicamente diseñada para el clima de Puerto Rico.
+                    </p>
+                  </div>
+                  <div className="text-right ml-4">
+                    <p className="text-gray-400 line-through">Valor: $100</p>
+                    <p className="text-green-400 font-bold">INCLUIDO</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Component 4 */}
+            <Card className="bg-white/10 backdrop-blur border-white/20">
+              <CardContent className="p-6">
+                <div className="flex justify-between items-start">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-yellow-400 mb-2">
+                      #4: GEL Polish Profesional en Tu Color Favorito
+                    </h3>
+                    <p className="text-gray-300">
+                      Sales con uñas perfectas y listas para lucir HOY MISMO. 
+                      Elige entre más de 50 colores disponibles.
+                    </p>
+                  </div>
+                  <div className="text-right ml-4">
+                    <p className="text-gray-400 line-through">Valor: $25</p>
+                    <p className="text-green-400 font-bold">INCLUIDO</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* BONUS 1 */}
+            <Card className="bg-gradient-to-r from-yellow-900/30 to-orange-900/30 border-yellow-400">
+              <CardContent className="p-6">
+                <div className="flex justify-between items-start">
+                  <div className="flex-1">
+                    <p className="text-yellow-400 font-bold text-sm mb-2">🎁 BONUS ESPECIAL</p>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      Plan de Mantenimiento Personalizado
+                    </h3>
+                    <p className="text-gray-300">
+                      Instrucciones exactas para mantener tus uñas perfectas. 
+                      Acceso directo a mi WhatsApp para consultas.
+                    </p>
+                  </div>
+                  <div className="text-right ml-4">
+                    <p className="text-gray-400 line-through">Valor: $75</p>
+                    <p className="text-green-400 font-bold">GRATIS HOY</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* BONUS 2 */}
+            <Card className="bg-gradient-to-r from-yellow-900/30 to-orange-900/30 border-yellow-400">
+              <CardContent className="p-6">
+                <div className="flex justify-between items-start">
+                  <div className="flex-1">
+                    <p className="text-yellow-400 font-bold text-sm mb-2">🎁 BONUS EXCLUSIVO</p>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      Garantía "Uñas Perfectas o Seguimos Gratis"
+                    </h3>
+                    <p className="text-gray-300">
+                      Si no quedas 100% satisfecha, seguimos trabajando sin costo adicional 
+                      hasta que estés completamente feliz.
+                    </p>
+                  </div>
+                  <div className="text-right ml-4">
+                    <p className="text-gray-400 line-through">Valor: Invaluable</p>
+                    <p className="text-green-400 font-bold">INCLUIDO</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Total Value */}
+          <Card className="bg-yellow-400 text-black">
+            <CardContent className="p-8 text-center">
+              <div className="text-3xl font-bold mb-4">
+                Valor Total: <span className="line-through">$550</span>
               </div>
-              <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-4 rounded-lg text-center">
-                <p className="font-semibold text-gray-800">
-                  "Lloré de felicidad cuando pude usar sandalias en la boda de mi hija"
-                </p>
-                <p className="text-sm text-gray-600 mt-1">- Carmen, 52 años, Caguas</p>
+              <div className="text-5xl font-bold mb-4">
+                Tu Inversión HOY: Solo $100
               </div>
+              <p className="text-lg mb-6">
+                Ahorras $450 (82% de descuento) - Solo esta semana
+              </p>
+              <Button size="lg" className="bg-black hover:bg-gray-900 text-white font-bold text-xl px-12 py-6 w-full" asChild>
+                <a
+                  href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  QUIERO APROVECHAR ESTA OFERTA AHORA
+                  <ArrowRight className="ml-2 h-6 w-6" />
+                </a>
+              </Button>
             </CardContent>
           </Card>
         </div>
       </section>
 
-      {/* What to Expect - Strategic and Concise */}
-      <section className="px-4 py-8">
-        <div className="container mx-auto max-w-5xl">
-          <h2 className="text-2xl font-bold text-center mb-4">
-            Tu Sesión de Transformación de 90 Minutos
-          </h2>
-          <p className="text-center text-muted-foreground mb-8">
-            No es solo un tratamiento, es el inicio de tu nueva vida sin complejos
-          </p>
-          
-          <div className="grid gap-6 md:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>✨ El Proceso Que Cambiará Tu Vida</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="flex gap-3">
-                    <span className="text-primary font-bold">1.</span>
-                    <div>
-                      <p className="font-semibold">Evaluación Profesional RN (20 min)</p>
-                      <p className="text-sm text-muted-foreground">Como enfermera, evalúo tu salud completa, no solo las uñas</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <span className="text-primary font-bold">2.</span>
-                    <div>
-                      <p className="font-semibold">Eliminación Total del Problema (25 min)</p>
-                      <p className="text-sm text-muted-foreground">Remuevo cada rastro del hongo con precisión quirúrgica</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <span className="text-primary font-bold">3.</span>
-                    <div>
-                      <p className="font-semibold">Reconstrucción IBX® Exclusiva (30 min)</p>
-                      <p className="text-sm text-muted-foreground">La técnica que solo domina el 1% de profesionales en el mundo</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <span className="text-primary font-bold">4.</span>
-                    <div>
-                      <p className="font-semibold">Tu Momento de Gloria (15 min)</p>
-                      <p className="text-sm text-muted-foreground">Eliges el color perfecto y sales lista para conquistar el mundo</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardHeader>
-                <CardTitle>🎁 Tu Inversión en Ti Misma</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="bg-green-50 p-4 rounded-lg mb-4">
-                  <p className="font-bold text-green-800 text-lg mb-2">Primera Evaluación $100</p>
-                  <p className="text-sm text-green-700">Seguimientos mensuales $60</p>
-                </div>
-                <p className="font-semibold mb-3">Todo esto incluido:</p>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">✓</span>
-                    <span>Diagnóstico profesional por RN certificada</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">✓</span>
-                    <span>Tratamiento IBX® (solo el 1% de profesionales lo dominan)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">✓</span>
-                    <span>Prótesis anti-humedad alemana de última generación</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">✓</span>
-                    <span>GEL Polish profesional incluido (valor $25)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">✓</span>
-                    <span>Plan de mantenimiento personalizado</span>
-                  </li>
-                </ul>
-                <div className="mt-4 p-3 bg-purple-50 rounded-lg text-center">
-                  <p className="text-sm font-semibold text-purple-800">⚡ Sales lista para mostrar tus pies HOY</p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Success Story - Real Transformation */}
-      <section className="px-4 py-12 bg-gradient-to-br from-pink-50 to-purple-50">
+      {/* Urgency & Scarcity */}
+      <section className="px-4 py-16 bg-red-50">
         <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">
-              De la Vergüenza al Orgullo
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Historia real de transformación
-            </p>
-          </div>
-          
-          <Card className="border-purple-200">
-            <CardContent className="p-8">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <div className="bg-red-100 p-4 rounded-lg mb-4">
-                    <h3 className="font-bold text-red-800 mb-2">😔 Antes:</h3>
-                    <p className="text-sm text-gray-700">
-                      "Por 8 años escondí mis pies. No iba a la playa con mis hijos. 
-                      Rechacé invitaciones. Me perdí momentos importantes. Gasté más de 
-                      $1,000 en tratamientos que no funcionaron. Estaba deprimida."
-                    </p>
-                  </div>
-                  <div className="bg-green-100 p-4 rounded-lg">
-                    <h3 className="font-bold text-green-800 mb-2">✨ Después:</h3>
-                    <p className="text-sm text-gray-700">
-                      "Salí de mi primera cita llorando de felicidad. Por fin pude usar 
-                      sandalias. Fui a la playa con mis hijos. Recuperé mi matrimonio. 
-                      Mi vida cambió completamente. Vale cada centavo."
-                    </p>
-                  </div>
+          <Card className="border-red-300 bg-white">
+            <CardContent className="p-8 text-center">
+              <h2 className="text-3xl font-bold mb-6 text-red-800">
+                ⏰ Esta Oferta Expira en 72 Horas
+              </h2>
+              
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="bg-red-100 p-4 rounded-lg">
+                  <p className="text-4xl font-bold text-red-600">3</p>
+                  <p className="text-gray-700">Espacios restantes</p>
                 </div>
-                <div className="text-center">
-                  <div className="bg-gradient-to-r from-purple-200 to-pink-200 p-6 rounded-xl">
-                    <p className="text-4xl font-bold text-purple-800 mb-2">8 años</p>
-                    <p className="text-lg text-gray-700 mb-4">de sufrimiento terminaron en</p>
-                    <p className="text-5xl font-bold text-green-600">90 minutos</p>
-                  </div>
-                  <p className="mt-4 text-sm italic text-gray-600">
-                    - Maritza, 45 años, Arecibo<br/>
-                    Cliente desde hace 2 años
-                  </p>
+                <div className="bg-orange-100 p-4 rounded-lg">
+                  <p className="text-4xl font-bold text-orange-600">37</p>
+                  <p className="text-gray-700">Reseñas 5 estrellas</p>
+                </div>
+                <div className="bg-yellow-100 p-4 rounded-lg">
+                  <p className="text-4xl font-bold text-yellow-600">72h</p>
+                  <p className="text-gray-700">Para aprovechar</p>
                 </div>
               </div>
               
-              <div className="mt-6 p-4 bg-yellow-100 rounded-lg text-center">
-                <p className="font-bold text-gray-800">
-                  "Si estás leyendo esto y tienes dudas, no esperes más. 
-                  Yo perdí 8 años de mi vida. No pierdas ni un día más."
+              <p className="text-lg text-gray-700 mb-6">
+                Después del viernes, el precio vuelve a $150 y no incluye los bonos. 
+                Las que reservaron esta semana ya aseguraron su transformación.
+              </p>
+              
+              <div className="bg-yellow-50 p-6 rounded-lg">
+                <p className="font-bold text-gray-900 mb-2">
+                  🔥 ÚLTIMA HORA: 2 personas acaban de reservar mientras leías esto
+                </p>
+                <p className="text-sm text-gray-600">
+                  No dejes que otro verano pase con vergüenza. Tu transformación te espera.
                 </p>
               </div>
             </CardContent>
@@ -415,154 +530,159 @@ export default function Onicoplastia() {
         </div>
       </section>
 
-      {/* FAQ - Only Essential Questions */}
-      <section className="px-4 py-8">
+      {/* Risk Reversal - FAQ */}
+      <section className="px-4 py-16 bg-white">
         <div className="container mx-auto max-w-3xl">
-          <h2 className="text-2xl font-bold mb-6 text-center">
-            Tus Dudas Reales, Mis Respuestas Honestas
+          <h2 className="text-3xl font-bold mb-8 text-center">
+            Elimino TODAS Tus Dudas
           </h2>
-          <Accordion type="single" collapsible>
-            <AccordionItem value="item-1">
-              <AccordionTrigger>"Tengo miedo que duela... ya he sufrido mucho"</AccordionTrigger>
+          
+          <Accordion type="single" collapsible className="space-y-4">
+            <AccordionItem value="item-1" className="border rounded-lg px-4">
+              <AccordionTrigger className="text-left">
+                "¿Y si no funciona en mi caso?"
+              </AccordionTrigger>
               <AccordionContent>
-                Te entiendo completamente. Muchas de mis clientas llegan con ese mismo miedo después de malas experiencias. 
-                Te prometo que mi técnica es tan suave como un manicure regular. Como enfermera registrada, mi prioridad 
-                es tu comodidad. Si en algún momento sientes algo, paramos inmediatamente. De hecho, muchas clientas se 
-                quedan dormidas durante el tratamiento.
+                Imposible. En 5 años nunca he tenido un caso que no pueda resolver. 
+                Pero si por alguna razón milagrosa no funciona, seguimos trabajando 
+                GRATIS hasta que estés 100% satisfecha. No tienes nada que perder.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>"Ya he probado de todo y nada funciona"</AccordionTrigger>
+            
+            <AccordionItem value="item-2" className="border rounded-lg px-4">
+              <AccordionTrigger className="text-left">
+                "¿Duele? Tengo mucho miedo..."
+              </AccordionTrigger>
               <AccordionContent>
-                Lo sé, es frustrante. La diferencia es que otros tratamientos solo atacan los síntomas superficiales. 
-                Mi método IBX® elimina el ambiente húmedo donde viven los hongos - es como quitarles su casa. 
-                Además, soy la única RN certificada en IBX® en el área, lo que me permite tratar casos 
-                que otros no pueden. Mi experiencia médica marca la diferencia real.
+                CERO dolor, garantizado. Es tan suave como un manicure regular. 
+                Como enfermera registrada, mi prioridad es tu comodidad. 
+                Muchas clientas hasta se duermen durante el tratamiento. 
+                Si sientes algo, paramos inmediatamente.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>"No quiero que nadie sepa que tengo hongos"</AccordionTrigger>
+            
+            <AccordionItem value="item-3" className="border rounded-lg px-4">
+              <AccordionTrigger className="text-left">
+                "¿Realmente salgo con uñas perfectas el mismo día?"
+              </AccordionTrigger>
               <AccordionContent>
-                Tu privacidad es sagrada para mí. Sales del salón con uñas perfectas que parecen un manicure de lujo. 
-                Nadie sabrá que estás en tratamiento. De hecho, te van a preguntar dónde te haces las uñas porque 
-                se ven espectaculares. Tu secreto está seguro conmigo.
+                SÍ, 100% garantizado. En 90 minutos elimino el problema, aplico 
+                el tratamiento IBX®, la prótesis anti-humedad Y el GEL Polish 
+                en tu color favorito. Sales lista para mostrar tus pies con orgullo. 
+                Mira las fotos de mis clientas - todas salieron así.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-4">
-              <AccordionTrigger>"¿Cuál es la inversión del tratamiento?"</AccordionTrigger>
+            
+            <AccordionItem value="item-4" className="border rounded-lg px-4">
+              <AccordionTrigger className="text-left">
+                "¿Por qué debo elegirte a ti y no otro lugar más barato?"
+              </AccordionTrigger>
               <AccordionContent>
-                La primera evaluación es $100 e incluye todo el tratamiento completo de 90 minutos con GEL Polish incluido (valor $25). 
-                Los seguimientos mensuales son $60. Piensa: ¿cuánto has gastado ya en cremas que no funcionaron? 
-                ¿Cuánto vale para ti volver a usar sandalias? Mis clientas me dicen que hubieran pagado 10 veces más 
-                por recuperar su confianza. Sales con uñas perfectas HOY MISMO.
+                Porque soy la ÚNICA RN certificada en IBX® en el área oeste. 
+                Los lugares baratos no eliminan el problema, solo lo cubren temporalmente. 
+                En 2 meses gastas más en tratamientos que no funcionan que lo que 
+                inviertes conmigo para eliminarlo PARA SIEMPRE. Es matemática simple.
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-5">
-              <AccordionTrigger>"Tengo un evento importante pronto, ¿me ayuda a tiempo?"</AccordionTrigger>
+            
+            <AccordionItem value="item-5" className="border rounded-lg px-4">
+              <AccordionTrigger className="text-left">
+                "Vivo lejos de Hatillo, ¿vale la pena?"
+              </AccordionTrigger>
               <AccordionContent>
-                ¡Absolutamente! Ese es mi superpoder. Sales de la primera sesión con uñas perfectas listas para lucir. 
-                He salvado bodas, quinceañeros, graduaciones y vacaciones. La transformación estética es INMEDIATA. 
-                Una clienta vino 3 días antes de su boda desesperada, y lució sandalias hermosas en su gran día. 
-                Las fotos quedaron espectaculares.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-6">
-              <AccordionTrigger>"Vivo lejos de Hatillo, ¿vale la pena el viaje?"</AccordionTrigger>
-              <AccordionContent>
-                Tengo clientas que vienen desde Ponce, Mayagüez, y hasta San Juan. ¿Por qué? Porque soy la única 
-                RN certificada en IBX® en Puerto Rico. Este tratamiento no lo encuentras en ningún otro lugar de la isla. 
-                Una clienta de Fajardo me dijo: "Manejo 2 horas pero vale cada minuto porque por fin tengo solución real". 
-                Tu vida va a cambiar, eso te lo garantizo.
+                Tengo clientas que vienen desde San Juan, Ponce y Mayagüez. 
+                ¿Por qué manejan 2 horas? Porque no existe este tratamiento 
+                en ningún otro lugar de Puerto Rico. Una cliente de Fajardo 
+                me dijo: "Manejo 2 horas pero cambió mi vida para siempre". 
+                Tú decides si vale la pena dejar de sufrir.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
         </div>
       </section>
 
-      {/* Why Choose Me */}
-      <section className="px-4 py-8">
-        <div className="container mx-auto max-w-4xl">
-          <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
-            <CardContent className="p-8 text-center">
-              <h2 className="text-2xl font-bold mb-4 text-blue-800">
-                🏆 Por Qué Mis Clientas Me Eligen
-              </h2>
-              <p className="text-lg mb-6 text-gray-700">
-                Soy la única RN certificada en IBX® en el área oeste. Esta combinación única 
-                me permite tratar casos complejos que otros no pueden resolver.
-              </p>
-              <div className="grid md:grid-cols-3 gap-4 mb-6">
-                <div className="bg-white p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-blue-600">37</p>
-                  <p className="text-sm">Reseñas 5 estrellas</p>
-                </div>
-                <div className="bg-white p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-purple-600">100%</p>
-                  <p className="text-sm">Clientes satisfechas</p>
-                </div>
-                <div className="bg-white p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-green-600">IBX®</p>
-                  <p className="text-sm">Certificación exclusiva</p>
-                </div>
-              </div>
-              <p className="text-sm italic text-gray-600">
-                "Viajo desde San Juan porque no hay nadie más con esta técnica" - María, Guaynabo
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Strong CTA */}
-      <section className="px-4 py-12 bg-gradient-to-br from-primary to-primary/80">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Tu Decisión de Hoy Define Tu Verano
-            </h2>
-            <p className="text-xl mb-8 opacity-95">
-              Puedes seguir escondiendo tus pies otros 6 meses...<br/>
-              O puedes salir de aquí HOY con uñas perfectas.
-            </p>
+      {/* Final CTA - The Close */}
+      <section className="px-4 py-16 bg-gradient-to-br from-black to-gray-900 text-white">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Tu Decisión Define Tu Futuro
+          </h2>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-12 text-left">
+            <Card className="bg-red-900/50 border-red-500">
+              <CardHeader>
+                <CardTitle className="text-white">
+                  Opción 1: No Hacer Nada
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-gray-300">
+                <ul className="space-y-2">
+                  <li>• Sigues escondiendo tus pies</li>
+                  <li>• Gastas otros $300 en cremas inútiles</li>
+                  <li>• El hongo empeora cada día</li>
+                  <li>• Pierdes otro verano sin playa</li>
+                  <li>• La vergüenza continúa</li>
+                </ul>
+              </CardContent>
+            </Card>
             
-            <div className="bg-white/10 backdrop-blur p-6 rounded-xl mb-8 max-w-2xl mx-auto">
-              <p className="text-lg font-semibold mb-4">
-                🎁 Reserva HOY y Recibe:
-              </p>
-              <ul className="text-left space-y-2">
-                <li>✓ GEL Polish de cortesía (valor $25)</li>
-                <li>✓ Kit de mantenimiento para casa</li>
-                <li>✓ Consulta de seguimiento gratuita</li>
-                <li>✓ Acceso directo a mi WhatsApp personal</li>
-                <li>✓ Prioridad en citas de seguimiento</li>
-              </ul>
-            </div>
-
-            <Button size="lg" className="bg-white text-primary hover:bg-gray-100 text-xl px-12 py-6 shadow-2xl mb-4" asChild>
-              <a
-                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-                target="_blank"
+            <Card className="bg-green-900/50 border-green-500">
+              <CardHeader>
+                <CardTitle className="text-white">
+                  Opción 2: Actuar HOY
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="text-gray-300">
+                <ul className="space-y-2">
+                  <li>• Sales con uñas perfectas en 90 min</li>
+                  <li>• Ahorras $450 con esta oferta</li>
+                  <li>• Eliminas el problema para siempre</li>
+                  <li>• Recuperas tu confianza HOY</li>
+                  <li>• Vives sin complejos desde ahora</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+          
+          <div className="bg-yellow-400 text-black p-8 rounded-xl mb-8">
+            <p className="text-2xl font-bold mb-4">
+              🎯 Recuerda: Esta oferta de $100 (ahorrando $450) 
+              expira en 72 horas
+            </p>
+            <p className="text-lg">
+              Solo quedan 3 espacios. No seas la que se arrepienta mañana.
+            </p>
+          </div>
+          
+          <Button size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-black font-bold text-2xl px-16 py-8 shadow-2xl" asChild>
+            <a
+              href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              SÍ, QUIERO TRANSFORMAR MIS UÑAS AHORA
+              <ArrowRight className="ml-3 h-8 w-8" />
+            </a>
+          </Button>
+          
+          <div className="mt-8 space-y-4">
+            <p className="text-gray-400">
+              ¿Prefieres hablar conmigo primero?
+            </p>
+            <Button variant="outline" className="border-white text-white hover:bg-white/10" asChild>
+              <a 
+                href="https://wa.me/19394290292?text=Hola%20Neycha,%20vi%20tu%20oferta%20especial%20de%20onicoplastia%20y%20quiero%20reservar" 
+                target="_blank" 
                 rel="noopener noreferrer"
               >
-                <Calendar className="mr-3 h-6 w-6" />
-                SÍ, QUIERO MI TRANSFORMACIÓN HOY
-              </a>
-            </Button>
-            
-            <p className="text-sm opacity-80 mb-6">
-              O si prefieres, escríbeme directamente:
-            </p>
-            
-            <Button variant="outline" className="border-white text-white hover:bg-white/10" asChild>
-              <a href="https://wa.me/19394290292?text=Hola%20Neycha,%20quiero%20información%20sobre%20el%20tratamiento%20de%20onicoplastia" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="mr-2 h-5 w-5" />
                 WhatsApp: +1 939-429-0292
               </a>
             </Button>
             
-            <div className="mt-8 text-sm opacity-75">
-              <p>📍 Hatillo, Puerto Rico • 🏥 RN Certificada • 🏆 IBX® Especialista Exclusiva</p>
-            </div>
+            <p className="text-sm text-gray-500">
+              📍 166 Ave Dr Susoni, Hatillo • 🏥 RN Certificada • 🏆 IBX® Exclusiva
+            </p>
           </div>
         </div>
       </section>
