@@ -99,33 +99,6 @@ export default function Onicoplastia() {
             Restauración profesional de uñas con tratamiento IBX®
           </p>
           
-          {/* Before/After Preview - Moved to top */}
-          <div className="mb-12">
-            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div>
-                <p className="text-[#F2E6D8] font-light mb-4">Antes</p>
-                <div className="aspect-square rounded-lg overflow-hidden bg-zinc-900/30 border border-zinc-800">
-                  <img 
-                    src="/cases/Caso1_before.png" 
-                    alt="Antes del tratamiento" 
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </div>
-              <div>
-                <p className="text-[#F2E6D8] font-light mb-4">Después</p>
-                <div className="aspect-square rounded-lg overflow-hidden bg-zinc-900/30 border border-zinc-800">
-                  <img 
-                    src="/cases/Caso1_after.png" 
-                    alt="Después del tratamiento" 
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </div>
-            </div>
-            <p className="text-gray-400 mt-6 font-light">Transformación real en una sola sesión</p>
-          </div>
-          
           {/* Elegant Service Details */}
           <div className="bg-zinc-900/30 backdrop-blur border border-zinc-800 p-8 rounded-lg mb-12 max-w-2xl mx-auto">
             <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -190,58 +163,14 @@ export default function Onicoplastia() {
         </div>
       </section>
 
-      {/* About the Treatment */}
+      {/* Gallery Section - Moved to top */}
       <section className="px-4 py-16 bg-zinc-950">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-light text-center mb-16">
-            El Arte de la <span className="text-[#F2E6D8]">Restauración</span>
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-zinc-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border border-zinc-800">
-                <span className="text-2xl text-[#F2E6D8]">1</span>
-              </div>
-              <h3 className="text-xl font-light mb-3 text-[#F2E6D8]">Evaluación Completa</h3>
-              <p className="text-gray-400 font-light">
-                Evaluamos tu caso específico para identificar el problema 
-                y crear un plan de tratamiento personalizado.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-zinc-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border border-zinc-800">
-                <span className="text-2xl text-[#F2E6D8]">2</span>
-              </div>
-              <h3 className="text-xl font-light mb-3 text-[#F2E6D8]">Tratamiento IBX®</h3>
-              <p className="text-gray-400 font-light">
-                Sistema de fortalecimiento que penetra y sella la uña desde adentro, 
-                creando una barrera protectora duradera.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="bg-zinc-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border border-zinc-800">
-                <span className="text-2xl text-[#F2E6D8]">3</span>
-              </div>
-              <h3 className="text-xl font-light mb-3 text-[#F2E6D8]">Resultado Inmediato</h3>
-              <p className="text-gray-400 font-light">
-                Sales con uñas perfectas en 90 minutos. Incluye GEL Polish profesional 
-                en el color de tu preferencia.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section className="px-4 py-16">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl md:text-4xl font-light text-center mb-4">
             <span className="text-[#F2E6D8]">Transformaciones</span> Reales
           </h2>
           <p className="text-center text-gray-400 mb-12 font-light">
-            Resultados de clientas en Puerto Rico
+            Resultados de clientas en Puerto Rico - Una imagen vale más que mil palabras
           </p>
 
           <div className="relative">
@@ -354,6 +283,50 @@ export default function Onicoplastia() {
                 <CarouselNext className="bg-zinc-900/80 border-zinc-700 text-white hover:bg-zinc-800" />
               </div>
             </Carousel>
+          </div>
+        </div>
+      </section>
+
+      {/* About the Treatment */}
+      <section className="px-4 py-16">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-light text-center mb-16">
+            El Arte de la <span className="text-[#F2E6D8]">Restauración</span>
+          </h2>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="bg-zinc-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border border-zinc-800">
+                <span className="text-2xl text-[#F2E6D8]">1</span>
+              </div>
+              <h3 className="text-xl font-light mb-3 text-[#F2E6D8]">Evaluación Completa</h3>
+              <p className="text-gray-400 font-light">
+                Evaluamos tu caso específico para identificar el problema 
+                y crear un plan de tratamiento personalizado.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-zinc-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border border-zinc-800">
+                <span className="text-2xl text-[#F2E6D8]">2</span>
+              </div>
+              <h3 className="text-xl font-light mb-3 text-[#F2E6D8]">Tratamiento IBX®</h3>
+              <p className="text-gray-400 font-light">
+                Sistema de fortalecimiento que penetra y sella la uña desde adentro, 
+                creando una barrera protectora duradera.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-zinc-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border border-zinc-800">
+                <span className="text-2xl text-[#F2E6D8]">3</span>
+              </div>
+              <h3 className="text-xl font-light mb-3 text-[#F2E6D8]">Resultado Inmediato</h3>
+              <p className="text-gray-400 font-light">
+                Sales con uñas perfectas en 90 minutos. Incluye GEL Polish profesional 
+                en el color de tu preferencia.
+              </p>
+            </div>
           </div>
         </div>
       </section>
