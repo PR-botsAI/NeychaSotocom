@@ -493,12 +493,12 @@ export default function Onicoplastia() {
               </p>
               <div className="grid md:grid-cols-3 gap-4 mb-6">
                 <div className="bg-white p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-blue-600">500+</p>
-                  <p className="text-sm">Clientas transformadas</p>
+                  <p className="text-3xl font-bold text-blue-600">37</p>
+                  <p className="text-sm">Reseñas 5 estrellas</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg">
-                  <p className="text-3xl font-bold text-purple-600">5</p>
-                  <p className="text-sm">Años de experiencia</p>
+                  <p className="text-3xl font-bold text-purple-600">100%</p>
+                  <p className="text-sm">Clientes satisfechas</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg">
                   <p className="text-3xl font-bold text-green-600">IBX®</p>
