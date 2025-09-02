@@ -558,7 +558,7 @@ export default function Onicoplastia() {
           </div>
           
           <div className="text-sm text-gray-500 space-y-2">
-            <p>📍 166 Ave Dr Susoni, Hatillo, PR 00659</p>
+            <p>📍 Hatillo, PR 00659</p>
             <p>🏥 RN Certificada • 🏆 IBX® Certificada • ⭐ 37 Reseñas 5 Estrellas</p>
           </div>
         </div>
