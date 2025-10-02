@@ -53,7 +53,7 @@ function getPageTitle(location: string): string {
     case '/':
       return 'Neycha Soto | Termina con los Problemas de Hongos en las Uñas Para Siempre | Onicoplastia Hatillo PR';
     case '/onicoplastia':
-      return 'Ve las Transformaciones Reales | Onicoplastia Premium Antes y Después | Neycha Soto Hatillo';
+      return 'Transformaciones Reales de Uñas en Puerto Rico | Onicoplastia Premium | Antes y Después | Neycha Soto';
     case '/contact':
       return 'Reserva Tu Consulta de Onicoplastia | Neycha Soto | Transforma Tus Uñas Hoy';
     default:
@@ -99,8 +99,8 @@ function updateOpenGraphTags(title: string, description: string) {
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
     { property: 'og:locale', content: 'es_PR' },
-    { property: 'og:locale:alternate', content: 'en_US' },
-    { property: 'og:site_name', content: 'Neycha Soto - Especialista en Onicoplastia' },
+    { property: 'og:locale:alternate', content: 'es_US' },
+    { property: 'og:site_name', content: 'Neycha Soto - Especialista en Onicoplastia Puerto Rico' },
   ];
 
   ogTags.forEach(tag => {
@@ -120,7 +120,7 @@ function updateTwitterCardTags(title: string, description: string) {
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
     { name: 'twitter:image', content: 'https://neychasoto.com/assets/nail-transformation-twitter.jpg' },
-    { name: 'twitter:image:alt', content: 'Galería antes y después de transformaciones reales de onicoplastia por Neycha Soto' },
+    { name: 'twitter:image:alt', content: 'Transformaciones reales de uñas antes y después - Onicoplastia Puerto Rico por Neycha Soto' },
     { name: 'twitter:site', content: '@neychanails' },
     { name: 'twitter:creator', content: '@neychanails' },
   ];
@@ -197,8 +197,8 @@ function addLocalBusinessSchema() {
     '@context': 'https://schema.org',
     '@type': 'NailSalon',
     '@id': 'https://neychasoto.com/#business',
-    name: 'Neycha Soto',
-    alternateName: 'Neycha Soto Especialista en Onicoplastia',
+    name: 'Neycha Soto - Onicoplastia Puerto Rico',
+    alternateName: 'Neycha Nails - Especialista en Restauración de Uñas',
     image: [
       'https://neychasoto.com/assets/nail-transformation-gallery.jpg',
       'https://neychasoto.com/assets/professional-consultation.jpg'
@@ -206,7 +206,7 @@ function addLocalBusinessSchema() {
     logo: 'https://neychasoto.com/assets/logo-neychasoto.png',
     url: 'https://neychasoto.com',
     telephone: '+1-939-429-0292',
-    description: 'Especialista profesional en onicoplastia ayudando a personas a transformar problemas de uñas permanentemente. 20+ años de experiencia, certificada IBX®, resultados comprobados en Hatillo, Puerto Rico.',
+    description: 'Especialista certificada IBX® en onicoplastia y restauración de uñas en Hatillo, Puerto Rico. Transformaciones reales antes y después. Primera evaluación $100. Solo con cita previa.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '166 Avenida Dr Susoni, Unit 166',
@@ -233,22 +233,22 @@ function addLocalBusinessSchema() {
     currenciesAccepted: 'USD',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Servicios de Transformación de Uñas',
+      name: 'Servicios de Onicoplastia y Restauración de Uñas',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Tratamiento de Onicoplastia',
-            description: 'Restauración profesional de uñas y tratamiento de hongos que transforma uñas problemáticas permanentemente'
+            name: 'Onicoplastia Premium',
+            description: 'Tratamiento profesional de onicoplastia con resultados visibles en una sesión. Incluye GEL Polish. Primera evaluación $100, seguimientos $60.'
           }
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Consulta de Salud de Uñas',
-            description: 'Evaluación integral y plan de tratamiento personalizado para tus problemas de uñas'
+            name: 'Evaluación y Consulta Personalizada',
+            description: 'Evaluación completa de uñas con plan de tratamiento personalizado. Solo con cita previa en Hatillo, PR.'
           }
         }
       ]
