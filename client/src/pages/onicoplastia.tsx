@@ -425,11 +425,11 @@ export default function Onicoplastia() {
                   <CheckCircle className="w-6 h-6 text-[#F2E6D8]" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3 text-white">
-                  Seguimiento Incluido
+                  Acompañamiento Continuo
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
-                  Te acompañamos en todo el proceso con seguimientos mensuales 
-                  para asegurar que tus uñas se mantengan saludables.
+                  Te acompañamos en todo el proceso de recuperación de tus uñas 
+                  durante el tiempo que lo necesites, con seguimientos disponibles.
                 </p>
               </div>
             </div>
