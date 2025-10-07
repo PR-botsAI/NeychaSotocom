@@ -56,24 +56,28 @@ export default function Home() {
             <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
               <h3 className="text-xl font-semibold text-white">Onicoplastia</h3>
               <p className="text-gray-300">
-                Tratamiento profesional diseñado para restaurar la salud de tus uñas afectadas por hongos. Primera cita $75, seguimientos $40-50.
+                Tratamiento especializado para la restauración completa de uñas afectadas por hongos, trauma o condiciones médicas. Utilizamos el sistema IBX® certificado para fortalecer y reconstruir la estructura natural de tus uñas.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center text-gray-300">
                   <span className="mr-2">✓</span>
-                  Resultados visibles desde la 1ra sesión
+                  Resultados visibles desde la primera sesión
                 </li>
                 <li className="flex items-center text-gray-300">
                   <span className="mr-2">✓</span>
-                  Procedimiento indoloro y no invasivo
+                  Tratamiento indoloro y no invasivo
                 </li>
                 <li className="flex items-center text-gray-300">
                   <span className="mr-2">✓</span>
                   Compatible con decoraciones (acrílico/gel)
                 </li>
                 <li className="flex items-center text-gray-300">
+                  <span className="mr-2">✓</span>
+                  Incluye GEL Polish profesional
+                </li>
+                <li className="flex items-center text-gray-300">
                   <span className="mr-2">⚡</span>
-                  Evaluación inicial requerida
+                  Evaluación personalizada requerida
                 </li>
               </ul>
               <Button 
@@ -88,7 +92,7 @@ export default function Home() {
             <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
               <h3 className="text-xl font-semibold text-white">Manicura</h3>
               <p className="text-gray-300">
-                Uñas impecables y brillantes con nivelación y limpieza profunda de cutículas. Desde $35-45 según longitud.
+                Más que un servicio estético, es un ritual de cuidado profesional. Nuestras manicuras incluyen nivelación perfecta, limpieza profunda de cutículas y técnicas avanzadas que garantizan resultados duraderos y saludables para tus uñas.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center text-gray-300">
@@ -97,7 +101,11 @@ export default function Home() {
                 </li>
                 <li className="flex items-center text-gray-300">
                   <span className="mr-2">✓</span>
-                  Productos premium para el cuidado
+                  Productos premium libres de tóxicos
+                </li>
+                <li className="flex items-center text-gray-300">
+                  <span className="mr-2">✓</span>
+                  Duración superior con cuidado adecuado
                 </li>
                 <li className="flex items-center text-gray-300">
                   <span className="mr-2">✓</span>
@@ -116,7 +124,7 @@ export default function Home() {
             <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
               <h3 className="text-xl font-semibold text-white">Belleza para Pies</h3>
               <p className="text-gray-300">
-                Cuidado rápido con limpieza de cutículas y esmaltado en gel para un look perfecto. Desde $25.
+                Cuidado integral para pies saludables y hermosos. Combinamos técnicas profesionales de pedicura con tratamientos spa que rejuvenecen, hidratan y embellecen, garantizando comodidad y resultados que duran.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-center text-gray-300">
@@ -130,6 +138,10 @@ export default function Home() {
                 <li className="flex items-center text-gray-300">
                   <span className="mr-2">✓</span>
                   Cuidado detallado y duradero
+                </li>
+                <li className="flex items-center text-gray-300">
+                  <span className="mr-2">✓</span>
+                  GEL Polish de larga duración
                 </li>
               </ul>
               <Button 
