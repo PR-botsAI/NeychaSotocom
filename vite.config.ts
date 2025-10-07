@@ -22,6 +22,6 @@ export default defineConfig({
   },
   server: {
     host: true,
-    allowedHosts: [".replit.dev", ".replit.app", ".repl.co", "localhost"],
+    allowedHosts: "all",
   },
 });
