@@ -64,11 +64,11 @@ function getPageTitle(location: string): string {
 function getPageDescription(location: string): string {
   switch (location) {
     case '/':
-      return '¿Cansada de esconder tus uñas? Neycha Soto ha ayudado a cientos a transformar sus problemas de uñas con onicoplastia profesional. 20+ años de experiencia, certificada IBX®. Ve resultados en tu primera sesión. Reserva tu consulta en Hatillo, PR.';
+      return '¿Cansada de esconder tus uñas? Neycha Soto ha ayudado a cientos a transformar sus problemas de uñas con onicoplastia profesional. Enfermera registrada y certificada IBX®. Ve resultados en tu primera sesión. Reserva tu consulta en Hatillo, PR.';
     case '/onicoplastia':
       return 'Una imagen vale más que mil palabras. Ve transformaciones reales de onicoplastia antes y después. Neycha Soto, especialista certificada IBX® en Hatillo, PR. Resultados visibles en una sola sesión, galería de casos reales, $100 primera evaluación.';
     case '/contact':
-      return '¿Lista para arreglar tus problemas de uñas de una vez por todas? Reserva tu consulta de onicoplastia con Neycha Soto en Hatillo, Puerto Rico. 20+ años transformando uñas problemáticas. Citas limitadas disponibles - asegura la tuya hoy.';
+      return '¿Lista para arreglar tus problemas de uñas de una vez por todas? Reserva tu consulta de onicoplastia con Neycha Soto en Hatillo, Puerto Rico. Enfermera registrada especialista en transformación de uñas. Citas limitadas disponibles - asegura la tuya hoy.';
     default:
       return 'Transforma tus uñas problemáticas con tratamiento comprobado de onicoplastia. Neycha Soto se especializa en soluciones permanentes para uñas en Hatillo, Puerto Rico. Deja de esconderte - comienza a vivir con confianza.';
   }
@@ -173,7 +173,7 @@ function addStructuredData(location: string) {
       '@type': 'WebSite',
       name: 'Neycha Soto - Especialista en Onicoplastia',
       url: 'https://neychasoto.com',
-      description: 'Tratamiento profesional de onicoplastia para problemas de uñas. Transforma tus uñas con técnicas comprobadas y más de 20 años de experiencia.',
+      description: 'Tratamiento profesional de onicoplastia para problemas de uñas. Transforma tus uñas con técnicas comprobadas. Enfermera registrada certificada IBX®.',
       potentialAction: {
         '@type': 'SearchAction',
         target: 'https://neychasoto.com/?s={search_term_string}',
