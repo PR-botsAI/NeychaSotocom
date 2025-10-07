@@ -579,53 +579,21 @@ export default function Onicoplastia() {
                 Dale a tus uñas el cuidado profesional que merecen
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button 
-                  size="lg" 
-                  className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-lg px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
-                  asChild
+              <Button 
+                size="lg" 
+                className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-lg px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
+                asChild
+              >
+                <a
+                  href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
                 >
-                  <a
-                    href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
-                  >
-                    <Calendar className="w-5 h-5" />
-                    RESERVAR CITA
-                  </a>
-                </Button>
-                
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button 
-                      size="lg" 
-                      variant="outline" 
-                      className="border-zinc-700 text-white hover:bg-zinc-800 hover:border-[#F2E6D8]/50 font-semibold text-lg px-12 py-6 transition-all"
-                    >
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      CONSULTA POR WHATSAPP
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="bg-zinc-900 border-zinc-800">
-                    <DialogTitle>Mensaje Importante</DialogTitle>
-                    <DialogDescription>
-                      Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.
-                    </DialogDescription>
-                    <div className="mt-6 flex justify-end">
-                      <Button asChild className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black">
-                        <a 
-                          href="https://wa.me/19394290292?text=Hola%20Neycha,%20me%20interesa%20el%20tratamiento%20de%20onicoplastia" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                        >
-                          Continuar a WhatsApp
-                        </a>
-                      </Button>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </div>
+                  <Calendar className="w-5 h-5" />
+                  RESERVAR EVALUACIÓN AHORA
+                </a>
+              </Button>
               
               <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400 pt-6">
                 <div className="flex items-center gap-2">
