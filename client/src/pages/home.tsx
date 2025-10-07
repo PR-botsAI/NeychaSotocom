@@ -245,19 +245,43 @@ export default function Home() {
 
       {/* CTA Section */}
       <section className="px-4">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            ¿Lista Para Transformar Tus Uñas?
-          </h2>
-          <p className="mt-4 text-lg text-gray-300">
-            ¡No esperes más! Reserva tu cita ahora y déjanos crear la belleza que mereces
-          </p>
-          <Button
-            className="mt-8 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-6 py-3 text-lg font-semibold"
-            onClick={handleBookingClick}
-          >
-            ¡RESERVA TU CITA AHORA!
-          </Button>
+        <div className="container mx-auto">
+          <div className="max-w-4xl mx-auto">
+            <div className="relative rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-black p-12 sm:p-16 text-center border border-zinc-800 overflow-hidden">
+              {/* Decorative elements */}
+              <div className="absolute top-0 left-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
+              
+              <div className="relative space-y-6">
+                <Sparkles className="w-12 h-12 text-[#F2E6D8] mx-auto mb-4" />
+                
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+                  <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">
+                    ¿Lista Para Transformar Tus Uñas?
+                  </span>
+                </h2>
+                
+                <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                  ¡No esperes más! Reserva tu cita ahora y déjanos crear la belleza que mereces
+                </p>
+                
+                <div className="pt-4">
+                  <Button
+                    className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 py-6 text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105"
+                    onClick={handleBookingClick}
+                  >
+                    <Calendar className="w-5 h-5 mr-2" />
+                    ¡RESERVA TU CITA AHORA!
+                  </Button>
+                </div>
+
+                <div className="flex items-center justify-center gap-2 text-sm text-gray-400 pt-4">
+                  <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                  Disponible vía Booksy • Respuesta Inmediata
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
