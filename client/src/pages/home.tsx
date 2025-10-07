@@ -3,7 +3,7 @@ import NailConditionMatcher from "@/components/nail-condition-matcher";
 import TestimonialCard from "@/components/testimonial-card";
 import ShopPromotion from "@/components/shop-promotion";
 import { Button } from "@/components/ui/button";
-import { ShoppingBag, Calendar, ArrowUp } from "lucide-react";
+import { ShoppingBag, Calendar, ArrowUp, Sparkles, Heart, Award } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -53,35 +53,49 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {/* Onicoplastia */}
-            <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
-              <h3 className="text-xl font-semibold text-white">Onicoplastia</h3>
-              <p className="text-gray-300">
-                Tratamiento especializado para la restauración completa de uñas afectadas por hongos, trauma o condiciones médicas. Utilizamos el sistema IBX® certificado para fortalecer y reconstruir la estructura natural de tus uñas.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  Resultados visibles desde la primera sesión
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  Tratamiento indoloro y no invasivo
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  Compatible con decoraciones (acrílico/gel)
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  Incluye GEL Polish profesional
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">⚡</span>
-                  Evaluación personalizada requerida
-                </li>
-              </ul>
+            <div className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 space-y-6 h-full hover:from-zinc-800 hover:to-zinc-900 transition-all duration-300 border border-zinc-800 hover:border-[#F2E6D8]/30">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
+              
+              <div className="relative">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-3 bg-[#F2E6D8]/10 rounded-lg">
+                    <Sparkles className="w-6 h-6 text-[#F2E6D8]" />
+                  </div>
+                  <span className="text-xs font-semibold text-[#F2E6D8] bg-[#F2E6D8]/10 px-3 py-1 rounded-full">IBX® Certificado</span>
+                </div>
+                
+                <div className="space-y-2 mb-4">
+                  <p className="text-sm font-medium text-[#F2E6D8]/80">Restauración Profesional</p>
+                  <h3 className="text-2xl font-bold text-white">Onicoplastia</h3>
+                  <p className="text-base font-medium text-gray-300">Recupera la confianza en tus uñas</p>
+                </div>
+                
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Sistema avanzado IBX® para restaurar uñas afectadas por hongos, trauma o condiciones médicas. Resultados visibles desde la primera sesión.
+                </p>
+
+                <div className="mt-6 pt-6 border-t border-zinc-800 space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                    <p className="text-sm text-gray-300">Tratamiento indoloro y no invasivo</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                    <p className="text-sm text-gray-300">Compatible con decoraciones (acrílico/gel)</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                    <p className="text-sm text-gray-300">Incluye GEL Polish profesional</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-[#F2E6D8]/5 rounded-lg border border-[#F2E6D8]/20">
+                  <p className="text-xs text-[#F2E6D8] font-medium">⚡ Evaluación personalizada requerida</p>
+                </div>
+              </div>
+
               <Button 
-                className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]"
+                className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl transition-all"
                 onClick={handleBookingClick}
               >
                 ¡AGENDA TU EVALUACIÓN!
@@ -89,31 +103,49 @@ export default function Home() {
             </div>
 
             {/* Manicura */}
-            <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
-              <h3 className="text-xl font-semibold text-white">Manicura</h3>
-              <p className="text-gray-300">
-                Más que un servicio estético, es un ritual de cuidado profesional. Nuestras manicuras incluyen nivelación perfecta, limpieza profunda de cutículas y técnicas avanzadas que garantizan resultados duraderos y saludables para tus uñas.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  Técnicas exclusivas de embellecimiento
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  Productos premium libres de tóxicos
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  Duración superior con cuidado adecuado
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  Experiencia relajante y renovadora
-                </li>
-              </ul>
+            <div className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 space-y-6 h-full hover:from-zinc-800 hover:to-zinc-900 transition-all duration-300 border border-zinc-800 hover:border-[#F2E6D8]/30">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
+              
+              <div className="relative">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-3 bg-[#F2E6D8]/10 rounded-lg">
+                    <Heart className="w-6 h-6 text-[#F2E6D8]" />
+                  </div>
+                  <span className="text-xs font-semibold text-[#F2E6D8] bg-[#F2E6D8]/10 px-3 py-1 rounded-full">⭐ 5.0/5</span>
+                </div>
+                
+                <div className="space-y-2 mb-4">
+                  <p className="text-sm font-medium text-[#F2E6D8]/80">Ritual de Cuidado</p>
+                  <h3 className="text-2xl font-bold text-white">Manicura</h3>
+                  <p className="text-base font-medium text-gray-300">Más que belleza, es bienestar</p>
+                </div>
+                
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Experiencia profesional que combina técnicas exclusivas, productos premium libres de tóxicos y acabados duraderos que realzan tu estilo personal.
+                </p>
+
+                <div className="mt-6 pt-6 border-t border-zinc-800 space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                    <p className="text-sm text-gray-300">Técnicas exclusivas de embellecimiento</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                    <p className="text-sm text-gray-300">Nivelación perfecta y limpieza profunda</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                    <p className="text-sm text-gray-300">Acabado impecable que perdura</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-[#F2E6D8]/5 rounded-lg border border-[#F2E6D8]/20">
+                  <p className="text-xs text-[#F2E6D8] font-medium">💅 Ambiente relajante y profesional</p>
+                </div>
+              </div>
+
               <Button 
-                className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]"
+                className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl transition-all"
                 onClick={handleBookingClick}
               >
                 ¡RESERVA AHORA!
@@ -121,31 +153,49 @@ export default function Home() {
             </div>
 
             {/* Belleza para Pies */}
-            <div className="rounded-lg bg-zinc-900/50 p-8 space-y-4 h-full hover:bg-zinc-800/50 transition-colors">
-              <h3 className="text-xl font-semibold text-white">Belleza para Pies</h3>
-              <p className="text-gray-300">
-                Cuidado integral para pies saludables y hermosos. Combinamos técnicas profesionales de pedicura con tratamientos spa que rejuvenecen, hidratan y embellecen, garantizando comodidad y resultados que duran.
-              </p>
-              <ul className="space-y-2">
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  Spa completo para pies
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  Masaje relajante incluido
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  Cuidado detallado y duradero
-                </li>
-                <li className="flex items-center text-gray-300">
-                  <span className="mr-2">✓</span>
-                  GEL Polish de larga duración
-                </li>
-              </ul>
+            <div className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 space-y-6 h-full hover:from-zinc-800 hover:to-zinc-900 transition-all duration-300 border border-zinc-800 hover:border-[#F2E6D8]/30">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
+              
+              <div className="relative">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="p-3 bg-[#F2E6D8]/10 rounded-lg">
+                    <Award className="w-6 h-6 text-[#F2E6D8]" />
+                  </div>
+                  <span className="text-xs font-semibold text-[#F2E6D8] bg-[#F2E6D8]/10 px-3 py-1 rounded-full">Spa Premium</span>
+                </div>
+                
+                <div className="space-y-2 mb-4">
+                  <p className="text-sm font-medium text-[#F2E6D8]/80">Experiencia Spa</p>
+                  <h3 className="text-2xl font-bold text-white">Belleza para Pies</h3>
+                  <p className="text-base font-medium text-gray-300">Relájate mientras te embelleces</p>
+                </div>
+                
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Tratamiento integral que combina pedicura profesional con terapia spa. Hidratación profunda, masaje relajante y acabado impecable de larga duración.
+                </p>
+
+                <div className="mt-6 pt-6 border-t border-zinc-800 space-y-3">
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                    <p className="text-sm text-gray-300">Spa completo con masaje incluido</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                    <p className="text-sm text-gray-300">Hidratación y rejuvenecimiento</p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                    <p className="text-sm text-gray-300">GEL Polish de larga duración</p>
+                  </div>
+                </div>
+
+                <div className="mt-6 p-4 bg-[#F2E6D8]/5 rounded-lg border border-[#F2E6D8]/20">
+                  <p className="text-xs text-[#F2E6D8] font-medium">✨ Resultados que perduran semanas</p>
+                </div>
+              </div>
+
               <Button 
-                className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]"
+                className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl transition-all"
                 onClick={handleBookingClick}
               >
                 ¡RESERVA AHORA!
