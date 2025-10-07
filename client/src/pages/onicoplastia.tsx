@@ -77,26 +77,39 @@ export default function Onicoplastia() {
   }, [api]);
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Elegant Hero Section */}
-      <section className="relative px-4 py-24">
-        <div className="container mx-auto max-w-4xl text-center">
+    <div className="min-h-screen bg-gradient-to-b from-black via-zinc-950 to-black text-white">
+      {/* Modern Hero Section */}
+      <section className="relative px-4 py-20 sm:py-28 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-20 left-10 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
+        
+        <div className="container relative z-10 mx-auto max-w-4xl text-center">
           {/* Logo */}
-          <div className="mb-12">
+          <div className="mb-10">
             <img 
               src="/assets/HeroLogoWhiteTrasparent.png" 
               alt="Neycha Soto" 
-              className="h-24 mx-auto mb-6 opacity-90"
+              className="h-20 sm:h-24 mx-auto mb-6 drop-shadow-2xl"
             />
-            <p className="text-[#F2E6D8] text-sm uppercase tracking-widest mb-2">
-              IBX® Certified • RN Profesional
-            </p>
+            <div className="flex flex-wrap justify-center gap-3 mb-2">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 px-4 py-2 text-sm font-semibold text-[#F2E6D8]">
+                <Sparkles className="w-4 h-4" />
+                IBX® Certified
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 px-4 py-2 text-sm font-semibold text-[#F2E6D8]">
+                <Shield className="w-4 h-4" />
+                RN Profesional
+              </span>
+            </div>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-light mb-6 tracking-tight">
-            Onicoplastia <span className="text-[#F2E6D8]">Premium</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+            <span className="bg-gradient-to-r from-white via-[#F2E6D8] to-white bg-clip-text text-transparent">
+              Onicoplastia Premium
+            </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-12 text-gray-300 font-light">
+          <p className="text-xl md:text-2xl mb-12 text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Restauración profesional de uñas con tratamiento IBX®
           </p>
           
@@ -120,12 +133,14 @@ export default function Onicoplastia() {
                     const currentImage = getSelectedImage(case_.id);
                     return (
                       <CarouselItem key={case_.id}>
-                        <Card className="bg-zinc-900/50 border-zinc-800">
-                          <CardHeader className="pb-4">
-                            <CardTitle className="text-xl font-light text-[#F2E6D8]">{case_.title}</CardTitle>
-                            <CardDescription className="text-gray-400">{case_.description}</CardDescription>
-                          </CardHeader>
-                          <CardContent>
+                        <div className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all">
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
+                          
+                          <div className="relative">
+                            <div className="mb-6">
+                              <h3 className="text-2xl font-bold text-white mb-2">{case_.title}</h3>
+                              <p className="text-gray-400">{case_.description}</p>
+                            </div>
                             <div className="flex justify-center gap-2 mb-4">
                               <Button
                                 variant={currentImage === "before" ? "default" : "outline"}
@@ -189,8 +204,8 @@ export default function Onicoplastia() {
                                 ))}
                               </div>
                             )}
-                          </CardContent>
-                        </Card>
+                          </div>
+                        </div>
                       </CarouselItem>
                     );
                   })}
@@ -219,38 +234,50 @@ export default function Onicoplastia() {
             </div>
           </div>
           
-          {/* Elegant Service Details */}
-          <div className="bg-zinc-900/30 backdrop-blur border border-zinc-800 p-8 rounded-lg mb-12 max-w-2xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div className="text-left">
-                <p className="text-[#F2E6D8] font-light mb-2">Duración</p>
-                <p className="text-lg">Hasta 2 horas</p>
-              </div>
-              <div className="text-left">
-                <p className="text-[#F2E6D8] font-light mb-2">Inversión</p>
-                <p className="text-lg">Primera evaluación: $100</p>
-                <p className="text-sm text-gray-400">Seguimientos: $60</p>
-              </div>
-            </div>
-            
-            <div className="text-left space-y-3 pt-6 border-t border-zinc-800">
-              <p className="text-[#F2E6D8] font-light mb-4">Incluye:</p>
-              <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <Sparkles className="w-4 h-4 text-[#F2E6D8]" />
-                  <span className="text-gray-300">Evaluación completa y personalizada</span>
+          {/* Modern Service Details */}
+          <div className="relative max-w-3xl mx-auto mb-12">
+            <div className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-10 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
+              
+              <div className="relative">
+                <div className="grid md:grid-cols-2 gap-8 mb-8">
+                  <div className="text-center md:text-left">
+                    <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-3">
+                      <Clock className="w-6 h-6 text-[#F2E6D8]" />
+                    </div>
+                    <p className="text-[#F2E6D8] font-semibold mb-2">Duración</p>
+                    <p className="text-xl text-white">Hasta 2 horas</p>
+                  </div>
+                  <div className="text-center md:text-left">
+                    <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-3">
+                      <Sparkles className="w-6 h-6 text-[#F2E6D8]" />
+                    </div>
+                    <p className="text-[#F2E6D8] font-semibold mb-2">Inversión</p>
+                    <p className="text-xl text-white">Primera evaluación: $100</p>
+                    <p className="text-sm text-gray-400 mt-1">Seguimientos: $60</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Sparkles className="w-4 h-4 text-[#F2E6D8]" />
-                  <span className="text-gray-300">Tratamiento IBX® certificado</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Sparkles className="w-4 h-4 text-[#F2E6D8]" />
-                  <span className="text-gray-300">Reconstrucción con prótesis especializada</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Heart className="w-4 h-4 text-[#F2E6D8]" />
-                  <span className="text-gray-300">GEL Polish profesional incluido</span>
+                
+                <div className="pt-8 border-t border-zinc-800">
+                  <p className="text-[#F2E6D8] font-semibold mb-6 text-lg">Incluye:</p>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                      <span className="text-gray-300">Evaluación completa y personalizada</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                      <span className="text-gray-300">Tratamiento IBX® certificado</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                      <span className="text-gray-300">Reconstrucción con prótesis especializada</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                      <span className="text-gray-300">GEL Polish profesional incluido</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -258,26 +285,34 @@ export default function Onicoplastia() {
 
           <Button 
             size="lg" 
-            className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-light text-lg px-12 py-6" 
+            className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-lg px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
             asChild
           >
             <a
               href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
               target="_blank"
               rel="noopener noreferrer"
+              className="flex items-center gap-2"
             >
+              <Calendar className="w-5 h-5" />
               RESERVAR EVALUACIÓN
             </a>
           </Button>
           
-          <div className="flex items-center justify-center gap-6 mt-8 text-sm text-gray-400">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-10">
+            <div className="flex items-center gap-2 text-sm text-gray-400">
               <Star className="w-4 h-4 text-[#F2E6D8]" />
               <span>37 reseñas 5 estrellas</span>
             </div>
-            <div className="flex items-center gap-2">
+            <span className="text-zinc-700">•</span>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
               <Shield className="w-4 h-4 text-[#F2E6D8]" />
               <span>100% satisfacción</span>
+            </div>
+            <span className="text-zinc-700">•</span>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              <span>Disponible ahora</span>
             </div>
           </div>
         </div>
@@ -327,52 +362,76 @@ export default function Onicoplastia() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="px-4 py-16 bg-zinc-950">
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-light text-center mb-16">
-            Beneficios del <span className="text-[#F2E6D8]">Tratamiento</span>
+      {/* Benefits Section */}
+      <section className="px-4 py-16">
+        <div className="container mx-auto max-w-5xl">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">
+            Beneficios del <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">Tratamiento</span>
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-zinc-900/30 p-8 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-light mb-4 text-[#F2E6D8]">
-                Resultados Visibles
-              </h3>
-              <p className="text-gray-400 font-light">
-                Sales con uñas hermosas el mismo día. No tienes que esperar 
-                meses para ver cambios - la transformación es inmediata.
-              </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2E6D8]/5 rounded-full blur-2xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
+              <div className="relative">
+                <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
+                  <Sparkles className="w-6 h-6 text-[#F2E6D8]" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-white">
+                  Resultados Visibles
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Sales con uñas hermosas el mismo día. No tienes que esperar 
+                  meses para ver cambios - la transformación es inmediata.
+                </p>
+              </div>
             </div>
             
-            <div className="bg-zinc-900/30 p-8 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-light mb-4 text-[#F2E6D8]">
-                Tratamiento IBX®
-              </h3>
-              <p className="text-gray-400 font-light">
-                Sistema profesional que fortalece y protege tus uñas desde adentro, 
-                ayudando a prevenir futuros problemas.
-              </p>
+            <div className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2E6D8]/5 rounded-full blur-2xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
+              <div className="relative">
+                <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
+                  <Shield className="w-6 h-6 text-[#F2E6D8]" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-white">
+                  Tratamiento IBX®
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Sistema profesional que fortalece y protege tus uñas desde adentro, 
+                  ayudando a prevenir futuros problemas.
+                </p>
+              </div>
             </div>
             
-            <div className="bg-zinc-900/30 p-8 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-light mb-4 text-[#F2E6D8]">
-                Sin Dolor
-              </h3>
-              <p className="text-gray-400 font-light">
-                Procedimiento completamente indoloro y relajante. 
-                Muchas clientas lo comparan con un spa para sus uñas.
-              </p>
+            <div className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2E6D8]/5 rounded-full blur-2xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
+              <div className="relative">
+                <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
+                  <Heart className="w-6 h-6 text-[#F2E6D8]" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-white">
+                  Sin Dolor
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Procedimiento completamente indoloro y relajante. 
+                  Muchas clientas lo comparan con un spa para sus uñas.
+                </p>
+              </div>
             </div>
             
-            <div className="bg-zinc-900/30 p-8 rounded-lg border border-zinc-800">
-              <h3 className="text-xl font-light mb-4 text-[#F2E6D8]">
-                Seguimiento Incluido
-              </h3>
-              <p className="text-gray-400 font-light">
-                Te acompañamos en todo el proceso con seguimientos mensuales 
-                para asegurar que tus uñas se mantengan saludables.
-              </p>
+            <div className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2E6D8]/5 rounded-full blur-2xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
+              <div className="relative">
+                <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
+                  <CheckCircle className="w-6 h-6 text-[#F2E6D8]" />
+                </div>
+                <h3 className="text-xl font-semibold mb-3 text-white">
+                  Seguimiento Incluido
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Te acompañamos en todo el proceso con seguimientos mensuales 
+                  para asegurar que tus uñas se mantengan saludables.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -432,61 +491,61 @@ export default function Onicoplastia() {
       </section>
 
       {/* FAQ Section */}
-      <section className="px-4 py-16 bg-zinc-950">
+      <section className="px-4 py-16">
         <div className="container mx-auto max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-light text-center mb-16">
-            Preguntas <span className="text-[#F2E6D8]">Frecuentes</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">
+            Preguntas <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">Frecuentes</span>
           </h2>
           
           <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="item-1" className="bg-zinc-900/30 border border-zinc-800 rounded-lg px-6">
-              <AccordionTrigger className="text-left font-light hover:text-[#F2E6D8]">
+            <AccordionItem value="item-1" className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all px-6">
+              <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6">
                 ¿Qué es la onicoplastia?
               </AccordionTrigger>
-              <AccordionContent className="text-gray-400 font-light">
+              <AccordionContent className="text-gray-400 leading-relaxed pb-6">
                 La onicoplastia es un tratamiento profesional especializado para la restauración 
                 de uñas afectadas por hongos u otras condiciones. Utilizamos técnicas avanzadas 
                 y tecnología IBX® para eliminar el problema desde la raíz y reconstruir la uña.
               </AccordionContent>
             </AccordionItem>
             
-            <AccordionItem value="item-2" className="bg-zinc-900/30 border border-zinc-800 rounded-lg px-6">
-              <AccordionTrigger className="text-left font-light hover:text-[#F2E6D8]">
+            <AccordionItem value="item-2" className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all px-6">
+              <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6">
                 ¿Es doloroso el tratamiento?
               </AccordionTrigger>
-              <AccordionContent className="text-gray-400 font-light">
+              <AccordionContent className="text-gray-400 leading-relaxed pb-6">
                 No, el tratamiento es completamente indoloro. Es tan suave como un manicure regular. 
                 Como enfermera registrada, mi prioridad es tu comodidad y bienestar durante todo el proceso.
               </AccordionContent>
             </AccordionItem>
             
-            <AccordionItem value="item-3" className="bg-zinc-900/30 border border-zinc-800 rounded-lg px-6">
-              <AccordionTrigger className="text-left font-light hover:text-[#F2E6D8]">
+            <AccordionItem value="item-3" className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all px-6">
+              <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6">
                 ¿Cuánto tiempo dura el tratamiento?
               </AccordionTrigger>
-              <AccordionContent className="text-gray-400 font-light">
+              <AccordionContent className="text-gray-400 leading-relaxed pb-6">
                 La sesión completa dura hasta 2 horas. Durante este tiempo realizamos 
                 la evaluación, el tratamiento IBX®, la aplicación de la prótesis y el GEL Polish. 
                 Sales con uñas perfectas el mismo día.
               </AccordionContent>
             </AccordionItem>
             
-            <AccordionItem value="item-4" className="bg-zinc-900/30 border border-zinc-800 rounded-lg px-6">
-              <AccordionTrigger className="text-left font-light hover:text-[#F2E6D8]">
+            <AccordionItem value="item-4" className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all px-6">
+              <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6">
                 ¿Cuál es la inversión?
               </AccordionTrigger>
-              <AccordionContent className="text-gray-400 font-light">
+              <AccordionContent className="text-gray-400 leading-relaxed pb-6">
                 La primera evaluación completa es de $100 e incluye todo el tratamiento (hasta 2 horas) 
                 con GEL Polish profesional. Los seguimientos mensuales tienen un costo de $60. 
                 Es una inversión en tu salud y bienestar.
               </AccordionContent>
             </AccordionItem>
             
-            <AccordionItem value="item-5" className="bg-zinc-900/30 border border-zinc-800 rounded-lg px-6">
-              <AccordionTrigger className="text-left font-light hover:text-[#F2E6D8]">
+            <AccordionItem value="item-5" className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all px-6">
+              <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6">
                 ¿Qué hace especial este tratamiento?
               </AccordionTrigger>
-              <AccordionContent className="text-gray-400 font-light">
+              <AccordionContent className="text-gray-400 leading-relaxed pb-6">
                 Combinamos el tratamiento IBX® con técnicas profesionales de reconstrucción. 
                 Como enfermera registrada, entiendo la importancia de un tratamiento seguro y efectivo. 
                 Nuestro enfoque integral asegura no solo uñas hermosas, sino también saludables.
@@ -499,67 +558,92 @@ export default function Onicoplastia() {
       {/* Shop Promotion */}
       <ShopPromotion />
 
-      {/* CTA Section */}
-      <section className="px-4 py-24 bg-gradient-to-b from-black to-zinc-950">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-light mb-8">
-            Comienza Tu <span className="text-[#F2E6D8]">Transformación</span>
-          </h2>
-          
-          <p className="text-xl text-gray-400 mb-12 font-light">
-            Dale a tus uñas el cuidado profesional que merecen
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button 
-              size="lg" 
-              className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-light text-lg px-12 py-6" 
-              asChild
-            >
-              <a
-                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Calendar className="mr-2 h-5 w-5" />
-                RESERVAR CITA
-              </a>
-            </Button>
+      {/* Final CTA Section */}
+      <section className="px-4 py-24">
+        <div className="container mx-auto max-w-5xl">
+          <div className="relative rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-black p-12 sm:p-16 text-center border border-zinc-800 overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 left-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
             
-            <Dialog>
-              <DialogTrigger asChild>
+            <div className="relative space-y-8">
+              <Sparkles className="w-12 h-12 text-[#F2E6D8] mx-auto" />
+              
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
+                <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">
+                  Comienza Tu Transformación
+                </span>
+              </h2>
+              
+              <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+                Dale a tus uñas el cuidado profesional que merecen
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button 
                   size="lg" 
-                  variant="outline" 
-                  className="border-zinc-700 text-white hover:bg-zinc-900 font-light text-lg px-12 py-6"
+                  className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-lg px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
+                  asChild
                 >
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  CONSULTA POR WHATSAPP
+                  <a
+                    href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2"
+                  >
+                    <Calendar className="w-5 h-5" />
+                    RESERVAR CITA
+                  </a>
                 </Button>
-              </DialogTrigger>
-              <DialogContent className="bg-zinc-900 border-zinc-800">
-                <DialogTitle>Mensaje Importante</DialogTitle>
-                <DialogDescription>
-                  Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.
-                </DialogDescription>
-                <div className="mt-6 flex justify-end">
-                  <Button asChild>
-                    <a 
-                      href="https://wa.me/19394290292?text=Hola%20Neycha,%20me%20interesa%20el%20tratamiento%20de%20onicoplastia" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
+                
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button 
+                      size="lg" 
+                      variant="outline" 
+                      className="border-zinc-700 text-white hover:bg-zinc-800 hover:border-[#F2E6D8]/50 font-semibold text-lg px-12 py-6 transition-all"
                     >
-                      Continuar a WhatsApp
-                    </a>
-                  </Button>
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      CONSULTA POR WHATSAPP
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="bg-zinc-900 border-zinc-800">
+                    <DialogTitle>Mensaje Importante</DialogTitle>
+                    <DialogDescription>
+                      Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.
+                    </DialogDescription>
+                    <div className="mt-6 flex justify-end">
+                      <Button asChild className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black">
+                        <a 
+                          href="https://wa.me/19394290292?text=Hola%20Neycha,%20me%20interesa%20el%20tratamiento%20de%20onicoplastia" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                        >
+                          Continuar a WhatsApp
+                        </a>
+                      </Button>
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </div>
+              
+              <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400 pt-6">
+                <div className="flex items-center gap-2">
+                  <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                  <span>Hatillo, PR 00659</span>
                 </div>
-              </DialogContent>
-            </Dialog>
-          </div>
-          
-          <div className="text-sm text-gray-500 space-y-2">
-            <p>📍 Hatillo, PR 00659</p>
-            <p>🏥 RN Certificada • 🏆 IBX® Certificada • ⭐ 37 Reseñas 5 Estrellas</p>
+                <span className="text-zinc-700">•</span>
+                <div className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-[#F2E6D8]" />
+                  <span>RN & IBX® Certificada</span>
+                </div>
+                <span className="text-zinc-700">•</span>
+                <div className="flex items-center gap-2">
+                  <Star className="w-4 h-4 text-[#F2E6D8]" />
+                  <span>37 Reseñas 5⭐</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
