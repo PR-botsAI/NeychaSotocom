@@ -20,4 +20,8 @@ export default defineConfig({
     outDir: path.resolve(__dirname, "dist/public"),
     emptyOutDir: true,
   },
+  server: {
+    host: true,
+    allowedHosts: [".replit.dev", ".replit.app", ".repl.co", "localhost"],
+  },
 });
