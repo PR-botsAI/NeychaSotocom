@@ -13,11 +13,11 @@ import ShopBanner from "@/components/shop-banner";
 import SEODebug from "@/components/seo-debug";
 import PerformanceOptimizer from "@/components/performance-optimizer";
 import { useEffect, lazy, Suspense } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Router() {
   const [location] = useLocation();
 
-  // Scroll to top on route change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, [location]);
@@ -27,12 +27,22 @@ function Router() {
       <ShopBanner />
       <Navbar />
       <main className="flex-1">
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/onicoplastia" component={Onicoplastia} />
-          <Route path="/contact" component={Contact} />
-          <Route component={NotFound} />
-        </Switch>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+          >
+            <Switch>
+              <Route path="/" component={Home} />
+              <Route path="/onicoplastia" component={Onicoplastia} />
+              <Route path="/contact" component={Contact} />
+              <Route component={NotFound} />
+            </Switch>
+          </motion.div>
+        </AnimatePresence>
       </main>
       <Footer />
     </div>

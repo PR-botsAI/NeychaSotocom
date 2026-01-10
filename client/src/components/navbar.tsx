@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "wouter";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
 import { Menu, Calendar, ShoppingBag, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +10,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { motion } from "framer-motion";
 
 const navigation: Array<{
   name: string;
@@ -35,86 +36,133 @@ const navigation: Array<{
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [location] = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleExternalClick = (href: string) => {
     window.open(href, "_blank", "noopener,noreferrer");
   };
 
+  const isActive = (href: string) => {
+    if (href === "/") return location === "/";
+    return location.startsWith(href);
+  };
+
   const renderNavItem = (item: typeof navigation[0]) => {
     if (item.external) {
-      // Special styling for shop link
       if (item.highlight) {
         return (
-          <Button 
+          <motion.div 
             key={item.name}
-            variant="default" 
-            className="text-base bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 hover:scale-105 transition-all duration-300 flex items-center gap-2 relative"
-            onClick={() => handleExternalClick(item.href)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <ShoppingBag className="w-4 h-4" />
-            {item.name}
-            <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-300 animate-pulse" />
-          </Button>
+            <Button 
+              variant="default" 
+              className="text-base bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center gap-2 relative"
+              onClick={() => handleExternalClick(item.href)}
+            >
+              <ShoppingBag className="w-4 h-4" />
+              {item.name}
+              <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-300 animate-pulse" />
+            </Button>
+          </motion.div>
         );
       }
       
-      // Regular external link (booking)
       return (
-        <Button 
+        <motion.div 
           key={item.name}
-          variant="default" 
-          className="text-base bg-white text-black hover:bg-white/90 hover:scale-105 transition-all duration-300 flex items-center gap-2"
-          onClick={() => handleExternalClick(item.href)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.98 }}
         >
-          <Calendar className="w-4 h-4" />
-          {item.name}
-        </Button>
+          <Button 
+            variant="default" 
+            className="text-base bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] transition-all duration-300 flex items-center gap-2"
+            onClick={() => handleExternalClick(item.href)}
+          >
+            <Calendar className="w-4 h-4" />
+            {item.name}
+          </Button>
+        </motion.div>
       );
     }
 
+    const active = isActive(item.href);
     return (
       <Link 
         key={item.name} 
         href={item.href}
-        className="text-base text-white hover:text-white/80 px-4 py-2 rounded-md"
+        className={`relative text-base px-4 py-2 rounded-md transition-all duration-300 ${
+          active 
+            ? "text-[#F2E6D8]" 
+            : "text-white/80 hover:text-white"
+        }`}
       >
         {item.name}
+        {active && (
+          <motion.div
+            layoutId="navbar-active"
+            className="absolute bottom-0 left-2 right-2 h-0.5 bg-[#F2E6D8] rounded-full"
+            transition={{ type: "spring", stiffness: 350, damping: 30 }}
+          />
+        )}
       </Link>
     );
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-zinc-800 bg-black/95 backdrop-blur supports-[backdrop-filter]:bg-black/60">
+    <motion.nav 
+      className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
+        scrolled 
+          ? "border-zinc-800 bg-black/98 backdrop-blur-lg shadow-lg" 
+          : "border-zinc-800/50 bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60"
+      }`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center ml-4">
+        <motion.div 
+          className="flex items-center ml-4"
+          whileHover={{ scale: 1.02 }}
+        >
           <Link 
             href="/"
-            className="text-xl font-bold text-white"
+            className="text-xl font-bold text-white hover:text-[#F2E6D8] transition-colors duration-300"
           >
             neychasoto.com
           </Link>
-        </div>
+        </motion.div>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex md:items-center md:space-x-6">
           {navigation.map(renderNavItem)}
         </div>
 
-        {/* Mobile Navigation */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="md:hidden mr-4">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="text-white hover:bg-white/10 transition-colors"
-            >
-              <Menu className="h-7 w-7" />
-              <span className="sr-only">Abrir menú</span>
-            </Button>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="text-white hover:bg-white/10 transition-colors"
+              >
+                <Menu className="h-7 w-7" />
+                <span className="sr-only">Abrir menú</span>
+              </Button>
+            </motion.div>
           </SheetTrigger>
           <SheetContent 
             side="left" 
-            className="w-[280px] sm:w-[340px] border-r border-zinc-800 bg-black/95 backdrop-blur-lg"
+            className="w-[280px] sm:w-[340px] border-r border-zinc-800 bg-black/98 backdrop-blur-lg"
             aria-describedby="navigation-menu-description"
           >
             <SheetHeader className="border-b border-zinc-800">
@@ -138,10 +186,17 @@ export default function Navbar() {
             <div className="mt-8 px-2">
               <div className="space-y-4">
                 {navigation.map((item, index) => {
+                  const active = !item.external && isActive(item.href);
+                  
                   if (item.external && item.highlight) {
-                    // TIENDA button - special styling
                     return (
-                      <div key={item.name} className="w-full">
+                      <motion.div 
+                        key={item.name} 
+                        className="w-full"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
                         <Button
                           variant="default"
                           className="w-full justify-center text-base font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 hover:scale-105 transition-all duration-300 py-6 flex items-center gap-2 relative"
@@ -154,15 +209,20 @@ export default function Navbar() {
                           {item.name}
                           <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-300 animate-pulse" />
                         </Button>
-                      </div>
+                      </motion.div>
                     );
                   } else if (item.external && !item.highlight) {
-                    // RESERVAR CITA button - different styling
                     return (
-                      <div key={item.name} className="w-full pt-4">
+                      <motion.div 
+                        key={item.name} 
+                        className="w-full pt-4"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
                         <Button
                           variant="default"
-                          className="w-full justify-center text-base font-medium bg-white text-black hover:bg-white/90 hover:scale-105 transition-all duration-300 py-6 flex items-center gap-2"
+                          className="w-full justify-center text-base font-medium bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] hover:scale-105 transition-all duration-300 py-6 flex items-center gap-2"
                           onClick={() => {
                             handleExternalClick(item.href);
                             setIsOpen(false);
@@ -171,20 +231,29 @@ export default function Navbar() {
                           <Calendar className="w-5 h-5" />
                           {item.name}
                         </Button>
-                      </div>
+                      </motion.div>
                     );
                   } else {
-                    // Regular internal links
                     return (
-                      <div key={item.name} className="w-full">
+                      <motion.div 
+                        key={item.name} 
+                        className="w-full"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                      >
                         <Link 
                           href={item.href}
-                          className="flex w-full px-4 py-3 text-base text-white hover:bg-white/10 rounded-md transition-colors"
+                          className={`flex w-full px-4 py-3 text-base rounded-md transition-all duration-300 ${
+                            active 
+                              ? "text-[#F2E6D8] bg-[#F2E6D8]/10 border-l-2 border-[#F2E6D8]" 
+                              : "text-white hover:bg-white/10"
+                          }`}
                           onClick={() => setIsOpen(false)}
                         >
                           {item.name}
                         </Link>
-                      </div>
+                      </motion.div>
                     );
                   }
                 })}
@@ -193,6 +262,6 @@ export default function Navbar() {
           </SheetContent>
         </Sheet>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
