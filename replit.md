@@ -37,20 +37,36 @@ A specialized digital healthcare platform focused on nail restoration solutions 
 5. **Contact System** - WhatsApp integration for consultations
 6. **Shop Promotion** - Integration with new shop at shop.neychasoto.com
 
-## Recent Changes (January 2025)
+## Recent Changes (January 2026)
 
-### Optimization Improvements
-- Performance optimizations for faster loading
-- SEO enhancements for better visibility
-- Shop integration and promotion features
-- Improved accessibility and user experience
-- Added comprehensive error handling
+### Modern Design Enhancement
+- Updated onicoplastia pricing: $120 first visit, $80 follow-ups
+- Updated review count from 37 to 40+ across all pages
+- Rewrote SEO meta tags with 2026 emotional marketing copy focused on nail fungus customers who want to wear sandals again
+- Added framer-motion animations throughout all pages
 
-### Shop Integration
-- Added prominent shop promotion sections
-- Integrated shop links throughout the site
-- Created dedicated shop banner component
-- Added shop to main navigation
+### New Modern UI Components
+- **ScrollProgress**: Cream-colored scroll progress bar at top of page
+- **AnimatedCounter**: Numbers that count up when scrolled into view
+- **GlassmorphismCard**: Frosted glass effect cards with backdrop blur and 3D tilt
+- **TiltCard**: Cards that subtly rotate following cursor movement
+- **MagneticButton**: CTA buttons that attract toward cursor for magnetic hover effect
+- **GradientBorder**: Animated shimmer gradient border effect
+- **ParallaxElement**: Decorative elements that move at different speeds on scroll
+
+### Page Enhancements
+- Hero section with parallax floating blur elements
+- Service cards with glassmorphism and 3D tilt effects
+- Testimonials with animated review counter
+- Onicoplastia pricing card with animated gradient border
+- Contact page with modern glassmorphism cards
+- All CTA buttons have magnetic hover effect
+
+### SEO Updates
+- Emotional marketing focused on nail fungus customers wanting to wear sandals
+- Updated all prices from $100/$60 to $120/$80
+- Updated review count from 37 to 40+
+- Enhanced schema markup and FAQ for 2026
 
 ## User Preferences
 - Keep the site working without breaking the live environment
