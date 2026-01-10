@@ -7,6 +7,10 @@ import { ShoppingBag, Calendar, ArrowUp, Sparkles, Heart, Award } from "lucide-r
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
+import { GlassmorphismCard } from "@/components/glassmorphism-card";
+import { MagneticButton } from "@/components/magnetic-button";
+import { ParallaxElement } from "@/components/parallax-element";
+import { AnimatedCounter } from "@/components/animated-counter";
 
 export default function Home() {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -57,10 +61,7 @@ export default function Home() {
 
           <StaggerContainer className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.15}>
             <StaggerItem>
-              <motion.div 
-                className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 space-y-6 h-full hover:from-zinc-800 hover:to-zinc-900 transition-all duration-300 border border-zinc-800 hover:border-[#F2E6D8]/30"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
+              <GlassmorphismCard className="p-8 space-y-6 h-full">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
                 
                 <div className="relative">
@@ -101,20 +102,19 @@ export default function Home() {
                   </div>
                 </div>
 
-                <Button 
-                  className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
-                  onClick={handleBookingClick}
-                >
-                  ¡AGENDA TU EVALUACIÓN!
-                </Button>
-              </motion.div>
+                <MagneticButton className="w-full">
+                  <Button 
+                    className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
+                    onClick={handleBookingClick}
+                  >
+                    ¡AGENDA TU EVALUACIÓN!
+                  </Button>
+                </MagneticButton>
+              </GlassmorphismCard>
             </StaggerItem>
 
             <StaggerItem>
-              <motion.div 
-                className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 space-y-6 h-full hover:from-zinc-800 hover:to-zinc-900 transition-all duration-300 border border-zinc-800 hover:border-[#F2E6D8]/30"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
+              <GlassmorphismCard className="p-8 space-y-6 h-full">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
                 
                 <div className="relative">
@@ -155,20 +155,19 @@ export default function Home() {
                   </div>
                 </div>
 
-                <Button 
-                  className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
-                  onClick={handleBookingClick}
-                >
-                  ¡RESERVA AHORA!
-                </Button>
-              </motion.div>
+                <MagneticButton className="w-full">
+                  <Button 
+                    className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
+                    onClick={handleBookingClick}
+                  >
+                    ¡RESERVA AHORA!
+                  </Button>
+                </MagneticButton>
+              </GlassmorphismCard>
             </StaggerItem>
 
             <StaggerItem>
-              <motion.div 
-                className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 space-y-6 h-full hover:from-zinc-800 hover:to-zinc-900 transition-all duration-300 border border-zinc-800 hover:border-[#F2E6D8]/30"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
+              <GlassmorphismCard className="p-8 space-y-6 h-full">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
                 
                 <div className="relative">
@@ -209,13 +208,15 @@ export default function Home() {
                   </div>
                 </div>
 
-                <Button 
-                  className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
-                  onClick={handleBookingClick}
-                >
-                  ¡RESERVA AHORA!
-                </Button>
-              </motion.div>
+                <MagneticButton className="w-full">
+                  <Button 
+                    className="w-full mt-6 bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl transition-all hover:scale-[1.02]"
+                    onClick={handleBookingClick}
+                  >
+                    ¡RESERVA AHORA!
+                  </Button>
+                </MagneticButton>
+              </GlassmorphismCard>
             </StaggerItem>
           </StaggerContainer>
         </div>
@@ -232,7 +233,7 @@ export default function Home() {
               Lo Que Dicen Nuestras Bellezas
             </h2>
             <p className="mt-4 text-center text-lg text-gray-300">
-              ¡Calificación Perfecta 5.0/5 con 40+ Reseñas Verificadas en Booksy!
+              ¡Calificación Perfecta 5.0/5 con <AnimatedCounter value={40} suffix="+" className="font-bold text-[#F2E6D8]" /> Reseñas Verificadas en Booksy!
             </p>
           </FadeIn>
           
@@ -320,13 +321,15 @@ export default function Home() {
                   </p>
                   
                   <div className="pt-4">
-                    <Button
-                      className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 py-6 text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105"
-                      onClick={handleBookingClick}
-                    >
-                      <Calendar className="w-5 h-5 mr-2" />
-                      ¡RESERVA TU CITA AHORA!
-                    </Button>
+                    <MagneticButton>
+                      <Button
+                        className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 py-6 text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105"
+                        onClick={handleBookingClick}
+                      >
+                        <Calendar className="w-5 h-5 mr-2" />
+                        ¡RESERVA TU CITA AHORA!
+                      </Button>
+                    </MagneticButton>
                   </div>
 
                   <div className="flex items-center justify-center gap-2 text-sm text-gray-400 pt-4">

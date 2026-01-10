@@ -2,6 +2,9 @@ import { Button } from "@/components/ui/button";
 import { Clock, MapPin, MessageSquare, Instagram, Facebook, Sparkles, Calendar, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
+import { GlassmorphismCard } from "@/components/glassmorphism-card";
+import { MagneticButton } from "@/components/magnetic-button";
+import { ParallaxElement } from "@/components/parallax-element";
 import {
   Dialog,
   DialogContent,
@@ -20,30 +23,34 @@ export default function Contact() {
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
-        <motion.div 
-          className="absolute top-0 left-1/4 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{ 
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-0 right-1/4 w-80 h-80 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            opacity: [0.5, 0.3, 0.5]
-          }}
-          transition={{ 
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
+        <ParallaxElement speed={0.3} direction="up" className="absolute top-0 left-1/4">
+          <motion.div 
+            className="w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{ 
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </ParallaxElement>
+        <ParallaxElement speed={0.4} direction="down" className="absolute bottom-0 right-1/4">
+          <motion.div 
+            className="w-80 h-80 bg-[#F2E6D8]/5 rounded-full blur-3xl"
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              opacity: [0.5, 0.3, 0.5]
+            }}
+            transition={{ 
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </ParallaxElement>
 
         <div className="container mx-auto max-w-4xl relative z-10">
           <FadeIn className="text-center mb-12">
@@ -71,19 +78,20 @@ export default function Contact() {
           <FadeIn delay={0.2}>
             <Dialog>
               <DialogTrigger asChild>
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="max-w-md mx-auto"
-                >
-                  <Button 
-                    size="lg" 
-                    className="w-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd59] hover:to-[#0d7a6e] text-white text-lg py-8 rounded-xl shadow-2xl shadow-[#25D366]/20 transition-all"
+                <MagneticButton className="max-w-md mx-auto block" strength={0.2}>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                   >
-                    <MessageSquare className="mr-3 h-6 w-6" />
-                    Consultas por WhatsApp
-                  </Button>
-                </motion.div>
+                    <Button 
+                      size="lg" 
+                      className="w-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd59] hover:to-[#0d7a6e] text-white text-lg py-8 rounded-xl shadow-2xl shadow-[#25D366]/20 transition-all"
+                    >
+                      <MessageSquare className="mr-3 h-6 w-6" />
+                      Consultas por WhatsApp
+                    </Button>
+                  </motion.div>
+                </MagneticButton>
               </DialogTrigger>
               <DialogContent className="bg-zinc-900 border-zinc-800">
                 <DialogHeader>
@@ -126,10 +134,7 @@ export default function Contact() {
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6" staggerDelay={0.1}>
             <StaggerItem>
-              <motion.div
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 h-full border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-300 overflow-hidden"
-              >
+              <GlassmorphismCard className="p-8 h-full bg-gradient-to-br from-zinc-900/80 to-zinc-950/80">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
                 
                 <div className="relative">
@@ -140,14 +145,11 @@ export default function Contact() {
                   <p className="text-gray-300">Hatillo, Puerto Rico</p>
                   <p className="text-sm text-gray-400 mt-2">Estudio privado con ambiente exclusivo</p>
                 </div>
-              </motion.div>
+              </GlassmorphismCard>
             </StaggerItem>
 
             <StaggerItem>
-              <motion.div
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 h-full border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-300 overflow-hidden"
-              >
+              <GlassmorphismCard className="p-8 h-full bg-gradient-to-br from-zinc-900/80 to-zinc-950/80">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
                 
                 <div className="relative">
@@ -158,58 +160,66 @@ export default function Contact() {
                   <p className="text-gray-300">Martes a Sábado</p>
                   <p className="text-sm text-gray-400 mt-2">Solo con cita previa - No walk-ins</p>
                 </div>
-              </motion.div>
+              </GlassmorphismCard>
             </StaggerItem>
           </StaggerContainer>
 
           {/* Social Media Section */}
           <FadeIn delay={0.3} className="mt-12">
-            <div className="relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 border border-zinc-800 overflow-hidden">
-              <div className="absolute top-0 left-0 w-64 h-64 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
+            <GlassmorphismCard className="p-8 bg-gradient-to-br from-zinc-900/80 to-zinc-950/80" tilt={false}>
+              <ParallaxElement speed={0.2} direction="up" className="absolute top-0 left-0">
+                <div className="w-64 h-64 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
+              </ParallaxElement>
+              <ParallaxElement speed={0.3} direction="down" className="absolute bottom-0 right-0">
+                <div className="w-64 h-64 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
+              </ParallaxElement>
               
               <div className="relative text-center">
                 <h3 className="text-xl font-bold text-white mb-6">Síguenos en Redes Sociales</h3>
                 <div className="flex justify-center gap-4 flex-wrap">
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button 
-                      asChild 
-                      className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white px-6 py-6 rounded-xl shadow-lg"
-                    >
-                      <a 
-                        href="https://www.instagram.com/neychanails" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3"
+                  <MagneticButton strength={0.25}>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button 
+                        asChild 
+                        className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white px-6 py-6 rounded-xl shadow-lg"
                       >
-                        <Instagram className="h-5 w-5" />
-                        <span className="font-medium">@neychanails</span>
-                      </a>
-                    </Button>
-                  </motion.div>
+                        <a 
+                          href="https://www.instagram.com/neychanails" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-3"
+                        >
+                          <Instagram className="h-5 w-5" />
+                          <span className="font-medium">@neychanails</span>
+                        </a>
+                      </Button>
+                    </motion.div>
+                  </MagneticButton>
                   
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button 
-                      asChild 
-                      className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-6 rounded-xl shadow-lg"
-                    >
-                      <a 
-                        href="https://www.facebook.com/neychanailscom" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3"
+                  <MagneticButton strength={0.25}>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button 
+                        asChild 
+                        className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-6 rounded-xl shadow-lg"
                       >
-                        <Facebook className="h-5 w-5" />
-                        <span className="font-medium">Neycha Nails</span>
-                      </a>
-                    </Button>
-                  </motion.div>
+                        <a 
+                          href="https://www.facebook.com/neychanailscom" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-3"
+                        >
+                          <Facebook className="h-5 w-5" />
+                          <span className="font-medium">Neycha Nails</span>
+                        </a>
+                      </Button>
+                    </motion.div>
+                  </MagneticButton>
                 </div>
                 <p className="text-sm text-gray-400 mt-6">
                   Descubre nuestro trabajo, promociones y testimonios de clientes
                 </p>
               </div>
-            </div>
+            </GlassmorphismCard>
           </FadeIn>
         </div>
       </section>
@@ -222,30 +232,34 @@ export default function Contact() {
               className="relative rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-black p-12 sm:p-16 text-center border border-zinc-800 overflow-hidden"
               whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
             >
-              <motion.div 
-                className="absolute top-0 left-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                  opacity: [0.5, 0.8, 0.5]
-                }}
-                transition={{ 
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              <motion.div 
-                className="absolute bottom-0 right-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-                animate={{ 
-                  scale: [1.1, 1, 1.1],
-                  opacity: [0.8, 0.5, 0.8]
-                }}
-                transition={{ 
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
+              <ParallaxElement speed={0.4} direction="up" className="absolute top-0 left-0">
+                <motion.div 
+                  className="w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    opacity: [0.5, 0.8, 0.5]
+                  }}
+                  transition={{ 
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </ParallaxElement>
+              <ParallaxElement speed={0.5} direction="down" className="absolute bottom-0 right-0">
+                <motion.div 
+                  className="w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
+                  animate={{ 
+                    scale: [1.1, 1, 1.1],
+                    opacity: [0.8, 0.5, 0.8]
+                  }}
+                  transition={{ 
+                    duration: 6,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </ParallaxElement>
               
               <div className="relative space-y-6">
                 <motion.div
@@ -266,15 +280,17 @@ export default function Contact() {
                 </p>
                 
                 <div className="pt-4">
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button
-                      className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 py-6 text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all"
-                      onClick={handleBookingClick}
-                    >
-                      <Calendar className="w-5 h-5 mr-2" />
-                      ¡AGENDA TU CITA AHORA!
-                    </Button>
-                  </motion.div>
+                  <MagneticButton strength={0.3}>
+                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      <Button
+                        className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 py-6 text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all"
+                        onClick={handleBookingClick}
+                      >
+                        <Calendar className="w-5 h-5 mr-2" />
+                        ¡AGENDA TU CITA AHORA!
+                      </Button>
+                    </motion.div>
+                  </MagneticButton>
                 </div>
 
                 <div className="flex items-center justify-center gap-2 text-sm text-gray-400 pt-4">

@@ -1,34 +1,41 @@
 import { Button } from "@/components/ui/button";
 import { Sparkles, Award, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
+import { ParallaxElement } from "@/components/parallax-element";
+import { MagneticButton } from "@/components/magnetic-button";
+import { AnimatedCounter } from "@/components/animated-counter";
 
 export default function Hero() {
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-black via-zinc-950 to-black">
-      <motion.div 
-        className="absolute top-20 left-10 w-72 h-72 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.5, 0.8, 0.5]
-        }}
-        transition={{ 
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div 
-        className="absolute bottom-20 right-10 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-        animate={{ 
-          scale: [1.2, 1, 1.2],
-          opacity: [0.8, 0.5, 0.8]
-        }}
-        transition={{ 
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
+      <ParallaxElement speed={0.3} className="absolute top-20 left-10">
+        <motion.div 
+          className="w-72 h-72 bg-[#F2E6D8]/5 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.5, 0.8, 0.5]
+          }}
+          transition={{ 
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </ParallaxElement>
+      <ParallaxElement speed={0.5} className="absolute bottom-20 right-10">
+        <motion.div 
+          className="w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+            opacity: [0.8, 0.5, 0.8]
+          }}
+          transition={{ 
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </ParallaxElement>
       
       <div className="container relative z-10 mx-auto px-4 py-16 sm:px-6 sm:py-28 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
@@ -57,7 +64,7 @@ export default function Hero() {
             </span>
             <span className="inline-flex items-center gap-2 rounded-full bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 px-4 py-2 text-sm font-semibold text-[#F2E6D8] hover:bg-[#F2E6D8]/20 transition-all duration-300">
               <Sparkles className="w-4 h-4" />
-              ⭐ 5.0/5 • 40+ Reseñas
+              ⭐ 5.0/5 • <AnimatedCounter value={40} suffix="+" /> Reseñas
             </span>
           </motion.div>
 
@@ -97,19 +104,21 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
           >
-            <a
-              href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto"
-            >
-              <Button 
-                className="w-full sm:w-auto text-lg px-8 py-6 font-semibold text-black bg-[#F2E6D8] hover:bg-[#E6D0B8] shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 group hover:scale-105"
+            <MagneticButton>
+              <a
+                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto"
               >
-                <Calendar className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                ¡RESERVA AHORA!
-              </Button>
-            </a>
+                <Button 
+                  className="w-full sm:w-auto text-lg px-8 py-6 font-semibold text-black bg-[#F2E6D8] hover:bg-[#E6D0B8] shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 group hover:scale-105"
+                >
+                  <Calendar className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                  ¡RESERVA AHORA!
+                </Button>
+              </a>
+            </MagneticButton>
           </motion.div>
 
           <motion.p 

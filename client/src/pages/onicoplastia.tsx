@@ -3,6 +3,11 @@ import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
 import type { Case } from "@/types/schema";
 import { Button } from "@/components/ui/button";
+import { GlassmorphismCard } from "@/components/glassmorphism-card";
+import { MagneticButton } from "@/components/magnetic-button";
+import { ParallaxElement } from "@/components/parallax-element";
+import { AnimatedCounter } from "@/components/animated-counter";
+import { GradientBorder } from "@/components/gradient-border";
 import {
   Card,
   CardContent,
@@ -83,30 +88,34 @@ export default function Onicoplastia() {
       {/* Modern Hero Section */}
       <section className="relative px-4 py-20 sm:py-28 overflow-hidden">
         {/* Animated Decorative elements */}
-        <motion.div 
-          className="absolute top-20 left-10 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1, 1.1, 1],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{ 
-            duration: 6, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-20 right-10 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1.1, 1, 1.1],
-            opacity: [0.5, 0.3, 0.5]
-          }}
-          transition={{ 
-            duration: 6, 
-            repeat: Infinity, 
-            ease: "easeInOut" 
-          }}
-        />
+        <ParallaxElement speed={0.3} direction="up">
+          <motion.div 
+            className="absolute top-20 left-10 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
+            animate={{ 
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3]
+            }}
+            transition={{ 
+              duration: 6, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+          />
+        </ParallaxElement>
+        <ParallaxElement speed={0.4} direction="down">
+          <motion.div 
+            className="absolute bottom-20 right-10 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
+            animate={{ 
+              scale: [1.1, 1, 1.1],
+              opacity: [0.5, 0.3, 0.5]
+            }}
+            transition={{ 
+              duration: 6, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+          />
+        </ParallaxElement>
         
         <div className="container relative z-10 mx-auto max-w-4xl text-center">
           {/* Logo */}
@@ -269,78 +278,78 @@ export default function Onicoplastia() {
           {/* Modern Service Details */}
           <FadeIn delay={0.5}>
             <div className="relative max-w-3xl mx-auto mb-12">
-              <motion.div 
-                className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-10 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all"
-                whileHover={{ y: -3 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
-              
-              <div className="relative">
-                <div className="grid md:grid-cols-2 gap-8 mb-8">
-                  <div className="text-center md:text-left">
-                    <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-3">
-                      <Clock className="w-6 h-6 text-[#F2E6D8]" />
+              <GradientBorder>
+                <div className="group relative p-10">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
+                  
+                  <div className="relative">
+                    <div className="grid md:grid-cols-2 gap-8 mb-8">
+                      <div className="text-center md:text-left">
+                        <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-3">
+                          <Clock className="w-6 h-6 text-[#F2E6D8]" />
+                        </div>
+                        <p className="text-[#F2E6D8] font-semibold mb-2">Duración</p>
+                        <p className="text-xl text-white">Hasta 2 horas</p>
+                      </div>
+                      <div className="text-center md:text-left">
+                        <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-3">
+                          <Sparkles className="w-6 h-6 text-[#F2E6D8]" />
+                        </div>
+                        <p className="text-[#F2E6D8] font-semibold mb-2">Inversión</p>
+                        <p className="text-xl text-white">Primera evaluación: $120</p>
+                        <p className="text-sm text-gray-400 mt-1">Seguimientos: $80</p>
+                      </div>
                     </div>
-                    <p className="text-[#F2E6D8] font-semibold mb-2">Duración</p>
-                    <p className="text-xl text-white">Hasta 2 horas</p>
-                  </div>
-                  <div className="text-center md:text-left">
-                    <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-3">
-                      <Sparkles className="w-6 h-6 text-[#F2E6D8]" />
+                    
+                    <div className="pt-8 border-t border-zinc-800">
+                      <p className="text-[#F2E6D8] font-semibold mb-6 text-lg">Incluye:</p>
+                      <div className="grid sm:grid-cols-2 gap-4">
+                        <div className="flex items-start gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                          <span className="text-gray-300">Evaluación completa y personalizada</span>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                          <span className="text-gray-300">Tratamiento IBX® certificado</span>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                          <span className="text-gray-300">Reconstrucción con prótesis especializada</span>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
+                          <span className="text-gray-300">GEL Polish profesional incluido</span>
+                        </div>
+                      </div>
                     </div>
-                    <p className="text-[#F2E6D8] font-semibold mb-2">Inversión</p>
-                    <p className="text-xl text-white">Primera evaluación: $120</p>
-                    <p className="text-sm text-gray-400 mt-1">Seguimientos: $80</p>
                   </div>
                 </div>
-                
-                <div className="pt-8 border-t border-zinc-800">
-                  <p className="text-[#F2E6D8] font-semibold mb-6 text-lg">Incluye:</p>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
-                      <span className="text-gray-300">Evaluación completa y personalizada</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
-                      <span className="text-gray-300">Tratamiento IBX® certificado</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
-                      <span className="text-gray-300">Reconstrucción con prótesis especializada</span>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#F2E6D8] mt-2"></div>
-                      <span className="text-gray-300">GEL Polish profesional incluido</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </motion.div>
+              </GradientBorder>
             </div>
           </FadeIn>
 
-          <Button 
-            size="lg" 
-            className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-lg px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
-            asChild
-          >
-            <a
-              href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2"
+          <MagneticButton>
+            <Button 
+              size="lg" 
+              className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-lg px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
+              asChild
             >
-              <Calendar className="w-5 h-5" />
-              RESERVAR EVALUACIÓN
-            </a>
-          </Button>
+              <a
+                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2"
+              >
+                <Calendar className="w-5 h-5" />
+                RESERVAR EVALUACIÓN
+              </a>
+            </Button>
+          </MagneticButton>
           
           <div className="flex flex-wrap items-center justify-center gap-6 mt-10">
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Star className="w-4 h-4 text-[#F2E6D8]" />
-              <span>40+ reseñas 5 estrellas</span>
+              <span><AnimatedCounter value={40} suffix="+" /> reseñas 5 estrellas</span>
             </div>
             <span className="text-zinc-700">•</span>
             <div className="flex items-center gap-2 text-sm text-gray-400">
@@ -419,91 +428,63 @@ export default function Onicoplastia() {
           
           <StaggerContainer className="grid md:grid-cols-2 gap-6">
             <StaggerItem>
-              <motion.div 
-                className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all h-full"
-                whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2E6D8]/5 rounded-full blur-2xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
-                <div className="relative">
-                  <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
-                    <Sparkles className="w-6 h-6 text-[#F2E6D8]" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">
-                    Resultados Visibles
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    Sales con uñas hermosas el mismo día. No tienes que esperar 
-                    meses para ver cambios - la transformación es inmediata.
-                  </p>
+              <GlassmorphismCard className="p-8 h-full">
+                <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
+                  <Sparkles className="w-6 h-6 text-[#F2E6D8]" />
                 </div>
-              </motion.div>
+                <h3 className="text-xl font-semibold mb-3 text-white">
+                  Resultados Visibles
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Sales con uñas hermosas el mismo día. No tienes que esperar 
+                  meses para ver cambios - la transformación es inmediata.
+                </p>
+              </GlassmorphismCard>
             </StaggerItem>
             
             <StaggerItem>
-              <motion.div 
-                className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all h-full"
-                whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2E6D8]/5 rounded-full blur-2xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
-                <div className="relative">
-                  <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
-                    <Shield className="w-6 h-6 text-[#F2E6D8]" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">
-                    Tratamiento IBX®
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    Sistema profesional que fortalece y protege tus uñas desde adentro, 
-                    ayudando a prevenir futuros problemas.
-                  </p>
+              <GlassmorphismCard className="p-8 h-full">
+                <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
+                  <Shield className="w-6 h-6 text-[#F2E6D8]" />
                 </div>
-              </motion.div>
+                <h3 className="text-xl font-semibold mb-3 text-white">
+                  Tratamiento IBX®
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Sistema profesional que fortalece y protege tus uñas desde adentro, 
+                  ayudando a prevenir futuros problemas.
+                </p>
+              </GlassmorphismCard>
             </StaggerItem>
             
             <StaggerItem>
-              <motion.div 
-                className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all h-full"
-                whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2E6D8]/5 rounded-full blur-2xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
-                <div className="relative">
-                  <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
-                    <Heart className="w-6 h-6 text-[#F2E6D8]" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">
-                    Sin Dolor
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    Procedimiento completamente indoloro y relajante. 
-                    Muchas clientas lo comparan con un spa para sus uñas.
-                  </p>
+              <GlassmorphismCard className="p-8 h-full">
+                <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
+                  <Heart className="w-6 h-6 text-[#F2E6D8]" />
                 </div>
-              </motion.div>
+                <h3 className="text-xl font-semibold mb-3 text-white">
+                  Sin Dolor
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Procedimiento completamente indoloro y relajante. 
+                  Muchas clientas lo comparan con un spa para sus uñas.
+                </p>
+              </GlassmorphismCard>
             </StaggerItem>
             
             <StaggerItem>
-              <motion.div 
-                className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 p-8 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all h-full"
-                whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2E6D8]/5 rounded-full blur-2xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
-                <div className="relative">
-                  <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
-                    <CheckCircle className="w-6 h-6 text-[#F2E6D8]" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">
-                    Acompañamiento Continuo
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    Te acompañamos en todo el proceso de recuperación de tus uñas 
-                    durante el tiempo que lo necesites, con seguimientos disponibles.
-                  </p>
+              <GlassmorphismCard className="p-8 h-full">
+                <div className="inline-block p-3 bg-[#F2E6D8]/10 rounded-lg mb-4">
+                  <CheckCircle className="w-6 h-6 text-[#F2E6D8]" />
                 </div>
-              </motion.div>
+                <h3 className="text-xl font-semibold mb-3 text-white">
+                  Acompañamiento Continuo
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Te acompañamos en todo el proceso de recuperación de tus uñas 
+                  durante el tiempo que lo necesites, con seguimientos disponibles.
+                </p>
+              </GlassmorphismCard>
             </StaggerItem>
           </StaggerContainer>
         </div>
@@ -565,7 +546,7 @@ export default function Onicoplastia() {
           <FadeIn delay={0.3}>
             <div className="text-center mt-12">
               <p className="text-[#F2E6D8] font-light">
-                40+ reseñas verificadas • 5.0 de calificación en Booksy
+                <AnimatedCounter value={40} suffix="+" /> reseñas verificadas • 5.0 de calificación en Booksy
               </p>
             </div>
           </FadeIn>
@@ -695,21 +676,23 @@ export default function Onicoplastia() {
                   Dale a tus uñas el cuidado profesional que merecen
                 </p>
                 
-                <Button 
-                  size="lg" 
-                  className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-lg px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
-                  asChild
-                >
-                  <a
-                    href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2"
+                <MagneticButton>
+                  <Button 
+                    size="lg" 
+                    className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-lg px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
+                    asChild
                   >
-                    <Calendar className="w-5 h-5" />
-                    RESERVAR EVALUACIÓN AHORA
-                  </a>
-                </Button>
+                    <a
+                      href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <Calendar className="w-5 h-5" />
+                      RESERVAR EVALUACIÓN AHORA
+                    </a>
+                  </Button>
+                </MagneticButton>
                 
                 <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-400 pt-6">
                   <div className="flex items-center gap-2">
@@ -724,7 +707,7 @@ export default function Onicoplastia() {
                   <span className="text-zinc-700">•</span>
                   <div className="flex items-center gap-2">
                     <Star className="w-4 h-4 text-[#F2E6D8]" />
-                    <span>37 Reseñas 5⭐</span>
+                    <span><AnimatedCounter value={40} suffix="+" /> Reseñas 5⭐</span>
                   </div>
                 </div>
               </div>

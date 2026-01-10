@@ -12,6 +12,7 @@ import { ErrorBoundary } from "@/components/error-boundary";
 import ShopBanner from "@/components/shop-banner";
 import SEODebug from "@/components/seo-debug";
 import PerformanceOptimizer from "@/components/performance-optimizer";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -24,6 +25,7 @@ function Router() {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <ScrollProgress />
       <ShopBanner />
       <Navbar />
       <main className="flex-1">
