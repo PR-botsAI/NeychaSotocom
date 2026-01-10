@@ -87,11 +87,17 @@ export default function NailConditionMatcher() {
               />
             </div>
 
-            {/* Labels */}
-            <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-white border border-zinc-700">
+            {/* Labels - fade based on slider position */}
+            <div 
+              className="absolute top-4 left-4 bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-white border border-zinc-700 transition-opacity duration-300"
+              style={{ opacity: sliderPosition > 15 ? 1 : 0 }}
+            >
               Antes
             </div>
-            <div className="absolute top-4 right-4 bg-[#F2E6D8]/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-black">
+            <div 
+              className="absolute top-4 right-4 bg-[#F2E6D8]/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-semibold text-black transition-opacity duration-300"
+              style={{ opacity: sliderPosition < 85 ? 1 : 0 }}
+            >
               Después
             </div>
 
