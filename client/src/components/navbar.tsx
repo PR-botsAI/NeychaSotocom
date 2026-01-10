@@ -20,13 +20,13 @@ const navigation: Array<{
 }> = [
   { name: "Inicio", href: "/" },
   { name: "Onicoplastia", href: "/onicoplastia" },
+  { name: "Contacto", href: "/contact" },
   { 
     name: "Tienda", 
     href: "https://shop.neychasoto.com",
     external: true,
     highlight: true 
   },
-  { name: "Contacto", href: "/contact" },
   { 
     name: "Reservar Cita", 
     href: "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo",
@@ -62,17 +62,16 @@ export default function Navbar() {
         return (
           <motion.div 
             key={item.name}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >
             <Button 
-              variant="default" 
-              className="text-base bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center gap-2 relative"
+              variant="outline" 
+              className="text-base border-[#F2E6D8]/50 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] transition-all duration-300 flex items-center gap-2"
               onClick={() => handleExternalClick(item.href)}
             >
               <ShoppingBag className="w-4 h-4" />
               {item.name}
-              <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-300 animate-pulse" />
             </Button>
           </motion.div>
         );
