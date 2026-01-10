@@ -66,7 +66,7 @@ function getPageDescription(location: string): string {
     case '/':
       return '¿Cansada de esconder tus uñas? Neycha Soto ha ayudado a cientos a transformar sus problemas de uñas con onicoplastia profesional. Enfermera registrada y certificada IBX®. Ve resultados en tu primera sesión. Reserva tu consulta en Hatillo, PR.';
     case '/onicoplastia':
-      return 'Una imagen vale más que mil palabras. Ve transformaciones reales de onicoplastia antes y después. Neycha Soto, especialista certificada IBX® en Hatillo, PR. Resultados visibles en una sola sesión, galería de casos reales, $100 primera evaluación.';
+      return 'Una imagen vale más que mil palabras. Ve transformaciones reales de onicoplastia antes y después. Neycha Soto, especialista certificada IBX® en Hatillo, PR. Resultados visibles en una sola sesión, galería de casos reales, $120 primera evaluación.';
     case '/contact':
       return '¿Lista para arreglar tus problemas de uñas de una vez por todas? Reserva tu consulta de onicoplastia con Neycha Soto en Hatillo, Puerto Rico. Enfermera registrada especialista en transformación de uñas. Citas limitadas disponibles - asegura la tuya hoy.';
     default:
@@ -206,7 +206,7 @@ function addLocalBusinessSchema() {
     logo: 'https://neychasoto.com/assets/logo-neychasoto.png',
     url: 'https://neychasoto.com',
     telephone: '+1-939-429-0292',
-    description: 'Especialista certificada IBX® en onicoplastia y restauración de uñas en Hatillo, Puerto Rico. Transformaciones reales antes y después. Primera evaluación $100. Solo con cita previa.',
+    description: 'Especialista certificada IBX® en onicoplastia y restauración de uñas en Hatillo, Puerto Rico. Transformaciones reales antes y después. Primera evaluación $120. Solo con cita previa.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '166 Avenida Dr Susoni, Unit 166',
@@ -240,7 +240,7 @@ function addLocalBusinessSchema() {
           itemOffered: {
             '@type': 'Service',
             name: 'Onicoplastia Premium',
-            description: 'Tratamiento profesional de onicoplastia con resultados visibles en una sesión. Incluye GEL Polish. Primera evaluación $100, seguimientos $60.'
+            description: 'Tratamiento profesional de onicoplastia con resultados visibles en una sesión. Incluye GEL Polish. Primera evaluación $120, seguimientos $80.'
           }
         },
         {
@@ -262,7 +262,7 @@ function addLocalBusinessSchema() {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '5.0',
-      reviewCount: '37',
+      reviewCount: '40',
       bestRating: '5',
       worstRating: '1'
     }

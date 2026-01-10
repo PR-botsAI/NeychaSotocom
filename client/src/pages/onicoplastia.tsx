@@ -554,71 +554,103 @@ export default function Onicoplastia() {
       </section>
 
       {/* FAQ Section */}
-      <section className="px-4 py-16">
-        <div className="container mx-auto max-w-3xl">
+      <section className="px-4 py-16 relative overflow-hidden">
+        {/* Decorative background elements */}
+        <div className="absolute top-1/4 left-0 w-72 h-72 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
+        
+        <div className="container mx-auto max-w-3xl relative">
           <FadeIn>
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-16">
-              Preguntas <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">Frecuentes</span>
-            </h2>
+            <div className="text-center mb-16">
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+              >
+                <MessageCircle className="w-12 h-12 text-[#F2E6D8] mx-auto mb-6" />
+              </motion.div>
+              <h2 className="text-3xl sm:text-4xl font-bold">
+                Preguntas <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">Frecuentes</span>
+              </h2>
+              <p className="text-gray-400 mt-4 max-w-xl mx-auto">
+                Todo lo que necesitas saber sobre la onicoplastia
+              </p>
+            </div>
           </FadeIn>
           
-          <FadeIn delay={0.2}>
+          <StaggerContainer className="space-y-4" staggerDelay={0.1}>
             <Accordion type="single" collapsible className="space-y-4">
-            <AccordionItem value="item-1" className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all px-6">
-              <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6">
-                ¿Qué es la onicoplastia?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-400 leading-relaxed pb-6">
-                La onicoplastia es un tratamiento profesional especializado para la restauración 
-                de uñas afectadas por hongos u otras condiciones. Utilizamos técnicas avanzadas 
-                y tecnología IBX® para eliminar el problema desde la raíz y reconstruir la uña.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-2" className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all px-6">
-              <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6">
-                ¿Es doloroso el tratamiento?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-400 leading-relaxed pb-6">
-                No, el tratamiento es completamente indoloro. Es tan suave como un manicure regular. 
-                Como enfermera registrada, mi prioridad es tu comodidad y bienestar durante todo el proceso.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-3" className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all px-6">
-              <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6">
-                ¿Cuánto tiempo dura el tratamiento?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-400 leading-relaxed pb-6">
-                La sesión completa dura hasta 2 horas. Durante este tiempo realizamos 
-                la evaluación, el tratamiento IBX®, la aplicación de la prótesis y el GEL Polish. 
-                Sales con uñas perfectas el mismo día.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-4" className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all px-6">
-              <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6">
-                ¿Cuál es la inversión?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-400 leading-relaxed pb-6">
-                La primera evaluación completa es de $100 e incluye todo el tratamiento (hasta 2 horas) 
-                con GEL Polish profesional. Los seguimientos mensuales tienen un costo de $60. 
-                Es una inversión en tu salud y bienestar.
-              </AccordionContent>
-            </AccordionItem>
-            
-            <AccordionItem value="item-5" className="group relative rounded-xl bg-gradient-to-br from-zinc-900 to-zinc-950 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all px-6">
-              <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6">
-                ¿Qué hace especial este tratamiento?
-              </AccordionTrigger>
-              <AccordionContent className="text-gray-400 leading-relaxed pb-6">
-                Combinamos el tratamiento IBX® con técnicas profesionales de reconstrucción. 
-                Como enfermera registrada, entiendo la importancia de un tratamiento seguro y efectivo. 
-                Nuestro enfoque integral asegura no solo uñas hermosas, sino también saludables.
-              </AccordionContent>
-            </AccordionItem>
+              <StaggerItem>
+                <AccordionItem value="item-1" className="group relative rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/40 hover:bg-zinc-900/70 transition-all duration-300 px-6 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#F2E6D8]/0 via-[#F2E6D8]/5 to-[#F2E6D8]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6 relative">
+                    ¿Qué es la onicoplastia?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-400 leading-relaxed pb-6 relative">
+                    La onicoplastia es un tratamiento profesional especializado para la restauración 
+                    de uñas afectadas por hongos u otras condiciones. Utilizamos técnicas avanzadas 
+                    y tecnología <span className="text-[#F2E6D8]">IBX®</span> para eliminar el problema desde la raíz y reconstruir la uña.
+                  </AccordionContent>
+                </AccordionItem>
+              </StaggerItem>
+              
+              <StaggerItem>
+                <AccordionItem value="item-2" className="group relative rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/40 hover:bg-zinc-900/70 transition-all duration-300 px-6 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#F2E6D8]/0 via-[#F2E6D8]/5 to-[#F2E6D8]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6 relative">
+                    ¿Es doloroso el tratamiento?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-400 leading-relaxed pb-6 relative">
+                    <span className="text-[#F2E6D8] font-medium">No</span>, el tratamiento es completamente indoloro. Es tan suave como un manicure regular. 
+                    Como enfermera registrada, mi prioridad es tu comodidad y bienestar durante todo el proceso.
+                  </AccordionContent>
+                </AccordionItem>
+              </StaggerItem>
+              
+              <StaggerItem>
+                <AccordionItem value="item-3" className="group relative rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/40 hover:bg-zinc-900/70 transition-all duration-300 px-6 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#F2E6D8]/0 via-[#F2E6D8]/5 to-[#F2E6D8]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6 relative">
+                    ¿Cuánto tiempo dura el tratamiento?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-400 leading-relaxed pb-6 relative">
+                    La sesión completa dura hasta <span className="text-[#F2E6D8] font-medium">2 horas</span>. Durante este tiempo realizamos 
+                    la evaluación, el tratamiento IBX®, la aplicación de la prótesis y el GEL Polish. 
+                    Sales con uñas perfectas el mismo día.
+                  </AccordionContent>
+                </AccordionItem>
+              </StaggerItem>
+              
+              <StaggerItem>
+                <AccordionItem value="item-4" className="group relative rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/40 hover:bg-zinc-900/70 transition-all duration-300 px-6 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#F2E6D8]/0 via-[#F2E6D8]/5 to-[#F2E6D8]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6 relative">
+                    ¿Cuál es la inversión?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-400 leading-relaxed pb-6 relative">
+                    La primera evaluación completa es de <span className="text-[#F2E6D8] font-semibold">$120</span> e incluye todo el tratamiento (hasta 2 horas) 
+                    con GEL Polish profesional. Los seguimientos mensuales tienen un costo de <span className="text-[#F2E6D8] font-semibold">$80</span>. 
+                    Es una inversión en tu salud y bienestar.
+                  </AccordionContent>
+                </AccordionItem>
+              </StaggerItem>
+              
+              <StaggerItem>
+                <AccordionItem value="item-5" className="group relative rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/40 hover:bg-zinc-900/70 transition-all duration-300 px-6 overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#F2E6D8]/0 via-[#F2E6D8]/5 to-[#F2E6D8]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-6 relative">
+                    ¿Qué hace especial este tratamiento?
+                  </AccordionTrigger>
+                  <AccordionContent className="text-gray-400 leading-relaxed pb-6 relative">
+                    Combinamos el tratamiento <span className="text-[#F2E6D8]">IBX®</span> con técnicas profesionales de reconstrucción. 
+                    Como enfermera registrada, entiendo la importancia de un tratamiento seguro y efectivo. 
+                    Nuestro enfoque integral asegura no solo uñas hermosas, sino también saludables.
+                  </AccordionContent>
+                </AccordionItem>
+              </StaggerItem>
             </Accordion>
-          </FadeIn>
+          </StaggerContainer>
         </div>
       </section>
 
