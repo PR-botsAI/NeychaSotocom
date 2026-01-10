@@ -283,10 +283,10 @@ export default function Contact() {
                   <MagneticButton strength={0.3}>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                       <Button
-                        className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 py-6 text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all"
+                        className="w-full sm:w-auto bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-6 sm:px-10 py-6 text-base sm:text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all"
                         onClick={handleBookingClick}
                       >
-                        <Calendar className="w-5 h-5 mr-2" />
+                        <Calendar className="w-5 h-5 mr-2 flex-shrink-0" />
                         ¡AGENDA TU CITA AHORA!
                       </Button>
                     </motion.div>

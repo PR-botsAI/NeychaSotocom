@@ -31,15 +31,15 @@ export default function ShopPromotion() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
                 <Button
                   asChild
-                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold px-8 py-6 text-lg shadow-2xl hover:shadow-purple-500/30 transition-all group-hover:scale-105"
+                  className="w-full sm:w-auto bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold px-6 sm:px-8 py-6 text-base sm:text-lg shadow-2xl hover:shadow-purple-500/30 transition-all group-hover:scale-105"
                 >
                   <a
                     href="https://shop.neychasoto.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2"
+                    className="flex items-center justify-center gap-2"
                   >
-                    <ShoppingBag className="h-5 w-5" />
+                    <ShoppingBag className="h-5 w-5 flex-shrink-0" />
                     Descubre Los Productos
                   </a>
                 </Button>

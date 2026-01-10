@@ -331,16 +331,16 @@ export default function Onicoplastia() {
           <MagneticButton>
             <Button 
               size="lg" 
-              className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-lg px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
+              className="w-full sm:w-auto bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-base sm:text-lg px-6 sm:px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
               asChild
             >
               <a
                 href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2"
+                className="flex items-center justify-center gap-2"
               >
-                <Calendar className="w-5 h-5" />
+                <Calendar className="w-5 h-5 flex-shrink-0" />
                 RESERVAR EVALUACIÓN
               </a>
             </Button>
@@ -679,17 +679,17 @@ export default function Onicoplastia() {
                 <MagneticButton>
                   <Button 
                     size="lg" 
-                    className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-lg px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
+                    className="w-full sm:w-auto bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-base sm:text-lg px-6 sm:px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105" 
                     asChild
                   >
                     <a
                       href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2"
+                      className="flex items-center justify-center gap-2"
                     >
-                      <Calendar className="w-5 h-5" />
-                      RESERVAR EVALUACIÓN AHORA
+                      <Calendar className="w-5 h-5 flex-shrink-0" />
+                      RESERVAR EVALUACIÓN
                     </a>
                   </Button>
                 </MagneticButton>
