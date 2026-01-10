@@ -18,7 +18,7 @@ const navigation: Array<{
   highlight?: boolean;
 }> = [
   { name: "Inicio", href: "/" },
-  { name: "Onicopastia", href: "/onicoplastia" },
+  { name: "Onicoplastia", href: "/onicoplastia" },
   { 
     name: "Tienda", 
     href: "https://shop.neychasoto.com",
