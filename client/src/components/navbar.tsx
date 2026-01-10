@@ -183,80 +183,87 @@ export default function Navbar() {
               Navegación principal del sitio
             </VisuallyHidden>
 
-            <div className="mt-8 px-2">
-              <div className="space-y-4">
-                {navigation.map((item, index) => {
+            <div className="mt-8 px-4">
+              {/* Navigation Links Section */}
+              <div className="space-y-1">
+                <p className="text-xs uppercase tracking-wider text-gray-500 mb-3 px-3">Explorar</p>
+                {navigation.filter(item => !item.external || item.highlight).map((item, index) => {
                   const active = !item.external && isActive(item.href);
                   
                   if (item.external && item.highlight) {
+                    // Tienda link - styled consistently but with subtle accent
                     return (
                       <motion.div 
                         key={item.name} 
                         className="w-full"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
+                        transition={{ delay: index * 0.08 }}
                       >
-                        <Button
-                          variant="default"
-                          className="w-full justify-center text-base font-medium bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 hover:scale-105 transition-all duration-300 py-6 flex items-center gap-2 relative"
+                        <button
+                          className="flex w-full items-center gap-3 px-3 py-3.5 text-base rounded-lg transition-all duration-200 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 group"
                           onClick={() => {
                             handleExternalClick(item.href);
                             setIsOpen(false);
                           }}
                         >
-                          <ShoppingBag className="w-5 h-5" />
-                          {item.name}
-                          <Sparkles className="absolute -top-1 -right-1 h-3 w-3 text-yellow-300 animate-pulse" />
-                        </Button>
-                      </motion.div>
-                    );
-                  } else if (item.external && !item.highlight) {
-                    return (
-                      <motion.div 
-                        key={item.name} 
-                        className="w-full pt-4"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                      >
-                        <Button
-                          variant="default"
-                          className="w-full justify-center text-base font-medium bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] hover:scale-105 transition-all duration-300 py-6 flex items-center gap-2"
-                          onClick={() => {
-                            handleExternalClick(item.href);
-                            setIsOpen(false);
-                          }}
-                        >
-                          <Calendar className="w-5 h-5" />
-                          {item.name}
-                        </Button>
+                          <ShoppingBag className="w-5 h-5 text-[#F2E6D8]" />
+                          <span>{item.name}</span>
+                          <Sparkles className="w-3 h-3 text-[#F2E6D8]/70 group-hover:text-[#F2E6D8] transition-colors" />
+                        </button>
                       </motion.div>
                     );
                   } else {
+                    // Internal navigation links
                     return (
                       <motion.div 
                         key={item.name} 
                         className="w-full"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.1 }}
+                        transition={{ delay: index * 0.08 }}
                       >
                         <Link 
                           href={item.href}
-                          className={`flex w-full px-4 py-3 text-base rounded-md transition-all duration-300 ${
+                          className={`flex w-full items-center px-3 py-3.5 text-base rounded-lg transition-all duration-200 ${
                             active 
-                              ? "text-[#F2E6D8] bg-[#F2E6D8]/10 border-l-2 border-[#F2E6D8]" 
-                              : "text-white hover:bg-white/10"
+                              ? "text-[#F2E6D8] bg-[#F2E6D8]/10" 
+                              : "text-white/90 hover:text-white hover:bg-white/5"
                           }`}
                           onClick={() => setIsOpen(false)}
                         >
                           {item.name}
+                          {active && (
+                            <div className="ml-auto w-1.5 h-1.5 rounded-full bg-[#F2E6D8]" />
+                          )}
                         </Link>
                       </motion.div>
                     );
                   }
                 })}
+              </div>
+              
+              {/* Primary CTA Section - Separated at bottom */}
+              <div className="mt-8 pt-6 border-t border-zinc-800">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <Button
+                    className="w-full justify-center text-base font-semibold bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] transition-all duration-300 py-6 flex items-center gap-2 rounded-xl"
+                    onClick={() => {
+                      handleExternalClick("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo");
+                      setIsOpen(false);
+                    }}
+                  >
+                    <Calendar className="w-5 h-5" />
+                    Reservar Cita
+                  </Button>
+                  <p className="text-center text-xs text-gray-500 mt-3">
+                    Agenda tu transformación hoy
+                  </p>
+                </motion.div>
               </div>
             </div>
           </SheetContent>
