@@ -76,23 +76,23 @@ export default function Contact() {
 
           {/* WhatsApp Button - Prominent */}
           <FadeIn delay={0.2}>
-            <Dialog>
-              <DialogTrigger asChild>
-                <MagneticButton className="max-w-md mx-auto block" strength={0.2}>
+            <div className="flex justify-center">
+              <Dialog>
+                <DialogTrigger asChild>
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    className="cursor-pointer"
                   >
                     <Button 
                       size="lg" 
-                      className="w-full bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd59] hover:to-[#0d7a6e] text-white text-lg py-8 rounded-xl shadow-2xl shadow-[#25D366]/20 transition-all"
+                      className="bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd59] hover:to-[#0d7a6e] text-white text-lg px-8 py-6 rounded-xl shadow-2xl shadow-[#25D366]/20 transition-all"
                     >
                       <MessageSquare className="mr-3 h-6 w-6" />
                       Consultas por WhatsApp
                     </Button>
                   </motion.div>
-                </MagneticButton>
-              </DialogTrigger>
+                </DialogTrigger>
               <DialogContent className="bg-zinc-900 border-zinc-800">
                 <DialogHeader>
                   <DialogTitle className="text-white flex items-center gap-2">
@@ -118,7 +118,8 @@ export default function Contact() {
                   </Button>
                 </div>
               </DialogContent>
-            </Dialog>
+              </Dialog>
+            </div>
           </FadeIn>
         </div>
       </section>
