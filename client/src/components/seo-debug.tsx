@@ -121,8 +121,8 @@ function updateTwitterCardTags(title: string, description: string) {
     { name: 'twitter:description', content: description },
     { name: 'twitter:image', content: 'https://neychasoto.com/assets/nail-transformation-twitter.jpg' },
     { name: 'twitter:image:alt', content: 'Transformaciones reales de uñas antes y después - Onicoplastia Puerto Rico por Neycha Soto' },
-    { name: 'twitter:site', content: '@neychanails' },
-    { name: 'twitter:creator', content: '@neychanails' },
+    { name: 'twitter:site', content: '@neychasoto_com' },
+    { name: 'twitter:creator', content: '@neychasoto_com' },
   ];
 
   twitterTags.forEach(tag => {
@@ -254,8 +254,8 @@ function addLocalBusinessSchema() {
       ]
     },
     sameAs: [
-      'https://www.instagram.com/neychanails',
-      'https://www.facebook.com/neychanailscom',
+      'https://www.instagram.com/neychasoto_com/',
+      'https://www.facebook.com/neychasotocom',
       'https://shop.neychasoto.com',
       'https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo'
     ],

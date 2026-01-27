@@ -125,101 +125,88 @@ export default function Contact() {
 
       {/* Contact Information Cards */}
       <section className="px-4 py-16">
-        <div className="container mx-auto max-w-4xl">
+        <div className="container mx-auto max-w-3xl">
           <FadeIn>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-8 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-10 text-center">
               ¿Cómo Podemos Ayudarte?
             </h2>
           </FadeIn>
 
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6" staggerDelay={0.1}>
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6" staggerDelay={0.1}>
             <StaggerItem>
-              <GlassmorphismCard className="p-8 h-full bg-gradient-to-br from-zinc-900/80 to-zinc-950/80">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
-                
-                <div className="relative">
-                  <div className="p-3 bg-[#F2E6D8]/10 rounded-lg w-fit mb-4">
-                    <MapPin className="h-6 w-6 text-[#F2E6D8]" />
+              <div className="p-6 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all h-full">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-[#F2E6D8]/10 rounded-lg flex-shrink-0">
+                    <MapPin className="h-5 w-5 text-[#F2E6D8]" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Ubicación</h3>
-                  <p className="text-gray-300">Hatillo, Puerto Rico</p>
-                  <p className="text-sm text-gray-400 mt-2">Estudio privado con ambiente exclusivo</p>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-1">Ubicación</h3>
+                    <p className="text-gray-300 text-sm">Hatillo, Puerto Rico</p>
+                    <p className="text-xs text-gray-500 mt-1">Estudio privado con ambiente exclusivo</p>
+                  </div>
                 </div>
-              </GlassmorphismCard>
+              </div>
             </StaggerItem>
 
             <StaggerItem>
-              <GlassmorphismCard className="p-8 h-full bg-gradient-to-br from-zinc-900/80 to-zinc-950/80">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#F2E6D8]/5 rounded-full blur-3xl group-hover:bg-[#F2E6D8]/10 transition-all"></div>
-                
-                <div className="relative">
-                  <div className="p-3 bg-[#F2E6D8]/10 rounded-lg w-fit mb-4">
-                    <Clock className="h-6 w-6 text-[#F2E6D8]" />
+              <div className="p-6 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all h-full">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-[#F2E6D8]/10 rounded-lg flex-shrink-0">
+                    <Clock className="h-5 w-5 text-[#F2E6D8]" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Horario</h3>
-                  <p className="text-gray-300">Martes a Sábado</p>
-                  <p className="text-sm text-gray-400 mt-2">Solo con cita previa - No walk-ins</p>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white mb-1">Horario</h3>
+                    <p className="text-gray-300 text-sm">Martes a Sábado</p>
+                    <p className="text-xs text-gray-500 mt-1">Solo con cita previa - No walk-ins</p>
+                  </div>
                 </div>
-              </GlassmorphismCard>
+              </div>
             </StaggerItem>
           </StaggerContainer>
 
           {/* Social Media Section */}
-          <FadeIn delay={0.3} className="mt-12">
-            <GlassmorphismCard className="p-8 bg-gradient-to-br from-zinc-900/80 to-zinc-950/80" tilt={false}>
-              <ParallaxElement speed={0.2} direction="up" className="absolute top-0 left-0">
-                <div className="w-64 h-64 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
-              </ParallaxElement>
-              <ParallaxElement speed={0.3} direction="down" className="absolute bottom-0 right-0">
-                <div className="w-64 h-64 bg-[#F2E6D8]/5 rounded-full blur-3xl"></div>
-              </ParallaxElement>
-              
-              <div className="relative text-center">
-                <h3 className="text-xl font-bold text-white mb-6">Síguenos en Redes Sociales</h3>
-                <div className="flex justify-center gap-4 flex-wrap">
-                  <MagneticButton strength={0.25}>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button 
-                        asChild 
-                        className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white px-6 py-6 rounded-xl shadow-lg"
-                      >
-                        <a 
-                          href="https://www.instagram.com/neychanails" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-3"
-                        >
-                          <Instagram className="h-5 w-5" />
-                          <span className="font-medium">@neychanails</span>
-                        </a>
-                      </Button>
-                    </motion.div>
-                  </MagneticButton>
-                  
-                  <MagneticButton strength={0.25}>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button 
-                        asChild 
-                        className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-6 rounded-xl shadow-lg"
-                      >
-                        <a 
-                          href="https://www.facebook.com/neychanailscom" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-3"
-                        >
-                          <Facebook className="h-5 w-5" />
-                          <span className="font-medium">Neycha Nails</span>
-                        </a>
-                      </Button>
-                    </motion.div>
-                  </MagneticButton>
-                </div>
-                <p className="text-sm text-gray-400 mt-6">
-                  Descubre nuestro trabajo, promociones y testimonios de clientes
-                </p>
+          <FadeIn delay={0.3} className="mt-10">
+            <div className="p-8 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 text-center">
+              <h3 className="text-lg font-semibold text-white mb-6">Síguenos en Redes Sociales</h3>
+              <div className="flex justify-center gap-4 flex-wrap">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button 
+                    asChild 
+                    className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white px-5 py-5 rounded-xl"
+                  >
+                    <a 
+                      href="https://www.instagram.com/neychasoto_com/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <Instagram className="h-5 w-5" />
+                      <span className="font-medium">@neychasoto_com</span>
+                    </a>
+                  </Button>
+                </motion.div>
+                
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button 
+                    asChild 
+                    className="bg-[#1877F2] hover:bg-[#166FE5] text-white px-5 py-5 rounded-xl"
+                  >
+                    <a 
+                      href="https://www.facebook.com/neychasotocom" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <Facebook className="h-5 w-5" />
+                      <span className="font-medium">Neycha Soto</span>
+                    </a>
+                  </Button>
+                </motion.div>
               </div>
-            </GlassmorphismCard>
+              <p className="text-sm text-gray-500 mt-5">
+                Descubre nuestro trabajo, promociones y testimonios de clientes
+              </p>
+            </div>
           </FadeIn>
         </div>
       </section>

@@ -17,7 +17,7 @@ export default function Footer() {
           {/* Social Media Links */}
           <div className="flex items-center gap-6">
             <a
-              href="https://www.facebook.com/neychanailscom"
+              href="https://www.facebook.com/neychasotocom"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -26,7 +26,7 @@ export default function Footer() {
               <Facebook className="h-5 w-5" />
             </a>
             <a
-              href="https://www.instagram.com/neychanails"
+              href="https://www.instagram.com/neychasoto_com/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
