@@ -17,7 +17,7 @@ export function AnimatedCounter({
   className = "",
 }: AnimatedCounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "0px" });
   const [hasAnimated, setHasAnimated] = useState(false);
 
   const springValue = useSpring(0, {
@@ -46,14 +46,8 @@ export function AnimatedCounter({
   }, [displayValue]);
 
   return (
-    <motion.span
-      ref={ref}
-      className={className}
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
+    <span ref={ref} className={className}>
       {prefix}{display}{suffix}
-    </motion.span>
+    </span>
   );
 }

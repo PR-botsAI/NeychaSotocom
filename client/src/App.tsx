@@ -6,6 +6,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Home from "@/pages/home";
 import Onicoplastia from "@/pages/onicoplastia";
+import Diagnostico from "@/pages/diagnostico";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import { ErrorBoundary } from "@/components/error-boundary";
@@ -13,8 +14,20 @@ import ShopBanner from "@/components/shop-banner";
 import SEODebug from "@/components/seo-debug";
 import PerformanceOptimizer from "@/components/performance-optimizer";
 import { ScrollProgress } from "@/components/scroll-progress";
+import StickyMobileCTA from "@/components/sticky-mobile-cta";
 import { useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
+const pageTransition = {
+  initial: { opacity: 0, y: 12, filter: "blur(4px)" },
+  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+  exit: { opacity: 0, y: -8, filter: "blur(4px)" },
+};
+
+const pageTransitionConfig = {
+  duration: 0.45,
+  ease: [0.16, 1, 0.3, 1],
+};
 
 function Router() {
   const [location] = useLocation();
@@ -24,7 +37,8 @@ function Router() {
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col relative">
+      <div className="grain-overlay" />
       <ScrollProgress />
       <ShopBanner />
       <Navbar />
@@ -32,14 +46,15 @@ function Router() {
         <AnimatePresence mode="wait">
           <motion.div
             key={location}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
+            initial={pageTransition.initial}
+            animate={pageTransition.animate}
+            exit={pageTransition.exit}
+            transition={pageTransitionConfig}
           >
             <Switch>
               <Route path="/" component={Home} />
               <Route path="/onicoplastia" component={Onicoplastia} />
+              <Route path="/diagnostico" component={Diagnostico} />
               <Route path="/contact" component={Contact} />
               <Route component={NotFound} />
             </Switch>
@@ -47,6 +62,7 @@ function Router() {
         </AnimatePresence>
       </main>
       <Footer />
+      <StickyMobileCTA />
     </div>
   );
 }

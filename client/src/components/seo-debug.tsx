@@ -51,39 +51,39 @@ export default function SEODebug() {
 function getPageTitle(location: string): string {
   switch (location) {
     case '/':
-      return 'Neycha Soto | Termina con los Problemas de Hongos en las Uñas Para Siempre | Onicoplastia Hatillo PR';
+      return 'Neycha Soto | Reconstrucción Estética de Uñas | Sal Usando Sandalias | Onicoplastia Hatillo PR';
     case '/onicoplastia':
-      return 'Transformaciones Reales de Uñas en Puerto Rico | Onicoplastia Premium | Antes y Después | Neycha Soto';
+      return 'Reconstrucción Estética de Uñas | Antes y Después | Onicoplastia para Hombres y Mujeres | Neycha Soto PR';
     case '/contact':
-      return 'Reserva Tu Consulta de Onicoplastia | Neycha Soto | Transforma Tus Uñas Hoy';
+      return 'Reserva Tu Cita de Onicoplastia | Neycha Soto | Reconstrucción Estética de Uñas | Hatillo PR';
     default:
-      return 'Neycha Soto | Especialista en Onicoplastia | Transforma Uñas Problemáticas | Hatillo PR';
+      return 'Neycha Soto | Reconstrucción Estética de Uñas | Onicoplastia | Hatillo PR';
   }
 }
 
 function getPageDescription(location: string): string {
   switch (location) {
     case '/':
-      return '¿Cansada de esconder tus uñas? Neycha Soto ha ayudado a cientos a transformar sus problemas de uñas con onicoplastia profesional. Enfermera registrada y certificada IBX®. Ve resultados en tu primera sesión. Reserva tu consulta en Hatillo, PR.';
+      return '¿Llevas años escondiendo tus pies o manos? Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. Primera visita $120. Neycha Soto, enfermera certificada IBX® en Hatillo, PR.';
     case '/onicoplastia':
-      return 'Una imagen vale más que mil palabras. Ve transformaciones reales de onicoplastia antes y después. Neycha Soto, especialista certificada IBX® en Hatillo, PR. Resultados visibles en una sola sesión, galería de casos reales, $120 primera evaluación.';
+      return 'Reconstrucción estética de uñas: ve casos reales antes y después. Apariencia perfecta para uñas dañadas por hongos o trauma. Para hombres y mujeres. Neycha Soto, especialista certificada IBX® en Hatillo, PR. Primera visita $120, seguimientos $80.';
     case '/contact':
-      return '¿Lista para arreglar tus problemas de uñas de una vez por todas? Reserva tu consulta de onicoplastia con Neycha Soto en Hatillo, Puerto Rico. Enfermera registrada especialista en transformación de uñas. Citas limitadas disponibles - asegura la tuya hoy.';
+      return 'Reserva tu cita de reconstrucción estética de uñas con Neycha Soto en Hatillo, Puerto Rico. Para hombres y mujeres. Sal usando sandalias con confianza. Primera visita $120. Estudio privado, solo con cita.';
     default:
-      return 'Transforma tus uñas problemáticas con tratamiento comprobado de onicoplastia. Neycha Soto se especializa en soluciones permanentes para uñas en Hatillo, Puerto Rico. Deja de esconderte - comienza a vivir con confianza.';
+      return 'Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Neycha Soto, especialista en onicoplastia en Hatillo, Puerto Rico. Apariencia perfecta para hombres y mujeres. Vive con confianza.';
   }
 }
 
 function getPageKeywords(location: string): string {
-  const baseKeywords = 'Neycha Soto, neychasoto.com, onicoplastia Hatillo Puerto Rico, tratamiento hongos uñas PR, solución problemas uñas, restauración profesional uñas, especialista certificada IBX, transformación uñas Hatillo';
-  
+  const baseKeywords = 'Neycha Soto, neychasoto.com, onicoplastia Hatillo Puerto Rico, reconstrucción estética uñas PR, uñas dañadas solución, especialista certificada IBX, onicoplastia hombres y mujeres';
+
   switch (location) {
     case '/':
-      return `${baseKeywords}, especialista hongos uñas Puerto Rico, solución permanente uñas, confianza uñas, transformar uñas problemáticas, cuidado profesional uñas Hatillo, experta salud uñas PR`;
+      return `${baseKeywords}, reconstrucción estética uñas hongos Puerto Rico, apariencia perfecta uñas, sal usando sandalias, estudio privado Hatillo, primera visita $120`;
     case '/onicoplastia':
-      return `${baseKeywords}, onicoplastia antes y después Puerto Rico, transformaciones reales uñas Hatillo, galería resultados onicoplastia PR, casos reales transformación uñas, onicoplastia premium Puerto Rico, resultados visibles una sesión, fotos antes después uñas Hatillo`;
+      return `${baseKeywords}, onicoplastia antes y después Puerto Rico, reconstrucción estética uñas Hatillo, galería casos reales onicoplastia PR, apariencia perfecta uñas dañadas, fotos antes después uñas Hatillo`;
     case '/contact':
-      return `consulta onicoplastia Hatillo, reservar tratamiento uñas PR, cita especialista uñas, contacto Neycha Soto, consulta profesional uñas Puerto Rico, reserva transformación uñas`;
+      return `cita onicoplastia Hatillo, reservar reconstrucción estética uñas PR, cita especialista uñas, contacto Neycha Soto, estudio privado Hatillo Puerto Rico`;
     default:
       return baseKeywords;
   }
@@ -120,7 +120,7 @@ function updateTwitterCardTags(title: string, description: string) {
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
     { name: 'twitter:image', content: 'https://neychasoto.com/assets/nail-transformation-twitter.jpg' },
-    { name: 'twitter:image:alt', content: 'Transformaciones reales de uñas antes y después - Onicoplastia Puerto Rico por Neycha Soto' },
+    { name: 'twitter:image:alt', content: 'Reconstrucción estética de uñas antes y después - Onicoplastia Puerto Rico por Neycha Soto' },
     { name: 'twitter:site', content: '@neychasoto_com' },
     { name: 'twitter:creator', content: '@neychasoto_com' },
   ];
@@ -148,32 +148,43 @@ function addStructuredData(location: string) {
   if (location === '/onicoplastia') {
     structuredData = {
       '@context': 'https://schema.org',
-      '@type': 'MedicalProcedure',
-      name: 'Onicoplastia Premium - Transformaciones Visibles',
-      description: 'Ve las transformaciones reales con nuestra galería antes y después. Tratamiento de onicoplastia con resultados visibles en una sola sesión. Especialista certificada IBX® con casos documentados en Hatillo, PR.',
-      procedureType: 'Restauración terapéutica de uñas',
-      bodyLocation: 'Uñas',
-      preparation: 'Consulta y evaluación de uñas',
-      howPerformed: 'Aplicación profesional de productos y técnicas especializadas',
-      followup: 'Citas de seguimiento para monitorear el progreso',
+      '@type': 'Service',
+      name: 'Onicoplastia - Reconstrucción Estética de Uñas',
+      description: 'Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. No es un tratamiento médico curativo; condiciones subyacentes pueden requerir seguimiento. Especialista certificada IBX® en Hatillo, PR.',
+      serviceType: 'Reconstrucción estética de uñas',
+      areaServed: 'Hatillo, Puerto Rico',
       provider: {
         '@type': 'Person',
         name: 'Neycha Soto',
-        jobTitle: 'Especialista Certificada en Uñas',
+        jobTitle: 'Enfermera Registrada y Especialista Certificada IBX® en Uñas',
         worksFor: {
           '@type': 'LocalBusiness',
           name: 'Neycha Soto Nail Specialist',
           url: 'https://neychasoto.com'
         }
-      }
+      },
+      offers: [
+        {
+          '@type': 'Offer',
+          name: 'Primera Visita',
+          price: '120',
+          priceCurrency: 'USD'
+        },
+        {
+          '@type': 'Offer',
+          name: 'Seguimiento',
+          price: '80',
+          priceCurrency: 'USD'
+        }
+      ]
     };
   } else {
     structuredData = {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'Neycha Soto - Especialista en Onicoplastia',
+      name: 'Neycha Soto - Reconstrucción Estética de Uñas',
       url: 'https://neychasoto.com',
-      description: 'Tratamiento profesional de onicoplastia para problemas de uñas. Transforma tus uñas con técnicas comprobadas. Enfermera registrada certificada IBX®.',
+      description: 'Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. Enfermera registrada certificada IBX® en Hatillo, Puerto Rico.',
       potentialAction: {
         '@type': 'SearchAction',
         target: 'https://neychasoto.com/?s={search_term_string}',
@@ -198,7 +209,7 @@ function addLocalBusinessSchema() {
     '@type': 'NailSalon',
     '@id': 'https://neychasoto.com/#business',
     name: 'Neycha Soto - Onicoplastia Puerto Rico',
-    alternateName: 'Neycha Nails - Especialista en Restauración de Uñas',
+    alternateName: 'Neycha Nails - Especialista en Reconstrucción Estética de Uñas',
     image: [
       'https://neychasoto.com/assets/nail-transformation-gallery.jpg',
       'https://neychasoto.com/assets/professional-consultation.jpg'
@@ -206,7 +217,7 @@ function addLocalBusinessSchema() {
     logo: 'https://neychasoto.com/assets/logo-neychasoto.png',
     url: 'https://neychasoto.com',
     telephone: '+1-939-429-0292',
-    description: 'Especialista certificada IBX® en onicoplastia y restauración de uñas en Hatillo, Puerto Rico. Transformaciones reales antes y después. Primera evaluación $120. Solo con cita previa.',
+    description: 'Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. Enfermera certificada IBX® en Hatillo, Puerto Rico. Primera visita $120, seguimientos $80. Solo con cita previa.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '166 Avenida Dr Susoni, Unit 166',
@@ -233,22 +244,22 @@ function addLocalBusinessSchema() {
     currenciesAccepted: 'USD',
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Servicios de Onicoplastia y Restauración de Uñas',
+      name: 'Servicios de Onicoplastia y Reconstrucción Estética de Uñas',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Onicoplastia Premium',
-            description: 'Tratamiento profesional de onicoplastia con resultados visibles en una sesión. Incluye GEL Polish. Primera evaluación $120, seguimientos $80.'
+            name: 'Onicoplastia - Primera Visita',
+            description: 'Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Sal usando sandalias con apariencia perfecta. Incluye IBX® y GEL Polish. $120. No es un tratamiento médico curativo.'
           }
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Evaluación y Consulta Personalizada',
-            description: 'Evaluación completa de uñas con plan de tratamiento personalizado. Solo con cita previa en Hatillo, PR.'
+            name: 'Seguimiento de Onicoplastia',
+            description: 'Mantenimiento de la reconstrucción estética y apariencia perfecta de las uñas. $80 por sesión. Solo con cita previa en Hatillo, PR.'
           }
         }
       ]

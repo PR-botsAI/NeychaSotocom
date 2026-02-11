@@ -1,18 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Clock, MapPin, MessageSquare, Instagram, Facebook, Sparkles, Calendar, Phone } from "lucide-react";
+import { Clock, MapPin, MessageSquare, Instagram, Facebook, Sparkles, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
-import { FadeIn, StaggerContainer, StaggerItem } from "@/components/motion-wrapper";
-import { GlassmorphismCard } from "@/components/glassmorphism-card";
+import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
 import { MagneticButton } from "@/components/magnetic-button";
 import { ParallaxElement } from "@/components/parallax-element";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { WhatsAppDialog } from "@/components/whatsapp-dialog";
 
 export default function Contact() {
   const handleBookingClick = () => {
@@ -20,32 +12,37 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 overflow-hidden">
+      <section className="relative py-24 px-4 overflow-hidden">
+        {/* Mesh gradient background */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(242,230,216,0.06)_0%,transparent_50%)]" />
+
         <ParallaxElement speed={0.3} direction="up" className="absolute top-0 left-1/4">
-          <motion.div 
+          <motion.div
             className="w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-            animate={{ 
+            animate={{
               scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3]
+              opacity: [0.3, 0.5, 0.3],
+              x: [0, 15, 0],
             }}
-            transition={{ 
-              duration: 8,
+            transition={{
+              duration: 10,
               repeat: Infinity,
               ease: "easeInOut"
             }}
           />
         </ParallaxElement>
         <ParallaxElement speed={0.4} direction="down" className="absolute bottom-0 right-1/4">
-          <motion.div 
+          <motion.div
             className="w-80 h-80 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-            animate={{ 
+            animate={{
               scale: [1.2, 1, 1.2],
-              opacity: [0.5, 0.3, 0.5]
+              opacity: [0.5, 0.3, 0.5],
+              x: [0, -15, 0],
             }}
-            transition={{ 
-              duration: 8,
+            transition={{
+              duration: 10,
               repeat: Infinity,
               ease: "easeInOut"
             }}
@@ -54,10 +51,13 @@ export default function Contact() {
 
         <div className="container mx-auto max-w-4xl relative z-10">
           <FadeIn className="text-center mb-12">
-            <img 
-              src="/assets/HeroLogoWhiteTrasparent.png" 
-              alt="Neycha Nails" 
+            <motion.img
+              src="/assets/HeroLogoWhiteTrasparent.png"
+              alt="Neycha Nails"
               className="h-20 mx-auto mb-6"
+              initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             />
             <div className="flex items-center justify-center gap-2 mb-4">
               <Sparkles className="w-5 h-5 text-[#F2E6D8]" />
@@ -65,77 +65,57 @@ export default function Contact() {
               <Sparkles className="w-5 h-5 text-[#F2E6D8]" />
             </div>
             <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">
-                Estamos Para Ti
-              </span>
+              <TextReveal
+                text="Estamos Para Ti"
+                className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
+              />
             </h1>
-            <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            <motion.p
+              className="text-lg text-gray-300 max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 15, filter: "blur(6px)" }}
+              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+            >
               ¿Tienes preguntas? Nos encantaría escucharte. Contáctanos por WhatsApp o síguenos en redes sociales.
-            </p>
+            </motion.p>
           </FadeIn>
 
-          {/* WhatsApp Button - Prominent */}
+          {/* WhatsApp Button */}
           <FadeIn delay={0.2}>
             <div className="flex justify-center">
-              <Dialog>
-                <DialogTrigger asChild>
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="cursor-pointer"
-                  >
-                    <Button 
-                      size="lg" 
-                      className="bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd59] hover:to-[#0d7a6e] text-white text-lg px-8 py-6 rounded-xl shadow-2xl shadow-[#25D366]/20 transition-all"
-                    >
-                      <MessageSquare className="mr-3 h-6 w-6" />
-                      Consultas por WhatsApp
-                    </Button>
-                  </motion.div>
-                </DialogTrigger>
-              <DialogContent className="bg-zinc-900 border-zinc-800">
-                <DialogHeader>
-                  <DialogTitle className="text-white flex items-center gap-2">
-                    <Phone className="w-5 h-5 text-[#F2E6D8]" />
-                    Mensaje Importante
-                  </DialogTitle>
-                  <DialogDescription className="text-gray-300">
-                    Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="mt-6 flex justify-end">
-                  <Button 
-                    asChild
-                    className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]"
-                  >
-                    <a 
-                      href="https://wa.me/19394290292"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Continuar a WhatsApp
-                    </a>
-                  </Button>
-                </div>
-              </DialogContent>
-              </Dialog>
+              <WhatsAppDialog message="¡Hola! Tengo una pregunta sobre sus servicios.">
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="cursor-pointer bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd59] hover:to-[#0d7a6e] text-white text-lg px-8 py-4 rounded-xl shadow-2xl shadow-[#25D366]/20 hover:shadow-[#25D366]/30 transition-all duration-300 font-semibold flex items-center gap-3"
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                >
+                  <MessageSquare className="h-6 w-6" />
+                  Consultas por WhatsApp
+                </motion.button>
+              </WhatsAppDialog>
             </div>
           </FadeIn>
         </div>
       </section>
 
+      <div className="section-divider mx-auto max-w-xl" />
+
       {/* Contact Information Cards */}
-      <section className="px-4 py-16">
+      <section className="px-4 py-20">
         <div className="container mx-auto max-w-3xl">
           <FadeIn>
             <h2 className="text-2xl sm:text-3xl font-bold mb-10 text-center">
-              ¿Cómo Podemos Ayudarte?
+              <TextReveal text="¿Cómo Podemos Ayudarte?" className="text-white" />
             </h2>
           </FadeIn>
 
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6" staggerDelay={0.1}>
             <StaggerItem>
-              <div className="p-6 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all h-full">
+              <motion.div
+                className="p-6 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-500 h-full"
+                whileHover={{ y: -4, transition: { type: "spring", stiffness: 300, damping: 25 } }}
+              >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-[#F2E6D8]/10 rounded-lg flex-shrink-0">
                     <MapPin className="h-5 w-5 text-[#F2E6D8]" />
@@ -146,11 +126,14 @@ export default function Contact() {
                     <p className="text-xs text-gray-500 mt-1">Estudio privado con ambiente exclusivo</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </StaggerItem>
 
             <StaggerItem>
-              <div className="p-6 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all h-full">
+              <motion.div
+                className="p-6 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-500 h-full"
+                whileHover={{ y: -4, transition: { type: "spring", stiffness: 300, damping: 25 } }}
+              >
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-[#F2E6D8]/10 rounded-lg flex-shrink-0">
                     <Clock className="h-5 w-5 text-[#F2E6D8]" />
@@ -161,23 +144,30 @@ export default function Contact() {
                     <p className="text-xs text-gray-500 mt-1">Solo con cita previa - No walk-ins</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </StaggerItem>
           </StaggerContainer>
 
           {/* Social Media Section */}
           <FadeIn delay={0.3} className="mt-10">
-            <div className="p-8 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 text-center">
+            <motion.div
+              className="p-8 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 hover:border-zinc-700 text-center transition-all duration-500"
+              whileHover={{ scale: 1.005 }}
+            >
               <h3 className="text-lg font-semibold text-white mb-6">Síguenos en Redes Sociales</h3>
               <div className="flex justify-center gap-4 flex-wrap">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button 
-                    asChild 
-                    className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white px-5 py-5 rounded-xl"
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                >
+                  <Button
+                    asChild
+                    className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white px-5 py-5 rounded-xl shadow-lg hover:shadow-purple-500/20 transition-all duration-300"
                   >
-                    <a 
-                      href="https://www.instagram.com/neychasoto_com/" 
-                      target="_blank" 
+                    <a
+                      href="https://www.instagram.com/neychasoto_com/"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2"
                     >
@@ -186,15 +176,19 @@ export default function Contact() {
                     </a>
                   </Button>
                 </motion.div>
-                
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Button 
-                    asChild 
-                    className="bg-[#1877F2] hover:bg-[#166FE5] text-white px-5 py-5 rounded-xl"
+
+                <motion.div
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                >
+                  <Button
+                    asChild
+                    className="bg-[#1877F2] hover:bg-[#166FE5] text-white px-5 py-5 rounded-xl shadow-lg hover:shadow-blue-500/20 transition-all duration-300"
                   >
-                    <a 
-                      href="https://www.facebook.com/neychasotocom" 
-                      target="_blank" 
+                    <a
+                      href="https://www.facebook.com/neychasotocom"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2"
                     >
@@ -207,75 +201,77 @@ export default function Contact() {
               <p className="text-sm text-gray-500 mt-5">
                 Descubre nuestro trabajo, promociones y testimonios de clientes
               </p>
-            </div>
+            </motion.div>
           </FadeIn>
         </div>
       </section>
 
+      <div className="section-divider mx-auto max-w-xl" />
+
       {/* CTA Section */}
       <FadeIn>
-        <section className="px-4 py-16">
+        <section className="px-4 py-24">
           <div className="container mx-auto max-w-4xl">
-            <motion.div 
+            <motion.div
               className="relative rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-black p-12 sm:p-16 text-center border border-zinc-800 overflow-hidden"
-              whileHover={{ scale: 1.01, transition: { duration: 0.3 } }}
+              whileHover={{ scale: 1.01, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
             >
-              <ParallaxElement speed={0.4} direction="up" className="absolute top-0 left-0">
-                <motion.div 
-                  className="w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-                  animate={{ 
-                    scale: [1, 1.1, 1],
-                    opacity: [0.5, 0.8, 0.5]
-                  }}
-                  transition={{ 
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-              </ParallaxElement>
-              <ParallaxElement speed={0.5} direction="down" className="absolute bottom-0 right-0">
-                <motion.div 
-                  className="w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-                  animate={{ 
-                    scale: [1.1, 1, 1.1],
-                    opacity: [0.8, 0.5, 0.8]
-                  }}
-                  transition={{ 
-                    duration: 6,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-              </ParallaxElement>
-              
+              <motion.div
+                className="absolute top-0 left-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
+                animate={{
+                  scale: [1, 1.15, 1],
+                  opacity: [0.4, 0.7, 0.4],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <motion.div
+                className="absolute bottom-0 right-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
+                animate={{
+                  scale: [1.1, 1, 1.1],
+                  opacity: [0.7, 0.4, 0.7],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+
               <div className="relative space-y-6">
                 <motion.div
-                  animate={{ rotate: [0, 10, -10, 0] }}
+                  animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.1, 1] }}
                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 >
                   <Sparkles className="w-12 h-12 text-[#F2E6D8] mx-auto mb-4" />
                 </motion.div>
-                
+
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
                   <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">
-                    ¿Lista Para Transformar Tus Uñas?
+                    ¿Listo Para Transformar Tus Uñas?
                   </span>
                 </h2>
-                
+
                 <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
                   Agenda tu cita hoy y comienza tu transformación con Neycha Nails
                 </p>
-                
+
                 <div className="pt-4">
                   <MagneticButton strength={0.3}>
-                    <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.97 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    >
                       <Button
-                        className="w-full sm:w-auto bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-6 sm:px-10 py-6 text-base sm:text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all"
+                        className="w-full sm:w-auto bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-6 sm:px-10 py-6 text-base sm:text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
                         onClick={handleBookingClick}
                       >
                         <Calendar className="w-5 h-5 mr-2 flex-shrink-0" />
-                        ¡AGENDA TU CITA AHORA!
+                        AGENDA TU CITA
                       </Button>
                     </motion.div>
                   </MagneticButton>
@@ -283,7 +279,7 @@ export default function Contact() {
 
                 <div className="flex items-center justify-center gap-2 text-sm text-gray-400 pt-4">
                   <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  Disponible vía Booksy • Respuesta Inmediata
+                  Disponible vía Booksy &bull; Respuesta Inmediata
                 </div>
               </div>
             </motion.div>

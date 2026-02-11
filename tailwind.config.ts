@@ -97,12 +97,42 @@ export default {
             transform: "translateY(0)",
           },
         },
+        float: {
+          "0%, 100%": {
+            transform: "translateY(0) rotate(0deg)",
+          },
+          "33%": {
+            transform: "translateY(-12px) rotate(1deg)",
+          },
+          "66%": {
+            transform: "translateY(-6px) rotate(-1deg)",
+          },
+        },
+        "pulse-glow": {
+          "0%, 100%": {
+            boxShadow: "0 0 20px rgba(242, 230, 216, 0.1)",
+          },
+          "50%": {
+            boxShadow: "0 0 40px rgba(242, 230, 216, 0.25), 0 0 80px rgba(242, 230, 216, 0.1)",
+          },
+        },
+        "gradient-shift": {
+          "0%, 100%": {
+            backgroundPosition: "0% 50%",
+          },
+          "50%": {
+            backgroundPosition: "100% 50%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         shimmer: "shimmer 2s infinite",
         fadeIn: "fadeIn 0.5s ease-out",
+        float: "float 6s ease-in-out infinite",
+        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        gradient: "gradient-shift 4s ease-in-out infinite",
       },
     },
   },

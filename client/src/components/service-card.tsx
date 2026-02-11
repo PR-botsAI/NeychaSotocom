@@ -79,7 +79,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
                 <ul className="space-y-1 text-sm">
                   <li>• Tratamiento progresivo con múltiples sesiones</li>
                   <li>• Seguimiento cada 45 días para óptimos resultados</li>
-                  <li>• Evaluación inicial requerida para todas las clientas</li>
+                  <li>• Evaluación inicial requerida para todos los clientes</li>
                 </ul>
               </div>
             </div>
