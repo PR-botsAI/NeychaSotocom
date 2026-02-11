@@ -1,0 +1,1 @@
+var fs=require("fs"),p=require("pdf-parse"),a=process.argv[2]||"Reference Data/38-onicopatias (1).pdf";p(fs.readFileSync(a)).then(function(d){fs.writeFileSync("pdf_out.txt",d.text.substring(0,20000));console.log("OK "+d.numpages+" pages")}).catch(function(e){console.log("ERR "+e.message)})
