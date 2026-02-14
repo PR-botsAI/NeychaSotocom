@@ -3,9 +3,8 @@ import TestimonialCard from "@/components/testimonial-card";
 import MeetTheArtist from "@/components/meet-the-artist";
 import { TransformationGallery } from "@/components/transformation-gallery";
 import { Button } from "@/components/ui/button";
-import { Calendar, Sparkles, Heart, Award, MessageSquare, CheckCircle, ArrowRight, Star } from "lucide-react";
+import { Calendar, Sparkles, Heart, Award, Stethoscope, CheckCircle, ArrowRight, Star } from "lucide-react";
 import { motion } from "framer-motion";
-import { WhatsAppDialog } from "@/components/whatsapp-dialog";
 import { cases } from "@/data/cases";
 import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
 import { GlassmorphismCard } from "@/components/glassmorphism-card";
@@ -385,18 +384,18 @@ export default function Home() {
                       </motion.div>
                     </MagneticButton>
 
-                    <WhatsAppDialog message="¡Hola! Me gustaría agendar una cita.">
+                    <Link href="/diagnostico">
                       <motion.div
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.97 }}
                         transition={{ type: "spring", stiffness: 400, damping: 25 }}
                       >
-                        <Button variant="outline" className="text-base px-6 py-6 font-medium border-[#25D366]/50 text-[#25D366] hover:bg-[#25D366]/10 hover:border-[#25D366] cursor-pointer">
-                          <MessageSquare className="w-5 h-5 mr-2" />
-                          WhatsApp
+                        <Button variant="outline" className="text-base px-6 py-6 font-medium border-[#F2E6D8]/50 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer">
+                          <Stethoscope className="w-5 h-5 mr-2" />
+                          ¿No estás segura? Evalúa tus uñas
                         </Button>
                       </motion.div>
-                    </WhatsAppDialog>
+                    </Link>
                   </div>
 
                   <div className="flex items-center justify-center gap-2 text-sm text-gray-400 pt-4">

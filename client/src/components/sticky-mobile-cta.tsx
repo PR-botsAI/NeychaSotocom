@@ -1,7 +1,6 @@
-import { Calendar, MessageSquare, ShoppingBag, ChevronUp } from "lucide-react";
+import { Calendar, Stethoscope, ShoppingBag, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { WhatsAppDialog } from "@/components/whatsapp-dialog";
 
 export default function StickyMobileCTA() {
   const [visible, setVisible] = useState(false);
@@ -47,16 +46,16 @@ export default function StickyMobileCTA() {
               </motion.button>
             </a>
 
-            {/* WhatsApp with disclaimer */}
-            <WhatsAppDialog message="¡Hola! Me gustaría agendar una cita.">
+            {/* Diagnostic tool */}
+            <a href="/diagnostico" className="flex-shrink-0">
               <motion.button
-                className="flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold py-3 px-4 rounded-xl text-sm shadow-lg shadow-[#25D366]/10"
+                className="flex items-center justify-center gap-2 bg-[#F2E6D8]/15 text-[#F2E6D8] font-semibold py-3 px-4 rounded-xl text-sm border border-[#F2E6D8]/30"
                 whileTap={{ scale: 0.96 }}
               >
-                <MessageSquare className="w-4 h-4" />
-                WhatsApp
+                <Stethoscope className="w-4 h-4" />
+                Evalúa
               </motion.button>
-            </WhatsAppDialog>
+            </a>
 
             {/* Shop */}
             <motion.button
@@ -106,20 +105,20 @@ export default function StickyMobileCTA() {
             </span>
           </motion.a>
 
-          {/* WhatsApp */}
-          <WhatsAppDialog>
-            <motion.button
-              className="group relative flex items-center justify-center w-9 h-9 rounded-full bg-white/5 text-[#25D366] hover:bg-[#25D366]/10 transition-colors duration-300"
-              whileHover={{ scale: 1.15 }}
-              whileTap={{ scale: 0.92 }}
-              aria-label="WhatsApp"
-            >
-              <MessageSquare className="w-4 h-4" />
-              <span className="absolute right-full mr-3 px-2.5 py-1 text-xs font-medium text-white bg-black/80 backdrop-blur-sm rounded-md whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 border border-white/5">
-                WhatsApp
-              </span>
-            </motion.button>
-          </WhatsAppDialog>
+          {/* Diagnostic */}
+          <motion.a
+            href="/diagnostico"
+            className="group relative flex items-center justify-center w-9 h-9 rounded-full bg-white/5 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 transition-colors duration-300"
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.92 }}
+            transition={{ type: "spring", stiffness: 500, damping: 25 }}
+            aria-label="Evalúa tus uñas"
+          >
+            <Stethoscope className="w-4 h-4" />
+            <span className="absolute right-full mr-3 px-2.5 py-1 text-xs font-medium text-white bg-black/80 backdrop-blur-sm rounded-md whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 border border-white/5">
+              Evalúa
+            </span>
+          </motion.a>
 
           {/* Shop */}
           <motion.button

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Clock, MapPin, MessageSquare, Instagram, Facebook, Sparkles, Calendar } from "lucide-react";
+import { Clock, MapPin, MessageSquare, Instagram, Facebook, Sparkles, Calendar, HelpCircle, Stethoscope } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
 import { MagneticButton } from "@/components/magnetic-button";
@@ -76,25 +76,45 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              ¿Tienes preguntas? Nos encantaría escucharte. Contáctanos por WhatsApp o síguenos en redes sociales.
+              La forma más rápida de agendar es directamente en Booksy. ¿No estás segura qué necesitas? Usa nuestra herramienta de evaluación gratuita.
             </motion.p>
           </FadeIn>
 
-          {/* WhatsApp Button */}
+          {/* Primary CTAs: Booksy + Diagnostic */}
           <FadeIn delay={0.2}>
-            <div className="flex justify-center">
-              <WhatsAppDialog message="¡Hola! Tengo una pregunta sobre sus servicios.">
-                <motion.button
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+              <MagneticButton>
+                <motion.div
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="cursor-pointer bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:from-[#20bd59] hover:to-[#0d7a6e] text-white text-lg px-8 py-4 rounded-xl shadow-2xl shadow-[#25D366]/20 hover:shadow-[#25D366]/30 transition-all duration-300 font-semibold flex items-center gap-3"
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 >
-                  <MessageSquare className="h-6 w-6" />
-                  Consultas por WhatsApp
-                </motion.button>
-              </WhatsAppDialog>
+                  <Button
+                    className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] text-lg px-8 py-6 font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
+                    onClick={handleBookingClick}
+                  >
+                    <Calendar className="w-5 h-5 mr-2" />
+                    AGENDA TU CITA
+                  </Button>
+                </motion.div>
+              </MagneticButton>
+
+              <a href="/diagnostico">
+                <motion.div
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                >
+                  <Button variant="outline" className="text-base px-6 py-6 font-medium border-[#F2E6D8]/50 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer">
+                    <Stethoscope className="w-5 h-5 mr-2" />
+                    Evalúa Tus Uñas Gratis
+                  </Button>
+                </motion.div>
+              </a>
             </div>
+            <p className="text-center text-sm text-gray-500 mt-4">
+              Reserva en menos de 3 minutos — confirmación instantánea
+            </p>
           </FadeIn>
         </div>
       </section>
@@ -147,6 +167,32 @@ export default function Contact() {
               </motion.div>
             </StaggerItem>
           </StaggerContainer>
+
+          {/* WhatsApp - Last resort, deprioritized */}
+          <FadeIn delay={0.25} className="mt-10">
+            <motion.div
+              className="p-6 rounded-xl bg-zinc-900/40 backdrop-blur-sm border border-zinc-800/60 text-center"
+              whileHover={{ scale: 1.005 }}
+            >
+              <div className="flex items-center justify-center gap-2 mb-3">
+                <HelpCircle className="w-4 h-4 text-gray-500" />
+                <h3 className="text-sm font-medium text-gray-400">¿Tienes una pregunta específica que no puedes resolver?</h3>
+              </div>
+              <p className="text-xs text-gray-500 mb-4 max-w-md mx-auto">
+                La mayoría de preguntas se responden en nuestra página de <a href="/onicoplastia" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">onicoplastia</a> y en la <a href="/diagnostico" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">evaluación gratuita</a>. Para casos específicos que requieran atención personalizada:
+              </p>
+              <WhatsAppDialog message="¡Hola! Ya revisé la información en su web y tengo una pregunta específica sobre:">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="cursor-pointer text-sm px-5 py-2.5 rounded-lg border border-zinc-700 text-gray-400 hover:text-[#25D366] hover:border-[#25D366]/40 transition-all duration-300 flex items-center gap-2 mx-auto"
+                >
+                  <MessageSquare className="h-4 w-4" />
+                  WhatsApp — Solo texto, respuesta en 24h
+                </motion.button>
+              </WhatsAppDialog>
+            </motion.div>
+          </FadeIn>
 
           {/* Social Media Section */}
           <FadeIn delay={0.3} className="mt-10">
