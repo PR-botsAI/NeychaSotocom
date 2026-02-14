@@ -80,17 +80,20 @@ export default function Footer() {
                     </a>
                   </div>
                   <div className="pt-3 border-t border-zinc-800">
-                    <p className="text-xs text-gray-500 mb-2">Si ya revisaste y tu caso es especial (solo texto, respuesta en 24-48h):</p>
-                    <div className="flex justify-end">
-                      <a
-                        href="https://api.whatsapp.com/send/?phone=19394290292"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block"
-                      >
-                        <Button variant="ghost" className="text-xs text-gray-400 hover:text-[#25D366]">Continuar a WhatsApp</Button>
-                      </a>
-                    </div>
+                    <p className="text-xs text-gray-500 mb-2">Si ya revisaste y tu caso es especial:</p>
+                    <a
+                      href="https://api.whatsapp.com/send/?phone=19394290292"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block w-full"
+                    >
+                      <Button className="w-full bg-[#25D366] hover:bg-[#20bd59] text-white text-sm">
+                        Continuar a WhatsApp
+                      </Button>
+                    </a>
+                    <p className="text-[10px] text-gray-600 mt-2 text-center">
+                      Solo mensajes de texto — No se aceptan llamadas ni notas de voz
+                    </p>
                   </div>
                 </DialogContent>
               </Dialog>

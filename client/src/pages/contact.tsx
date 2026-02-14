@@ -168,29 +168,30 @@ export default function Contact() {
             </StaggerItem>
           </StaggerContainer>
 
-          {/* WhatsApp - Last resort, deprioritized */}
+          {/* WhatsApp - For specific questions */}
           <FadeIn delay={0.25} className="mt-10">
             <motion.div
-              className="p-6 rounded-xl bg-zinc-900/40 backdrop-blur-sm border border-zinc-800/60 text-center"
-              whileHover={{ scale: 1.005 }}
+              className="p-6 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 text-center"
+              whileHover={{ y: -2, transition: { type: "spring", stiffness: 300, damping: 25 } }}
             >
-              <div className="flex items-center justify-center gap-2 mb-3">
-                <HelpCircle className="w-4 h-4 text-gray-500" />
-                <h3 className="text-sm font-medium text-gray-400">¿Tu caso es complejo y no encaja en lo anterior?</h3>
-              </div>
-              <p className="text-xs text-gray-500 mb-4 max-w-md mx-auto">
-                Antes de escribir, verifica si tu pregunta se responde en nuestra página de <a href="/onicoplastia" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">onicoplastia</a> (proceso, precios, FAQs) o usa el <a href="/diagnostico" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">auto-diagnóstico</a> para orientación de síntomas. Si tu caso requiere atención especial:
+              <MessageSquare className="w-8 h-8 text-[#25D366] mx-auto mb-3" />
+              <h3 className="text-base font-semibold text-white mb-2">¿Tienes una pregunta específica?</h3>
+              <p className="text-xs text-gray-400 mb-4 max-w-sm mx-auto">
+                Si ya revisaste nuestra página de <a href="/onicoplastia" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">onicoplastia</a> y el <a href="/diagnostico" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">auto-diagnóstico</a>, y tu caso requiere atención personalizada:
               </p>
               <WhatsAppDialog message="¡Hola! Ya revisé la información en su web y tengo una pregunta específica sobre:">
                 <motion.button
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="cursor-pointer text-sm px-5 py-2.5 rounded-lg border border-zinc-700 text-gray-400 hover:text-[#25D366] hover:border-[#25D366]/40 transition-all duration-300 flex items-center gap-2 mx-auto"
+                  className="cursor-pointer bg-[#25D366] hover:bg-[#20bd59] text-white font-semibold text-sm px-6 py-3 rounded-xl shadow-lg shadow-[#25D366]/15 transition-all duration-300 flex items-center gap-2 mx-auto"
                 >
                   <MessageSquare className="h-4 w-4" />
-                  Escribir por WhatsApp — Solo casos especiales, respuesta en 24-48h
+                  Escríbenos por WhatsApp
                 </motion.button>
               </WhatsAppDialog>
+              <p className="text-[11px] text-gray-600 mt-3">
+                Solo mensajes de texto — No llamadas ni notas de voz
+              </p>
             </motion.div>
           </FadeIn>
 
