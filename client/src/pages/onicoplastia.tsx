@@ -10,7 +10,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Calendar, CheckCircle, Star, Sparkles, MessageCircle } from "lucide-react";
+import { Calendar, CheckCircle, Star, Sparkles, MessageCircle, Scan, ArrowUp } from "lucide-react";
+import { Link } from "wouter";
 import { cases } from "@/data/cases";
 
 const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
@@ -103,7 +104,7 @@ export default function Onicoplastia() {
                   >
                     <a href={BOOKSY_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                       <Calendar className="w-5 h-5 flex-shrink-0" />
-                      RESERVAR EVALUACIÓN — $120
+                      AGENDAR MI PRIMERA SESIÓN — $120
                     </a>
                   </Button>
                 </MagneticButton>
@@ -228,7 +229,7 @@ export default function Onicoplastia() {
 
               <div className="relative">
                 <h3 className="text-2xl font-bold text-center mb-8">
-                  <span className="text-[#F2E6D8]">Tu Evaluación</span> Incluye
+                  <span className="text-[#F2E6D8]">Tu Primera Sesión</span> Incluye
                 </h3>
 
                 <div className="space-y-3 mb-8">
@@ -257,7 +258,7 @@ export default function Onicoplastia() {
                   <div className="flex items-baseline justify-center gap-2 mb-1">
                     <span className="text-5xl font-bold text-[#F2E6D8]">$120</span>
                   </div>
-                  <p className="text-sm text-gray-500 mb-1">Evaluación completa &bull; Hasta 2 hrs</p>
+                  <p className="text-sm text-gray-500 mb-1">Primera sesión completa &bull; Hasta 2 hrs</p>
                   <p className="text-xs text-gray-500 mt-1">Seguimientos: <span className="text-[#F2E6D8] font-medium">$80</span></p>
                   <p className="text-xs text-gray-600 mt-3">Aplica para manos o pies &bull; Mismo precio</p>
 
@@ -358,6 +359,8 @@ export default function Onicoplastia() {
               { q: "¿Cuánto tiempo dura?", a: "Hasta 2 horas. Incluye evaluación, tratamiento IBX®, prótesis y GEL Polish. Sales perfecta el mismo día." },
               { q: "¿Cuál es la inversión?", a: "Primera evaluación: $120 (incluye todo, aplica para manos o pies). Seguimientos: $80. Comparado con láser ($699–$2,000), es una fracción del costo con resultados inmediatos." },
               { q: "¿Qué hace especial este tratamiento?", a: "Combinamos IBX® con reconstrucción profesional. No solo uñas hermosas — uñas saludables. Evaluación personalizada y seguimiento continuo incluido." },
+              { q: "¿Cómo sé si mi caso necesita onicoplastia?", a: "Si tienes una uña con cambio de color, grosor, textura o forma por hongos, trauma u otra causa, es probable que la onicoplastia pueda ayudarte. Puedes usar nuestro auto-diagnóstico de síntomas para una orientación rápida, o agendar directamente tu primera sesión ($120) para un diagnóstico definitivo en persona." },
+              { q: "¿Puedo saber el costo total antes de ir?", a: "La primera sesión es $120 (incluye evaluación completa, tratamiento IBX®, reconstrucción y GEL Polish). Los seguimientos son $80 cada 45 días. El número de sesiones varía según tu caso — esto se determina en la primera visita. No hay costos ocultos." },
             ].map((faq, i) => (
               <AccordionItem
                 key={i}
@@ -377,9 +380,41 @@ export default function Onicoplastia() {
       </section>
 
       {/* ═══════════════════════════════════════════════
+          AUTO-DIAGNÓSTICO — Funnel to self-assessment for unsure visitors
+      ═══════════════════════════════════════════════ */}
+      <section className="px-4 py-16 sm:py-20">
+        <div className="container mx-auto max-w-2xl">
+          <FadeIn>
+            <div className="rounded-2xl bg-zinc-900/40 border border-zinc-800/60 p-8 sm:p-10 text-center">
+              <Scan className="w-10 h-10 text-[#F2E6D8]/60 mx-auto mb-4" />
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
+                ¿No Sabes Si Necesitas Onicoplastia?
+              </h3>
+              <p className="text-sm text-gray-400 leading-relaxed max-w-md mx-auto mb-6">
+                Nuestro cuestionario de auto-diagnóstico analiza tus síntomas y te orienta en 2 minutos.
+                Es una herramienta de auto-evaluación, no una consulta profesional.
+              </p>
+              <Link href="/diagnostico">
+                <Button
+                  variant="outline"
+                  className="px-6 py-5 font-semibold border-[#F2E6D8]/40 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer"
+                >
+                  <Scan className="w-4 h-4 mr-2" />
+                  REALIZAR AUTO-DIAGNÓSTICO
+                </Button>
+              </Link>
+              <p className="text-[11px] text-gray-600 mt-4">
+                La evaluación profesional en persona es $120 y se agenda por Booksy.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
           FINAL CTA — One button. One action.
       ═══════════════════════════════════════════════ */}
-      <section className="px-4 py-20 sm:py-24">
+      <section id="faq-section" className="px-4 py-20 sm:py-24">
         <div className="container mx-auto max-w-4xl">
           <FadeIn>
             <div className="relative rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-black p-12 sm:p-16 text-center border border-zinc-800 overflow-hidden">
@@ -412,10 +447,18 @@ export default function Onicoplastia() {
                   >
                     <a href={BOOKSY_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                       <Calendar className="w-5 h-5 flex-shrink-0" />
-                      RESERVAR EVALUACIÓN
+                      AGENDAR MI PRIMERA SESIÓN
                     </a>
                   </Button>
                 </MagneticButton>
+
+                <button
+                  onClick={() => document.querySelector('#faq-section')?.previousElementSibling?.previousElementSibling?.scrollIntoView({ behavior: 'smooth' })}
+                  className="text-xs text-gray-500 hover:text-[#F2E6D8] transition-colors flex items-center gap-1 mx-auto"
+                >
+                  <ArrowUp className="w-3 h-3" />
+                  ¿Aún tienes dudas? Revisa las preguntas frecuentes
+                </button>
 
                 <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
                   <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse" />

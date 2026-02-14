@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Clock, MapPin, MessageSquare, Instagram, Facebook, Sparkles, Calendar, HelpCircle, Stethoscope } from "lucide-react";
+import { Clock, MapPin, MessageSquare, Instagram, Facebook, Sparkles, Calendar, HelpCircle, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
 import { MagneticButton } from "@/components/magnetic-button";
@@ -76,7 +76,7 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              La forma más rápida de agendar es directamente en Booksy. ¿No estás segura qué necesitas? Usa nuestra herramienta de evaluación gratuita.
+              La forma más rápida de agendar es directamente en Booksy. ¿Quieres saber más sobre el tratamiento? Visita nuestra página de onicoplastia.
             </motion.p>
           </FadeIn>
 
@@ -99,15 +99,15 @@ export default function Contact() {
                 </motion.div>
               </MagneticButton>
 
-              <a href="/diagnostico">
+              <a href="/onicoplastia">
                 <motion.div
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 >
                   <Button variant="outline" className="text-base px-6 py-6 font-medium border-[#F2E6D8]/50 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer">
-                    <Stethoscope className="w-5 h-5 mr-2" />
-                    Evalúa Tus Uñas Gratis
+                    <ArrowRight className="w-5 h-5 mr-2" />
+                    Ver Onicoplastia
                   </Button>
                 </motion.div>
               </a>
@@ -176,10 +176,10 @@ export default function Contact() {
             >
               <div className="flex items-center justify-center gap-2 mb-3">
                 <HelpCircle className="w-4 h-4 text-gray-500" />
-                <h3 className="text-sm font-medium text-gray-400">¿Tienes una pregunta específica que no puedes resolver?</h3>
+                <h3 className="text-sm font-medium text-gray-400">¿Tu caso es complejo y no encaja en lo anterior?</h3>
               </div>
               <p className="text-xs text-gray-500 mb-4 max-w-md mx-auto">
-                La mayoría de preguntas se responden en nuestra página de <a href="/onicoplastia" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">onicoplastia</a> y en la <a href="/diagnostico" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">evaluación gratuita</a>. Para casos específicos que requieran atención personalizada:
+                Antes de escribir, verifica si tu pregunta se responde en nuestra página de <a href="/onicoplastia" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">onicoplastia</a> (proceso, precios, FAQs) o usa el <a href="/diagnostico" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">auto-diagnóstico</a> para orientación de síntomas. Si tu caso requiere atención especial:
               </p>
               <WhatsAppDialog message="¡Hola! Ya revisé la información en su web y tengo una pregunta específica sobre:">
                 <motion.button
@@ -188,7 +188,7 @@ export default function Contact() {
                   className="cursor-pointer text-sm px-5 py-2.5 rounded-lg border border-zinc-700 text-gray-400 hover:text-[#25D366] hover:border-[#25D366]/40 transition-all duration-300 flex items-center gap-2 mx-auto"
                 >
                   <MessageSquare className="h-4 w-4" />
-                  WhatsApp — Solo texto, respuesta en 24h
+                  Escribir por WhatsApp — Solo casos especiales, respuesta en 24-48h
                 </motion.button>
               </WhatsAppDialog>
             </motion.div>

@@ -5,7 +5,7 @@ import { Progress } from "@/components/ui/progress";
 import { FadeIn, TextReveal } from "@/components/motion-wrapper";
 import { GlassmorphismCard } from "@/components/glassmorphism-card";
 import { MagneticButton } from "@/components/magnetic-button";
-import { WhatsAppDialog } from "@/components/whatsapp-dialog";
+import { Link } from "wouter";
 import {
   symptomGroups,
   durationOptions,
@@ -234,11 +234,11 @@ function IntroStep({ onStart }: { onStart: () => void }) {
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
             <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">
-              Diagnóstico Inteligente
+              Auto-Diagnóstico
             </span>
           </h1>
           <h2 className="text-xl sm:text-2xl text-gray-300 font-medium">
-            de Uñas
+            Cuestionario de Auto-Evaluación de Uñas
           </h2>
         </motion.div>
 
@@ -248,9 +248,9 @@ function IntroStep({ onStart }: { onStart: () => void }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.6 }}
         >
-          Responde unas preguntas simples sobre tus uñas y nuestro sistema
-          analizará tus síntomas para darte una orientación personalizada con
-          recomendaciones de cuidado.
+          Responde unas preguntas simples y te daremos una orientación basada
+          en síntomas comunes. Esta herramienta NO es una evaluación profesional —
+          es un cuestionario para ayudarte a entender tu situación.
         </motion.p>
 
         <motion.div
@@ -286,7 +286,7 @@ function IntroStep({ onStart }: { onStart: () => void }) {
               onClick={onStart}
             >
               <Scan className="w-5 h-5 mr-2" />
-              COMENZAR DIAGNÓSTICO
+              COMENZAR AUTO-EVALUACIÓN
             </Button>
           </MagneticButton>
         </motion.div>
@@ -297,9 +297,9 @@ function IntroStep({ onStart }: { onStart: () => void }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          Este diagnóstico es orientativo y educativo. No sustituye la
-          consulta con un profesional de salud. Para un diagnóstico definitivo,
-          agenda una evaluación.
+          Este cuestionario es orientativo y educativo. No sustituye la
+          consulta con un profesional. Para un diagnóstico definitivo,
+          agenda tu primera sesión de onicoplastia ($120).
         </motion.p>
       </div>
     </section>
@@ -1072,20 +1072,20 @@ function ResultsStep({
                         className="flex items-center justify-center gap-2"
                       >
                         <Calendar className="w-5 h-5" />
-                        AGENDAR EVALUACIÓN
+                        AGENDAR PRIMERA SESIÓN — $120
                       </a>
                     </Button>
                   </MagneticButton>
 
-                  <WhatsAppDialog message={whatsappMsg}>
+                  <Link href="/onicoplastia">
                     <Button
                       variant="outline"
-                      className="px-6 py-6 font-medium border-[#25D366]/50 text-[#25D366] hover:bg-[#25D366]/10 hover:border-[#25D366] cursor-pointer"
+                      className="px-6 py-6 font-medium border-[#F2E6D8]/50 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer"
                     >
-                      <MessageSquare className="w-5 h-5 mr-2" />
-                      WhatsApp
+                      <ArrowRight className="w-5 h-5 mr-2" />
+                      Ver Proceso Completo y Precios
                     </Button>
-                  </WhatsAppDialog>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -1138,10 +1138,9 @@ function ResultsStep({
         <FadeIn delay={0.75}>
           <div className="text-center space-y-4 pt-6 border-t border-zinc-800">
             <p className="text-xs text-gray-600 max-w-md mx-auto">
-              Este análisis es orientativo y educativo, basado en información
-              clínica de referencia. No sustituye el diagnóstico de un
-              profesional de salud. Para un diagnóstico definitivo, consulta a tu
-              médico o agenda una evaluación profesional.
+              Este cuestionario es orientativo y educativo. Para un diagnóstico
+              definitivo, agenda tu primera sesión de onicoplastia ($120) donde
+              Neycha evaluará tu caso en persona.
             </p>
             <Button
               variant="ghost"

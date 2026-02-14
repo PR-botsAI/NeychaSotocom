@@ -74,9 +74,24 @@ export default function Navbar() {
 
         {/* ─── DESKTOP NAV ─── */}
         <div className="hidden md:flex md:items-center md:gap-1">
-          {/* Page links - clean, minimal */}
+          {/* Onicoplastia - highlighted as the key page */}
+          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              href="/onicoplastia"
+              className={`relative inline-flex items-center gap-1.5 text-sm font-medium px-3.5 py-2 rounded-lg transition-all duration-300 ${
+                isActive("/onicoplastia")
+                  ? "bg-[#F2E6D8]/20 text-[#F2E6D8] border border-[#F2E6D8]/30"
+                  : "text-[#F2E6D8] hover:bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 hover:border-[#F2E6D8]/40"
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              Onicoplastia
+            </Link>
+          </motion.div>
+
+          {/* Other nav links */}
           {[
-            { name: "Onicoplastia", href: "/onicoplastia" },
+            { name: "Auto-Diagnóstico", href: "/diagnostico" },
             { name: "Contacto", href: "/contact" },
           ].map((item) => {
             const active = isActive(item.href);
@@ -101,27 +116,6 @@ export default function Navbar() {
               </Link>
             );
           })}
-
-          {/* Divider */}
-          <div className="w-px h-5 bg-zinc-700 mx-2" />
-
-          {/* Diagnosis - special standout treatment */}
-          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-            <Link
-              href="/diagnostico"
-              className={`relative inline-flex items-center gap-1.5 text-sm font-medium px-3.5 py-2 rounded-lg transition-all duration-300 ${
-                isActive("/diagnostico")
-                  ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
-                  : "text-emerald-400 hover:bg-emerald-500/10 border border-emerald-500/20 hover:border-emerald-500/40"
-              }`}
-            >
-              <Scan className="w-3.5 h-3.5" />
-              Evalúa Tus Uñas
-              <span className="text-[9px] font-bold bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded uppercase tracking-wider">
-                Gratis
-              </span>
-            </Link>
-          </motion.div>
 
           {/* Divider */}
           <div className="w-px h-5 bg-zinc-700 mx-2" />
@@ -191,35 +185,30 @@ export default function Navbar() {
             </VisuallyHidden>
 
             <div className="px-5 py-6 space-y-6 overflow-y-auto">
-              {/* ── FREE TOOL: Hero CTA in mobile menu ── */}
+              {/* ── ONICOPLASTIA: Hero CTA in mobile menu ── */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link
-                  href="/diagnostico"
+                  href="/onicoplastia"
                   onClick={() => setIsOpen(false)}
                   className="block"
                 >
                   <div className={`relative rounded-xl p-4 border transition-all duration-300 overflow-hidden ${
-                    isActive("/diagnostico")
-                      ? "bg-emerald-500/15 border-emerald-500/30"
-                      : "bg-emerald-500/5 border-emerald-500/20 hover:bg-emerald-500/10"
+                    isActive("/onicoplastia")
+                      ? "bg-[#F2E6D8]/15 border-[#F2E6D8]/30"
+                      : "bg-[#F2E6D8]/5 border-[#F2E6D8]/20 hover:bg-[#F2E6D8]/10"
                   }`}>
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl" />
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2E6D8]/10 rounded-full blur-2xl" />
                     <div className="relative flex items-center gap-3">
-                      <div className="p-2.5 bg-emerald-500/15 rounded-lg">
-                        <Scan className="w-5 h-5 text-emerald-400" />
+                      <div className="p-2.5 bg-[#F2E6D8]/15 rounded-lg">
+                        <Sparkles className="w-5 h-5 text-[#F2E6D8]" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2">
-                          <h3 className="text-sm font-semibold text-emerald-400">Evalúa Tus Uñas</h3>
-                          <span className="text-[9px] font-bold bg-emerald-500/20 text-emerald-400 px-1.5 py-0.5 rounded uppercase tracking-wider">
-                            Gratis
-                          </span>
-                        </div>
-                        <p className="text-xs text-gray-500 mt-0.5">Análisis inteligente + recomendaciones</p>
+                        <h3 className="text-sm font-semibold text-[#F2E6D8]">Onicoplastia</h3>
+                        <p className="text-xs text-gray-500 mt-0.5">Proceso, precios y resultados reales</p>
                       </div>
                     </div>
                   </div>
@@ -232,7 +221,7 @@ export default function Navbar() {
                 <div className="space-y-0.5">
                   {[
                     { name: "Inicio", href: "/" },
-                    { name: "Onicoplastia", href: "/onicoplastia" },
+                    { name: "Auto-Diagnóstico", href: "/diagnostico" },
                     { name: "Contacto", href: "/contact" },
                   ].map((item, index) => {
                     const active = isActive(item.href);

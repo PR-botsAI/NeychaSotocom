@@ -63,19 +63,34 @@ export default function Footer() {
                   </motion.button>
                 </DialogTrigger>
                 <DialogContent className="bg-zinc-900 border-zinc-800">
-                  <DialogTitle className="text-white">Mensaje Importante</DialogTitle>
-                  <DialogDescription className="py-4 text-gray-300">
-                    Este número de WhatsApp es solo para mensajes de texto. No se aceptan llamadas ni mensajes de voz.
+                  <DialogTitle className="text-white">Antes de Escribir por WhatsApp</DialogTitle>
+                  <DialogDescription className="py-2 text-gray-300 text-sm">
+                    El 90% de las preguntas se responden en nuestra web. Revisa primero:
                   </DialogDescription>
-                  <div className="flex justify-end">
-                    <a
-                      href="https://api.whatsapp.com/send/?phone=19394290292"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block"
-                    >
-                      <Button className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8]">Continuar a WhatsApp</Button>
+                  <div className="flex flex-col gap-2 py-2">
+                    <a href="/onicoplastia" className="inline-block">
+                      <Button className="w-full bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] text-sm">
+                        Ver Precios, Proceso y FAQs
+                      </Button>
                     </a>
+                    <a href="/diagnostico" className="inline-block">
+                      <Button variant="outline" className="w-full border-[#F2E6D8]/40 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 text-sm">
+                        Hacer Auto-Diagnóstico de Síntomas
+                      </Button>
+                    </a>
+                  </div>
+                  <div className="pt-3 border-t border-zinc-800">
+                    <p className="text-xs text-gray-500 mb-2">Si ya revisaste y tu caso es especial (solo texto, respuesta en 24-48h):</p>
+                    <div className="flex justify-end">
+                      <a
+                        href="https://api.whatsapp.com/send/?phone=19394290292"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block"
+                      >
+                        <Button variant="ghost" className="text-xs text-gray-400 hover:text-[#25D366]">Continuar a WhatsApp</Button>
+                      </a>
+                    </div>
                   </div>
                 </DialogContent>
               </Dialog>

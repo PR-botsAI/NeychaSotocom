@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Award, Calendar, Star, Lock, Sparkles, Stethoscope } from "lucide-react";
+import { Award, Calendar, Star, Lock, Sparkles, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { MagneticButton } from "@/components/magnetic-button";
@@ -130,15 +130,15 @@ export default function Hero() {
               </a>
             </MagneticButton>
 
-            <Link href="/diagnostico">
+            <Link href="/onicoplastia">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
                 <Button variant="outline" className="text-sm sm:text-base px-5 py-6 font-medium border-[#F2E6D8]/50 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer">
-                  <Stethoscope className="w-4 h-4 mr-2" />
-                  Evalúa Tus Uñas Gratis
+                  <ArrowRight className="w-4 h-4 mr-2" />
+                  Conoce el Tratamiento
                 </Button>
               </motion.div>
             </Link>

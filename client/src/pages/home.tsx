@@ -3,7 +3,7 @@ import TestimonialCard from "@/components/testimonial-card";
 import MeetTheArtist from "@/components/meet-the-artist";
 import { TransformationGallery } from "@/components/transformation-gallery";
 import { Button } from "@/components/ui/button";
-import { Calendar, Sparkles, Heart, Award, Stethoscope, CheckCircle, ArrowRight, Star } from "lucide-react";
+import { Calendar, Sparkles, Heart, Award, CheckCircle, ArrowRight, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { cases } from "@/data/cases";
 import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
@@ -120,7 +120,7 @@ export default function Home() {
 
                       <div className="flex items-baseline gap-2">
                         <span className="text-2xl font-bold text-[#F2E6D8]">$120</span>
-                        <span className="text-xs text-gray-500">evaluación completa &bull; hasta 2 hrs</span>
+                        <span className="text-xs text-gray-500">primera sesión &bull; hasta 2 hrs</span>
                       </div>
 
                       {/* What's included */}
@@ -145,7 +145,7 @@ export default function Home() {
                       <Button
                         className="w-full bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl hover:shadow-[#F2E6D8]/20 transition-all duration-300 hover:scale-[1.02]"
                       >
-                        VER TRANSFORMACIONES <ArrowRight className="w-4 h-4 ml-1" />
+                        VER PROCESO Y PRECIOS <ArrowRight className="w-4 h-4 ml-1" />
                       </Button>
                     </div>
                   </div>
@@ -384,15 +384,15 @@ export default function Home() {
                       </motion.div>
                     </MagneticButton>
 
-                    <Link href="/diagnostico">
+                    <Link href="/onicoplastia">
                       <motion.div
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.97 }}
                         transition={{ type: "spring", stiffness: 400, damping: 25 }}
                       >
                         <Button variant="outline" className="text-base px-6 py-6 font-medium border-[#F2E6D8]/50 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer">
-                          <Stethoscope className="w-5 h-5 mr-2" />
-                          ¿No estás segura? Evalúa tus uñas
+                          <ArrowRight className="w-5 h-5 mr-2" />
+                          ¿Uñas dañadas? Ve cómo funciona
                         </Button>
                       </motion.div>
                     </Link>
