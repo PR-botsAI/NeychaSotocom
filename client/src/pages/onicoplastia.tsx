@@ -394,10 +394,9 @@ export default function Onicoplastia() {
                 />
               </h2>
               <p className="mt-4 text-sm sm:text-base text-gray-300 leading-relaxed">
-                La diferencia entre productos profesionales y los baratos cargados de químicos
-                es como comparar comida farm-to-table con McDonald's. Tu piel y tus uñas absorben
-                todo lo que aplicas — y esto no es solo para casos comprometidos: es para cualquiera
-                con piel sensible, alergias, o que quiera lo mejor para su cuerpo.
+                Los productos que usamos están entre los más limpios disponibles en el mercado.
+                Atender uñas y pies comprometidos exige ese estándar — y ese mismo cuidado se
+                queda con cada cliente, sea cual sea su caso.
               </p>
             </div>
           </FadeIn>

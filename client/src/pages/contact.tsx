@@ -202,7 +202,7 @@ export default function Contact() {
               },
               {
                 q: "¿Qué hace diferentes sus productos?",
-                a: "Solo trabajamos con productos HEMA-Free, Di-HEMA-Free, TPO-Free, veganos, hipoalergénicos y de bajo olor. Es la diferencia entre comida farm-to-table y McDonald's — tu piel absorbe todo lo que aplicas. Esta filosofía no es solo para pies comprometidos o casos con hongos: es para cualquiera con piel sensible, alergias o que simplemente quiera lo mejor para su cuerpo. Marcas: IBX®, Light Elegance®, Footlogix®, Dadi'Oil®.",
+                a: "Trabajamos con los productos más limpios disponibles en el mercado: HEMA-Free, Di-HEMA-Free, TPO-Free, veganos, hipoalergénicos y de bajo olor. La razón es simple — las uñas y pies que atendemos exigen ese estándar, y ese mismo cuidado se aplica a cada cliente, sea cual sea su caso. Marcas: IBX®, Light Elegance®, Footlogix®, Dadi'Oil®.",
               },
               {
                 q: "¿Tengo que ir a Hatillo?",

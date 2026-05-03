@@ -70,14 +70,13 @@ export default function Home() {
                 <TextReveal text="No Es Solo Estética. Es Salud." className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
               </h2>
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                La diferencia entre productos profesionales sin químicos sensibilizantes
-                y los baratos cargados de tóxicos es como comparar comida <em className="text-[#F2E6D8]/90 not-italic font-medium">farm-to-table</em> con <em className="text-gray-500 not-italic">McDonald's</em>.
-                Tu piel y tus uñas absorben todo lo que aplicas.
+                En este estudio solo entran los productos más limpios disponibles
+                en el mercado. Las uñas y pies que atendemos — con historial, sensibles,
+                comprometidos — exigen ese estándar.
               </p>
               <p className="mt-4 text-sm text-gray-400">
-                Esta filosofía no es solo para pies comprometidos o casos con hongos.
-                Es para cualquiera con piel sensible, alergias, o que simplemente quiere
-                lo mejor para su cuerpo.
+                Y lo que es seguro para esos casos también lo es para cualquier persona
+                con piel sensible, alergias, o que simplemente quiere lo mejor para su cuerpo.
               </p>
             </div>
           </FadeIn>
