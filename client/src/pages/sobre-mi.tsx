@@ -106,9 +106,10 @@ export default function SobreMi() {
                 por el cuidado de otra persona.
               </p>
               <p>
-                De ahí mi vida laboral me llevó a oficinas médicas y hospitales,
-                conectando con personas todos los días. Pero nunca dejé de estudiar,
-                nunca dejé de buscar. En el fondo sabía que mi camino estaba en otro lado.
+                Aunque era enfermera de formación, mi vida laboral me llevó a oficinas
+                médicas — al frente, conectando con personas todos los días. Pero nunca
+                dejé de estudiar, nunca dejé de buscar. En el fondo sabía que mi camino
+                estaba en otro lado.
               </p>
               <p className="text-[#F2E6D8] font-medium">
                 Las uñas me salvaron.
