@@ -6,7 +6,7 @@ import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Home from "@/pages/home";
 import Onicoplastia from "@/pages/onicoplastia";
-import Diagnostico from "@/pages/diagnostico";
+import SobreMi from "@/pages/sobre-mi";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import { ErrorBoundary } from "@/components/error-boundary";
@@ -15,7 +15,7 @@ import SEODebug from "@/components/seo-debug";
 import PerformanceOptimizer from "@/components/performance-optimizer";
 import { ScrollProgress } from "@/components/scroll-progress";
 import StickyMobileCTA from "@/components/sticky-mobile-cta";
-import { useEffect, lazy, Suspense } from "react";
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const pageTransition = {
@@ -28,6 +28,14 @@ const pageTransitionConfig = {
   duration: 0.45,
   ease: [0.16, 1, 0.3, 1],
 };
+
+function DiagnosticoRedirect() {
+  const [, navigate] = useLocation();
+  useEffect(() => {
+    navigate("/onicoplastia");
+  }, [navigate]);
+  return null;
+}
 
 function Router() {
   const [location] = useLocation();
@@ -54,8 +62,9 @@ function Router() {
             <Switch>
               <Route path="/" component={Home} />
               <Route path="/onicoplastia" component={Onicoplastia} />
-              <Route path="/diagnostico" component={Diagnostico} />
+              <Route path="/sobre-mi" component={SobreMi} />
               <Route path="/contact" component={Contact} />
+              <Route path="/diagnostico" component={DiagnosticoRedirect} />
               <Route component={NotFound} />
             </Switch>
           </motion.div>

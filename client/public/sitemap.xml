@@ -29,6 +29,15 @@
     </image:image>
   </url>
 
+  <!-- Sobre Mí -->
+  <url>
+    <loc>https://neychasoto.com/sobre-mi</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es-PR" href="https://neychasoto.com/sobre-mi" />
+  </url>
+
   <!-- Contact Page -->
   <url>
     <loc>https://neychasoto.com/contacto</loc>

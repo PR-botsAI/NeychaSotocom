@@ -79,9 +79,9 @@ export default function Hero() {
           </motion.div>
 
           {/* Headline */}
-          <motion.h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-3">
+          <motion.h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-3">
             <TextReveal
-              text="Vuelve a Usar Sandalias con Confianza"
+              text="¿Cuándo fue la última vez que usaste tus sandalias favoritas?"
               className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent pb-2 animate-gradient"
               delay={0.5}
             />
@@ -89,12 +89,12 @@ export default function Hero() {
 
           {/* Subtitle */}
           <motion.p
-            className="mt-3 sm:mt-5 text-lg sm:text-2xl font-semibold text-[#F2E6D8]"
+            className="mt-3 sm:mt-5 text-base sm:text-xl font-semibold text-[#F2E6D8]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
-            Onicoplastia &bull; Manicura &bull; Pedicura Spa
+            Onicoplastia &bull; IBX® Certified &bull; Hatillo, PR
           </motion.p>
 
           {/* Description */}
@@ -104,8 +104,8 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            ¿Escondes tus pies o manos? Devolvemos la apariencia natural a tus uñas
-            para que vivas sin limitaciones. Estudio privado en Hatillo, Puerto Rico.
+            Reconstrucción estética profesional para uñas dañadas por hongos, trauma o años de gel.
+            Estudio privado, una clienta a la vez.
           </motion.p>
 
           {/* Dual CTA */}

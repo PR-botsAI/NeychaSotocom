@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Clock, MapPin, MessageSquare, Instagram, Facebook, Sparkles, Calendar, HelpCircle, ArrowRight } from "lucide-react";
+import { Clock, MapPin, Instagram, Facebook, Sparkles, Calendar, ArrowRight, DollarSign, Shield, Users } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
 import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
 import { MagneticButton } from "@/components/magnetic-button";
 import { ParallaxElement } from "@/components/parallax-element";
-import { WhatsAppDialog } from "@/components/whatsapp-dialog";
+
+const WHATSAPP_PHOTO_URL = "https://wa.me/19394290292?text=Hola%20Neycha%2C%20te%20env%C3%ADo%20foto%20de%20mi%20u%C3%B1a%20para%20pre-evaluar%20si%20califico%20para%20onicoplastia";
 
 export default function Contact() {
   const handleBookingClick = () => {
@@ -168,31 +170,39 @@ export default function Contact() {
             </StaggerItem>
           </StaggerContainer>
 
-          {/* WhatsApp - For specific questions */}
+          {/* Antes de Escribir — condensed FAQ */}
           <FadeIn delay={0.25} className="mt-10">
-            <motion.div
-              className="p-6 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 text-center"
-              whileHover={{ y: -2, transition: { type: "spring", stiffness: 300, damping: 25 } }}
-            >
-              <MessageSquare className="w-8 h-8 text-[#25D366] mx-auto mb-3" />
-              <h3 className="text-base font-semibold text-white mb-2">¿Tienes una pregunta específica?</h3>
-              <p className="text-xs text-gray-400 mb-4 max-w-sm mx-auto">
-                Si ya revisaste nuestra página de <a href="/onicoplastia" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">onicoplastia</a> y el <a href="/diagnostico" className="text-[#F2E6D8]/70 hover:text-[#F2E6D8] underline underline-offset-2">auto-diagnóstico</a>, y tu caso requiere atención personalizada:
+            <div className="rounded-xl bg-zinc-900/40 border border-zinc-800/60 p-6 space-y-3">
+              <h3 className="text-sm font-semibold text-[#F2E6D8] uppercase tracking-wider mb-4">Antes de Escribir</h3>
+              {[
+                { icon: <DollarSign className="w-4 h-4 text-[#F2E6D8]" />, text: "$120 primera sesión · $80 seguimientos · NO es por uña" },
+                { icon: <Shield className="w-4 h-4 text-[#F2E6D8]" />, text: "No aceptamos planes médicos · Efectivo, ATH Móvil, tarjeta" },
+                { icon: <Users className="w-4 h-4 text-[#F2E6D8]" />, text: "Sí, la mitad de nuestros clientes son hombres" },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-3">
+                  <div className="p-1.5 bg-[#F2E6D8]/10 rounded-md flex-shrink-0">{item.icon}</div>
+                  <p className="text-sm text-gray-400">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+
+          {/* WhatsApp photo CTA — single entry point (A4) */}
+          <FadeIn delay={0.35} className="mt-6">
+            <div className="rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-7 text-center">
+              <h3 className="text-base font-bold text-white mb-2">¿No estás segura(o) si tu caso aplica?</h3>
+              <p className="text-xs text-gray-400 mb-5 max-w-sm mx-auto">
+                Mándame foto de tu uña por WhatsApp y te respondo si onicoplastia es la opción correcta —
+                o si te recomiendo ver primero a otro profesional. Sin compromiso, sin cita.
               </p>
-              <WhatsAppDialog message="¡Hola! Ya revisé la información en su web y tengo una pregunta específica sobre:">
-                <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="cursor-pointer bg-[#25D366] hover:bg-[#20bd59] text-white font-semibold text-sm px-6 py-3 rounded-xl shadow-lg shadow-[#25D366]/15 transition-all duration-300 flex items-center gap-2 mx-auto"
-                >
-                  <MessageSquare className="h-4 w-4" />
-                  Escríbenos por WhatsApp
-                </motion.button>
-              </WhatsAppDialog>
-              <p className="text-[11px] text-gray-600 mt-3">
-                Solo mensajes de texto — No llamadas ni notas de voz
-              </p>
-            </motion.div>
+              <a href={WHATSAPP_PHOTO_URL} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-[#25D366] hover:bg-[#20bd59] text-white font-semibold px-6 py-5 shadow-lg shadow-[#25D366]/15 transition-all duration-300">
+                  <SiWhatsapp className="w-4 h-4 mr-2" />
+                  ENVIAR FOTO POR WHATSAPP
+                </Button>
+              </a>
+              <p className="text-[11px] text-gray-600 mt-3">Solo mensajes de texto · Respondo en horario de salón (Mar–Sáb)</p>
+            </div>
           </FadeIn>
 
           {/* Social Media Section */}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, Calendar, ShoppingBag, Sparkles, Scan, X } from "lucide-react";
+import { Menu, Calendar, ShoppingBag, Sparkles, User2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -91,7 +91,7 @@ export default function Navbar() {
 
           {/* Other nav links */}
           {[
-            { name: "Auto-Diagnóstico", href: "/diagnostico" },
+            { name: "Sobre Mí", href: "/sobre-mi" },
             { name: "Contacto", href: "/contact" },
           ].map((item) => {
             const active = isActive(item.href);
@@ -221,7 +221,7 @@ export default function Navbar() {
                 <div className="space-y-0.5">
                   {[
                     { name: "Inicio", href: "/" },
-                    { name: "Auto-Diagnóstico", href: "/diagnostico" },
+                    { name: "Sobre Mí", href: "/sobre-mi" },
                     { name: "Contacto", href: "/contact" },
                   ].map((item, index) => {
                     const active = isActive(item.href);

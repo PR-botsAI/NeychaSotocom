@@ -73,11 +73,6 @@ export default function Footer() {
                         Ver Precios, Proceso y FAQs
                       </Button>
                     </a>
-                    <a href="/diagnostico" className="inline-block">
-                      <Button variant="outline" className="w-full border-[#F2E6D8]/40 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 text-sm">
-                        Hacer Auto-Diagnóstico de Síntomas
-                      </Button>
-                    </a>
                   </div>
                   <div className="pt-3 border-t border-zinc-800">
                     <p className="text-xs text-gray-500 mb-2">Si ya revisaste y tu caso es especial:</p>
@@ -97,6 +92,16 @@ export default function Footer() {
                   </div>
                 </DialogContent>
               </Dialog>
+            </div>
+
+            {/* Formula trust strip */}
+            <div className="flex flex-wrap justify-center gap-x-3 gap-y-1.5 text-[10px] text-gray-600 tracking-wider uppercase max-w-lg text-center">
+              {["HEMA-Free", "Di-HEMA-Free", "TPO-Free", "Vegano", "Hipoalergénico", "Bajo Olor"].map((s) => (
+                <span key={s} className="flex items-center gap-1">
+                  <span className="w-1 h-1 rounded-full bg-[#F2E6D8]/30 inline-block" />
+                  {s}
+                </span>
+              ))}
             </div>
 
             {/* Divider */}

@@ -1,9 +1,9 @@
 import Hero from "@/components/hero";
 import TestimonialCard from "@/components/testimonial-card";
-import MeetTheArtist from "@/components/meet-the-artist";
 import { TransformationGallery } from "@/components/transformation-gallery";
 import { Button } from "@/components/ui/button";
-import { Calendar, Sparkles, Heart, Award, CheckCircle, ArrowRight, Star } from "lucide-react";
+import { Calendar, Sparkles, Heart, Award, CheckCircle, ArrowRight, Star, DollarSign, Shield, MapPin, Users, Package } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
 import { motion } from "framer-motion";
 import { cases } from "@/data/cases";
 import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
@@ -12,17 +12,21 @@ import { MagneticButton } from "@/components/magnetic-button";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { Link } from "wouter";
 
+const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
+const SHOP_URL = "https://shop.neychasoto.com";
+const WHATSAPP_PHOTO_URL = "https://wa.me/19394290292?text=Hola%20Neycha%2C%20te%20env%C3%ADo%20foto%20de%20mi%20u%C3%B1a%20para%20pre-evaluar%20si%20califico%20para%20onicoplastia";
+
 export default function Home() {
   const handleBookingClick = () => {
-    window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank");
+    window.open(BOOKSY_URL, "_blank");
   };
 
   return (
     <div className="bg-black text-white overflow-hidden">
-      {/* 1. HERO - Emotional headline + Trust bar */}
+      {/* 1. HERO */}
       <Hero />
 
-      {/* 2. TRANSFORMATIONS - Visual proof immediately after hook */}
+      {/* 2. TRANSFORMATIONS */}
       <div className="section-divider mx-auto max-w-xl" />
       <section className="px-4 py-20 sm:py-24 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
@@ -49,7 +53,171 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. SERVICES - Benefit-focused with pricing */}
+      {/* 3. LO QUE MÁS NOS PREGUNTAN — A3 */}
+      <div className="section-divider mx-auto max-w-xl" />
+      <section className="px-4 py-20 sm:py-24 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
+        <div className="container mx-auto relative max-w-4xl">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <motion.p
+                className="text-sm font-medium text-[#F2E6D8]/60 tracking-widest uppercase mb-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                Respuestas Rápidas
+              </motion.p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                <TextReveal text="Lo Que Más Nos Preguntan" className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
+              </h2>
+            </div>
+          </FadeIn>
+
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-5" staggerDelay={0.1}>
+            {[
+              {
+                icon: <DollarSign className="w-5 h-5 text-[#F2E6D8]" />,
+                q: "¿Cuánto cuesta?",
+                a: "$120 primera sesión (hasta 2 hrs, todo incluido). $80 seguimientos. NO es por uña — es por sesión.",
+              },
+              {
+                icon: <Shield className="w-5 h-5 text-[#F2E6D8]" />,
+                q: "¿Cojen plan médico?",
+                a: "No. Servicio estético, no médico. Algunos planes HSA/FSA sí cubren. Pago el día de la cita: efectivo, ATH Móvil o tarjeta.",
+              },
+              {
+                icon: <MapPin className="w-5 h-5 text-[#F2E6D8]" />,
+                q: "¿Estoy muy lejos?",
+                a: "Estudio en Hatillo. Si vienes de lejos, puedes mandar foto de tu uña por WhatsApp antes — te oriento si vale el viaje.",
+              },
+              {
+                icon: <Users className="w-5 h-5 text-[#F2E6D8]" />,
+                q: "¿Es para hombres también?",
+                a: "Sí. La mitad de mis clientes son hombres que llevan años sin usar chancletas en la playa.",
+              },
+            ].map((item, i) => (
+              <StaggerItem key={i}>
+                <motion.div
+                  className="p-6 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-500 h-full"
+                  whileHover={{ y: -3, transition: { type: "spring", stiffness: 300, damping: 25 } }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-[#F2E6D8]/10 rounded-lg flex-shrink-0 mt-0.5">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-white mb-1.5">{item.q}</h3>
+                      <p className="text-sm text-gray-400 leading-relaxed">{item.a}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          {/* WhatsApp photo CTA below FAQ — A4 */}
+          <FadeIn delay={0.3}>
+            <div className="mt-10 rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-7 text-center">
+              <h3 className="text-lg font-bold text-white mb-2">¿No estás segura(o) si tu caso aplica?</h3>
+              <p className="text-sm text-gray-400 mb-5 max-w-md mx-auto">
+                Mándame foto de tu uña por WhatsApp y te respondo si onicoplastia es la opción correcta —
+                o si te recomiendo ver primero a otro profesional. Sin compromiso, sin cita.
+              </p>
+              <a href={WHATSAPP_PHOTO_URL} target="_blank" rel="noopener noreferrer">
+                <Button className="bg-[#25D366] hover:bg-[#20bd59] text-white font-semibold px-6 py-5 shadow-lg shadow-[#25D366]/15 transition-all duration-300">
+                  <SiWhatsapp className="w-4 h-4 mr-2" />
+                  ENVIAR FOTO POR WHATSAPP
+                </Button>
+              </a>
+              <p className="text-[11px] text-gray-600 mt-3">Solo mensajes de texto · Respondo en horario de salón (Mar–Sáb)</p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 4. CONOCE A NEYCHA — A1 */}
+      <div className="section-divider mx-auto max-w-xl" />
+      <section className="px-4 py-20 sm:py-24 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(242,230,216,0.03)_0%,transparent_60%)]" />
+        <div className="container mx-auto max-w-4xl relative">
+          <FadeIn>
+            <div className="flex flex-col lg:flex-row gap-10 items-center">
+              {/* Photo */}
+              <div className="flex-shrink-0 w-44 h-44 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-2 border-[#F2E6D8]/20 shadow-2xl shadow-[#F2E6D8]/10">
+                <img
+                  src="/assets/image_1737235247434.png"
+                  alt="Neycha Soto — Enfermera y especialista en onicoplastia"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 text-center lg:text-left">
+                <motion.p
+                  className="text-sm font-medium text-[#F2E6D8]/60 tracking-widest uppercase mb-3"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  Tu Especialista
+                </motion.p>
+                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5">
+                  <TextReveal
+                    text="Soy Neycha Soto"
+                    className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
+                  />
+                </h2>
+                <div className="space-y-4 text-gray-300 text-base leading-relaxed">
+                  <p>
+                    Enfermera graduada que decidió seguir su verdadera pasión: combinar salud, cuidado y belleza
+                    para devolverle la confianza a personas que llevaban años escondiendo sus uñas.
+                  </p>
+                  <p className="text-gray-400 text-sm">
+                    Hoy soy la única especialista IBX® certificada en Hatillo, trabajando uno-a-uno en estudio privado
+                    con productos profesionales libres de HEMA, TPO y Di-HEMA — el mismo estándar clínico que aprendí
+                    en enfermería, aplicado a estética.
+                  </p>
+                </div>
+
+                <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                  <MagneticButton>
+                    <Button
+                      className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-[#F2E6D8]/20 transition-all duration-300"
+                      onClick={handleBookingClick}
+                    >
+                      <Calendar className="w-4 h-4 mr-2" />
+                      AGENDA TU CITA
+                    </Button>
+                  </MagneticButton>
+                  <Link href="/onicoplastia">
+                    <Button variant="outline" className="border-[#F2E6D8]/40 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer">
+                      <ArrowRight className="w-4 h-4 mr-2" />
+                      ¿Cómo es una sesión?
+                    </Button>
+                  </Link>
+                </div>
+
+                <motion.div
+                  className="mt-6 p-4 bg-[#F2E6D8]/5 rounded-xl border border-[#F2E6D8]/10"
+                  whileHover={{ scale: 1.01 }}
+                >
+                  <p className="text-sm text-gray-300 italic">
+                    &ldquo;Cada cliente es único. Por eso trabajo solo con cita previa &mdash;
+                    para dedicarte toda mi atención y darte resultados excepcionales.&rdquo;
+                  </p>
+                  <p className="text-xs text-[#F2E6D8]/70 mt-2 font-medium">&mdash; Neycha Soto</p>
+                </motion.div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 5. SERVICES */}
       <div className="section-divider mx-auto max-w-xl" />
       <section className="px-4 py-24 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,230,216,0.03)_0%,transparent_70%)]" />
@@ -73,14 +241,13 @@ export default function Home() {
           </FadeIn>
 
           <StaggerContainer className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" staggerDelay={0.15}>
-            {/* Onicoplastia - HIGH TICKET hero card with visual proof */}
+            {/* Onicoplastia */}
             <StaggerItem>
               <Link href="/onicoplastia">
                 <motion.div
                   className="relative h-full cursor-pointer group"
                   whileHover={{ y: -6, transition: { type: "spring", stiffness: 300, damping: 25 } }}
                 >
-                  {/* Animated glow border */}
                   <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-[#F2E6D8]/60 via-[#F2E6D8]/20 to-[#F2E6D8]/60 opacity-70 group-hover:opacity-100 transition-opacity duration-500 blur-[1px]" />
                   <motion.div
                     className="absolute -inset-[2px] rounded-xl bg-gradient-to-r from-[#F2E6D8]/0 via-[#F2E6D8]/30 to-[#F2E6D8]/0 blur-md"
@@ -88,9 +255,7 @@ export default function Home() {
                     transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
                     style={{ backgroundSize: "200% 200%" }}
                   />
-
                   <div className="relative rounded-xl bg-zinc-950 overflow-hidden h-full">
-                    {/* Before/After thumbnail — Case 5, different from gallery above */}
                     <div className="relative h-52 overflow-hidden">
                       <div className="absolute inset-0 grid grid-cols-2">
                         <div className="relative overflow-hidden">
@@ -102,10 +267,8 @@ export default function Home() {
                           <span className="absolute bottom-2 right-2 text-[10px] font-bold uppercase bg-[#F2E6D8] text-black px-2.5 py-1 rounded">Después</span>
                         </div>
                       </div>
-                      {/* Center divider */}
                       <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-0.5 bg-[#F2E6D8] z-10 shadow-[0_0_12px_rgba(242,230,216,0.4)]" />
                     </div>
-
                     <div className="relative p-5 space-y-4">
                       <div className="flex items-center justify-between">
                         <h3 className="text-lg font-bold text-white">Onicoplastia</h3>
@@ -113,17 +276,13 @@ export default function Home() {
                           Servicio Estrella
                         </span>
                       </div>
-
                       <p className="text-gray-400 text-sm leading-relaxed">
                         ¿Escondes tus pies o manos? Reconstrucción estética profesional con IBX® — vuelve a vivir sin limitaciones.
                       </p>
-
                       <div className="flex items-baseline gap-2">
                         <span className="text-2xl font-bold text-[#F2E6D8]">$120</span>
                         <span className="text-xs text-gray-500">primera sesión &bull; hasta 2 hrs</span>
                       </div>
-
-                      {/* What's included */}
                       <div className="pt-3 border-t border-zinc-800 space-y-2">
                         {["Sin dolor &bull; Apariencia perfecta al salir", "Tratamiento IBX® + GEL Polish incluido", "Manos o pies &bull; Seguimiento desde $80"].map((text, i) => (
                           <div key={i} className="flex items-start gap-2">
@@ -132,19 +291,13 @@ export default function Home() {
                           </div>
                         ))}
                       </div>
-
-                      {/* Stars */}
                       <div className="flex items-center gap-1">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-3 h-3 fill-[#F2E6D8] text-[#F2E6D8]" />
                         ))}
                         <span className="text-[10px] text-gray-500 ml-1">40+ reseñas verificadas</span>
                       </div>
-
-                      {/* CTA */}
-                      <Button
-                        className="w-full bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl hover:shadow-[#F2E6D8]/20 transition-all duration-300 hover:scale-[1.02]"
-                      >
+                      <Button className="w-full bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-xl hover:shadow-[#F2E6D8]/20 transition-all duration-300 hover:scale-[1.02]">
                         VER PROCESO Y PRECIOS <ArrowRight className="w-4 h-4 ml-1" />
                       </Button>
                     </div>
@@ -220,7 +373,7 @@ export default function Home() {
                     <span className="text-xs text-gray-500">spa completo</span>
                   </div>
                   <div className="mt-4 pt-4 border-t border-zinc-800 space-y-2">
-                    {["Masaje + hidratación incluidos", "Footlogix especializado disponible", "GEL Polish de larga duración"].map((text, i) => (
+                    {["Masaje + hidratación incluidos", "GEL Polish de larga duración", "Ambiente relajante y privado"].map((text, i) => (
                       <div key={i} className="flex items-start gap-2">
                         <CheckCircle className="w-3.5 h-3.5 text-[#F2E6D8] mt-0.5 flex-shrink-0" />
                         <p className="text-xs text-gray-300">{text}</p>
@@ -240,22 +393,98 @@ export default function Home() {
             </StaggerItem>
           </StaggerContainer>
 
-          {/* Price comparison anchor */}
           <FadeIn delay={0.3}>
             <div className="mt-12 text-center">
               <p className="text-sm text-gray-500">
-                Comparado con tratamiento láser ($699-$2,000), la onicoplastia ofrece resultados visibles inmediatos a una fracción del costo
+                Comparado con tratamiento láser ($699–$2,000), la onicoplastia ofrece resultados visibles inmediatos a una fracción del costo
               </p>
             </div>
           </FadeIn>
         </div>
       </section>
 
-      {/* 4. MEET THE ARTIST - Trust + authority after they've seen services */}
+      {/* 6. PRODUCTOS QUE USO EN EL SALÓN — A5 */}
       <div className="section-divider mx-auto max-w-xl" />
-      <MeetTheArtist />
+      <section className="px-4 py-20 sm:py-24 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
+        <div className="container mx-auto relative max-w-4xl">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <motion.p
+                className="text-sm font-medium text-[#F2E6D8]/60 tracking-widest uppercase mb-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                Tienda NeychaSoto.com
+              </motion.p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                <TextReveal text="Productos Que Uso en el Salón" className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
+              </h2>
+              <p className="mt-3 text-sm text-gray-500 max-w-md mx-auto">
+                Los mismos productos que aplico en cada sesión, disponibles para que continues el cuidado en casa.
+              </p>
+            </div>
+          </FadeIn>
 
-      {/* 5. TESTIMONIALS */}
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-3 gap-6" staggerDelay={0.12}>
+            {[
+              {
+                name: "Lima Nano Glass",
+                benefit: "Lima de cristal nano — dura años sin dañar la uña natural.",
+              },
+              {
+                name: "Almond Oil By NeychaSoto",
+                benefit: "Aceite de almendras formulado por Neycha para nutrición profunda de cutícula.",
+              },
+              {
+                name: "LEpro Cuticle Oil",
+                benefit: "Aceite para cutícula profesional — hidratación visible desde la primera semana.",
+              },
+            ].map((product, i) => (
+              <StaggerItem key={i}>
+                <motion.div
+                  className="rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-500 overflow-hidden group"
+                  whileHover={{ y: -4, transition: { type: "spring", stiffness: 300, damping: 25 } }}
+                >
+                  <div className="h-40 bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center border-b border-zinc-800">
+                    <Package className="w-12 h-12 text-[#F2E6D8]/30 group-hover:text-[#F2E6D8]/50 transition-colors duration-500" />
+                  </div>
+                  <div className="p-5 space-y-3">
+                    <h3 className="font-semibold text-white text-sm">{product.name}</h3>
+                    <p className="text-xs text-gray-400 leading-relaxed">{product.benefit}</p>
+                    <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full mt-1 border-[#F2E6D8]/30 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] text-xs transition-all duration-300"
+                      >
+                        Comprar en Tienda
+                      </Button>
+                    </a>
+                  </div>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          <FadeIn delay={0.3}>
+            <div className="mt-8 text-center">
+              <a
+                href={SHOP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-[#F2E6D8]/60 hover:text-[#F2E6D8] transition-colors animated-underline inline-flex items-center gap-1"
+              >
+                Ver toda la tienda <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 7. TESTIMONIALS */}
       <div className="section-divider mx-auto max-w-xl" />
       <section className="px-4 py-24 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
@@ -313,7 +542,7 @@ export default function Home() {
           <FadeIn delay={0.3}>
             <div className="mt-8 text-center">
               <a
-                href="https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo"
+                href={BOOKSY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-[#F2E6D8]/60 hover:text-[#F2E6D8] transition-colors animated-underline"
@@ -325,7 +554,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. FINAL CTA - Urgency driven */}
+      {/* 8. FINAL CTA */}
       <div className="section-divider mx-auto max-w-xl" />
       <FadeIn>
         <section className="px-4 py-24">
@@ -356,7 +585,7 @@ export default function Home() {
 
                   <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
                     <TextReveal
-                      text="Listo Para Tu Transformación?"
+                      text="¿Lista para volver a usar tus sandalias?"
                       className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
                     />
                   </h2>
@@ -366,7 +595,6 @@ export default function Home() {
                     No esperes más para sentir confianza con tus uñas.
                   </p>
 
-                  {/* Dual CTA */}
                   <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center items-center">
                     <MagneticButton>
                       <motion.div
@@ -384,18 +612,18 @@ export default function Home() {
                       </motion.div>
                     </MagneticButton>
 
-                    <Link href="/onicoplastia">
+                    <a href={WHATSAPP_PHOTO_URL} target="_blank" rel="noopener noreferrer">
                       <motion.div
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.97 }}
                         transition={{ type: "spring", stiffness: 400, damping: 25 }}
                       >
-                        <Button variant="outline" className="text-base px-6 py-6 font-medium border-[#F2E6D8]/50 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer">
-                          <ArrowRight className="w-5 h-5 mr-2" />
-                          ¿Uñas dañadas? Ve cómo funciona
+                        <Button variant="outline" className="text-base px-6 py-6 font-medium border-[#25D366]/50 text-[#25D366] hover:bg-[#25D366]/10 hover:border-[#25D366] cursor-pointer">
+                          <SiWhatsapp className="w-5 h-5 mr-2" />
+                          Enviar Foto por WhatsApp
                         </Button>
                       </motion.div>
-                    </Link>
+                    </a>
                   </div>
 
                   <div className="flex items-center justify-center gap-2 text-sm text-gray-400 pt-4">
@@ -409,7 +637,6 @@ export default function Home() {
         </section>
       </FadeIn>
 
-      {/* Bottom padding for sticky mobile CTA */}
       <div className="h-16 md:hidden" />
     </div>
   );

@@ -10,8 +10,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Calendar, CheckCircle, Star, Sparkles, MessageCircle, Scan, ArrowUp } from "lucide-react";
-import { Link } from "wouter";
+import { Calendar, CheckCircle, Star, Sparkles, MessageCircle, ArrowUp } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
 import { cases } from "@/data/cases";
 
 const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
@@ -359,7 +359,7 @@ export default function Onicoplastia() {
               { q: "¿Cuánto tiempo dura?", a: "Hasta 2 horas. Incluye evaluación, tratamiento IBX®, prótesis y GEL Polish. Sales perfecta el mismo día." },
               { q: "¿Cuál es la inversión?", a: "Primera evaluación: $120 (incluye todo, aplica para manos o pies). Seguimientos: $80. Comparado con láser ($699–$2,000), es una fracción del costo con resultados inmediatos." },
               { q: "¿Qué hace especial este tratamiento?", a: "Combinamos IBX® con reconstrucción profesional. No solo uñas hermosas — uñas saludables. Evaluación personalizada y seguimiento continuo incluido." },
-              { q: "¿Cómo sé si mi caso necesita onicoplastia?", a: "Si tienes una uña con cambio de color, grosor, textura o forma por hongos, trauma u otra causa, es probable que la onicoplastia pueda ayudarte. Puedes usar nuestro auto-diagnóstico de síntomas para una orientación rápida, o agendar directamente tu primera sesión ($120) para un diagnóstico definitivo en persona." },
+              { q: "¿Cómo sé si mi caso necesita onicoplastia?", a: "Si tienes una uña con cambio de color, grosor, textura o forma por hongos, trauma u otra causa, es probable que la onicoplastia pueda ayudarte. Puedes mandarme una foto por WhatsApp antes de venir — te oriento sin compromiso si vale el viaje. O agenda directamente tu primera sesión ($120) para un diagnóstico definitivo en persona." },
               { q: "¿Puedo saber el costo total antes de ir?", a: "La primera sesión es $120 (incluye evaluación completa, tratamiento IBX®, reconstrucción y GEL Polish). Los seguimientos son $80 cada 45 días. El número de sesiones varía según tu caso — esto se determina en la primera visita. No hay costos ocultos." },
             ].map((faq, i) => (
               <AccordionItem
@@ -380,34 +380,76 @@ export default function Onicoplastia() {
       </section>
 
       {/* ═══════════════════════════════════════════════
-          AUTO-DIAGNÓSTICO — Funnel to self-assessment for unsure visitors
+          WHATSAPP PHOTO CTA — A4
       ═══════════════════════════════════════════════ */}
-      <section className="px-4 py-16 sm:py-20">
+      <section id="evaluacion" className="px-4 py-16 sm:py-20">
         <div className="container mx-auto max-w-2xl">
           <FadeIn>
-            <div className="rounded-2xl bg-zinc-900/40 border border-zinc-800/60 p-8 sm:p-10 text-center">
-              <Scan className="w-10 h-10 text-[#F2E6D8]/60 mx-auto mb-4" />
+            <div className="rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-8 sm:p-10 text-center">
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
-                ¿No Sabes Si Necesitas Onicoplastia?
+                ¿No estás segura(o) si tu caso aplica?
               </h3>
               <p className="text-sm text-gray-400 leading-relaxed max-w-md mx-auto mb-6">
-                Nuestro cuestionario de auto-diagnóstico analiza tus síntomas y te orienta en 2 minutos.
-                Es una herramienta de auto-evaluación, no una consulta profesional.
+                Mándame foto de tu uña por WhatsApp y te respondo si onicoplastia es la opción correcta —
+                o si te recomiendo ver primero a otro profesional. Sin compromiso, sin cita.
               </p>
-              <Link href="/diagnostico">
-                <Button
-                  variant="outline"
-                  className="px-6 py-5 font-semibold border-[#F2E6D8]/40 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer"
-                >
-                  <Scan className="w-4 h-4 mr-2" />
-                  REALIZAR AUTO-DIAGNÓSTICO
+              <a
+                href="https://wa.me/19394290292?text=Hola%20Neycha%2C%20te%20env%C3%ADo%20foto%20de%20mi%20u%C3%B1a%20para%20pre-evaluar%20si%20califico%20para%20onicoplastia"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="bg-[#25D366] hover:bg-[#20bd59] text-white font-semibold px-6 py-5 shadow-lg shadow-[#25D366]/15 transition-all duration-300">
+                  <SiWhatsapp className="w-4 h-4 mr-2" />
+                  ENVIAR FOTO POR WHATSAPP
                 </Button>
-              </Link>
+              </a>
               <p className="text-[11px] text-gray-600 mt-4">
-                La evaluación profesional en persona es $120 y se agenda por Booksy.
+                Solo mensajes de texto · Respondo en horario de salón (Mar–Sáb)
               </p>
             </div>
           </FadeIn>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════
+          PRODUCTOS PROFESIONALES — Formula standards grid
+      ═══════════════════════════════════════════════ */}
+      <section className="px-4 py-16 sm:py-20 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
+        <div className="container mx-auto max-w-3xl relative">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl font-bold">
+                <TextReveal
+                  text="Productos Profesionales — Sin Compromisos"
+                  className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
+                />
+              </h2>
+              <p className="mt-3 text-sm text-gray-400 max-w-md mx-auto">
+                En este estudio solo entran productos que cumplen con los estándares más exigentes de la industria.
+              </p>
+            </div>
+          </FadeIn>
+          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 gap-4" staggerDelay={0.08}>
+            {[
+              { name: "HEMA-Free", why: "Sin el monómero más asociado con reacciones alérgicas en servicios de uñas." },
+              { name: "Di-HEMA-Free", why: "Variante igualmente sensibilizante eliminada." },
+              { name: "TPO-Free", why: "Cumple el estándar europeo más estricto (UE 2025)." },
+              { name: "Vegano", why: "Sin ingredientes animales. Sin testeo animal." },
+              { name: "Hipoalergénico", why: "Apto para piel sensible y clientas con historial de reacciones en otros salones." },
+              { name: "Bajo Olor", why: "Ambiente respirable durante toda la sesión." },
+            ].map((s, i) => (
+              <StaggerItem key={i}>
+                <motion.div
+                  className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-300 h-full"
+                  whileHover={{ y: -2, transition: { type: "spring", stiffness: 300, damping: 25 } }}
+                >
+                  <p className="text-xs font-bold text-[#F2E6D8] uppercase tracking-wider mb-1.5">{s.name}</p>
+                  <p className="text-[11px] text-gray-500 leading-relaxed">{s.why}</p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
         </div>
       </section>
 

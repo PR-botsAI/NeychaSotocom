@@ -3,8 +3,8 @@ Allow: /
 
 # Main pages
 Allow: /onicoplastia
-Allow: /servicios
-Allow: /contacto
+Allow: /sobre-mi
+Allow: /contact
 Allow: /galeria
 
 # Block sensitive areas
