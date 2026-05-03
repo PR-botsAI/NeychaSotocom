@@ -182,7 +182,7 @@ export default function Contact() {
               },
               {
                 q: "¿Cuáles formas de pago aceptan?",
-                a: "Efectivo, ATH Móvil y tarjeta de crédito/débito. El pago es el día de la cita.",
+                a: "Efectivo, ATH Móvil y tarjeta de crédito/débito. El pago es el día de la cita. Para clientes nuevos se requiere un depósito al momento de reservar (lo verás al agendar en Booksy).",
               },
               {
                 q: "¿Aceptan plan médico?",
@@ -210,7 +210,7 @@ export default function Contact() {
               },
               {
                 q: "¿Política de cancelación?",
-                a: "Cancela o reagenda con al menos 24 horas de anticipación a través de Booksy. Cancelaciones de último minuto afectan a otros clientes en lista de espera.",
+                a: "Cancela o reagenda con al menos 48 horas de anticipación a través de Booksy. Cancelaciones de último minuto afectan a otros clientes en lista de espera.",
               },
             ].map((faq, i) => (
               <AccordionItem
