@@ -2,8 +2,7 @@ import Hero from "@/components/hero";
 import TestimonialCard from "@/components/testimonial-card";
 import { TransformationGallery } from "@/components/transformation-gallery";
 import { Button } from "@/components/ui/button";
-import { Calendar, Sparkles, Heart, Award, CheckCircle, ArrowRight, Star, DollarSign, Shield, MapPin, Users, Package } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
+import { Calendar, Sparkles, Heart, Award, CheckCircle, ArrowRight, Star, DollarSign, Shield, MapPin, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import { cases } from "@/data/cases";
 import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
@@ -13,8 +12,6 @@ import { AnimatedCounter } from "@/components/animated-counter";
 import { Link } from "wouter";
 
 const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
-const SHOP_URL = "https://shop.neychasoto.com";
-const WHATSAPP_PHOTO_URL = "https://wa.me/19394290292?text=Hola%20Neycha%2C%20te%20env%C3%ADo%20foto%20de%20mi%20u%C3%B1a%20para%20pre-evaluar%20si%20califico%20para%20onicoplastia";
 
 export default function Home() {
   const handleBookingClick = () => {
@@ -117,21 +114,19 @@ export default function Home() {
             ))}
           </StaggerContainer>
 
-          {/* WhatsApp photo CTA below FAQ — A4 */}
+          {/* Single primary CTA below FAQ → Booksy */}
           <FadeIn delay={0.3}>
-            <div className="mt-10 rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-7 text-center">
-              <h3 className="text-lg font-bold text-white mb-2">¿No estás segura(o) si tu caso aplica?</h3>
-              <p className="text-sm text-gray-400 mb-5 max-w-md mx-auto">
-                Mándame foto de tu uña por WhatsApp y te respondo si onicoplastia es la opción correcta —
-                o si te recomiendo ver primero a otro profesional. Sin compromiso, sin cita.
-              </p>
-              <a href={WHATSAPP_PHOTO_URL} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#25D366] hover:bg-[#20bd59] text-white font-semibold px-6 py-5 shadow-lg shadow-[#25D366]/15 transition-all duration-300">
-                  <SiWhatsapp className="w-4 h-4 mr-2" />
-                  ENVIAR FOTO POR WHATSAPP
+            <div className="mt-10 text-center">
+              <MagneticButton>
+                <Button
+                  className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-8 py-6 text-base font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
+                  onClick={handleBookingClick}
+                >
+                  <Calendar className="w-5 h-5 mr-2" />
+                  AGENDA TU CITA EN BOOKSY
                 </Button>
-              </a>
-              <p className="text-[11px] text-gray-600 mt-3">Solo mensajes de texto · Respondo en horario de salón (Mar–Sáb)</p>
+              </MagneticButton>
+              <p className="text-xs text-gray-500 mt-3">Confirmación instantánea · Solo con cita previa</p>
             </div>
           </FadeIn>
         </div>
@@ -173,13 +168,14 @@ export default function Home() {
                 </h2>
                 <div className="space-y-4 text-gray-300 text-base leading-relaxed">
                   <p>
-                    Enfermera graduada que decidió seguir su verdadera pasión: combinar salud, cuidado y belleza
-                    para devolverle la confianza a personas que llevaban años escondiendo sus uñas.
+                    Empecé como enfermera, siempre estudiando, siempre buscando algo más.
+                    Trabajaba en oficinas sabiendo que ese no era mi camino — hasta que las uñas
+                    me salvaron y se convirtieron en mi verdadera pasión.
                   </p>
                   <p className="text-gray-400 text-sm">
-                    Hoy soy la única especialista IBX® certificada en Hatillo, trabajando uno-a-uno en estudio privado
-                    con productos profesionales libres de HEMA, TPO y Di-HEMA — el mismo estándar clínico que aprendí
-                    en enfermería, aplicado a estética.
+                    Hoy soy una de las pocas técnicas IBX® certificadas en Puerto Rico, trabajando uno-a-uno
+                    en estudio privado en Hatillo. Mi credencial es verificable directamente con Famous Names
+                    (fabricante de IBX®) — siempre pregúntale a tu técnica si está certificada, te lo recomiendo.
                   </p>
                 </div>
 
@@ -403,7 +399,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. PRODUCTOS QUE USO EN EL SALÓN — A5 */}
+      {/* 6. MARCAS PROFESIONALES — Trust signals (not shop CTAs) */}
       <div className="section-divider mx-auto max-w-xl" />
       <section className="px-4 py-20 sm:py-24 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
@@ -417,69 +413,43 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                Tienda NeychaSoto.com
+                Estándares de Calidad
               </motion.p>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                <TextReveal text="Productos Que Uso en el Salón" className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
+                <TextReveal text="Marcas Profesionales" className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
               </h2>
               <p className="mt-3 text-sm text-gray-500 max-w-md mx-auto">
-                Los mismos productos que aplico en cada sesión, disponibles para que continues el cuidado en casa.
+                Solo trabajamos con marcas que cumplen con los estándares más exigentes —
+                la misma calidad que tendrías en una clínica.
               </p>
             </div>
           </FadeIn>
 
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-3 gap-6" staggerDelay={0.12}>
+          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-4 gap-4" staggerDelay={0.1}>
             {[
-              {
-                name: "Lima Nano Glass",
-                benefit: "Lima de cristal nano — dura años sin dañar la uña natural.",
-              },
-              {
-                name: "Almond Oil By NeychaSoto",
-                benefit: "Aceite de almendras formulado por Neycha para nutrición profunda de cutícula.",
-              },
-              {
-                name: "LEpro Cuticle Oil",
-                benefit: "Aceite para cutícula profesional — hidratación visible desde la primera semana.",
-              },
-            ].map((product, i) => (
+              { name: "IBX®", what: "Sistema de Famous Names", why: "Fortalece la uña natural desde adentro — el corazón de la onicoplastia." },
+              { name: "Light Elegance®", what: "Gels profesionales", why: "Hipoalergénico, HEMA-Free — apto para piel sensible." },
+              { name: "Footlogix®", what: "Línea farmacéutica", why: "Cuidado profesional para condiciones y pies comprometidos." },
+              { name: "Dadi'Oil®", what: "Aceite de cutícula", why: "Hidratación profunda con ingredientes naturales y vitamina E." },
+            ].map((b, i) => (
               <StaggerItem key={i}>
                 <motion.div
-                  className="rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-500 overflow-hidden group"
-                  whileHover={{ y: -4, transition: { type: "spring", stiffness: 300, damping: 25 } }}
+                  className="p-5 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-500 h-full text-center"
+                  whileHover={{ y: -3, transition: { type: "spring", stiffness: 300, damping: 25 } }}
                 >
-                  <div className="h-40 bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center border-b border-zinc-800">
-                    <Package className="w-12 h-12 text-[#F2E6D8]/30 group-hover:text-[#F2E6D8]/50 transition-colors duration-500" />
-                  </div>
-                  <div className="p-5 space-y-3">
-                    <h3 className="font-semibold text-white text-sm">{product.name}</h3>
-                    <p className="text-xs text-gray-400 leading-relaxed">{product.benefit}</p>
-                    <a href={SHOP_URL} target="_blank" rel="noopener noreferrer">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="w-full mt-1 border-[#F2E6D8]/30 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] text-xs transition-all duration-300"
-                      >
-                        Comprar en Tienda
-                      </Button>
-                    </a>
-                  </div>
+                  <h3 className="font-bold text-[#F2E6D8] text-sm mb-1">{b.name}</h3>
+                  <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-3">{b.what}</p>
+                  <p className="text-xs text-gray-400 leading-relaxed">{b.why}</p>
                 </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>
 
           <FadeIn delay={0.3}>
-            <div className="mt-8 text-center">
-              <a
-                href={SHOP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-[#F2E6D8]/60 hover:text-[#F2E6D8] transition-colors animated-underline inline-flex items-center gap-1"
-              >
-                Ver toda la tienda <ArrowRight className="w-3.5 h-3.5" />
-              </a>
-            </div>
+            <p className="mt-8 text-center text-xs text-gray-600 max-w-lg mx-auto">
+              Todas las credenciales son verificables directamente con cada fabricante.
+              Pregúntale siempre a tu técnica con qué marcas trabaja.
+            </p>
           </FadeIn>
         </div>
       </section>
@@ -595,7 +565,7 @@ export default function Home() {
                     No esperes más para sentir confianza con tus uñas.
                   </p>
 
-                  <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center items-center">
+                  <div className="pt-4 flex justify-center items-center">
                     <MagneticButton>
                       <motion.div
                         whileHover={{ scale: 1.05 }}
@@ -603,27 +573,14 @@ export default function Home() {
                         transition={{ type: "spring", stiffness: 400, damping: 25 }}
                       >
                         <Button
-                          className="w-full sm:w-auto bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-6 sm:px-10 py-6 text-base sm:text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
+                          className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 sm:px-14 py-7 text-lg sm:text-xl font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
                           onClick={handleBookingClick}
                         >
-                          <Calendar className="w-5 h-5 mr-2 flex-shrink-0" />
+                          <Calendar className="w-6 h-6 mr-3 flex-shrink-0" />
                           AGENDA TU CITA
                         </Button>
                       </motion.div>
                     </MagneticButton>
-
-                    <a href={WHATSAPP_PHOTO_URL} target="_blank" rel="noopener noreferrer">
-                      <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.97 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                      >
-                        <Button variant="outline" className="text-base px-6 py-6 font-medium border-[#25D366]/50 text-[#25D366] hover:bg-[#25D366]/10 hover:border-[#25D366] cursor-pointer">
-                          <SiWhatsapp className="w-5 h-5 mr-2" />
-                          Enviar Foto por WhatsApp
-                        </Button>
-                      </motion.div>
-                    </a>
                   </div>
 
                   <div className="flex items-center justify-center gap-2 text-sm text-gray-400 pt-4">

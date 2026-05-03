@@ -11,7 +11,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Calendar, CheckCircle, Star, Sparkles, MessageCircle, ArrowUp } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
 import { cases } from "@/data/cases";
 
 const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
@@ -199,9 +198,9 @@ export default function Onicoplastia() {
 
           <StaggerContainer className="grid md:grid-cols-3 gap-8">
             {[
-              { step: "1", title: "Evaluación", time: "15 min", desc: "Evaluamos tu caso y creamos un plan personalizado." },
-              { step: "2", title: "Tratamiento IBX®", time: "45 min", desc: "Fortalecemos y sellamos la uña desde adentro." },
-              { step: "3", title: "Resultado Perfecto", time: "30 min", desc: "Sales con uñas perfectas y GEL Polish incluido." },
+              { step: "1", title: "Evaluación + Preparación", time: "30 min", desc: "Evaluamos tu caso, removemos el producto previo y limpiamos a fondo." },
+              { step: "2", title: "Reconstrucción + IBX®", time: "60 min", desc: "Reconstruimos la uña con prótesis especializada y sellamos con IBX® desde adentro." },
+              { step: "3", title: "Acabado Profesional", time: "30 min", desc: "GEL Polish profesional, hidratación de cutícula, y revisión final. Sales perfecta." },
             ].map((item) => (
               <StaggerItem key={item.step}>
                 <div className="text-center">
@@ -379,37 +378,6 @@ export default function Onicoplastia() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          WHATSAPP PHOTO CTA — A4
-      ═══════════════════════════════════════════════ */}
-      <section id="evaluacion" className="px-4 py-16 sm:py-20">
-        <div className="container mx-auto max-w-2xl">
-          <FadeIn>
-            <div className="rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-8 sm:p-10 text-center">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">
-                ¿No estás segura(o) si tu caso aplica?
-              </h3>
-              <p className="text-sm text-gray-400 leading-relaxed max-w-md mx-auto mb-6">
-                Mándame foto de tu uña por WhatsApp y te respondo si onicoplastia es la opción correcta —
-                o si te recomiendo ver primero a otro profesional. Sin compromiso, sin cita.
-              </p>
-              <a
-                href="https://wa.me/19394290292?text=Hola%20Neycha%2C%20te%20env%C3%ADo%20foto%20de%20mi%20u%C3%B1a%20para%20pre-evaluar%20si%20califico%20para%20onicoplastia"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="bg-[#25D366] hover:bg-[#20bd59] text-white font-semibold px-6 py-5 shadow-lg shadow-[#25D366]/15 transition-all duration-300">
-                  <SiWhatsapp className="w-4 h-4 mr-2" />
-                  ENVIAR FOTO POR WHATSAPP
-                </Button>
-              </a>
-              <p className="text-[11px] text-gray-600 mt-4">
-                Solo mensajes de texto · Respondo en horario de salón (Mar–Sáb)
-              </p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════════
           PRODUCTOS PROFESIONALES — Formula standards grid

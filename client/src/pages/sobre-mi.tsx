@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Calendar, Award, Star, CheckCircle, ArrowRight } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
+import { Calendar, Award, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
 import { MagneticButton } from "@/components/magnetic-button";
 import { AnimatedCounter } from "@/components/animated-counter";
 
 const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
-const WHATSAPP_PHOTO_URL = "https://wa.me/19394290292?text=Hola%20Neycha%2C%20te%20env%C3%ADo%20foto%20de%20mi%20u%C3%B1a%20para%20pre-evaluar%20si%20califico%20para%20onicoplastia";
 
 export default function SobreMi() {
   return (
@@ -102,32 +100,38 @@ export default function SobreMi() {
           <FadeIn>
             <div className="space-y-6 text-gray-300 text-base sm:text-lg leading-relaxed">
               <p>
-                Durante años trabajé como enfermera graduada, cuidando personas en sus momentos más vulnerables.
-                Aprendí que el cuidado real va más allá de lo clínico — que la confianza en tu propio cuerpo
-                afecta todo lo demás: cómo te mueves, cómo te vistes, cómo te presentas al mundo.
+                Estudié enfermería y nunca dejé de estudiar — siempre buscando algo más.
+                Trabajé en oficinas, intentando encajar en un molde que no era el mío.
+                En el fondo lo sabía: ese no era mi camino.
+              </p>
+              <p className="text-[#F2E6D8] font-medium">
+                Las uñas me salvaron.
               </p>
               <p>
-                Fue en esa intersección entre salud y autoestima donde encontré mi verdadera vocación.
-                Decidí especializarme en onicoplastia — no como una moda, sino como una extensión natural
-                de lo que ya hacía: devolver bienestar a personas que cargaban algo en silencio.
+                Lo que empezó como un escape se convirtió en mi verdadera pasión.
+                Combinar lo que aprendí en salud con el arte de devolverle la confianza
+                a personas que llevaban años escondiendo sus uñas — esa es la intersección
+                donde encontré mi vocación. La precisión que aprendí en enfermería,
+                el cuidado que practiqué con pacientes, ahora aplicado a estética.
               </p>
               <p className="text-gray-400">
                 Porque eso es lo que hacen las uñas dañadas: te obligan a esconderte.
                 A pensar dos veces antes de ponerte sandalias. A cruzar los pies en la playa.
-                A evitar que alguien te vea las manos. Yo lo vi en mis pacientes.
-                Lo veo en cada cliente que llega a mi estudio.
+                A evitar que alguien te vea las manos.
               </p>
               <p className="text-gray-300">
-                Hoy soy la única especialista IBX® certificada en Hatillo, trabajando uno-a-uno
-                en estudio privado con productos profesionales libres de HEMA, TPO y Di-HEMA —
-                el mismo estándar clínico que apliqué en enfermería, ahora en estética.
-                No tomo atajos con la química porque sé exactamente qué le hace a la piel.
+                Hoy soy una de las pocas técnicas IBX® certificadas en Puerto Rico,
+                trabajando uno-a-uno en estudio privado en Hatillo. Mi credencial es
+                verificable directamente con Famous Names (fabricante de IBX®) — y
+                siempre te recomiendo preguntarle a tu técnica si está certificada,
+                no importa con quién vayas.
               </p>
               <p className="text-gray-400">
-                Cada cliente llega con una historia diferente: hongos después de años de tratamientos
-                fallidos, traumas por accidentes, deformaciones congénitas, uñas destruidas por gel mal removido.
-                Me siento con cada uno, evalúo el caso, y diseño un plan que funciona para esa uña específica —
-                no un protocolo genérico.
+                Cada cliente llega con una historia diferente: hongos después de años
+                de tratamientos fallidos, traumas por accidentes, deformaciones,
+                uñas destruidas por gel mal removido, pies comprometidos. Me siento
+                con cada uno, evalúo el caso, y diseño un plan que funciona para esa
+                uña específica — no un protocolo genérico.
               </p>
 
               <motion.div
@@ -157,8 +161,8 @@ export default function SobreMi() {
           </FadeIn>
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.1}>
             {[
-              { icon: "🎓", label: "Enfermera Graduada", desc: "Formación clínica que informa cada decisión estética." },
-              { icon: "🏅", label: "IBX® Certified", desc: "Única especialista certificada en Hatillo, Puerto Rico." },
+              { icon: "🎓", label: "Formación en Enfermería", desc: "Disciplina clínica que informa cada decisión estética." },
+              { icon: "🏅", label: "IBX® Certified", desc: "Una de las pocas técnicas certificadas en PR — verificable con Famous Names." },
               { icon: "⭐", label: "40+ Reseñas 5.0/5", desc: "Calificación perfecta en Booksy — clientes reales, resultados reales." },
               { icon: "🔬", label: "Estándares HEMA/TPO-Free", desc: "Productos sin los alérgenos más comunes en servicios de uñas." },
             ].map((c, i) => (
@@ -255,22 +259,16 @@ export default function SobreMi() {
                   Agenda tu cita o mándame foto de tu uña antes. Sin compromiso.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-2">
+                <div className="flex justify-center items-center pt-2">
                   <MagneticButton>
                     <Button
-                      className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-8 py-6 text-base font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
+                      className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 py-7 text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
                       onClick={() => window.open(BOOKSY_URL, "_blank")}
                     >
                       <Calendar className="w-5 h-5 mr-2" />
                       AGENDA TU CITA
                     </Button>
                   </MagneticButton>
-                  <a href={WHATSAPP_PHOTO_URL} target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" className="border-[#25D366]/50 text-[#25D366] hover:bg-[#25D366]/10 hover:border-[#25D366] px-6 py-6 text-sm cursor-pointer">
-                      <SiWhatsapp className="w-4 h-4 mr-2" />
-                      Enviar Foto por WhatsApp
-                    </Button>
-                  </a>
                 </div>
 
                 <div className="flex items-center justify-center gap-2 text-sm text-gray-500 pt-2">

@@ -1,53 +1,39 @@
 import { Button } from "@/components/ui/button";
-import { Clock, MapPin, Instagram, Facebook, Sparkles, Calendar, ArrowRight, DollarSign, Shield, Users } from "lucide-react";
+import { Clock, MapPin, Instagram, Facebook, Sparkles, Calendar, ArrowRight, AlertTriangle } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import { motion } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
 import { MagneticButton } from "@/components/magnetic-button";
 import { ParallaxElement } from "@/components/parallax-element";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 
-const WHATSAPP_PHOTO_URL = "https://wa.me/19394290292?text=Hola%20Neycha%2C%20te%20env%C3%ADo%20foto%20de%20mi%20u%C3%B1a%20para%20pre-evaluar%20si%20califico%20para%20onicoplastia";
+const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
+const WHATSAPP_URL = "https://wa.me/19394290292";
 
 export default function Contact() {
   const handleBookingClick = () => {
-    window.open("https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo", "_blank");
+    window.open(BOOKSY_URL, "_blank");
   };
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section */}
       <section className="relative py-24 px-4 overflow-hidden">
-        {/* Mesh gradient background */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(242,230,216,0.06)_0%,transparent_50%)]" />
 
         <ParallaxElement speed={0.3} direction="up" className="absolute top-0 left-1/4">
           <motion.div
             className="w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-              x: [0, 15, 0],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+            animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3], x: [0, 15, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           />
         </ParallaxElement>
         <ParallaxElement speed={0.4} direction="down" className="absolute bottom-0 right-1/4">
           <motion.div
             className="w-80 h-80 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-            animate={{
-              scale: [1.2, 1, 1.2],
-              opacity: [0.5, 0.3, 0.5],
-              x: [0, -15, 0],
-            }}
-            transition={{
-              duration: 10,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
+            animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5], x: [0, -15, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           />
         </ParallaxElement>
 
@@ -78,13 +64,14 @@ export default function Contact() {
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              La forma más rápida de agendar es directamente en Booksy. ¿Quieres saber más sobre el tratamiento? Visita nuestra página de onicoplastia.
+              La forma más rápida de agendar es directamente en Booksy.
+              Las preguntas más frecuentes ya están respondidas más abajo.
             </motion.p>
           </FadeIn>
 
-          {/* Primary CTAs: Booksy + Diagnostic */}
+          {/* Primary CTA: Booksy */}
           <FadeIn delay={0.2}>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <div className="flex justify-center items-center">
               <MagneticButton>
                 <motion.div
                   whileHover={{ scale: 1.03 }}
@@ -92,27 +79,14 @@ export default function Contact() {
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 >
                   <Button
-                    className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] text-lg px-8 py-6 font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
+                    className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] text-lg sm:text-xl px-10 sm:px-14 py-7 font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
                     onClick={handleBookingClick}
                   >
-                    <Calendar className="w-5 h-5 mr-2" />
+                    <Calendar className="w-6 h-6 mr-3" />
                     AGENDA TU CITA
                   </Button>
                 </motion.div>
               </MagneticButton>
-
-              <a href="/onicoplastia">
-                <motion.div
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                >
-                  <Button variant="outline" className="text-base px-6 py-6 font-medium border-[#F2E6D8]/50 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer">
-                    <ArrowRight className="w-5 h-5 mr-2" />
-                    Ver Onicoplastia
-                  </Button>
-                </motion.div>
-              </a>
             </div>
             <p className="text-center text-sm text-gray-500 mt-4">
               Reserva en menos de 3 minutos — confirmación instantánea
@@ -123,15 +97,9 @@ export default function Contact() {
 
       <div className="section-divider mx-auto max-w-xl" />
 
-      {/* Contact Information Cards */}
-      <section className="px-4 py-20">
+      {/* Location + Hours */}
+      <section className="px-4 py-16">
         <div className="container mx-auto max-w-3xl">
-          <FadeIn>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-10 text-center">
-              <TextReveal text="¿Cómo Podemos Ayudarte?" className="text-white" />
-            </h2>
-          </FadeIn>
-
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-6" staggerDelay={0.1}>
             <StaggerItem>
               <motion.div
@@ -145,7 +113,7 @@ export default function Contact() {
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-1">Ubicación</h3>
                     <p className="text-gray-300 text-sm">Hatillo, Puerto Rico</p>
-                    <p className="text-xs text-gray-500 mt-1">Estudio privado con ambiente exclusivo</p>
+                    <p className="text-xs text-gray-500 mt-1">Dirección exacta se confirma al agendar — estudio privado</p>
                   </div>
                 </div>
               </motion.div>
@@ -163,50 +131,177 @@ export default function Contact() {
                   <div>
                     <h3 className="text-lg font-semibold text-white mb-1">Horario</h3>
                     <p className="text-gray-300 text-sm">Martes a Sábado</p>
-                    <p className="text-xs text-gray-500 mt-1">Solo con cita previa - No walk-ins</p>
+                    <p className="text-xs text-gray-500 mt-1">Solo con cita previa — no walk-ins</p>
                   </div>
                 </div>
               </motion.div>
             </StaggerItem>
           </StaggerContainer>
+        </div>
+      </section>
 
-          {/* Antes de Escribir — condensed FAQ */}
-          <FadeIn delay={0.25} className="mt-10">
-            <div className="rounded-xl bg-zinc-900/40 border border-zinc-800/60 p-6 space-y-3">
-              <h3 className="text-sm font-semibold text-[#F2E6D8] uppercase tracking-wider mb-4">Antes de Escribir</h3>
-              {[
-                { icon: <DollarSign className="w-4 h-4 text-[#F2E6D8]" />, text: "$120 primera sesión · $80 seguimientos · NO es por uña" },
-                { icon: <Shield className="w-4 h-4 text-[#F2E6D8]" />, text: "No aceptamos planes médicos · Efectivo, ATH Móvil, tarjeta" },
-                { icon: <Users className="w-4 h-4 text-[#F2E6D8]" />, text: "Sí, la mitad de nuestros clientes son hombres" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="p-1.5 bg-[#F2E6D8]/10 rounded-md flex-shrink-0">{item.icon}</div>
-                  <p className="text-sm text-gray-400">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
+      <div className="section-divider mx-auto max-w-xl" />
 
-          {/* WhatsApp photo CTA — single entry point (A4) */}
-          <FadeIn delay={0.35} className="mt-6">
-            <div className="rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-7 text-center">
-              <h3 className="text-base font-bold text-white mb-2">¿No estás segura(o) si tu caso aplica?</h3>
-              <p className="text-xs text-gray-400 mb-5 max-w-sm mx-auto">
-                Mándame foto de tu uña por WhatsApp y te respondo si onicoplastia es la opción correcta —
-                o si te recomiendo ver primero a otro profesional. Sin compromiso, sin cita.
+      {/* FAQ — covers ALL services */}
+      <section className="px-4 py-16 sm:py-20 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
+        <div className="container mx-auto max-w-3xl relative">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <motion.p
+                className="text-sm font-medium text-[#F2E6D8]/60 tracking-widest uppercase mb-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                Antes de Escribirnos
+              </motion.p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                <TextReveal text="Preguntas Frecuentes" className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
+              </h2>
+              <p className="mt-3 text-sm text-gray-500 max-w-md mx-auto">
+                El 90% de las dudas se responden aquí abajo. Léelas antes de escribir — nos ahorras tiempo a las dos.
               </p>
-              <a href={WHATSAPP_PHOTO_URL} target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#25D366] hover:bg-[#20bd59] text-white font-semibold px-6 py-5 shadow-lg shadow-[#25D366]/15 transition-all duration-300">
-                  <SiWhatsapp className="w-4 h-4 mr-2" />
-                  ENVIAR FOTO POR WHATSAPP
-                </Button>
-              </a>
-              <p className="text-[11px] text-gray-600 mt-3">Solo mensajes de texto · Respondo en horario de salón (Mar–Sáb)</p>
             </div>
           </FadeIn>
 
-          {/* Social Media Section */}
-          <FadeIn delay={0.3} className="mt-10">
+          <Accordion type="single" collapsible className="space-y-3">
+            {[
+              {
+                q: "¿Cuánto cuesta cada servicio?",
+                a: "Onicoplastia: $120 primera sesión (hasta 2 hrs), $80 seguimientos. Manicura Premium: desde $35. Pedicura Spa: desde $60. Los precios son por sesión, no por uña. Todo incluido — no hay costos ocultos.",
+              },
+              {
+                q: "¿Cómo agendo mi cita?",
+                a: "Directamente en Booksy. Tienes el botón arriba y abajo de esta página. Reserva en menos de 3 minutos con confirmación instantánea. Ahí ves la disponibilidad real al día.",
+              },
+              {
+                q: "¿Aceptan walk-ins?",
+                a: "No. Trabajamos solo con cita previa para dedicarte la atención completa. Esto también nos permite preparar el estudio según tu servicio.",
+              },
+              {
+                q: "¿Cuáles formas de pago aceptan?",
+                a: "Efectivo, ATH Móvil y tarjeta de crédito/débito. El pago es el día de la cita.",
+              },
+              {
+                q: "¿Aceptan plan médico?",
+                a: "No. Somos servicio estético, no médico. Algunos planes HSA/FSA pueden cubrir tratamientos estéticos — consulta con tu plan.",
+              },
+              {
+                q: "¿Es para hombres también?",
+                a: "Sí. Aproximadamente la mitad de nuestros clientes son hombres — muchos llevan años sin usar chancletas en la playa por uñas dañadas. Atendemos sin prejuicios.",
+              },
+              {
+                q: "¿Cómo me preparo para mi cita?",
+                a: "Llega con las uñas naturales o con el producto previo (si tienes gel/acrílico, nosotros lo removemos). Evita aplicarte aceites el día de la cita. Puedes traer una foto de inspiración si tienes algo en mente.",
+              },
+              {
+                q: "Tengo una condición especial (psoriasis, hongos, diabetes). ¿Pueden atenderme?",
+                a: "En la mayoría de casos sí — la formación en enfermería nos ayuda a evaluar contraindicaciones. Si tu caso requiere precaución médica, te lo indicamos. Para condiciones de pie comprometido usamos línea Footlogix.",
+              },
+              {
+                q: "¿Tengo que ir a Hatillo?",
+                a: "Sí, el estudio está en Hatillo, Puerto Rico. Si vienes de lejos, asegúrate de revisar bien la disponibilidad en Booksy antes de agendar. La dirección exacta se confirma al reservar.",
+              },
+              {
+                q: "¿Política de cancelación?",
+                a: "Cancela o reagenda con al menos 24 horas de anticipación a través de Booksy. Cancelaciones de último minuto afectan a otros clientes en lista de espera.",
+              },
+            ].map((faq, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="group relative rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-300 px-6 overflow-hidden"
+              >
+                <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-5 relative text-sm sm:text-base">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-400 leading-relaxed pb-5 relative text-sm">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      <div className="section-divider mx-auto max-w-xl" />
+
+      {/* WhatsApp — strictly gated */}
+      <section className="px-4 py-16">
+        <div className="container mx-auto max-w-2xl">
+          <FadeIn>
+            <div className="rounded-2xl bg-zinc-900/40 border border-zinc-800/60 p-7 sm:p-9">
+              <div className="flex items-start gap-3 mb-5">
+                <div className="p-2 bg-amber-500/10 rounded-lg flex-shrink-0">
+                  <AlertTriangle className="w-5 h-5 text-amber-400" />
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-bold text-white">¿Tu pregunta no está arriba?</h3>
+                  <p className="text-xs text-gray-400 mt-1">Antes de escribir por WhatsApp, lee las reglas:</p>
+                </div>
+              </div>
+
+              <ul className="space-y-2.5 mb-6 text-sm text-gray-300">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#F2E6D8] mt-0.5 flex-shrink-0">•</span>
+                  <span><strong className="text-white">Solo mensajes de texto.</strong> No aceptamos llamadas ni notas de voz.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#F2E6D8] mt-0.5 flex-shrink-0">•</span>
+                  <span><strong className="text-white">No es para reservar.</strong> Reservas siempre en Booksy.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#F2E6D8] mt-0.5 flex-shrink-0">•</span>
+                  <span><strong className="text-white">Respondemos cuando podemos.</strong> Estamos a máxima capacidad — la respuesta puede tardar.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#F2E6D8] mt-0.5 flex-shrink-0">•</span>
+                  <span>Si tu pregunta ya está en las FAQs arriba, no la repetimos por WhatsApp.</span>
+                </li>
+              </ul>
+
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="w-full border-[#25D366]/40 text-[#25D366] hover:bg-[#25D366]/10 hover:border-[#25D366] text-sm font-semibold"
+                  >
+                    <SiWhatsapp className="w-4 h-4 mr-2" />
+                    Escribir por WhatsApp (caso especial)
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="bg-zinc-900 border-zinc-800 max-w-md">
+                  <DialogTitle className="text-white">Confirma antes de continuar</DialogTitle>
+                  <DialogDescription className="text-gray-400 text-sm pt-2 leading-relaxed">
+                    Confirmas que: (1) ya leíste las FAQs arriba, (2) tu pregunta es específica de tu caso, y
+                    (3) entiendes que solo recibimos mensajes de texto y respondemos cuando hay disponibilidad.
+                  </DialogDescription>
+                  <div className="pt-4 space-y-2">
+                    <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="block">
+                      <Button className="w-full bg-[#25D366] hover:bg-[#20bd59] text-white font-semibold">
+                        <SiWhatsapp className="w-4 h-4 mr-2" />
+                        Continuar a WhatsApp
+                      </Button>
+                    </a>
+                    <p className="text-[10px] text-gray-600 text-center mt-2">
+                      Solo texto · Sin llamadas · Sin notas de voz
+                    </p>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      <div className="section-divider mx-auto max-w-xl" />
+
+      {/* Social Media */}
+      <section className="px-4 py-16">
+        <div className="container mx-auto max-w-3xl">
+          <FadeIn>
             <motion.div
               className="p-8 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 hover:border-zinc-700 text-center transition-all duration-500"
               whileHover={{ scale: 1.005 }}
@@ -222,12 +317,7 @@ export default function Contact() {
                     asChild
                     className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 hover:from-purple-700 hover:via-pink-700 hover:to-orange-600 text-white px-5 py-5 rounded-xl shadow-lg hover:shadow-purple-500/20 transition-all duration-300"
                   >
-                    <a
-                      href="https://www.instagram.com/neychasoto_com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2"
-                    >
+                    <a href="https://www.instagram.com/neychasoto_com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                       <Instagram className="h-5 w-5" />
                       <span className="font-medium">@neychasoto_com</span>
                     </a>
@@ -243,12 +333,7 @@ export default function Contact() {
                     asChild
                     className="bg-[#1877F2] hover:bg-[#166FE5] text-white px-5 py-5 rounded-xl shadow-lg hover:shadow-blue-500/20 transition-all duration-300"
                   >
-                    <a
-                      href="https://www.facebook.com/neychasotocom"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2"
-                    >
+                    <a href="https://www.facebook.com/neychasotocom" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                       <Facebook className="h-5 w-5" />
                       <span className="font-medium">Neycha Soto</span>
                     </a>
@@ -256,7 +341,7 @@ export default function Contact() {
                 </motion.div>
               </div>
               <p className="text-sm text-gray-500 mt-5">
-                Descubre nuestro trabajo, promociones y testimonios de clientes
+                Trabajos recientes, casos antes/después, y promociones
               </p>
             </motion.div>
           </FadeIn>
@@ -265,7 +350,7 @@ export default function Contact() {
 
       <div className="section-divider mx-auto max-w-xl" />
 
-      {/* CTA Section */}
+      {/* Final CTA */}
       <FadeIn>
         <section className="px-4 py-24">
           <div className="container mx-auto max-w-4xl">
@@ -275,27 +360,13 @@ export default function Contact() {
             >
               <motion.div
                 className="absolute top-0 left-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-                animate={{
-                  scale: [1, 1.15, 1],
-                  opacity: [0.4, 0.7, 0.4],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               />
               <motion.div
                 className="absolute bottom-0 right-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-                animate={{
-                  scale: [1.1, 1, 1.1],
-                  opacity: [0.7, 0.4, 0.7],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                animate={{ scale: [1.1, 1, 1.1], opacity: [0.7, 0.4, 0.7] }}
+                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
               />
 
               <div className="relative space-y-6">
@@ -313,7 +384,7 @@ export default function Contact() {
                 </h2>
 
                 <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                  Agenda tu cita hoy y comienza tu transformación con Neycha Nails
+                  Reservas en Booksy. Confirmación instantánea. Sin llamadas.
                 </p>
 
                 <div className="pt-4">
@@ -324,10 +395,10 @@ export default function Contact() {
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
                     >
                       <Button
-                        className="w-full sm:w-auto bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-6 sm:px-10 py-6 text-base sm:text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
+                        className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 sm:px-14 py-7 text-lg sm:text-xl font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
                         onClick={handleBookingClick}
                       >
-                        <Calendar className="w-5 h-5 mr-2 flex-shrink-0" />
+                        <Calendar className="w-6 h-6 mr-3 flex-shrink-0" />
                         AGENDA TU CITA
                       </Button>
                     </motion.div>
