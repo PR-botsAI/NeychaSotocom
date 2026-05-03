@@ -23,18 +23,23 @@ export default function SobreMi() {
         <div className="container mx-auto max-w-4xl relative z-10">
           <FadeIn>
             <div className="flex flex-col lg:flex-row gap-12 items-center">
-              {/* Photo */}
-              <div className="flex-shrink-0">
+              {/* Photo (transparent cutout — soft glow halo behind, no hard frame) */}
+              <div className="flex-shrink-0 relative">
+                {/* Glow halo */}
+                <div
+                  className="absolute inset-0 -m-10 bg-[radial-gradient(circle,rgba(242,230,216,0.18)_0%,rgba(242,230,216,0.05)_40%,transparent_70%)] blur-2xl pointer-events-none"
+                  aria-hidden="true"
+                />
                 <motion.div
-                  className="w-52 h-52 sm:w-64 sm:h-64 rounded-2xl overflow-hidden border-2 border-[#F2E6D8]/20 shadow-2xl shadow-[#F2E6D8]/10"
+                  className="relative w-56 h-56 sm:w-72 sm:h-72"
                   initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
                   animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <img
-                    src="/assets/neycha-profile.jpg.png"
+                    src="/assets/neycha-profile.png"
                     alt="Neycha Soto — Enfermera y especialista en onicoplastia en Hatillo, PR"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain drop-shadow-[0_8px_24px_rgba(242,230,216,0.2)]"
                   />
                 </motion.div>
               </div>
