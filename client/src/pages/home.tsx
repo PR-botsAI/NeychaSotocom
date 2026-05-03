@@ -50,7 +50,91 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. LO QUE MÁS NOS PREGUNTAN — A3 */}
+      {/* 3. NO ES SOLO ESTÉTICA. ES SALUD. — Formula standards (placed high — key differentiator) */}
+      <div className="section-divider mx-auto max-w-xl" />
+      <section className="px-4 py-20 sm:py-24 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(242,230,216,0.04)_0%,transparent_60%)]" />
+        <div className="container mx-auto relative max-w-5xl">
+          <FadeIn>
+            <div className="text-center mb-14 max-w-2xl mx-auto">
+              <motion.p
+                className="text-sm font-medium text-[#F2E6D8]/60 tracking-widest uppercase mb-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                Filosofía del Estudio
+              </motion.p>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+                <TextReveal text="No Es Solo Estética. Es Salud." className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
+              </h2>
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+                La diferencia entre productos profesionales sin químicos sensibilizantes
+                y los baratos cargados de tóxicos es como comparar comida <em className="text-[#F2E6D8]/90 not-italic font-medium">farm-to-table</em> con <em className="text-gray-500 not-italic">McDonald's</em>.
+                Tu piel y tus uñas absorben todo lo que aplicas.
+              </p>
+              <p className="mt-4 text-sm text-gray-400">
+                Esta filosofía no es solo para pies comprometidos o casos con hongos.
+                Es para cualquiera con piel sensible, alergias, o que simplemente quiere
+                lo mejor para su cuerpo.
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* Formula Standards — HERO grid */}
+          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 mb-14" staggerDelay={0.08}>
+            {[
+              { name: "HEMA-Free", why: "Sin el monómero más asociado con reacciones alérgicas en servicios de uñas." },
+              { name: "Di-HEMA-Free", why: "Variante igualmente sensibilizante eliminada de toda la formulación." },
+              { name: "TPO-Free", why: "Cumple el estándar europeo más estricto (UE 2025) en fotoiniciadores." },
+              { name: "Vegano", why: "Sin ingredientes de origen animal. Sin testeo en animales." },
+              { name: "Hipoalergénico", why: "Apto para piel sensible y clientas con historial de reacciones en otros salones." },
+              { name: "Bajo Olor", why: "Ambiente respirable durante toda la sesión — sin marearte ni irritarte las vías." },
+            ].map((s, i) => (
+              <StaggerItem key={i}>
+                <motion.div
+                  className="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-[#F2E6D8]/10 to-zinc-900/60 border border-[#F2E6D8]/20 hover:border-[#F2E6D8]/40 transition-all duration-500 h-full"
+                  whileHover={{ y: -3, transition: { type: "spring", stiffness: 300, damping: 25 } }}
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <CheckCircle className="w-5 h-5 text-[#F2E6D8] flex-shrink-0" />
+                    <h3 className="font-bold text-[#F2E6D8] text-base sm:text-lg">{s.name}</h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">{s.why}</p>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          {/* Brand evidence — supporting cast */}
+          <FadeIn delay={0.2}>
+            <div className="rounded-2xl bg-zinc-900/40 border border-zinc-800 p-6 sm:p-8">
+              <p className="text-xs uppercase tracking-widest text-[#F2E6D8]/60 text-center mb-5">
+                Marcas Profesionales que Cumplen Este Estándar
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {[
+                  { name: "IBX®", what: "Famous Names · Tratamiento de fortalecimiento" },
+                  { name: "Light Elegance®", what: "Gels HEMA-Free profesionales" },
+                  { name: "Footlogix®", what: "Línea farmacéutica para pies" },
+                  { name: "Dadi'Oil®", what: "Aceite de cutícula con vitamina E" },
+                ].map((b, i) => (
+                  <div key={i} className="text-center">
+                    <p className="font-bold text-[#F2E6D8] text-sm">{b.name}</p>
+                    <p className="text-[10px] text-gray-500 mt-1 leading-tight">{b.what}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-center text-[11px] text-gray-600 max-w-lg mx-auto">
+                Credenciales verificables directamente con cada fabricante. Pregúntale siempre a tu técnica con qué marcas trabaja.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 4. LO QUE MÁS NOS PREGUNTAN — A3 */}
       <div className="section-divider mx-auto max-w-xl" />
       <section className="px-4 py-20 sm:py-24 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
@@ -127,87 +211,6 @@ export default function Home() {
                 </Button>
               </MagneticButton>
               <p className="text-xs text-gray-500 mt-3">Confirmación instantánea · Solo con cita previa</p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* 4. CONOCE A NEYCHA — A1 */}
-      <div className="section-divider mx-auto max-w-xl" />
-      <section className="px-4 py-20 sm:py-24 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(242,230,216,0.03)_0%,transparent_60%)]" />
-        <div className="container mx-auto max-w-4xl relative">
-          <FadeIn>
-            <div className="flex flex-col lg:flex-row gap-10 items-center">
-              {/* Photo */}
-              <div className="flex-shrink-0 w-44 h-44 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-2 border-[#F2E6D8]/20 shadow-2xl shadow-[#F2E6D8]/10">
-                <img
-                  src="/assets/image_1737235247434.png"
-                  alt="Neycha Soto — Enfermera y especialista en onicoplastia"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="flex-1 text-center lg:text-left">
-                <motion.p
-                  className="text-sm font-medium text-[#F2E6D8]/60 tracking-widest uppercase mb-3"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
-                  Tu Especialista
-                </motion.p>
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5">
-                  <TextReveal
-                    text="Soy Neycha Soto"
-                    className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
-                  />
-                </h2>
-                <div className="space-y-4 text-gray-300 text-base leading-relaxed">
-                  <p>
-                    Mi historia empieza estudiando enfermería en la UPRA — disciplina,
-                    higiene, atención al detalle. Pero nunca dejé de buscar algo más.
-                    Lo encontré en las uñas: la precisión del cuidado, aplicada al arte.
-                  </p>
-                  <p className="text-gray-400 text-sm">
-                    Hoy soy una de las pocas técnicas IBX® certificadas en Puerto Rico, trabajando uno-a-uno
-                    en estudio privado en Hatillo. Mi credencial es verificable directamente con Famous Names
-                    (fabricante de IBX®) — siempre pregúntale a tu técnica si está certificada.
-                  </p>
-                </div>
-
-                <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                  <MagneticButton>
-                    <Button
-                      className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] font-semibold shadow-lg hover:shadow-[#F2E6D8]/20 transition-all duration-300"
-                      onClick={handleBookingClick}
-                    >
-                      <Calendar className="w-4 h-4 mr-2" />
-                      AGENDA TU CITA
-                    </Button>
-                  </MagneticButton>
-                  <Link href="/onicoplastia">
-                    <Button variant="outline" className="border-[#F2E6D8]/40 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] cursor-pointer">
-                      <ArrowRight className="w-4 h-4 mr-2" />
-                      ¿Cómo es una sesión?
-                    </Button>
-                  </Link>
-                </div>
-
-                <motion.div
-                  className="mt-6 p-4 bg-[#F2E6D8]/5 rounded-xl border border-[#F2E6D8]/10"
-                  whileHover={{ scale: 1.01 }}
-                >
-                  <p className="text-sm text-gray-300 italic">
-                    &ldquo;Cada cliente es único. Por eso trabajo solo con cita previa &mdash;
-                    para dedicarte toda mi atención y darte resultados excepcionales.&rdquo;
-                  </p>
-                  <p className="text-xs text-[#F2E6D8]/70 mt-2 font-medium">&mdash; Neycha Soto</p>
-                </motion.div>
-              </div>
             </div>
           </FadeIn>
         </div>
@@ -393,90 +396,6 @@ export default function Home() {
             <div className="mt-12 text-center">
               <p className="text-sm text-gray-500">
                 Comparado con tratamiento láser ($699–$2,000), la onicoplastia ofrece resultados visibles inmediatos a una fracción del costo
-              </p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* 6. SALUD ANTES QUE ESTÉTICA — Formula standards (hero) + brands (evidence) */}
-      <div className="section-divider mx-auto max-w-xl" />
-      <section className="px-4 py-20 sm:py-24 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(242,230,216,0.04)_0%,transparent_60%)]" />
-        <div className="container mx-auto relative max-w-5xl">
-          <FadeIn>
-            <div className="text-center mb-14 max-w-2xl mx-auto">
-              <motion.p
-                className="text-sm font-medium text-[#F2E6D8]/60 tracking-widest uppercase mb-4"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                Filosofía del Estudio
-              </motion.p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-                <TextReveal text="No Es Solo Estética. Es Salud." className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
-              </h2>
-              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                La diferencia entre productos profesionales sin químicos sensibilizantes
-                y los baratos cargados de tóxicos es como comparar comida <em className="text-[#F2E6D8]/90 not-italic font-medium">farm-to-table</em> con <em className="text-gray-500 not-italic">McDonald's</em>.
-                Tu piel y tus uñas absorben todo lo que aplicas.
-              </p>
-              <p className="mt-4 text-sm text-gray-400">
-                Esta filosofía no es solo para pies comprometidos o casos con hongos.
-                Es para cualquiera con piel sensible, alergias, o que simplemente quiere
-                lo mejor para su cuerpo.
-              </p>
-            </div>
-          </FadeIn>
-
-          {/* Formula Standards — HERO grid */}
-          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 mb-14" staggerDelay={0.08}>
-            {[
-              { name: "HEMA-Free", why: "Sin el monómero más asociado con reacciones alérgicas en servicios de uñas." },
-              { name: "Di-HEMA-Free", why: "Variante igualmente sensibilizante eliminada de toda la formulación." },
-              { name: "TPO-Free", why: "Cumple el estándar europeo más estricto (UE 2025) en fotoiniciadores." },
-              { name: "Vegano", why: "Sin ingredientes de origen animal. Sin testeo en animales." },
-              { name: "Hipoalergénico", why: "Apto para piel sensible y clientas con historial de reacciones en otros salones." },
-              { name: "Bajo Olor", why: "Ambiente respirable durante toda la sesión — sin marearte ni irritarte las vías." },
-            ].map((s, i) => (
-              <StaggerItem key={i}>
-                <motion.div
-                  className="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-[#F2E6D8]/10 to-zinc-900/60 border border-[#F2E6D8]/20 hover:border-[#F2E6D8]/40 transition-all duration-500 h-full"
-                  whileHover={{ y: -3, transition: { type: "spring", stiffness: 300, damping: 25 } }}
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    <CheckCircle className="w-5 h-5 text-[#F2E6D8] flex-shrink-0" />
-                    <h3 className="font-bold text-[#F2E6D8] text-base sm:text-lg">{s.name}</h3>
-                  </div>
-                  <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">{s.why}</p>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-
-          {/* Brand evidence — supporting cast */}
-          <FadeIn delay={0.2}>
-            <div className="rounded-2xl bg-zinc-900/40 border border-zinc-800 p-6 sm:p-8">
-              <p className="text-xs uppercase tracking-widest text-[#F2E6D8]/60 text-center mb-5">
-                Marcas Profesionales que Cumplen Este Estándar
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {[
-                  { name: "IBX®", what: "Famous Names · Tratamiento de fortalecimiento" },
-                  { name: "Light Elegance®", what: "Gels HEMA-Free profesionales" },
-                  { name: "Footlogix®", what: "Línea farmacéutica para pies" },
-                  { name: "Dadi'Oil®", what: "Aceite de cutícula con vitamina E" },
-                ].map((b, i) => (
-                  <div key={i} className="text-center">
-                    <p className="font-bold text-[#F2E6D8] text-sm">{b.name}</p>
-                    <p className="text-[10px] text-gray-500 mt-1 leading-tight">{b.what}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-5 text-center text-[11px] text-gray-600 max-w-lg mx-auto">
-                Credenciales verificables directamente con cada fabricante. Pregúntale siempre a tu técnica con qué marcas trabaja.
               </p>
             </div>
           </FadeIn>
