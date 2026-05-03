@@ -168,9 +168,9 @@ export default function Home() {
                 </h2>
                 <div className="space-y-4 text-gray-300 text-base leading-relaxed">
                   <p>
-                    Estudié enfermería en la UPRA, siempre buscando algo más.
-                    Trabajé en oficinas médicas y hospitales — siempre en el front, atendiendo al público —
-                    sabiendo que ese no era mi camino. Hasta que las uñas me salvaron.
+                    Mi historia empieza estudiando enfermería en la UPRA — disciplina,
+                    higiene, atención al detalle. Pero nunca dejé de buscar algo más.
+                    Lo encontré en las uñas: la precisión del cuidado, aplicada al arte.
                   </p>
                   <p className="text-gray-400 text-sm">
                     Hoy soy una de las pocas técnicas IBX® certificadas en Puerto Rico, trabajando uno-a-uno

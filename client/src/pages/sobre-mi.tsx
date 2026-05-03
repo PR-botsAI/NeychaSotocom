@@ -100,24 +100,24 @@ export default function SobreMi() {
           <FadeIn>
             <div className="space-y-6 text-gray-300 text-base sm:text-lg leading-relaxed">
               <p>
-                Estudié enfermería en la UPRA — Universidad de Puerto Rico, Arecibo.
-                Mi experiencia clínica real fueron las prácticas de la universidad.
-                Después trabajé en oficinas médicas y hospitales, pero siempre en el
-                front — en recepción, atendiendo al público — nunca en cuidado directo.
-                Y nunca dejé de estudiar, siempre buscando algo más.
+                Mi historia empieza en la UPRA — Universidad de Puerto Rico, Arecibo —
+                donde estudié enfermería. Esa formación me dio algo que no se borra:
+                disciplina, higiene clínica, atención al detalle, y un respeto profundo
+                por el cuidado de otra persona.
               </p>
               <p>
-                Intentaba encajar en un molde que no era el mío. En el fondo lo sabía:
-                ese no era mi camino.
+                De ahí mi vida laboral me llevó a oficinas médicas y hospitales,
+                conectando con personas todos los días. Pero nunca dejé de estudiar,
+                nunca dejé de buscar. En el fondo sabía que mi camino estaba en otro lado.
               </p>
               <p className="text-[#F2E6D8] font-medium">
                 Las uñas me salvaron.
               </p>
               <p>
-                Lo que empezó como un escape se convirtió en mi verdadera pasión:
-                devolverle la confianza a personas que llevaban años escondiendo sus uñas.
-                La disciplina y los estándares de higiene que se me grabaron desde
-                la formación los aplico a cada sesión.
+                Encontré la combinación que estaba buscando: la precisión y los
+                estándares que aprendí en salud, aplicados al arte. Devolverle la
+                confianza a personas que llevaban años escondiendo sus uñas se
+                convirtió en mi verdadera vocación.
               </p>
               <p className="text-gray-400">
                 Porque eso es lo que hacen las uñas dañadas: te obligan a esconderte.
