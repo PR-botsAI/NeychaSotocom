@@ -134,89 +134,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. LO QUE MÁS NOS PREGUNTAN — A3 */}
-      <div className="section-divider mx-auto max-w-xl" />
-      <section className="px-4 py-20 sm:py-24 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
-        <div className="container mx-auto relative max-w-4xl">
-          <FadeIn>
-            <div className="text-center mb-10">
-              <motion.p
-                className="text-sm font-medium text-[#F2E6D8]/60 tracking-widest uppercase mb-4"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                Respuestas Rápidas
-              </motion.p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                <TextReveal text="Lo Que Más Nos Preguntan" className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
-              </h2>
-            </div>
-          </FadeIn>
-
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-5" staggerDelay={0.1}>
-            {[
-              {
-                icon: <DollarSign className="w-5 h-5 text-[#F2E6D8]" />,
-                q: "¿Cuánto cuesta?",
-                a: "$120 primera sesión (hasta 2 hrs, todo incluido). $80 seguimientos. NO es por uña — es por sesión.",
-              },
-              {
-                icon: <Shield className="w-5 h-5 text-[#F2E6D8]" />,
-                q: "¿Cojen plan médico?",
-                a: "No. Servicio estético, no médico. Algunos planes HSA/FSA sí cubren. Pago el día de la cita: efectivo, ATH Móvil o tarjeta.",
-              },
-              {
-                icon: <MapPin className="w-5 h-5 text-[#F2E6D8]" />,
-                q: "¿Estoy muy lejos?",
-                a: "Estudio en Hatillo. Si vienes de lejos, puedes mandar foto de tu uña por WhatsApp antes — te oriento si vale el viaje.",
-              },
-              {
-                icon: <Users className="w-5 h-5 text-[#F2E6D8]" />,
-                q: "¿Es para hombres también?",
-                a: "Sí. La mitad de mis clientes son hombres que llevan años sin usar chancletas en la playa.",
-              },
-            ].map((item, i) => (
-              <StaggerItem key={i}>
-                <motion.div
-                  className="p-6 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-500 h-full"
-                  whileHover={{ y: -3, transition: { type: "spring", stiffness: 300, damping: 25 } }}
-                >
-                  <div className="flex items-start gap-3">
-                    <div className="p-2 bg-[#F2E6D8]/10 rounded-lg flex-shrink-0 mt-0.5">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-base font-semibold text-white mb-1.5">{item.q}</h3>
-                      <p className="text-sm text-gray-400 leading-relaxed">{item.a}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-
-          {/* Single primary CTA below FAQ → Booksy */}
-          <FadeIn delay={0.3}>
-            <div className="mt-10 text-center">
-              <MagneticButton>
-                <Button
-                  className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-8 py-6 text-base font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
-                  onClick={handleBookingClick}
-                >
-                  <Calendar className="w-5 h-5 mr-2" />
-                  AGENDA TU CITA EN BOOKSY
-                </Button>
-              </MagneticButton>
-              <p className="text-xs text-gray-500 mt-3">Confirmación instantánea · Solo con cita previa</p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* 5. SERVICES */}
+      {/* 4. SERVICES */}
       <div className="section-divider mx-auto max-w-xl" />
       <section className="px-4 py-24 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,230,216,0.03)_0%,transparent_70%)]" />
@@ -402,7 +320,88 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. TESTIMONIALS */}
+      {/* 5. LO QUE MÁS NOS PREGUNTAN — Objection-handling AFTER services pitch */}
+      <div className="section-divider mx-auto max-w-xl" />
+      <section className="px-4 py-20 sm:py-24 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
+        <div className="container mx-auto relative max-w-4xl">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <motion.p
+                className="text-sm font-medium text-[#F2E6D8]/60 tracking-widest uppercase mb-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                Respuestas Rápidas
+              </motion.p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                <TextReveal text="Lo Que Más Nos Preguntan" className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
+              </h2>
+            </div>
+          </FadeIn>
+
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-5" staggerDelay={0.1}>
+            {[
+              {
+                icon: <DollarSign className="w-5 h-5 text-[#F2E6D8]" />,
+                q: "¿Cuánto cuesta?",
+                a: "$120 primera sesión (hasta 2 hrs, todo incluido). $80 seguimientos. NO es por uña — es por sesión.",
+              },
+              {
+                icon: <Shield className="w-5 h-5 text-[#F2E6D8]" />,
+                q: "¿Cojen plan médico?",
+                a: "No. Servicio estético, no médico. Algunos planes HSA/FSA sí cubren. Pago el día de la cita: efectivo, ATH Móvil o tarjeta.",
+              },
+              {
+                icon: <MapPin className="w-5 h-5 text-[#F2E6D8]" />,
+                q: "¿Estoy muy lejos?",
+                a: "Estudio en Hatillo. Si vienes de lejos, puedes mandar foto de tu uña por WhatsApp antes — te oriento si vale el viaje.",
+              },
+              {
+                icon: <Users className="w-5 h-5 text-[#F2E6D8]" />,
+                q: "¿Es para hombres también?",
+                a: "Sí. La mitad de mis clientes son hombres que llevan años sin usar chancletas en la playa.",
+              },
+            ].map((item, i) => (
+              <StaggerItem key={i}>
+                <motion.div
+                  className="p-6 rounded-xl bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-500 h-full"
+                  whileHover={{ y: -3, transition: { type: "spring", stiffness: 300, damping: 25 } }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-[#F2E6D8]/10 rounded-lg flex-shrink-0 mt-0.5">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-base font-semibold text-white mb-1.5">{item.q}</h3>
+                      <p className="text-sm text-gray-400 leading-relaxed">{item.a}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          <FadeIn delay={0.3}>
+            <div className="mt-10 text-center">
+              <MagneticButton>
+                <Button
+                  className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-8 py-6 text-base font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
+                  onClick={handleBookingClick}
+                >
+                  <Calendar className="w-5 h-5 mr-2" />
+                  AGENDA TU CITA EN BOOKSY
+                </Button>
+              </MagneticButton>
+              <p className="text-xs text-gray-500 mt-3">Confirmación instantánea · Solo con cita previa</p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 6. TESTIMONIALS */}
       <div className="section-divider mx-auto max-w-xl" />
       <section className="px-4 py-24 relative">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
@@ -472,7 +471,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8. FINAL CTA */}
+      {/* 7. FINAL CTA */}
       <div className="section-divider mx-auto max-w-xl" />
       <FadeIn>
         <section className="px-4 py-24">
