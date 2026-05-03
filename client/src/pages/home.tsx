@@ -168,14 +168,14 @@ export default function Home() {
                 </h2>
                 <div className="space-y-4 text-gray-300 text-base leading-relaxed">
                   <p>
-                    Empecé como enfermera, siempre estudiando, siempre buscando algo más.
-                    Trabajaba en oficinas sabiendo que ese no era mi camino — hasta que las uñas
-                    me salvaron y se convirtieron en mi verdadera pasión.
+                    Estudié enfermería en la UPRA, siempre buscando algo más.
+                    Trabajé en oficinas médicas y hospitales — siempre en el front, atendiendo al público —
+                    sabiendo que ese no era mi camino. Hasta que las uñas me salvaron.
                   </p>
                   <p className="text-gray-400 text-sm">
                     Hoy soy una de las pocas técnicas IBX® certificadas en Puerto Rico, trabajando uno-a-uno
                     en estudio privado en Hatillo. Mi credencial es verificable directamente con Famous Names
-                    (fabricante de IBX®) — siempre pregúntale a tu técnica si está certificada, te lo recomiendo.
+                    (fabricante de IBX®) — siempre pregúntale a tu técnica si está certificada.
                   </p>
                 </div>
 

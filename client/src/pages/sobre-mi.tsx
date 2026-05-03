@@ -100,19 +100,24 @@ export default function SobreMi() {
           <FadeIn>
             <div className="space-y-6 text-gray-300 text-base sm:text-lg leading-relaxed">
               <p>
-                Estudié enfermería y nunca dejé de estudiar — siempre buscando algo más.
-                Trabajé en oficinas, intentando encajar en un molde que no era el mío.
-                En el fondo lo sabía: ese no era mi camino.
+                Estudié enfermería en la UPRA — Universidad de Puerto Rico, Arecibo.
+                Mi experiencia clínica real fueron las prácticas de la universidad.
+                Después trabajé en oficinas médicas y hospitales, pero siempre en el
+                front — en recepción, atendiendo al público — nunca en cuidado directo.
+                Y nunca dejé de estudiar, siempre buscando algo más.
+              </p>
+              <p>
+                Intentaba encajar en un molde que no era el mío. En el fondo lo sabía:
+                ese no era mi camino.
               </p>
               <p className="text-[#F2E6D8] font-medium">
                 Las uñas me salvaron.
               </p>
               <p>
-                Lo que empezó como un escape se convirtió en mi verdadera pasión.
-                Combinar lo que aprendí en salud con el arte de devolverle la confianza
-                a personas que llevaban años escondiendo sus uñas — esa es la intersección
-                donde encontré mi vocación. La precisión que aprendí en enfermería,
-                el cuidado que practiqué con pacientes, ahora aplicado a estética.
+                Lo que empezó como un escape se convirtió en mi verdadera pasión:
+                devolverle la confianza a personas que llevaban años escondiendo sus uñas.
+                La disciplina y los estándares de higiene que se me grabaron desde
+                la formación los aplico a cada sesión.
               </p>
               <p className="text-gray-400">
                 Porque eso es lo que hacen las uñas dañadas: te obligan a esconderte.
@@ -161,7 +166,7 @@ export default function SobreMi() {
           </FadeIn>
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.1}>
             {[
-              { icon: "🎓", label: "Formación en Enfermería", desc: "Disciplina clínica que informa cada decisión estética." },
+              { icon: "🎓", label: "Enfermería · UPRA Arecibo", desc: "Formación universitaria con prácticas clínicas — disciplina e higiene aplicadas a estética." },
               { icon: "🏅", label: "IBX® Certified", desc: "Una de las pocas técnicas certificadas en PR — verificable con Famous Names." },
               { icon: "⭐", label: "40+ Reseñas 5.0/5", desc: "Calificación perfecta en Booksy — clientes reales, resultados reales." },
               { icon: "🔬", label: "Estándares HEMA/TPO-Free", desc: "Productos sin los alérgenos más comunes en servicios de uñas." },
