@@ -37,7 +37,7 @@ export default function SobreMi() {
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <img
-                    src="/assets/neycha-profile.png"
+                    src="/assets/neycha-profile.png?v=transparent"
                     alt="Neycha Soto — Enfermera y especialista en onicoplastia en Hatillo, PR"
                     className="w-full h-full object-contain drop-shadow-[0_8px_24px_rgba(242,230,216,0.2)]"
                   />
