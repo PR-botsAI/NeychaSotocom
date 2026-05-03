@@ -201,6 +201,10 @@ export default function Contact() {
                 a: "En la mayoría de casos sí — la formación en enfermería nos ayuda a evaluar contraindicaciones. Si tu caso requiere precaución médica, te lo indicamos. Para condiciones de pie comprometido usamos línea Footlogix.",
               },
               {
+                q: "¿Qué hace diferentes sus productos?",
+                a: "Solo trabajamos con productos HEMA-Free, Di-HEMA-Free, TPO-Free, veganos, hipoalergénicos y de bajo olor. Es la diferencia entre comida farm-to-table y McDonald's — tu piel absorbe todo lo que aplicas. Esta filosofía no es solo para pies comprometidos o casos con hongos: es para cualquiera con piel sensible, alergias o que simplemente quiera lo mejor para su cuerpo. Marcas: IBX®, Light Elegance®, Footlogix®, Dadi'Oil®.",
+              },
+              {
                 q: "¿Tengo que ir a Hatillo?",
                 a: "Sí, el estudio está en Hatillo, Puerto Rico. Si vienes de lejos, asegúrate de revisar bien la disponibilidad en Booksy antes de agendar. La dirección exacta se confirma al reservar.",
               },

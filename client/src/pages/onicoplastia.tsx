@@ -386,15 +386,18 @@ export default function Onicoplastia() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
         <div className="container mx-auto max-w-3xl relative">
           <FadeIn>
-            <div className="text-center mb-10">
+            <div className="text-center mb-10 max-w-2xl mx-auto">
               <h2 className="text-2xl sm:text-3xl font-bold">
                 <TextReveal
-                  text="Productos Profesionales — Sin Compromisos"
+                  text="No Es Solo Estética. Es Salud."
                   className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
                 />
               </h2>
-              <p className="mt-3 text-sm text-gray-400 max-w-md mx-auto">
-                En este estudio solo entran productos que cumplen con los estándares más exigentes de la industria.
+              <p className="mt-4 text-sm sm:text-base text-gray-300 leading-relaxed">
+                La diferencia entre productos profesionales y los baratos cargados de químicos
+                es como comparar comida farm-to-table con McDonald's. Tu piel y tus uñas absorben
+                todo lo que aplicas — y esto no es solo para casos comprometidos: es para cualquiera
+                con piel sensible, alergias, o que quiera lo mejor para su cuerpo.
               </p>
             </div>
           </FadeIn>

@@ -399,13 +399,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. MARCAS PROFESIONALES — Trust signals (not shop CTAs) */}
+      {/* 6. SALUD ANTES QUE ESTÉTICA — Formula standards (hero) + brands (evidence) */}
       <div className="section-divider mx-auto max-w-xl" />
       <section className="px-4 py-20 sm:py-24 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
-        <div className="container mx-auto relative max-w-4xl">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(242,230,216,0.04)_0%,transparent_60%)]" />
+        <div className="container mx-auto relative max-w-5xl">
           <FadeIn>
-            <div className="text-center mb-12">
+            <div className="text-center mb-14 max-w-2xl mx-auto">
               <motion.p
                 className="text-sm font-medium text-[#F2E6D8]/60 tracking-widest uppercase mb-4"
                 initial={{ opacity: 0, y: 10 }}
@@ -413,43 +413,72 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                Estándares de Calidad
+                Filosofía del Estudio
               </motion.p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                <TextReveal text="Marcas Profesionales" className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+                <TextReveal text="No Es Solo Estética. Es Salud." className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
               </h2>
-              <p className="mt-3 text-sm text-gray-500 max-w-md mx-auto">
-                Solo trabajamos con marcas que cumplen con los estándares más exigentes —
-                la misma calidad que tendrías en una clínica.
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+                La diferencia entre productos profesionales sin químicos sensibilizantes
+                y los baratos cargados de tóxicos es como comparar comida <em className="text-[#F2E6D8]/90 not-italic font-medium">farm-to-table</em> con <em className="text-gray-500 not-italic">McDonald's</em>.
+                Tu piel y tus uñas absorben todo lo que aplicas.
+              </p>
+              <p className="mt-4 text-sm text-gray-400">
+                Esta filosofía no es solo para pies comprometidos o casos con hongos.
+                Es para cualquiera con piel sensible, alergias, o que simplemente quiere
+                lo mejor para su cuerpo.
               </p>
             </div>
           </FadeIn>
 
-          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-4 gap-4" staggerDelay={0.1}>
+          {/* Formula Standards — HERO grid */}
+          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-5 mb-14" staggerDelay={0.08}>
             {[
-              { name: "IBX®", what: "Sistema de Famous Names", why: "Fortalece la uña natural desde adentro — el corazón de la onicoplastia." },
-              { name: "Light Elegance®", what: "Gels profesionales", why: "Hipoalergénico, HEMA-Free — apto para piel sensible." },
-              { name: "Footlogix®", what: "Línea farmacéutica", why: "Cuidado profesional para condiciones y pies comprometidos." },
-              { name: "Dadi'Oil®", what: "Aceite de cutícula", why: "Hidratación profunda con ingredientes naturales y vitamina E." },
-            ].map((b, i) => (
+              { name: "HEMA-Free", why: "Sin el monómero más asociado con reacciones alérgicas en servicios de uñas." },
+              { name: "Di-HEMA-Free", why: "Variante igualmente sensibilizante eliminada de toda la formulación." },
+              { name: "TPO-Free", why: "Cumple el estándar europeo más estricto (UE 2025) en fotoiniciadores." },
+              { name: "Vegano", why: "Sin ingredientes de origen animal. Sin testeo en animales." },
+              { name: "Hipoalergénico", why: "Apto para piel sensible y clientas con historial de reacciones en otros salones." },
+              { name: "Bajo Olor", why: "Ambiente respirable durante toda la sesión — sin marearte ni irritarte las vías." },
+            ].map((s, i) => (
               <StaggerItem key={i}>
                 <motion.div
-                  className="p-5 rounded-xl bg-zinc-900/60 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-500 h-full text-center"
+                  className="p-5 sm:p-6 rounded-xl bg-gradient-to-br from-[#F2E6D8]/10 to-zinc-900/60 border border-[#F2E6D8]/20 hover:border-[#F2E6D8]/40 transition-all duration-500 h-full"
                   whileHover={{ y: -3, transition: { type: "spring", stiffness: 300, damping: 25 } }}
                 >
-                  <h3 className="font-bold text-[#F2E6D8] text-sm mb-1">{b.name}</h3>
-                  <p className="text-[10px] uppercase tracking-wider text-gray-500 mb-3">{b.what}</p>
-                  <p className="text-xs text-gray-400 leading-relaxed">{b.why}</p>
+                  <div className="flex items-center gap-2 mb-3">
+                    <CheckCircle className="w-5 h-5 text-[#F2E6D8] flex-shrink-0" />
+                    <h3 className="font-bold text-[#F2E6D8] text-base sm:text-lg">{s.name}</h3>
+                  </div>
+                  <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">{s.why}</p>
                 </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>
 
-          <FadeIn delay={0.3}>
-            <p className="mt-8 text-center text-xs text-gray-600 max-w-lg mx-auto">
-              Todas las credenciales son verificables directamente con cada fabricante.
-              Pregúntale siempre a tu técnica con qué marcas trabaja.
-            </p>
+          {/* Brand evidence — supporting cast */}
+          <FadeIn delay={0.2}>
+            <div className="rounded-2xl bg-zinc-900/40 border border-zinc-800 p-6 sm:p-8">
+              <p className="text-xs uppercase tracking-widest text-[#F2E6D8]/60 text-center mb-5">
+                Marcas Profesionales que Cumplen Este Estándar
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                {[
+                  { name: "IBX®", what: "Famous Names · Tratamiento de fortalecimiento" },
+                  { name: "Light Elegance®", what: "Gels HEMA-Free profesionales" },
+                  { name: "Footlogix®", what: "Línea farmacéutica para pies" },
+                  { name: "Dadi'Oil®", what: "Aceite de cutícula con vitamina E" },
+                ].map((b, i) => (
+                  <div key={i} className="text-center">
+                    <p className="font-bold text-[#F2E6D8] text-sm">{b.name}</p>
+                    <p className="text-[10px] text-gray-500 mt-1 leading-tight">{b.what}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-5 text-center text-[11px] text-gray-600 max-w-lg mx-auto">
+                Credenciales verificables directamente con cada fabricante. Pregúntale siempre a tu técnica con qué marcas trabaja.
+              </p>
+            </div>
           </FadeIn>
         </div>
       </section>
