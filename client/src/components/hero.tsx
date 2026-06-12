@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Award, Calendar, Star, Lock, Sparkles, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { MagneticButton } from "@/components/magnetic-button";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { TextReveal } from "@/components/motion-wrapper";
@@ -19,10 +20,24 @@ const collageImages = [
 ];
 
 export default function Hero() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  // Collage drifts slower than the page and scales up slightly — depth on scroll
+  const collageY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const collageScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.35]);
+
   return (
-    <div className="relative overflow-hidden bg-black">
+    <div ref={heroRef} className="relative overflow-hidden bg-black">
       {/* Background collage mosaic */}
-      <div className="absolute inset-0 grid grid-cols-3 sm:grid-cols-6 opacity-30">
+      <motion.div
+        className="absolute inset-0 grid grid-cols-3 sm:grid-cols-6 opacity-30"
+        style={{ y: collageY, scale: collageScale }}
+      >
         {collageImages.map((img, i) => (
           <motion.div
             key={i}
@@ -39,13 +54,16 @@ export default function Hero() {
             />
           </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Heavy overlay so text is readable */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/80 to-black z-[1]" />
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 pt-16 pb-12 sm:pt-24 sm:pb-16">
+      <motion.div
+        className="relative z-10 container mx-auto px-4 pt-16 pb-12 sm:pt-24 sm:pb-16"
+        style={{ y: contentY, opacity: contentOpacity }}
+      >
         <div className="mx-auto max-w-4xl text-center">
           {/* Logo */}
           <motion.div
@@ -155,7 +173,7 @@ export default function Hero() {
             Disponible en Booksy &bull; Hatillo, PR 00659 &bull; Solo con cita previa
           </motion.p>
         </div>
-      </div>
+      </motion.div>
 
       {/* Trust strip */}
       <motion.div

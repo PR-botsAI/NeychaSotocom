@@ -1,12 +1,15 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
+const PREMIUM_EASE = [0.16, 1, 0.3, 1] as const;
+
 interface FadeInProps {
   children: ReactNode;
   delay?: number;
   direction?: "up" | "down" | "left" | "right";
   className?: string;
   duration?: number;
+  blur?: boolean;
 }
 
 export function FadeIn({
@@ -14,7 +17,8 @@ export function FadeIn({
   delay = 0,
   direction = "up",
   className = "",
-  duration = 0.8 // Increased default duration for premium feel
+  duration = 0.8, // Increased default duration for premium feel
+  blur = true,
 }: FadeInProps) {
   const directions = {
     up: { y: 40, x: 0 },
@@ -26,21 +30,23 @@ export function FadeIn({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, ...directions[direction] }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      initial={{
+        opacity: 0,
+        ...directions[direction],
+        filter: blur ? "blur(6px)" : "none",
+      }}
+      whileInView={{ opacity: 1, x: 0, y: 0, filter: "blur(0px)" }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{
         duration,
         delay,
-        ease: [0.16, 1, 0.3, 1] // Custom premium cubic-bezier
+        ease: PREMIUM_EASE,
       }}
     >
       {children}
     </motion.div>
   );
 }
-
-// ... existing Stagger components ...
 
 interface TextRevealProps {
   text: string;
@@ -56,27 +62,29 @@ export function TextReveal({ text, className = "", delay = 0, once = true }: Tex
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.04 * i + delay },
+      transition: { staggerChildren: 0.09, delayChildren: 0.04 * i + delay },
     }),
   };
 
+  // No blur here: a residual filter on the word spans breaks
+  // background-clip:text painting when the headline uses gradient text
   const child = {
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         type: "spring",
-        damping: 12,
-        stiffness: 100,
+        damping: 14,
+        stiffness: 110,
       },
     },
     hidden: {
       opacity: 0,
-      y: 20,
+      y: 24,
       transition: {
         type: "spring",
-        damping: 12,
-        stiffness: 100,
+        damping: 14,
+        stiffness: 110,
       },
     },
   };
@@ -144,13 +152,14 @@ export function StaggerItem({ children, className = "" }: StaggerItemProps) {
     <motion.div
       className={className}
       variants={{
-        hidden: { opacity: 0, y: 30 },
+        hidden: { opacity: 0, y: 30, filter: "blur(5px)" },
         visible: {
           opacity: 1,
           y: 0,
+          filter: "blur(0px)",
           transition: {
-            duration: 0.5,
-            ease: [0.25, 0.1, 0.25, 1.0]
+            duration: 0.6,
+            ease: PREMIUM_EASE,
           }
         },
       }}

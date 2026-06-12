@@ -1,5 +1,10 @@
-import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useMotionTemplate,
+} from "framer-motion";
 
 interface TiltCardProps {
   children: React.ReactNode;
@@ -15,9 +20,16 @@ export function TiltCard({
   tiltMaxAngle = 10,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [rotateX, setRotateX] = useState(0);
-  const [rotateY, setRotateY] = useState(0);
-  const [glarePosition, setGlarePosition] = useState({ x: 50, y: 50 });
+
+  // Motion values bypass React renders — tilt and glare track the cursor at 60fps
+  const rotateX = useMotionValue(0);
+  const rotateY = useMotionValue(0);
+  const glareX = useMotionValue(50);
+  const glareY = useMotionValue(50);
+
+  const springRotateX = useSpring(rotateX, { stiffness: 300, damping: 30 });
+  const springRotateY = useSpring(rotateY, { stiffness: 300, damping: 30 });
+  const glareBackground = useMotionTemplate`radial-gradient(circle at ${glareX}% ${glareY}%, rgba(242, 230, 216, 0.15) 0%, transparent 60%)`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -26,25 +38,21 @@ export function TiltCard({
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    const mouseX = e.clientX - centerX;
-    const mouseY = e.clientY - centerY;
+    const percentX = (e.clientX - centerX) / (rect.width / 2);
+    const percentY = (e.clientY - centerY) / (rect.height / 2);
 
-    const percentX = mouseX / (rect.width / 2);
-    const percentY = mouseY / (rect.height / 2);
+    rotateX.set(-percentY * tiltMaxAngle);
+    rotateY.set(percentX * tiltMaxAngle);
 
-    setRotateX(-percentY * tiltMaxAngle);
-    setRotateY(percentX * tiltMaxAngle);
-    
-    setGlarePosition({
-      x: ((e.clientX - rect.left) / rect.width) * 100,
-      y: ((e.clientY - rect.top) / rect.height) * 100,
-    });
+    glareX.set(((e.clientX - rect.left) / rect.width) * 100);
+    glareY.set(((e.clientY - rect.top) / rect.height) * 100);
   };
 
   const handleMouseLeave = () => {
-    setRotateX(0);
-    setRotateY(0);
-    setGlarePosition({ x: 50, y: 50 });
+    rotateX.set(0);
+    rotateY.set(0);
+    glareX.set(50);
+    glareY.set(50);
   };
 
   return (
@@ -56,24 +64,15 @@ export function TiltCard({
       style={{
         transformStyle: "preserve-3d",
         perspective: "1000px",
-      }}
-      animate={{
-        rotateX,
-        rotateY,
-      }}
-      transition={{
-        type: "spring",
-        stiffness: 300,
-        damping: 30,
+        rotateX: springRotateX,
+        rotateY: springRotateY,
       }}
     >
       {children}
       {glareEnabled && (
-        <div
+        <motion.div
           className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style={{
-            background: `radial-gradient(circle at ${glarePosition.x}% ${glarePosition.y}%, rgba(242, 230, 216, 0.15) 0%, transparent 60%)`,
-          }}
+          style={{ background: glareBackground }}
         />
       )}
     </motion.div>

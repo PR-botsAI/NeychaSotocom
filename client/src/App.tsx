@@ -16,12 +16,12 @@ import PerformanceOptimizer from "@/components/performance-optimizer";
 import { ScrollProgress } from "@/components/scroll-progress";
 import StickyMobileCTA from "@/components/sticky-mobile-cta";
 import { useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, MotionConfig } from "framer-motion";
 
 const pageTransition = {
-  initial: { opacity: 0, y: 12, filter: "blur(4px)" },
-  animate: { opacity: 1, y: 0, filter: "blur(0px)" },
-  exit: { opacity: 0, y: -8, filter: "blur(4px)" },
+  initial: { opacity: 0, y: 12, scale: 0.995, filter: "blur(4px)" },
+  animate: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
+  exit: { opacity: 0, y: -8, scale: 0.995, filter: "blur(4px)" },
 };
 
 const pageTransitionConfig = {
@@ -80,10 +80,12 @@ function App() {
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <PerformanceOptimizer />
-        <SEODebug />
-        <Router />
-        <Toaster />
+        <MotionConfig reducedMotion="user">
+          <PerformanceOptimizer />
+          <SEODebug />
+          <Router />
+          <Toaster />
+        </MotionConfig>
       </QueryClientProvider>
     </ErrorBoundary>
   );

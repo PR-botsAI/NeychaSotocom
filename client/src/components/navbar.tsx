@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, Calendar, ShoppingBag, Sparkles, User2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -19,24 +19,19 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const lastScrollY = useRef(0);
   const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setScrolled(currentScrollY > 20);
-
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setHidden(true);
-      } else {
-        setHidden(false);
-      }
-      setLastScrollY(currentScrollY);
+      setHidden(currentScrollY > lastScrollY.current && currentScrollY > 100);
+      lastScrollY.current = currentScrollY;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const handleExternalClick = (href: string) => {
     window.open(href, "_blank", "noopener,noreferrer");
