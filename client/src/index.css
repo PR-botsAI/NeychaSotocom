@@ -4,15 +4,31 @@
 
 @layer base {
   :root {
-    --gold: #D4AF37;
-    --cream: #F2E6D8;
+    --gold: #c9a96a; /* champagne gold — muted, expensive */
+    --cream: #f2e6d8;
+    --ink: #0a0a0a;
   }
 
-  /* Smooth scrolling for the entire page */
   html {
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Lenis owns scrolling; native smooth-behavior would fight it */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    @apply font-sans;
+    background-color: var(--ink);
+    color: #f5f1ea;
+    font-feature-settings: "ss01" on, "cv11" on;
   }
 
   /* Custom selection color matching brand */
@@ -46,6 +62,65 @@
 }
 
 @layer utilities {
+  /* ── Kinetic gradient: two gold/cream blobs drifting like liquid.
+       Transform-only animation → GPU-composited, near-zero battery cost. ── */
+  .kinetic-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .kinetic-bg::before,
+  .kinetic-bg::after {
+    content: "";
+    position: absolute;
+    width: 60vmax;
+    height: 60vmax;
+    border-radius: 50%;
+    will-change: transform;
+  }
+
+  .kinetic-bg::before {
+    top: -20vmax;
+    left: -15vmax;
+    background: radial-gradient(circle, rgba(201, 169, 106, 0.07) 0%, transparent 60%);
+    animation: drift-a 48s ease-in-out infinite alternate;
+  }
+
+  .kinetic-bg::after {
+    bottom: -25vmax;
+    right: -18vmax;
+    background: radial-gradient(circle, rgba(242, 230, 216, 0.05) 0%, transparent 60%);
+    animation: drift-b 64s ease-in-out infinite alternate;
+  }
+
+  @keyframes drift-a {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(18vw, 12vh, 0) scale(1.25); }
+  }
+
+  @keyframes drift-b {
+    from { transform: translate3d(0, 0, 0) scale(1.2); }
+    to { transform: translate3d(-14vw, -10vh, 0) scale(0.95); }
+  }
+
+  /* ── Frosted glass panel — the booking CTA / trust card surface ── */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(20px) saturate(1.3);
+    -webkit-backdrop-filter: blur(20px) saturate(1.3);
+    border: 1px solid rgba(245, 241, 234, 0.1);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+  }
+
+  /* Overflow-hidden wrapper for line-by-line text reveals */
+  .line-mask {
+    display: block;
+    overflow: hidden;
+  }
+
   .grain-overlay {
     position: fixed;
     top: 0;

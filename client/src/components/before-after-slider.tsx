@@ -1,103 +1,187 @@
-import { useState, useRef, useEffect } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { gsap, prefersReducedMotion } from "@/lib/scroll";
 
 interface BeforeAfterSliderProps {
-    beforeImage: string;
-    afterImage: string;
-    className?: string;
+  beforeImage: string;
+  afterImage: string;
+  alt?: string;
+  className?: string;
+  /** Eager-load images (hero/LCP). Below-the-fold instances lazy-load. */
+  priority?: boolean;
+  /** One-time divider nudge when the slider enters the viewport. */
+  hint?: boolean;
+  labels?: boolean;
 }
 
-export function BeforeAfterSlider({ beforeImage, afterImage, className = "" }: BeforeAfterSliderProps) {
-    const [isResizing, setIsResizing] = useState(false);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const [sliderPos, setSliderPos] = useState(50);
+/**
+ * Draggable before/after comparison. All drag work happens through refs and
+ * direct style writes inside one rAF lerp loop — React never re-renders
+ * during interaction, so the divider glides at the display's frame rate.
+ */
+export function BeforeAfterSlider({
+  beforeImage,
+  afterImage,
+  alt = "Transformación de uñas",
+  className = "",
+  priority = false,
+  hint = true,
+  labels = true,
+}: BeforeAfterSliderProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const clipRef = useRef<HTMLDivElement>(null);
+  const lineRef = useRef<HTMLDivElement>(null);
 
-    const handleMove = (e: React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent) => {
-        if (!isResizing || !containerRef.current) return;
+  const pos = useRef(50);
+  const target = useRef(50);
+  const rafId = useRef<number | null>(null);
+  const dragging = useRef(false);
+  const interacted = useRef(false);
 
-        const rect = containerRef.current.getBoundingClientRect();
-        const x = "touches" in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
-        const position = ((x - rect.left) / rect.width) * 100;
+  useEffect(() => {
+    const container = containerRef.current;
+    const clip = clipRef.current;
+    const line = lineRef.current;
+    if (!container || !clip || !line) return;
 
-        if (position >= 0 && position <= 100) {
-            setSliderPos(position);
-        }
+    const apply = (p: number) => {
+      clip.style.clipPath = `inset(0 ${100 - p}% 0 0)`;
+      line.style.left = `${p}%`;
     };
 
-    const handleDown = () => setIsResizing(true);
-    const handleUp = () => setIsResizing(false);
+    const loop = () => {
+      pos.current += (target.current - pos.current) * 0.16;
+      apply(pos.current);
+      if (dragging.current || Math.abs(target.current - pos.current) > 0.05) {
+        rafId.current = requestAnimationFrame(loop);
+      } else {
+        rafId.current = null;
+      }
+    };
 
-    useEffect(() => {
-        if (isResizing) {
-            window.addEventListener("mousemove", handleMove);
-            window.addEventListener("mouseup", handleUp);
-            window.addEventListener("touchmove", handleMove);
-            window.addEventListener("touchend", handleUp);
-        } else {
-            window.removeEventListener("mousemove", handleMove);
-            window.removeEventListener("mouseup", handleUp);
-            window.removeEventListener("touchmove", handleMove);
-            window.removeEventListener("touchend", handleUp);
-        }
-        return () => {
-            window.removeEventListener("mousemove", handleMove);
-            window.removeEventListener("mouseup", handleUp);
-            window.removeEventListener("touchmove", handleMove);
-            window.removeEventListener("touchend", handleUp);
-        };
-    }, [isResizing]);
+    const startLoop = () => {
+      if (rafId.current === null) rafId.current = requestAnimationFrame(loop);
+    };
 
-    return (
-        <div
-            ref={containerRef}
-            className={`relative overflow-hidden select-none rounded-xl border border-white/10 ${className}`}
-            onMouseDown={handleDown}
-            onTouchStart={handleDown}
-        >
-            {/* After Image (Full background) */}
-            <img
-                src={afterImage}
-                alt="After"
-                className="w-full h-full object-cover"
-            />
+    const setFromClientX = (clientX: number) => {
+      const rect = container.getBoundingClientRect();
+      target.current = gsap.utils.clamp(2, 98, ((clientX - rect.left) / rect.width) * 100);
+      startLoop();
+    };
 
-            {/* Before Image (Clipped) */}
-            <div
-                className="absolute inset-0 w-full h-full"
-                style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
-            >
-                <img
-                    src={beforeImage}
-                    alt="Before"
-                    className="w-full h-full object-cover"
-                />
-            </div>
+    const onPointerDown = (e: PointerEvent) => {
+      interacted.current = true;
+      dragging.current = true;
+      container.setPointerCapture(e.pointerId);
+      setFromClientX(e.clientX);
+    };
+    const onPointerMove = (e: PointerEvent) => {
+      if (dragging.current) setFromClientX(e.clientX);
+    };
+    const endDrag = () => {
+      dragging.current = false;
+    };
 
-            {/* Slider Line */}
-            <div
-                className="absolute inset-y-0 w-0.5 bg-white/50 cursor-ew-resize group"
-                style={{ left: `${sliderPos}%` }}
-            >
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <div className="flex gap-1">
-                        <div className="w-1 h-1 rounded-full bg-white" />
-                        <div className="w-1 h-1 rounded-full bg-white" />
-                        <div className="w-1 h-1 rounded-full bg-white" />
-                    </div>
-                </div>
-            </div>
+    container.addEventListener("pointerdown", onPointerDown);
+    container.addEventListener("pointermove", onPointerMove);
+    container.addEventListener("pointerup", endDrag);
+    container.addEventListener("pointercancel", endDrag);
 
-            {/* Labels */}
-            <div className="absolute top-4 left-4 pointer-events-none">
-                <span className="bg-black/40 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded uppercase tracking-widest border border-white/10">
-                    Antes
-                </span>
-            </div>
-            <div className="absolute top-4 right-4 pointer-events-none">
-                <span className="bg-[#F2E6D8]/20 backdrop-blur-md text-white text-[10px] sm:text-xs font-bold px-2 py-1 rounded uppercase tracking-widest border border-[#F2E6D8]/30">
-                    Después
-                </span>
-            </div>
+    // One-time nudge so visitors discover the drag without a tooltip
+    let observer: IntersectionObserver | undefined;
+    let hintTween: gsap.core.Tween | undefined;
+    if (hint && !prefersReducedMotion()) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting || interacted.current) return;
+          observer?.disconnect();
+          hintTween = gsap.to(target, {
+            current: 62,
+            duration: 0.9,
+            delay: 0.5,
+            ease: "power2.inOut",
+            yoyo: true,
+            repeat: 1,
+            onUpdate: startLoop,
+          });
+        },
+        { threshold: 0.6 }
+      );
+      observer.observe(container);
+    }
+
+    apply(pos.current);
+
+    return () => {
+      container.removeEventListener("pointerdown", onPointerDown);
+      container.removeEventListener("pointermove", onPointerMove);
+      container.removeEventListener("pointerup", endDrag);
+      container.removeEventListener("pointercancel", endDrag);
+      observer?.disconnect();
+      hintTween?.kill();
+      if (rafId.current !== null) cancelAnimationFrame(rafId.current);
+    };
+  }, [hint]);
+
+  const loading = priority ? "eager" : "lazy";
+
+  return (
+    <div
+      ref={containerRef}
+      className={`relative overflow-hidden select-none cursor-ew-resize ${className}`}
+      style={{ touchAction: "pan-y" }}
+      role="slider"
+      aria-label="Comparar antes y después"
+      aria-valuemin={0}
+      aria-valuemax={100}
+    >
+      {/* After — full background */}
+      <img
+        src={afterImage}
+        alt={`${alt} — después`}
+        className="absolute inset-0 w-full h-full object-cover"
+        loading={loading}
+        decoding="async"
+        draggable={false}
+      />
+
+      {/* Before — clipped from the left */}
+      <div ref={clipRef} className="absolute inset-0" style={{ clipPath: "inset(0 50% 0 0)" }}>
+        <img
+          src={beforeImage}
+          alt={`${alt} — antes`}
+          className="absolute inset-0 w-full h-full object-cover"
+          loading={loading}
+          decoding="async"
+          draggable={false}
+        />
+      </div>
+
+      {/* Divider */}
+      <div
+        ref={lineRef}
+        className="absolute inset-y-0 z-10 pointer-events-none"
+        style={{ left: "50%" }}
+      >
+        <div className="absolute inset-y-0 -translate-x-1/2 w-px bg-[#f5f1ea]/70" />
+        <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full glass-panel flex items-center justify-center">
+          <svg width="18" height="10" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+            <path d="M5 1 1 5l4 4M13 1l4 4-4 4" stroke="#f5f1ea" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
-    );
+      </div>
+
+      {labels && (
+        <>
+          <span className="absolute bottom-4 left-4 z-10 pointer-events-none text-[10px] tracking-[0.25em] uppercase text-white/80 bg-black/30 backdrop-blur-sm px-2.5 py-1">
+            Antes
+          </span>
+          <span className="absolute bottom-4 right-4 z-10 pointer-events-none text-[10px] tracking-[0.25em] uppercase text-[var(--cream)] bg-black/30 backdrop-blur-sm px-2.5 py-1">
+            Después
+          </span>
+        </>
+      )}
+    </div>
+  );
 }
+
+export default BeforeAfterSlider;

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, Calendar, ShoppingBag, Sparkles, User2 } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -9,11 +9,17 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { motion } from "framer-motion";
 
 const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
 const SHOP_URL = "https://shop.neychasoto.com";
+
+const NAV_LINKS = [
+  { name: "Onicoplastia", href: "/onicoplastia" },
+  { name: "Sobre Mí", href: "/sobre-mi" },
+  { name: "Contacto", href: "/contact" },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,153 +31,108 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setScrolled(currentScrollY > 20);
-      setHidden(currentScrollY > lastScrollY.current && currentScrollY > 100);
+      setScrolled(currentScrollY > 24);
+      setHidden(currentScrollY > lastScrollY.current && currentScrollY > 120);
       lastScrollY.current = currentScrollY;
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleExternalClick = (href: string) => {
-    window.open(href, "_blank", "noopener,noreferrer");
-  };
-
-  const isActive = (href: string) => {
-    if (href === "/") return location === "/";
-    return location.startsWith(href);
-  };
+  const isActive = (href: string) =>
+    href === "/" ? location === "/" : location.startsWith(href);
 
   return (
     <motion.nav
-      className={`sticky top-0 z-50 w-full border-b transition-all duration-500 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 border-b ${
         scrolled
-          ? "border-zinc-800/80 bg-black/95 backdrop-blur-xl shadow-lg shadow-black/20"
-          : "border-zinc-800/30 bg-black/60 backdrop-blur-md"
+          ? "bg-[#0a0a0a]/70 backdrop-blur-xl border-white/[0.06]"
+          : "bg-transparent border-transparent"
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: hidden ? -100 : 0 }}
-      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+      initial={false}
+      animate={{ y: hidden ? "-100%" : "0%" }}
+      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="container flex h-16 items-center justify-between">
-        {/* Logo */}
-        <motion.div
-          className="flex items-center ml-4"
-          whileHover={{ scale: 1.02 }}
+      <div className="container mx-auto px-5 sm:px-8 flex h-16 items-center justify-between">
+        <Link
+          href="/"
+          className="font-display text-lg text-[#f5f1ea] hover:text-[var(--cream)] transition-colors duration-200"
         >
-          <Link
-            href="/"
-            className="text-xl font-bold text-white hover:text-[#F2E6D8] transition-colors duration-300 animated-underline"
-          >
-            neychasoto.com
-          </Link>
-        </motion.div>
+          Neycha Soto
+        </Link>
 
-        {/* ─── DESKTOP NAV ─── */}
-        <div className="hidden md:flex md:items-center md:gap-1">
-          {/* Onicoplastia - highlighted as the key page */}
-          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-            <Link
-              href="/onicoplastia"
-              className={`relative inline-flex items-center gap-1.5 text-sm font-medium px-3.5 py-2 rounded-lg transition-all duration-300 ${
-                isActive("/onicoplastia")
-                  ? "bg-[#F2E6D8]/20 text-[#F2E6D8] border border-[#F2E6D8]/30"
-                  : "text-[#F2E6D8] hover:bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 hover:border-[#F2E6D8]/40"
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              Onicoplastia
-            </Link>
-          </motion.div>
-
-          {/* Other nav links */}
-          {[
-            { name: "Sobre Mí", href: "/sobre-mi" },
-            { name: "Contacto", href: "/contact" },
-          ].map((item) => {
+        {/* Desktop */}
+        <div className="hidden md:flex items-center gap-8">
+          {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
             return (
               <Link
                 key={item.name}
                 href={item.href}
-                className={`relative text-sm px-3 py-2 rounded-md transition-all duration-300 ${
-                  active
-                    ? "text-[#F2E6D8]"
-                    : "text-white/70 hover:text-white"
+                className={`relative text-[11px] tracking-[0.22em] uppercase transition-colors duration-200 pb-1 ${
+                  active ? "text-[var(--cream)]" : "text-white/60 hover:text-[#f5f1ea]"
                 }`}
               >
                 {item.name}
                 {active && (
-                  <motion.div
-                    layoutId="navbar-active"
-                    className="absolute bottom-0 left-2 right-2 h-0.5 bg-gradient-to-r from-transparent via-[#F2E6D8] to-transparent rounded-full"
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  <motion.span
+                    layoutId="nav-active"
+                    className="absolute -bottom-px left-0 right-0 h-px bg-[var(--cream)]"
+                    transition={{ type: "spring", stiffness: 400, damping: 35 }}
                   />
                 )}
               </Link>
             );
           })}
 
-          {/* Divider */}
-          <div className="w-px h-5 bg-zinc-700 mx-2" />
+          <a
+            href={SHOP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] tracking-[0.22em] uppercase text-white/60 hover:text-[#f5f1ea] transition-colors duration-200"
+          >
+            Tienda
+          </a>
 
-          {/* Shop */}
-          <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
-            <Button
-              variant="outline"
-              size="sm"
-              className="text-sm border-[#F2E6D8]/40 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 hover:border-[#F2E6D8] transition-all duration-300 gap-1.5"
-              onClick={() => handleExternalClick(SHOP_URL)}
-            >
-              <ShoppingBag className="w-3.5 h-3.5" />
-              Tienda
-            </Button>
-          </motion.div>
-
-          {/* Book - primary CTA */}
-          <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-            <Button
-              size="sm"
-              className="text-sm bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] transition-all duration-300 gap-1.5 shadow-lg hover:shadow-[#F2E6D8]/20 font-semibold"
-              onClick={() => handleExternalClick(BOOKSY_URL)}
-            >
-              <Calendar className="w-3.5 h-3.5" />
-              Reservar
-            </Button>
-          </motion.div>
+          <a
+            href={BOOKSY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] tracking-[0.22em] uppercase bg-[var(--cream)] text-black px-5 py-2.5 transition-[background-color,transform] duration-200 hover:bg-[#e6d0b8] active:scale-[0.98]"
+          >
+            Reservar
+          </a>
         </div>
 
-        {/* ─── MOBILE MENU TRIGGER ─── */}
+        {/* Mobile trigger */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden mr-4">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="text-white hover:bg-white/10 transition-colors"
-              >
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Abrir menú</span>
-              </Button>
-            </motion.div>
+          <SheetTrigger asChild className="md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-[#f5f1ea] hover:bg-white/10 transition-colors"
+            >
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Abrir menú</span>
+            </Button>
           </SheetTrigger>
 
           <SheetContent
             side="left"
-            className="w-[300px] sm:w-[340px] border-r border-zinc-800 bg-black/98 backdrop-blur-xl p-0"
+            className="w-[300px] border-r border-white/[0.06] bg-[#0a0a0a]/95 backdrop-blur-2xl p-0"
             aria-describedby="navigation-menu-description"
           >
-            <SheetHeader className="border-b border-zinc-800 px-6">
+            <SheetHeader className="border-b border-white/[0.06] px-6">
               <VisuallyHidden asChild>
                 <SheetTitle>Menú de Navegación</SheetTitle>
               </VisuallyHidden>
-              <div className="flex items-center justify-center py-6">
+              <div className="flex items-center py-6">
                 <Link
                   href="/"
-                  className="text-xl font-bold text-white"
+                  className="font-display text-xl text-[#f5f1ea]"
                   onClick={() => setIsOpen(false)}
                 >
-                  neychasoto.com
+                  Neycha Soto
                 </Link>
               </div>
             </SheetHeader>
@@ -179,116 +140,58 @@ export default function Navbar() {
               Navegación principal del sitio web
             </VisuallyHidden>
 
-            <div className="px-5 py-6 space-y-6 overflow-y-auto">
-              {/* ── ONICOPLASTIA: Hero CTA in mobile menu ── */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <Link
-                  href="/onicoplastia"
-                  onClick={() => setIsOpen(false)}
-                  className="block"
-                >
-                  <div className={`relative rounded-xl p-4 border transition-all duration-300 overflow-hidden ${
-                    isActive("/onicoplastia")
-                      ? "bg-[#F2E6D8]/15 border-[#F2E6D8]/30"
-                      : "bg-[#F2E6D8]/5 border-[#F2E6D8]/20 hover:bg-[#F2E6D8]/10"
-                  }`}>
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-[#F2E6D8]/10 rounded-full blur-2xl" />
-                    <div className="relative flex items-center gap-3">
-                      <div className="p-2.5 bg-[#F2E6D8]/15 rounded-lg">
-                        <Sparkles className="w-5 h-5 text-[#F2E6D8]" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-sm font-semibold text-[#F2E6D8]">Onicoplastia</h3>
-                        <p className="text-xs text-gray-500 mt-0.5">Proceso, precios y resultados reales</p>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
+            <div className="px-6 py-8 flex flex-col gap-1">
+              {[{ name: "Inicio", href: "/" }, ...NAV_LINKS].map((item, index) => {
+                const active = isActive(item.href);
+                return (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.04 + index * 0.05, duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Link
+                      href={item.href}
+                      className={`block py-3.5 font-display text-2xl transition-colors duration-200 ${
+                        active ? "text-[var(--cream)]" : "text-white/75 hover:text-[#f5f1ea]"
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  </motion.div>
+                );
+              })}
 
-              {/* ── PAGES ── */}
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-2 px-1">Servicios</p>
-                <div className="space-y-0.5">
-                  {[
-                    { name: "Inicio", href: "/" },
-                    { name: "Sobre Mí", href: "/sobre-mi" },
-                    { name: "Contacto", href: "/contact" },
-                  ].map((item, index) => {
-                    const active = isActive(item.href);
-                    return (
-                      <motion.div
-                        key={item.name}
-                        initial={{ opacity: 0, x: -15 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.1 + index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                      >
-                        <Link
-                          href={item.href}
-                          className={`flex w-full items-center px-3 py-3 text-[15px] rounded-lg transition-all duration-300 ${
-                            active
-                              ? "text-[#F2E6D8] bg-[#F2E6D8]/10"
-                              : "text-white/80 hover:text-white hover:bg-white/5"
-                          }`}
-                          onClick={() => setIsOpen(false)}
-                        >
-                          {item.name}
-                          {active && (
-                            <motion.div
-                              className="ml-auto w-1.5 h-1.5 rounded-full bg-[#F2E6D8]"
-                              layoutId="mobile-nav-active"
-                              transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                            />
-                          )}
-                        </Link>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* ── SHOP ── */}
-              <motion.div
-                initial={{ opacity: 0, x: -15 }}
+              <motion.a
+                href={SHOP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block py-3.5 font-display text-2xl text-white/75 hover:text-[#f5f1ea] transition-colors duration-200"
+                initial={{ opacity: 0, x: -12 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: 0.24, duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                onClick={() => setIsOpen(false)}
               >
-                <p className="text-[10px] uppercase tracking-widest text-gray-600 mb-2 px-1">Productos</p>
-                <button
-                  className="flex w-full items-center gap-3 px-3 py-3 text-[15px] rounded-lg transition-all duration-300 text-[#F2E6D8] hover:bg-[#F2E6D8]/10 group"
-                  onClick={() => {
-                    handleExternalClick(SHOP_URL);
-                    setIsOpen(false);
-                  }}
-                >
-                  <ShoppingBag className="w-4 h-4 text-[#F2E6D8]" />
-                  <span>Tienda Online</span>
-                  <Sparkles className="w-3 h-3 text-[#F2E6D8]/50 group-hover:text-[#F2E6D8] transition-colors ml-auto" />
-                </button>
-              </motion.div>
+                Tienda
+              </motion.a>
 
-              {/* ── PRIMARY CTA ── */}
               <motion.div
-                className="pt-2 border-t border-zinc-800"
+                className="mt-8 pt-8 border-t border-white/[0.06]"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ delay: 0.3, duration: 0.25 }}
               >
-                <Button
-                  className="w-full justify-center text-base font-semibold bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] transition-all duration-300 py-6 flex items-center gap-2 rounded-xl shadow-lg hover:shadow-[#F2E6D8]/20"
-                  onClick={() => {
-                    handleExternalClick(BOOKSY_URL);
-                    setIsOpen(false);
-                  }}
+                <a
+                  href={BOOKSY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full text-center text-xs tracking-[0.22em] uppercase bg-[var(--cream)] text-black px-6 py-4 transition-transform duration-200 active:scale-[0.98]"
+                  onClick={() => setIsOpen(false)}
                 >
-                  <Calendar className="w-5 h-5" />
-                  Reservar Cita
-                </Button>
-                <p className="text-center text-[11px] text-gray-600 mt-2.5">
+                  Reservar cita
+                </a>
+                <p className="text-center text-[10px] tracking-[0.2em] uppercase text-white/35 mt-3">
                   Solo con cita previa
                 </p>
               </motion.div>

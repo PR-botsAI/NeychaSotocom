@@ -10,23 +10,18 @@ import SobreMi from "@/pages/sobre-mi";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import { ErrorBoundary } from "@/components/error-boundary";
-import ShopBanner from "@/components/shop-banner";
 import SEODebug from "@/components/seo-debug";
 import PerformanceOptimizer from "@/components/performance-optimizer";
-import { ScrollProgress } from "@/components/scroll-progress";
 import StickyMobileCTA from "@/components/sticky-mobile-cta";
 import { useEffect } from "react";
 import { motion, AnimatePresence, MotionConfig } from "framer-motion";
+import { initSmoothScroll, scrollToTop } from "@/lib/scroll";
 
+// Route changes must feel instant — anything slower reads as broken
 const pageTransition = {
-  initial: { opacity: 0, y: 12, scale: 0.995, filter: "blur(4px)" },
-  animate: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
-  exit: { opacity: 0, y: -8, scale: 0.995, filter: "blur(4px)" },
-};
-
-const pageTransitionConfig = {
-  duration: 0.45,
-  ease: [0.16, 1, 0.3, 1],
+  initial: { opacity: 0, y: 8 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0 },
 };
 
 function DiagnosticoRedirect() {
@@ -41,23 +36,26 @@ function Router() {
   const [location] = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
+    return initSmoothScroll();
+  }, []);
+
+  useEffect(() => {
+    scrollToTop(true);
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col relative">
-      <div className="grain-overlay" />
-      <ScrollProgress />
-      <ShopBanner />
+    <div className="min-h-screen bg-[#0a0a0a] flex flex-col relative">
+      <div className="kinetic-bg" aria-hidden="true" />
+      <div className="grain-overlay" aria-hidden="true" />
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 relative z-[1]">
         <AnimatePresence mode="wait">
           <motion.div
             key={location}
             initial={pageTransition.initial}
             animate={pageTransition.animate}
             exit={pageTransition.exit}
-            transition={pageTransitionConfig}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
           >
             <Switch>
               <Route path="/" component={Home} />
