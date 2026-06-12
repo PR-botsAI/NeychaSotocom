@@ -31,7 +31,7 @@ export default function MeetTheArtist() {
           <div className="space-y-5">
             <p className="text-gray-300 text-base sm:text-lg leading-relaxed text-center">
               Especialista en <strong className="text-[#F2E6D8]">onicoplastia</strong> y restauración
-              de uñas con el sistema IBX®. Cada cliente recibe un plan de tratamiento personalizado
+              profesional de uñas. Cada cliente recibe un plan de tratamiento personalizado
               en un ambiente privado y relajante.
             </p>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed text-center">
@@ -50,8 +50,8 @@ export default function MeetTheArtist() {
                 <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">Satisfacción</p>
               </div>
               <div className="text-center p-3 rounded-lg bg-zinc-900/50 border border-zinc-800">
-                <div className="text-xl sm:text-2xl font-bold text-[#F2E6D8]">IBX®</div>
-                <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">Certificada</p>
+                <div className="text-xl sm:text-2xl font-bold text-[#F2E6D8]">RN</div>
+                <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">Enfermera Certificada</p>
               </div>
             </div>
 

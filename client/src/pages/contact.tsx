@@ -198,11 +198,11 @@ export default function Contact() {
               },
               {
                 q: "Tengo una condición especial (psoriasis, hongos, diabetes). ¿Pueden atenderme?",
-                a: "En la mayoría de casos sí — la formación en enfermería nos ayuda a evaluar contraindicaciones. Si tu caso requiere precaución médica, te lo indicamos. Para condiciones de pie comprometido usamos línea Footlogix.",
+                a: "En la mayoría de casos sí — la formación en enfermería nos ayuda a evaluar contraindicaciones. Si tu caso requiere precaución médica, te lo indicamos. Para condiciones de pie comprometido usamos una línea farmacéutica especializada.",
               },
               {
                 q: "¿Qué hace diferentes sus productos?",
-                a: "Trabajamos con los productos más limpios disponibles en el mercado: HEMA-Free, Di-HEMA-Free, TPO-Free, veganos, hipoalergénicos y de bajo olor. La razón es simple — las uñas y pies que atendemos exigen ese estándar, y ese mismo cuidado se aplica a cada cliente, sea cual sea su caso. Marcas: IBX®, Light Elegance®, Footlogix®, Dadi'Oil®.",
+                a: "Trabajamos con los productos más limpios disponibles en el mercado: HEMA-Free, Di-HEMA-Free, TPO-Free, veganos, hipoalergénicos y de bajo olor. La razón es simple — las uñas y pies que atendemos exigen ese estándar, y ese mismo cuidado se aplica a cada cliente, sea cual sea su caso.",
               },
               {
                 q: "¿Tengo que ir a Hatillo?",

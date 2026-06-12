@@ -88,7 +88,7 @@ export default function Hero() {
           >
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 px-3 py-1.5 text-xs font-semibold text-[#F2E6D8]">
               <Award className="w-3 h-3" />
-              IBX® Certified
+              Técnica Certificada
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 px-3 py-1.5 text-xs font-semibold text-[#F2E6D8]">
               <Star className="w-3 h-3 fill-[#F2E6D8]" />
@@ -112,7 +112,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
-            Onicoplastia &bull; IBX® Certified &bull; Hatillo, PR
+            Onicoplastia &bull; Técnica Certificada &bull; Hatillo, PR
           </motion.p>
 
           {/* Description */}
@@ -184,7 +184,7 @@ export default function Hero() {
       >
         <div className="container mx-auto px-4 py-3.5">
           <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 text-xs text-gray-500">
-            <span className="flex items-center gap-1.5"><Award className="w-3.5 h-3.5 text-[#F2E6D8]" /> IBX® Certificado</span>
+            <span className="flex items-center gap-1.5"><Award className="w-3.5 h-3.5 text-[#F2E6D8]" /> Técnica Certificada</span>
             <span className="hidden sm:block w-px h-3 bg-zinc-800" />
             <span className="flex items-center gap-1.5"><Star className="w-3.5 h-3.5 text-[#F2E6D8] fill-[#F2E6D8]" /> 5.0/5 Booksy</span>
             <span className="hidden sm:block w-px h-3 bg-zinc-800" />

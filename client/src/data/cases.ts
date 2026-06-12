@@ -4,7 +4,7 @@ export const cases: Case[] = [
   {
     id: 1,
     title: "Confianza Restaurada",
-    description: "Reconstrucción estética con IBX® — apariencia natural al instante.",
+    description: "Reconstrucción estética profesional — apariencia natural al instante.",
     beforeImage: "/cases/Caso1_before.png",
     afterImage: "/cases/Caso1_After.png",
     collageImage: "/cases/Caso1_collage.png",

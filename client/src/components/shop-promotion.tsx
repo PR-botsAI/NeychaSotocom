@@ -77,7 +77,7 @@ export default function ShopPromotion() {
 
                 <div className="flex items-center gap-2 text-purple-300 font-medium">
                   <span className="inline-block w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span>
-                  Certificado IBX® &bull; Probados y Aprobados
+                  Probados y Aprobados en Mi Salón
                 </div>
               </div>
             </div>

@@ -86,7 +86,7 @@ A specialized digital healthcare platform focused on nail restoration solutions 
 - Main booking system uses external Booksy platform
 - WhatsApp integration for text messages only (no calls)
 - Focus on Puerto Rican market with Spanish content
-- IBX® Certified professional services
+- Certified professional services
 
 ## External Integrations
 - **Booksy**: https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo

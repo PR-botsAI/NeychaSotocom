@@ -106,30 +106,6 @@ export default function Home() {
             ))}
           </StaggerContainer>
 
-          {/* Brand evidence — supporting cast */}
-          <FadeIn delay={0.2}>
-            <div className="rounded-2xl bg-zinc-900/40 border border-zinc-800 p-6 sm:p-8">
-              <p className="text-xs uppercase tracking-widest text-[#F2E6D8]/60 text-center mb-5">
-                Marcas Profesionales que Cumplen Este Estándar
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {[
-                  { name: "IBX®", what: "Famous Names · Tratamiento de fortalecimiento" },
-                  { name: "Light Elegance®", what: "Gels HEMA-Free profesionales" },
-                  { name: "Footlogix®", what: "Línea farmacéutica para pies" },
-                  { name: "Dadi'Oil®", what: "Aceite de cutícula con vitamina E" },
-                ].map((b, i) => (
-                  <div key={i} className="text-center">
-                    <p className="font-bold text-[#F2E6D8] text-sm">{b.name}</p>
-                    <p className="text-[10px] text-gray-500 mt-1 leading-tight">{b.what}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-5 text-center text-[11px] text-gray-600 max-w-lg mx-auto">
-                Credenciales verificables directamente con cada fabricante. Pregúntale siempre a tu técnica con qué marcas trabaja.
-              </p>
-            </div>
-          </FadeIn>
         </div>
       </section>
 
@@ -193,14 +169,14 @@ export default function Home() {
                         </span>
                       </div>
                       <p className="text-gray-400 text-sm leading-relaxed">
-                        ¿Escondes tus pies o manos? Reconstrucción estética profesional con IBX® — vuelve a vivir sin limitaciones.
+                        ¿Escondes tus pies o manos? Reconstrucción estética profesional — vuelve a vivir sin limitaciones.
                       </p>
                       <div className="flex items-baseline gap-2">
                         <span className="text-2xl font-bold text-[#F2E6D8]">$120</span>
                         <span className="text-xs text-gray-500">primera sesión &bull; hasta 2 hrs</span>
                       </div>
                       <div className="pt-3 border-t border-zinc-800 space-y-2">
-                        {["Sin dolor &bull; Apariencia perfecta al salir", "Tratamiento IBX® + GEL Polish incluido", "Manos o pies &bull; Seguimiento desde $80"].map((text, i) => (
+                        {["Sin dolor &bull; Apariencia perfecta al salir", "Tratamiento fortalecedor + GEL Polish incluido", "Manos o pies &bull; Seguimiento desde $80"].map((text, i) => (
                           <div key={i} className="flex items-start gap-2">
                             <CheckCircle className="w-3.5 h-3.5 text-[#F2E6D8] mt-0.5 flex-shrink-0" />
                             <p className="text-xs text-gray-300" dangerouslySetInnerHTML={{ __html: text }} />

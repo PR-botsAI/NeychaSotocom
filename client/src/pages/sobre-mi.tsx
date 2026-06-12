@@ -81,7 +81,7 @@ export default function SobreMi() {
                   transition={{ duration: 0.7, delay: 0.6 }}
                 >
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 px-3 py-1.5 text-xs font-semibold text-[#F2E6D8]">
-                    <Award className="w-3 h-3" /> IBX® Certified
+                    <Award className="w-3 h-3" /> Técnica Certificada
                   </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 px-3 py-1.5 text-xs font-semibold text-[#F2E6D8]">
                     <Star className="w-3 h-3 fill-[#F2E6D8]" />
@@ -131,11 +131,11 @@ export default function SobreMi() {
                 A evitar que alguien te vea las manos.
               </p>
               <p className="text-gray-300">
-                Hoy soy una de las pocas técnicas IBX® certificadas en Puerto Rico,
-                trabajando uno-a-uno en estudio privado en Hatillo. Mi credencial es
-                verificable directamente con Famous Names (fabricante de IBX®) — y
-                siempre te recomiendo preguntarle a tu técnica si está certificada,
-                no importa con quién vayas.
+                Hoy cuento con certificación internacional en sistemas profesionales
+                de fortalecimiento de uñas — una de las pocas técnicas con esa
+                credencial en Puerto Rico — trabajando uno-a-uno en estudio privado
+                en Hatillo. Siempre te recomiendo preguntarle a tu técnica si está
+                certificada, no importa con quién vayas.
               </p>
               <p className="text-gray-400">
                 Cada cliente llega con una historia diferente: hongos después de años
@@ -173,7 +173,7 @@ export default function SobreMi() {
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.1}>
             {[
               { icon: "🎓", label: "Enfermería · UPRA Arecibo", desc: "Formación universitaria con prácticas clínicas — disciplina e higiene aplicadas a estética." },
-              { icon: "🏅", label: "IBX® Certified", desc: "Una de las pocas técnicas certificadas en PR — verificable con Famous Names." },
+              { icon: "🏅", label: "Certificación Internacional", desc: "Una de las pocas técnicas en PR certificadas en sistemas profesionales de fortalecimiento de uñas." },
               { icon: "⭐", label: "40+ Reseñas 5.0/5", desc: "Calificación perfecta en Booksy — clientes reales, resultados reales." },
               { icon: "🔬", label: "Estándares HEMA/TPO-Free", desc: "Productos sin los alérgenos más comunes en servicios de uñas." },
             ].map((c, i) => (

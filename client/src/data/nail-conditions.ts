@@ -195,7 +195,7 @@ export const conditions: NailCondition[] = [
       "Los productos de farmacia no han funcionado después de 2-3 meses",
     ],
     professionalTreatment:
-      "Con onicoplastia, reconstruimos estéticamente tu uña mientras tratamos la infección con IBX®. Sales el mismo día con una uña de apariencia perfecta — puedes usar sandalias sin pena. El tratamiento es indoloro y los resultados son inmediatos.",
+      "Con onicoplastia, reconstruimos estéticamente tu uña mientras la fortalecemos con tratamiento profesional. Sales el mismo día con una uña de apariencia perfecta — puedes usar sandalias sin pena. El tratamiento es indoloro y los resultados son inmediatos.",
     affectedArea: "ambos",
     recoveryNote: "Los hongos de uñas requieren paciencia. El tratamiento profesional da resultados estéticos inmediatos, pero la uña natural tarda de 6 a 12 meses en crecer completamente sana.",
     category: "infeccion",
@@ -319,9 +319,9 @@ export const conditions: NailCondition[] = [
       "Necesitas reconstruir uñas dañadas por gel o acrílico",
     ],
     professionalTreatment:
-      "El tratamiento IBX® penetra las capas de la uña para fortalecerla desde adentro. A diferencia del esmalte, IBX® restaura la estructura interna. Combinado con GEL Polish profesional, tus uñas lucen perfectas mientras se recuperan.",
+      "El tratamiento fortalecedor penetra las capas de la uña para fortalecerla desde adentro. A diferencia del esmalte, este tratamiento restaura la estructura interna. Combinado con GEL Polish profesional, tus uñas lucen perfectas mientras se recuperan.",
     affectedArea: "ambos",
-    recoveryNote: "Con IBX® y cuidados en casa, las uñas pueden mejorar notablemente en 4-8 semanas.",
+    recoveryNote: "Con el tratamiento fortalecedor y cuidados en casa, las uñas pueden mejorar notablemente en 4-8 semanas.",
     category: "salon",
     relatedConditions: ["onicomicosis", "psoriasis_ungueal"],
     relatedCaseIds: [6],
@@ -618,7 +618,7 @@ export const conditions: NailCondition[] = [
       "Quieres una uña con apariencia suave y perfecta",
     ],
     professionalTreatment:
-      "Con el tratamiento IBX® y onicoplastia, alisamos la superficie de la uña y la fortalecemos. El resultado es una uña suave, uniforme y perfecta al instante.",
+      "Con el tratamiento fortalecedor y onicoplastia, alisamos la superficie de la uña y la fortalecemos. El resultado es una uña suave, uniforme y perfecta al instante.",
     affectedArea: "ambos",
     recoveryNote: "Las líneas verticales son permanentes pero normales. Los surcos por trauma desaparecen cuando la uña crece completamente (3-6 meses).",
     category: "estructural",
@@ -803,9 +803,9 @@ export const conditions: NailCondition[] = [
       "Necesitas orientación sobre salones y técnicas seguras",
     ],
     professionalTreatment:
-      "El tratamiento IBX® es ideal para uñas dañadas por salones: penetra y fortalece la uña desde adentro. La onicoplastia reconstruye la apariencia mientras la uña natural se recupera. Te educamos para que identifiques salones seguros y evites este daño en el futuro.",
+      "El tratamiento fortalecedor es ideal para uñas dañadas por salones: penetra y fortalece la uña desde adentro. La onicoplastia reconstruye la apariencia mientras la uña natural se recupera. Te educamos para que identifiques salones seguros y evites este daño en el futuro.",
     affectedArea: "manos",
-    recoveryNote: "La uña natural necesita 3-6 meses para crecer completamente nueva. Con IBX® y cuidado, se fortalece significativamente en 4-6 semanas.",
+    recoveryNote: "La uña natural necesita 3-6 meses para crecer completamente nueva. Con el cuidado adecuado, se fortalece significativamente en 4-6 semanas.",
     category: "salon",
     relatedConditions: ["unas_debiles", "green_nail"],
     relatedCaseIds: [6],
@@ -920,7 +920,7 @@ export const conditions: NailCondition[] = [
       "Quieres saber exactamente a qué químico eres alérgica",
     ],
     professionalTreatment:
-      "En nuestro salón usamos productos hipoalergénicos y libres de HEMA. Evaluamos tu historial y elegimos los productos más seguros para tu piel. La onicoplastia con IBX® es una alternativa segura que fortalece la uña sin los químicos problemáticos.",
+      "En nuestro salón usamos productos hipoalergénicos y libres de HEMA. Evaluamos tu historial y elegimos los productos más seguros para tu piel. La onicoplastia con tratamiento fortalecedor es una alternativa segura que fortalece la uña sin los químicos problemáticos.",
     affectedArea: "manos",
     recoveryNote: "La piel se recupera en 1-3 semanas al retirar el producto causante. Evitar la re-exposición es clave.",
     category: "salon",

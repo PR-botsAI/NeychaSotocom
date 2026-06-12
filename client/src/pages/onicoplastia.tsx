@@ -199,7 +199,7 @@ export default function Onicoplastia() {
           <StaggerContainer className="grid md:grid-cols-3 gap-8">
             {[
               { step: "1", title: "Evaluación + Preparación", time: "30 min", desc: "Evaluamos tu caso, removemos el producto previo y limpiamos a fondo." },
-              { step: "2", title: "Reconstrucción + IBX®", time: "60 min", desc: "Reconstruimos la uña con prótesis especializada y sellamos con IBX® desde adentro." },
+              { step: "2", title: "Reconstrucción + Fortalecimiento", time: "60 min", desc: "Reconstruimos la uña con prótesis especializada y la sellamos con tratamiento fortalecedor desde adentro." },
               { step: "3", title: "Acabado Profesional", time: "30 min", desc: "GEL Polish profesional, hidratación de cutícula, y revisión final. Sales perfecta." },
             ].map((item) => (
               <StaggerItem key={item.step}>
@@ -234,7 +234,7 @@ export default function Onicoplastia() {
                 <div className="space-y-3 mb-8">
                   {[
                     "Evaluación personalizada completa",
-                    "Tratamiento IBX® certificado",
+                    "Tratamiento fortalecedor certificado",
                     "Reconstrucción con prótesis especializada",
                     "GEL Polish profesional incluido",
                     "Plan de seguimiento personalizado",
@@ -301,9 +301,9 @@ export default function Onicoplastia() {
                 service: "Onicoplastia",
               },
               {
-                quote: "El tratamiento IBX hizo una diferencia increíble. Mis uñas estaban dañadas por años de gel y ahora están más fuertes que nunca. Neycha es una profesional.",
+                quote: "El tratamiento hizo una diferencia increíble. Mis uñas estaban dañadas por años de gel y ahora están más fuertes que nunca. Neycha es una profesional.",
                 name: "Carmen L.",
-                service: "Restauración IBX®",
+                service: "Restauración de uñas",
               },
               {
                 quote: "Después del trauma en mi uña pensé que nunca volvería a verse normal. Una visita con Neycha y no podía creer el resultado. Vale cada centavo.",
@@ -353,13 +353,13 @@ export default function Onicoplastia() {
 
           <Accordion type="single" collapsible className="space-y-3">
             {[
-              { q: "¿Qué es la onicoplastia?", a: "Tratamiento profesional de restauración de uñas afectadas por hongos, trauma u otras condiciones. Utilizamos tecnología IBX® para reconstruir la uña desde adentro." },
+              { q: "¿Qué es la onicoplastia?", a: "Tratamiento profesional de restauración de uñas afectadas por hongos, trauma u otras condiciones. Utilizamos tecnología profesional de fortalecimiento para reconstruir la uña desde adentro." },
               { q: "¿Es doloroso?", a: "No. Es completamente indoloro — tan suave como un manicure regular." },
-              { q: "¿Cuánto tiempo dura?", a: "Hasta 2 horas. Incluye evaluación, tratamiento IBX®, prótesis y GEL Polish. Sales perfecta el mismo día." },
+              { q: "¿Cuánto tiempo dura?", a: "Hasta 2 horas. Incluye evaluación, tratamiento fortalecedor, prótesis y GEL Polish. Sales perfecta el mismo día." },
               { q: "¿Cuál es la inversión?", a: "Primera evaluación: $120 (incluye todo, aplica para manos o pies). Seguimientos: $80. Comparado con láser ($699–$2,000), es una fracción del costo con resultados inmediatos." },
-              { q: "¿Qué hace especial este tratamiento?", a: "Combinamos IBX® con reconstrucción profesional. No solo uñas hermosas — uñas saludables. Evaluación personalizada y seguimiento continuo incluido." },
+              { q: "¿Qué hace especial este tratamiento?", a: "Combinamos fortalecimiento desde adentro con reconstrucción profesional. No solo uñas hermosas — uñas saludables. Evaluación personalizada y seguimiento continuo incluido." },
               { q: "¿Cómo sé si mi caso necesita onicoplastia?", a: "Si tienes una uña con cambio de color, grosor, textura o forma por hongos, trauma u otra causa, es probable que la onicoplastia pueda ayudarte. Puedes mandarme una foto por WhatsApp antes de venir — te oriento sin compromiso si vale el viaje. O agenda directamente tu primera sesión ($120) para un diagnóstico definitivo en persona." },
-              { q: "¿Puedo saber el costo total antes de ir?", a: "La primera sesión es $120 (incluye evaluación completa, tratamiento IBX®, reconstrucción y GEL Polish). Los seguimientos son $80 cada 45 días. El número de sesiones varía según tu caso — esto se determina en la primera visita. No hay costos ocultos." },
+              { q: "¿Puedo saber el costo total antes de ir?", a: "La primera sesión es $120 (incluye evaluación completa, tratamiento fortalecedor, reconstrucción y GEL Polish). Los seguimientos son $80 cada 45 días. El número de sesiones varía según tu caso — esto se determina en la primera visita. No hay costos ocultos." },
             ].map((faq, i) => (
               <AccordionItem
                 key={i}
