@@ -69,6 +69,7 @@ export function BeforeAfterSlider({
     };
 
     const onPointerDown = (e: PointerEvent) => {
+      if (!e.isPrimary || (e.pointerType === "mouse" && e.buttons !== 1)) return;
       interacted.current = true;
       dragging.current = true;
       try {

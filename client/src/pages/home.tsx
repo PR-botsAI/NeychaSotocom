@@ -1,7 +1,8 @@
 import { useLayoutEffect, useRef } from "react";
 import { Link } from "wouter";
 import { ArrowRight, Star } from "lucide-react";
-import { gsap, ScrollTrigger } from "@/lib/scroll";
+import { gsap } from "@/lib/scroll";
+import { useEditorialMotion } from "@/hooks/use-editorial-motion";
 import { BeforeAfterSlider } from "@/components/before-after-slider";
 import { cases } from "@/data/cases";
 
@@ -39,107 +40,29 @@ const TRUST = [
 
 export default function Home() {
   const root = useRef<HTMLDivElement>(null);
-  const counterRef = useRef<HTMLSpanElement>(null);
+
+  useEditorialMotion(root);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        /* ── Hero: scale-into-focus + line-by-line headline build ── */
+        /* ── Hero: scale-into-focus + line-by-line headline build.
+              No blur filter — a frozen frame mid-entrance would leave
+              the photo permanently soft. Scale alone degrades safely. ── */
         gsap
           .timeline({ defaults: { ease: "power3.out" } })
-          .fromTo(
-            ".hero-media",
-            { scale: 1.12, filter: "blur(14px)" },
-            { scale: 1, filter: "blur(0px)", duration: 1.4, ease: "power2.out" }
-          )
-          .from(".hero-line > span", { yPercent: 110, duration: 0.9, stagger: 0.1, ease: "power4.out" }, "-=1.0")
+          .fromTo(".hero-media", { scale: 1.08 }, { scale: 1, duration: 1.2, ease: "power2.out" })
+          .from(".hero-line > span", { yPercent: 110, duration: 0.9, stagger: 0.1, ease: "power4.out" }, "-=0.8")
           .from(".hero-meta", { opacity: 0, y: 14, duration: 0.45, stagger: 0.07 }, "-=0.5");
 
-        /* Hero parallax: media drifts slower than the page */
+        /* Hero parallax: photo drifts slower than the page */
         gsap.to(".hero-media", {
-          yPercent: 14,
+          yPercent: 12,
           ease: "none",
           scrollTrigger: { trigger: ".hero-section", start: "top top", end: "bottom top", scrub: true },
         });
-        gsap.to(".hero-content", {
-          yPercent: -10,
-          opacity: 0.2,
-          ease: "none",
-          scrollTrigger: { trigger: ".hero-section", start: "top top", end: "85% top", scrub: true },
-        });
-
-        /* ── Generic building blocks (used sparingly, on purpose) ── */
-        gsap.utils.toArray<HTMLElement>(".reveal-line > span").forEach((el) => {
-          gsap.from(el, {
-            yPercent: 110,
-            duration: 0.9,
-            ease: "power4.out",
-            scrollTrigger: { trigger: el.parentElement, start: "top 85%", once: true },
-          });
-        });
-
-        gsap.utils.toArray<HTMLElement>(".wipe").forEach((el) => {
-          const img = el.querySelector("img, .wipe-inner");
-          const tl = gsap.timeline({
-            scrollTrigger: { trigger: el, start: "top 78%", once: true },
-          });
-          tl.fromTo(
-            el,
-            { clipPath: "inset(0 0 100% 0)" },
-            { clipPath: "inset(0 0 0% 0)", duration: 1.05, ease: "power3.inOut" }
-          );
-          if (img) tl.fromTo(img, { scale: 1.15 }, { scale: 1, duration: 1.05, ease: "power3.inOut" }, 0);
-        });
-
-        gsap.utils.toArray<HTMLElement>(".stagger-up").forEach((group) => {
-          gsap.from(group.children, {
-            opacity: 0,
-            y: 28,
-            duration: 0.7,
-            stagger: 0.08,
-            ease: "power3.out",
-            scrollTrigger: { trigger: group, start: "top 82%", once: true },
-          });
-        });
-
-        /* ── Pinned transformation gallery: cases wipe through while pinned ── */
-        const slides = gsap.utils.toArray<HTMLElement>(".case-slide");
-        if (slides.length > 1) {
-          const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: ".gallery-pin",
-              start: "top top",
-              // function form re-evaluates on every refresh; px values keep
-              // the pin distance immune to early-layout measurement races
-              end: () => `+=${Math.round(window.innerHeight * slides.length * 0.85)}`,
-              pin: true,
-              scrub: 0.6,
-              onUpdate(self) {
-                if (!counterRef.current) return;
-                const i = Math.min(slides.length - 1, Math.round(self.progress * (slides.length - 1)));
-                const next = String(i + 1).padStart(2, "0");
-                if (counterRef.current.textContent !== next) counterRef.current.textContent = next;
-              },
-            },
-          });
-          slides.forEach((slide, i) => {
-            if (i === 0) return;
-            tl.fromTo(
-              slide,
-              { clipPath: "inset(100% 0 0 0)" },
-              { clipPath: "inset(0% 0 0 0)", duration: 1, ease: "none" },
-              i - 0.45
-            ).fromTo(
-              slide.querySelector(".case-inner"),
-              { scale: 1.08 },
-              { scale: 1, duration: 1, ease: "none" },
-              "<"
-            );
-          });
-          tl.to({}, { duration: 0.4 }); // hold on the last case before unpinning
-        }
 
         /* ── Emotional section: faint gold glow drifts with scroll ── */
         gsap.to(".emotion-glow", {
@@ -150,23 +73,12 @@ export default function Home() {
       });
     }, root);
 
-    // Re-measure once webfonts and hero images have settled — pin geometry
-    // captured against a half-loaded layout would otherwise stick
-    const refresh = () => ScrollTrigger.refresh();
-    document.fonts?.ready.then(refresh);
-    window.addEventListener("load", refresh);
-    const t = window.setTimeout(refresh, 600);
-
-    return () => {
-      window.removeEventListener("load", refresh);
-      window.clearTimeout(t);
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
     <div ref={root} className="relative">
-      {/* ════════ 1 · CINEMATIC HERO ════════ */}
+      {/* ════════ 1 · CINEMATIC HERO — full-bleed, draggable ════════ */}
       <section className="hero-section relative h-[100svh] min-h-[560px] overflow-hidden">
         <div className="hero-media absolute inset-0 will-change-transform">
           <BeforeAfterSlider
@@ -184,7 +96,7 @@ export default function Home() {
 
         {/* pointer-events-none so the slider underneath stays draggable;
             interactive children re-enable themselves */}
-        <div className="hero-content relative z-10 h-full flex flex-col justify-end pb-20 sm:pb-24 pointer-events-none">
+        <div className="hero-content relative z-10 h-full flex flex-col justify-end pb-24 sm:pb-24 pointer-events-none">
           <div className="container mx-auto px-5 sm:px-8">
             <p className="hero-meta text-[11px] sm:text-xs tracking-[0.3em] uppercase text-[var(--cream)]/90 mb-5 [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
               Estudio privado de onicoplastia &mdash; Hatillo, Puerto Rico
@@ -222,54 +134,60 @@ export default function Home() {
               </Link>
             </div>
 
-            <p className="hero-meta mt-8 text-[10px] tracking-[0.25em] uppercase text-white/35">
+            <p className="hero-meta mt-8 text-[10px] tracking-[0.25em] uppercase text-white/40 [text-shadow:0_1px_10px_rgba(0,0,0,0.8)]">
               Desliza la línea para ver la transformación
             </p>
           </div>
         </div>
-      </section>
 
-      {/* ════════ 2 · PINNED TRANSFORMATION GALLERY ════════ */}
-      <section className="relative pt-28 sm:pt-36 pb-10">
-        <div className="container mx-auto px-5 sm:px-8">
-          <p className="reveal-line line-mask text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] mb-4">
-            <span className="inline-block">Casos reales &mdash; sin filtros</span>
-          </p>
-          <h2 className="font-display font-light text-[clamp(2.2rem,6vw,4.5rem)] leading-[1.02] text-[#f5f1ea] max-w-3xl">
-            <span className="reveal-line line-mask"><span className="inline-block">Cada uña cuenta</span></span>
-            <span className="reveal-line line-mask"><span className="inline-block">una <em className="italic text-[var(--cream)]">transformación.</em></span></span>
-          </h2>
+        {/* Scroll affordance — phones need to know there's more below */}
+        <div className="hero-meta absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-1.5 pointer-events-none">
+          <span className="text-[9px] tracking-[0.3em] uppercase text-white/40">Scroll</span>
+          <span className="block w-px h-6 bg-white/30 animate-pulse" />
         </div>
       </section>
 
-      <section className="gallery-pin relative overflow-hidden" style={{ height: "100svh" }}>
-        {GALLERY_CASES.map((c, i) => (
-          <div
-            key={c.id}
-            className="case-slide absolute inset-0"
-            style={{ zIndex: i, clipPath: i === 0 ? undefined : "inset(100% 0 0 0)" }}
-          >
-            <div className="case-inner absolute inset-0 will-change-transform">
-              <BeforeAfterSlider
-                beforeImage={c.beforeImage}
-                afterImage={c.afterImage}
-                className="w-full h-full"
-                alt={c.title}
-                hint={i === 0}
-              />
-              <div className="absolute inset-x-0 bottom-0 h-40 pointer-events-none bg-gradient-to-t from-[#0a0a0a]/85 to-transparent" />
-              <div className="absolute bottom-8 left-5 sm:left-8 pointer-events-none">
-                <p className="font-display italic text-2xl sm:text-3xl text-[#f5f1ea]">{c.title}</p>
-                <p className="text-xs text-white/55 mt-1 max-w-xs">{c.description}</p>
+      {/* ════════ 2 · TRANSFORMATIONS — each case whole, framed, never cut ════════ */}
+      <section className="relative pt-28 sm:pt-36 pb-8">
+        <div className="container mx-auto px-5 sm:px-8 max-w-5xl">
+          <p className="reveal-line line-mask text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] mb-4">
+            <span className="inline-block">Casos reales &mdash; sin filtros</span>
+          </p>
+          <h2 className="font-display font-light text-[clamp(2.2rem,6vw,4.5rem)] leading-[1.02] text-[#f5f1ea] max-w-3xl mb-3">
+            <span className="reveal-line line-mask"><span className="inline-block">Cada uña cuenta</span></span>
+            <span className="reveal-line line-mask"><span className="inline-block">una <em className="italic text-[var(--cream)]">transformación.</em></span></span>
+          </h2>
+          <p className="text-[11px] tracking-[0.25em] uppercase text-white/35">
+            Desliza la línea para comparar
+          </p>
+        </div>
+      </section>
+
+      <section className="relative pb-16 sm:pb-24">
+        <div className="container mx-auto px-5 sm:px-8 max-w-5xl space-y-10 sm:space-y-14">
+          {GALLERY_CASES.map((c, i) => (
+            <div key={c.id} className="wipe border border-white/15 bg-[#0a0a0a]">
+              <div className="wipe-inner relative aspect-[4/3] sm:aspect-[16/9] overflow-hidden will-change-transform">
+                <BeforeAfterSlider
+                  beforeImage={c.beforeImage}
+                  afterImage={c.afterImage}
+                  className="w-full h-full"
+                  alt={c.title}
+                  hint={i === 0}
+                />
+              </div>
+              <div className="flex items-baseline justify-between gap-4 border-t border-white/15 px-5 py-4">
+                <div className="min-w-0">
+                  <p className="font-display italic text-lg sm:text-xl text-[#f5f1ea] truncate">{c.title}</p>
+                  <p className="text-[11px] text-white/45 mt-0.5 truncate">{c.description}</p>
+                </div>
+                <span className="font-display text-2xl text-white/25 flex-shrink-0">
+                  {String(i + 1).padStart(2, "0")}
+                  <span className="text-sm text-white/20"> / {String(GALLERY_CASES.length).padStart(2, "0")}</span>
+                </span>
               </div>
             </div>
-          </div>
-        ))}
-
-        {/* Case counter */}
-        <div className="absolute bottom-8 right-5 sm:right-8 z-20 pointer-events-none flex items-baseline gap-1.5 text-[#f5f1ea]">
-          <span ref={counterRef} className="font-display text-3xl sm:text-4xl">01</span>
-          <span className="text-xs text-white/45 tracking-widest">/ {String(GALLERY_CASES.length).padStart(2, "0")}</span>
+          ))}
         </div>
       </section>
 
@@ -333,7 +251,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="stagger-up mt-10 flex flex-wrap items-center justify-center gap-2 text-white/40">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-2 text-white/40">
             <span className="flex gap-1" aria-label="5 estrellas">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-3.5 h-3.5 fill-[var(--gold)] text-[var(--gold)]" />
@@ -346,7 +264,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ════════ 6 · BOOKING ════════ */}
+      {/* ════════ 6 · BOOKING — static and stable, no reveal on the money button ════════ */}
       <section className="relative py-32 sm:py-44">
         <div className="container mx-auto px-5 sm:px-8 text-center">
           <h2 className="font-display font-light text-[clamp(2.4rem,6vw,5rem)] leading-[1.02] text-[#f5f1ea] mb-6">
@@ -357,7 +275,7 @@ export default function Home() {
             Seguimientos $80.
           </p>
 
-          <div className="stagger-up flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-6">
             <a
               href={BOOKSY_URL}
               target="_blank"

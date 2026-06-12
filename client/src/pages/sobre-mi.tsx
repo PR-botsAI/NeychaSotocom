@@ -1,296 +1,203 @@
-import { Button } from "@/components/ui/button";
-import { Calendar, Award, Star } from "lucide-react";
-import { motion } from "framer-motion";
-import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
-import { MagneticButton } from "@/components/magnetic-button";
-import { AnimatedCounter } from "@/components/animated-counter";
+import { useRef } from "react";
+import { ArrowRight } from "lucide-react";
+import { useEditorialMotion } from "@/hooks/use-editorial-motion";
 
 const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
 
+const CREDENTIALS = [
+  { label: "Enfermería · UPRA Arecibo", desc: "Formación universitaria con prácticas clínicas — disciplina e higiene aplicadas a estética." },
+  { label: "Certificación Internacional", desc: "Una de las pocas técnicas en PR certificadas en sistemas profesionales de fortalecimiento de uñas." },
+  { label: "40+ Reseñas 5.0/5", desc: "Calificación perfecta en Booksy — clientes reales, resultados reales." },
+  { label: "Estándares HEMA/TPO-Free", desc: "Productos sin los alérgenos más comunes en servicios de uñas." },
+];
+
+const MINI_CASES = [
+  { before: "/cases/Caso1_before.png", after: "/cases/Caso1_After.png" },
+  { before: "/cases/Caso3_before.png", after: "/cases/Caso3_after.png" },
+  { before: "/cases/Caso4_before.png", after: "/cases/Caso4_after.png" },
+  { before: "/cases/Caso6_before.png", after: "/cases/Caso6_after.png" },
+];
+
 export default function SobreMi() {
+  const root = useRef<HTMLDivElement>(null);
+  useEditorialMotion(root);
+
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
-
-      {/* Hero */}
-      <section className="relative py-24 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(242,230,216,0.06)_0%,transparent_50%)]" />
-        <motion.div
-          className="absolute top-0 left-1/3 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        <div className="container mx-auto max-w-4xl relative z-10">
-          <FadeIn>
-            <div className="flex flex-col lg:flex-row gap-12 items-center">
-              {/* Photo (transparent cutout — soft glow halo behind, no hard frame) */}
-              <div className="flex-shrink-0 relative">
-                {/* Glow halo */}
-                <div
-                  className="absolute inset-0 -m-10 bg-[radial-gradient(circle,rgba(242,230,216,0.18)_0%,rgba(242,230,216,0.05)_40%,transparent_70%)] blur-2xl pointer-events-none"
-                  aria-hidden="true"
-                />
-                <motion.div
-                  className="relative w-56 h-56 sm:w-72 sm:h-72"
-                  initial={{ opacity: 0, scale: 0.95, filter: "blur(8px)" }}
-                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <img
-                    src="/assets/neycha-profile.png?v=transparent"
-                    alt="Neycha Soto — Enfermera y especialista en onicoplastia en Hatillo, PR"
-                    className="w-full h-full object-contain drop-shadow-[0_8px_24px_rgba(242,230,216,0.2)]"
-                  />
-                </motion.div>
-              </div>
-
-              {/* Intro */}
-              <div className="flex-1 text-center lg:text-left">
-                <motion.p
-                  className="text-sm font-medium text-[#F2E6D8]/60 tracking-widest uppercase mb-3"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  Conoce a tu Especialista
-                </motion.p>
-                <motion.h1
-                  className="text-3xl sm:text-5xl font-bold mb-5"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <span className="font-display font-light text-[#f5f1ea]">
-                    Soy Neycha Soto
-                  </span>
-                </motion.h1>
-                <motion.p
-                  className="text-base sm:text-lg text-[#F2E6D8] font-medium mb-4"
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.5 }}
-                >
-                  Enfermera graduada y especialista en onicoplastia
-                </motion.p>
-
-                {/* Credential badges */}
-                <motion.div
-                  className="flex flex-wrap gap-2 justify-center lg:justify-start"
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.6 }}
-                >
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 px-3 py-1.5 text-xs font-semibold text-[#F2E6D8]">
-                    <Award className="w-3 h-3" /> Técnica Certificada
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 px-3 py-1.5 text-xs font-semibold text-[#F2E6D8]">
-                    <Star className="w-3 h-3 fill-[#F2E6D8]" />
-                    <AnimatedCounter value={40} suffix="+" /> Reseñas 5⭐
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 px-3 py-1.5 text-xs font-semibold text-[#F2E6D8]">
-                    Hatillo, PR
-                  </span>
-                </motion.div>
-              </div>
+    <div ref={root} className="relative min-h-screen">
+      {/* ════════ HERO ════════ */}
+      <section className="relative pt-28 sm:pt-36 pb-16 sm:pb-20 px-5 sm:px-8">
+        <div className="container mx-auto max-w-4xl">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+            <div className="flex-shrink-0 relative">
+              <div
+                className="absolute inset-0 -m-10 bg-[radial-gradient(circle,rgba(242,230,216,0.14)_0%,rgba(242,230,216,0.04)_40%,transparent_70%)] blur-2xl pointer-events-none"
+                aria-hidden="true"
+              />
+              <img
+                src="/assets/neycha-profile.png?v=transparent"
+                alt="Neycha Soto — Enfermera y especialista en onicoplastia en Hatillo, PR"
+                className="relative w-56 h-56 sm:w-72 sm:h-72 object-contain drop-shadow-[0_8px_24px_rgba(242,230,216,0.18)]"
+              />
             </div>
-          </FadeIn>
+
+            <div className="flex-1 text-center lg:text-left">
+              <p className="reveal-line line-mask text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] mb-5">
+                <span className="inline-block">Conoce a tu especialista</span>
+              </p>
+              <h1 className="font-display font-light text-[clamp(2.6rem,6vw,4.6rem)] leading-[1.02] text-[#f5f1ea] mb-5">
+                <span className="reveal-line line-mask"><span className="inline-block">Soy <em className="italic text-[var(--cream)]">Neycha Soto.</em></span></span>
+              </h1>
+              <p className="text-sm sm:text-base font-light text-white/65 mb-6">
+                Enfermera graduada y especialista en onicoplastia
+              </p>
+              <p className="text-[11px] tracking-[0.2em] uppercase text-white/40">
+                Técnica Certificada &mdash; 40+ Reseñas 5.0 &mdash; Hatillo, PR
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <div className="section-divider mx-auto max-w-xl" />
+      {/* ════════ STORY ════════ */}
+      <section className="py-16 sm:py-24 px-5 sm:px-8">
+        <div className="container mx-auto max-w-2xl">
+          <div className="space-y-7 text-[15px] sm:text-base font-light text-white/70 leading-relaxed">
+            <p>
+              Mi historia empieza en la UPRA — Universidad de Puerto Rico, Arecibo —
+              donde estudié enfermería. Esa formación me dio algo que no se borra:
+              disciplina, higiene clínica, atención al detalle, y un respeto profundo
+              por el cuidado de otra persona.
+            </p>
+            <p>
+              Aunque era enfermera de formación, mi vida laboral me llevó a oficinas
+              médicas — al frente, conectando con personas todos los días. Pero nunca
+              dejé de estudiar, nunca dejé de buscar. En el fondo sabía que mi camino
+              estaba en otro lado.
+            </p>
 
-      {/* Story */}
-      <section className="px-4 py-20 relative">
-        <div className="container mx-auto max-w-2xl relative">
-          <FadeIn>
-            <div className="space-y-6 text-gray-300 text-base sm:text-lg leading-relaxed">
-              <p>
-                Mi historia empieza en la UPRA — Universidad de Puerto Rico, Arecibo —
-                donde estudié enfermería. Esa formación me dio algo que no se borra:
-                disciplina, higiene clínica, atención al detalle, y un respeto profundo
-                por el cuidado de otra persona.
-              </p>
-              <p>
-                Aunque era enfermera de formación, mi vida laboral me llevó a oficinas
-                médicas — al frente, conectando con personas todos los días. Pero nunca
-                dejé de estudiar, nunca dejé de buscar. En el fondo sabía que mi camino
-                estaba en otro lado.
-              </p>
-              <p className="text-[#F2E6D8] font-medium">
+            <p className="reveal-line line-mask py-4">
+              <span className="inline-block font-display italic text-3xl sm:text-4xl text-[var(--cream)]">
                 Las uñas me salvaron.
-              </p>
-              <p>
-                Encontré la combinación que estaba buscando: la precisión y los
-                estándares que aprendí en salud, aplicados al arte. Devolverle la
-                confianza a personas que llevaban años escondiendo sus uñas se
-                convirtió en mi verdadera vocación.
-              </p>
-              <p className="text-gray-400">
-                Porque eso es lo que hacen las uñas dañadas: te obligan a esconderte.
-                A pensar dos veces antes de ponerte sandalias. A cruzar los pies en la playa.
-                A evitar que alguien te vea las manos.
-              </p>
-              <p className="text-gray-300">
-                Hoy cuento con certificación internacional en sistemas profesionales
-                de fortalecimiento de uñas — una de las pocas técnicas con esa
-                credencial en Puerto Rico — trabajando uno-a-uno en estudio privado
-                en Hatillo. Siempre te recomiendo preguntarle a tu técnica si está
-                certificada, no importa con quién vayas.
-              </p>
-              <p className="text-gray-400">
-                Cada cliente llega con una historia diferente: hongos después de años
-                de tratamientos fallidos, traumas por accidentes, deformaciones,
-                uñas destruidas por gel mal removido, pies comprometidos. Me siento
-                con cada uno, evalúo el caso, y diseño un plan que funciona para esa
-                uña específica — no un protocolo genérico.
-              </p>
+              </span>
+            </p>
 
-              <motion.div
-                className="mt-8 p-6 bg-[#F2E6D8]/5 rounded-xl border border-[#F2E6D8]/10"
-                whileHover={{ scale: 1.01 }}
-              >
-                <p className="text-base text-gray-200 italic">
-                  &ldquo;Cada cliente es único. Por eso trabajo solo con cita previa &mdash;
-                  para dedicarte toda mi atención y darte resultados excepcionales.&rdquo;
-                </p>
-                <p className="text-sm text-[#F2E6D8]/70 mt-3 font-medium">&mdash; Neycha Soto</p>
-              </motion.div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
+            <p>
+              Encontré la combinación que estaba buscando: la precisión y los
+              estándares que aprendí en salud, aplicados al arte. Devolverle la
+              confianza a personas que llevaban años escondiendo sus uñas se
+              convirtió en mi verdadera vocación.
+            </p>
+            <p className="text-white/50">
+              Porque eso es lo que hacen las uñas dañadas: te obligan a esconderte.
+              A pensar dos veces antes de ponerte sandalias. A cruzar los pies en la playa.
+              A evitar que alguien te vea las manos.
+            </p>
+            <p>
+              Hoy cuento con certificación internacional en sistemas profesionales
+              de fortalecimiento de uñas — una de las pocas técnicas con esa
+              credencial en Puerto Rico — trabajando uno-a-uno en estudio privado
+              en Hatillo. Siempre te recomiendo preguntarle a tu técnica si está
+              certificada, no importa con quién vayas.
+            </p>
+            <p className="text-white/50">
+              Cada cliente llega con una historia diferente: hongos después de años
+              de tratamientos fallidos, traumas por accidentes, deformaciones,
+              uñas destruidas por gel mal removido, pies comprometidos. Me siento
+              con cada uno, evalúo el caso, y diseño un plan que funciona para esa
+              uña específica — no un protocolo genérico.
+            </p>
 
-      <div className="section-divider mx-auto max-w-xl" />
-
-      {/* Credentials */}
-      <section className="px-4 py-16 relative">
-        <div className="container mx-auto max-w-3xl">
-          <FadeIn>
-            <h2 className="text-2xl font-bold text-center mb-10">
-              <TextReveal text="Formación y Credenciales" className="text-white" />
-            </h2>
-          </FadeIn>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerDelay={0.1}>
-            {[
-              { icon: "🎓", label: "Enfermería · UPRA Arecibo", desc: "Formación universitaria con prácticas clínicas — disciplina e higiene aplicadas a estética." },
-              { icon: "🏅", label: "Certificación Internacional", desc: "Una de las pocas técnicas en PR certificadas en sistemas profesionales de fortalecimiento de uñas." },
-              { icon: "⭐", label: "40+ Reseñas 5.0/5", desc: "Calificación perfecta en Booksy — clientes reales, resultados reales." },
-              { icon: "🔬", label: "Estándares HEMA/TPO-Free", desc: "Productos sin los alérgenos más comunes en servicios de uñas." },
-            ].map((c, i) => (
-              <StaggerItem key={i}>
-                <motion.div
-                  className="flex items-start gap-4 p-5 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-300"
-                  whileHover={{ y: -2, transition: { type: "spring", stiffness: 300, damping: 25 } }}
-                >
-                  <span className="text-2xl flex-shrink-0">{c.icon}</span>
-                  <div>
-                    <h3 className="font-semibold text-white text-sm mb-1">{c.label}</h3>
-                    <p className="text-xs text-gray-400 leading-relaxed">{c.desc}</p>
-                  </div>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      <div className="section-divider mx-auto max-w-xl" />
-
-      {/* Mini gallery — work photos */}
-      <section className="px-4 py-16 relative">
-        <div className="container mx-auto max-w-3xl">
-          <FadeIn>
-            <h2 className="text-2xl font-bold text-center mb-10">
-              <TextReveal text="Casos Reales" className="text-white" />
-            </h2>
-          </FadeIn>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {[
-              { before: "/cases/Caso1_before.png", after: "/cases/Caso1_After.png" },
-              { before: "/cases/Caso3_before.png", after: "/cases/Caso3_after.png" },
-              { before: "/cases/Caso4_before.png", after: "/cases/Caso4_after.png" },
-              { before: "/cases/Caso6_before.png", after: "/cases/Caso6_after.png" },
-            ].map((c, i) => (
-              <FadeIn key={i} delay={0.1 * i}>
-                <div className="relative rounded-xl overflow-hidden border border-zinc-800 aspect-square group">
-                  <img
-                    src={c.before}
-                    alt={`Caso ${i + 1} antes`}
-                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
-                    loading="lazy"
-                  />
-                  <img
-                    src={c.after}
-                    alt={`Caso ${i + 1} después`}
-                    className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute bottom-2 left-2 right-2 flex justify-between">
-                    <span className="text-[9px] font-bold uppercase bg-black/60 backdrop-blur-sm text-white px-1.5 py-0.5 rounded group-hover:opacity-0 transition-opacity">Antes</span>
-                    <span className="text-[9px] font-bold uppercase bg-[#F2E6D8] text-black px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">Después</span>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
+            <blockquote className="border-l border-[var(--gold)]/60 pl-6 py-2 mt-10">
+              <p className="font-display italic text-lg sm:text-xl text-[#f5f1ea] leading-relaxed">
+                &ldquo;Cada cliente es único. Por eso trabajo solo con cita previa &mdash;
+                para dedicarte toda mi atención y darte resultados excepcionales.&rdquo;
+              </p>
+              <footer className="text-[11px] tracking-[0.2em] uppercase text-[var(--cream)]/70 mt-3">
+                &mdash; Neycha Soto
+              </footer>
+            </blockquote>
           </div>
-          <FadeIn delay={0.3}>
-            <p className="text-center text-xs text-gray-600 mt-4">Pasa el cursor sobre cada imagen para ver el resultado</p>
-          </FadeIn>
         </div>
       </section>
 
-      <div className="section-divider mx-auto max-w-xl" />
+      {/* ════════ CREDENTIALS ════════ */}
+      <section className="py-16 sm:py-24 px-5 sm:px-8">
+        <div className="container mx-auto max-w-3xl">
+          <h2 className="font-display font-light text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.05] text-[#f5f1ea] mb-10">
+            <span className="reveal-line line-mask"><span className="inline-block">Formación y <em className="italic text-[var(--cream)]">credenciales.</em></span></span>
+          </h2>
 
-      {/* CTA */}
-      <FadeIn>
-        <section className="px-4 py-24">
-          <div className="container mx-auto max-w-3xl">
-            <motion.div
-              className="relative rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-black p-12 sm:p-16 text-center border border-zinc-800 overflow-hidden"
-              whileHover={{ scale: 1.01, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
-            >
-              <motion.div
-                className="absolute top-0 left-0 w-80 h-80 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-                animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.7, 0.4] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div
-                className="absolute bottom-0 right-0 w-80 h-80 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-                animate={{ scale: [1.1, 1, 1.1], opacity: [0.7, 0.4, 0.7] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              />
-
-              <div className="relative space-y-5">
-                <h2 className="text-2xl sm:text-3xl font-bold">
-                  <span className="font-display font-light text-[#f5f1ea]">
-                    ¿Lista para tu transformación?
-                  </span>
-                </h2>
-                <p className="text-gray-400 text-sm max-w-md mx-auto">
-                  Agenda tu cita o mándame foto de tu uña antes. Sin compromiso.
-                </p>
-
-                <div className="flex justify-center items-center pt-2">
-                  <MagneticButton>
-                    <Button
-                      className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 py-7 text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300"
-                      onClick={() => window.open(BOOKSY_URL, "_blank")}
-                    >
-                      <Calendar className="w-5 h-5 mr-2" />
-                      AGENDA TU CITA
-                    </Button>
-                  </MagneticButton>
-                </div>
-
-                <div className="flex items-center justify-center gap-2 text-sm text-gray-500 pt-2">
-                  <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  Estudio privado &bull; Solo con cita previa &bull; Hatillo, PR
-                </div>
+          <div className="stagger-up">
+            {CREDENTIALS.map((c) => (
+              <div key={c.label} className="grid sm:grid-cols-[240px_1fr] gap-x-10 gap-y-1 py-6 border-t border-white/10">
+                <h3 className="text-sm tracking-[0.12em] uppercase text-[var(--cream)]">{c.label}</h3>
+                <p className="text-sm font-light text-white/50 leading-relaxed">{c.desc}</p>
               </div>
-            </motion.div>
+            ))}
           </div>
-        </section>
-      </FadeIn>
+        </div>
+      </section>
+
+      {/* ════════ MINI GALLERY — hover/tap to reveal the result ════════ */}
+      <section className="py-16 sm:py-24 px-5 sm:px-8">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="font-display font-light text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.05] text-[#f5f1ea] mb-3">
+            <span className="reveal-line line-mask"><span className="inline-block">Casos <em className="italic text-[var(--cream)]">reales.</em></span></span>
+          </h2>
+          <p className="text-[11px] tracking-[0.25em] uppercase text-white/35 mb-10">
+            Pasa el cursor sobre cada imagen para ver el resultado
+          </p>
+
+          <div className="stagger-up grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {MINI_CASES.map((c, i) => (
+              <div key={i} className="relative overflow-hidden border border-white/15 aspect-square group">
+                <img
+                  src={c.before}
+                  alt={`Caso ${i + 1} antes`}
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+                  loading="lazy"
+                />
+                <img
+                  src={c.after}
+                  alt={`Caso ${i + 1} después`}
+                  className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  loading="lazy"
+                />
+                <span className="absolute bottom-2.5 left-2.5 text-[9px] tracking-[0.2em] uppercase bg-black/50 backdrop-blur-sm text-white/85 px-2 py-0.5 group-hover:opacity-0 transition-opacity duration-200">
+                  Antes
+                </span>
+                <span className="absolute bottom-2.5 right-2.5 text-[9px] tracking-[0.2em] uppercase bg-[var(--cream)]/90 text-black px-2 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  Después
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════ CTA ════════ */}
+      <section className="py-24 sm:py-36 px-5 sm:px-8">
+        <div className="container mx-auto text-center">
+          <h2 className="font-display font-light text-[clamp(2.2rem,5.5vw,4.2rem)] leading-[1.02] text-[#f5f1ea] mb-10">
+            <span className="reveal-line line-mask"><span className="inline-block">¿Lista para tu <em className="italic text-[var(--cream)]">transformación?</em></span></span>
+          </h2>
+
+          <div className="flex flex-col items-center gap-6">
+            <a
+              href={BOOKSY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-[var(--cream)] text-black px-12 py-5 text-sm font-medium tracking-[0.2em] uppercase transition-[transform,box-shadow] duration-200 hover:shadow-[0_12px_50px_rgba(242,230,216,0.25)] hover:-translate-y-0.5 active:scale-[0.98]"
+            >
+              Agenda tu cita
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/35">
+              Estudio privado &mdash; Solo con cita previa &mdash; Hatillo, PR
+            </p>
+          </div>
+        </div>
+      </section>
 
       <div className="h-16 md:hidden" />
     </div>

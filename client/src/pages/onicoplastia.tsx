@@ -1,375 +1,269 @@
-import { motion } from "framer-motion";
-import { FadeIn, StaggerContainer, StaggerItem, TextReveal } from "@/components/motion-wrapper";
-import { Button } from "@/components/ui/button";
-import { MagneticButton } from "@/components/magnetic-button";
-import { AnimatedCounter } from "@/components/animated-counter";
-import { TransformationGallery } from "@/components/transformation-gallery";
+import { useRef } from "react";
+import { ArrowRight, Star } from "lucide-react";
+import { useEditorialMotion } from "@/hooks/use-editorial-motion";
+import { BeforeAfterSlider } from "@/components/before-after-slider";
+import { StillCompare } from "@/components/still-compare";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Calendar, CheckCircle, Star, Sparkles, MessageCircle, ArrowUp } from "lucide-react";
 import { cases } from "@/data/cases";
 
 const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
 
+const STATS = [
+  { figure: "40+", label: "Reseñas 5 estrellas" },
+  { figure: "5.0", label: "Calificación Booksy" },
+  { figure: "0", label: "Dolor" },
+];
+
+const STEPS = [
+  { step: "01", title: "Evaluación + Preparación", time: "30 min", desc: "Evaluamos tu caso, removemos el producto previo y limpiamos a fondo." },
+  { step: "02", title: "Reconstrucción + Fortalecimiento", time: "60 min", desc: "Reconstruimos la uña con prótesis especializada y la sellamos con tratamiento fortalecedor desde adentro." },
+  { step: "03", title: "Acabado Profesional", time: "30 min", desc: "GEL Polish profesional, hidratación de cutícula, y revisión final. Sales perfecta." },
+];
+
+const INCLUDED = [
+  "Evaluación personalizada completa",
+  "Tratamiento fortalecedor certificado",
+  "Reconstrucción con prótesis especializada",
+  "GEL Polish profesional incluido",
+  "Plan de seguimiento personalizado",
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "Llevaba años escondiendo mis pies. Neycha me devolvió la confianza — ahora voy a la playa, uso sandalias, vivo sin pensar en eso.",
+    name: "María G.",
+    service: "Onicoplastia",
+  },
+  {
+    quote: "El tratamiento hizo una diferencia increíble. Mis uñas estaban dañadas por años de gel y ahora están más fuertes que nunca. Neycha es una profesional.",
+    name: "Carmen L.",
+    service: "Restauración de uñas",
+  },
+  {
+    quote: "Después del trauma en mi uña pensé que nunca volvería a verse normal. Una visita con Neycha y no podía creer el resultado. Vale cada centavo.",
+    name: "Ana P.",
+    service: "Onicoplastia por Trauma",
+  },
+];
+
+const FAQS = [
+  { q: "¿Qué es la onicoplastia?", a: "Tratamiento profesional de restauración de uñas afectadas por hongos, trauma u otras condiciones. Utilizamos tecnología profesional de fortalecimiento para reconstruir la uña desde adentro." },
+  { q: "¿Es doloroso?", a: "No. Es completamente indoloro — tan suave como un manicure regular." },
+  { q: "¿Cuánto tiempo dura?", a: "Hasta 2 horas. Incluye evaluación, tratamiento fortalecedor, prótesis y GEL Polish. Sales perfecta el mismo día." },
+  { q: "¿Cuál es la inversión?", a: "Primera evaluación: $120 (incluye todo, aplica para manos o pies). Seguimientos: $80. Comparado con láser ($699–$2,000), es una fracción del costo con resultados inmediatos." },
+  { q: "¿Qué hace especial este tratamiento?", a: "Combinamos fortalecimiento desde adentro con reconstrucción profesional. No solo uñas hermosas — uñas saludables. Evaluación personalizada y seguimiento continuo incluido." },
+  { q: "¿Cómo sé si mi caso necesita onicoplastia?", a: "Si tienes una uña con cambio de color, grosor, textura o forma por hongos, trauma u otra causa, es probable que la onicoplastia pueda ayudarte. Puedes mandarme una foto por WhatsApp antes de venir — te oriento sin compromiso si vale el viaje. O agenda directamente tu primera sesión ($120) para un diagnóstico definitivo en persona." },
+  { q: "¿Puedo saber el costo total antes de ir?", a: "La primera sesión es $120 (incluye evaluación completa, tratamiento fortalecedor, reconstrucción y GEL Polish). Los seguimientos son $80 cada 45 días. El número de sesiones varía según tu caso — esto se determina en la primera visita. No hay costos ocultos." },
+];
+
+const STANDARDS = [
+  { name: "HEMA-Free", why: "Sin el monómero más asociado con reacciones alérgicas en servicios de uñas." },
+  { name: "Di-HEMA-Free", why: "Variante igualmente sensibilizante eliminada." },
+  { name: "TPO-Free", why: "Cumple el estándar europeo más estricto (UE 2025)." },
+  { name: "Vegano", why: "Sin ingredientes animales. Sin testeo animal." },
+  { name: "Hipoalergénico", why: "Apto para piel sensible y con historial de reacciones." },
+  { name: "Bajo Olor", why: "Ambiente respirable durante toda la sesión." },
+];
+
 export default function Onicoplastia() {
-  const onicoplastiaCases = cases.filter(c => c.category === "onicoplastia");
+  const root = useRef<HTMLDivElement>(null);
+  useEditorialMotion(root);
+
+  const onicoplastiaCases = cases.filter((c) => c.category === "onicoplastia");
 
   return (
-    <div className="min-h-screen bg-black text-white">
-
-      {/* ═══════════════════════════════════════════════
-          HERO — Full-bleed before/after with headline overlay
-          The image IS the hero. No fluff.
-      ═══════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden">
-        {/* Split before/after hero image */}
-        <div className="relative w-full h-[70vh] sm:h-[80vh] max-h-[700px]">
-          <div className="absolute inset-0 grid grid-cols-2">
-            <div className="relative overflow-hidden">
-              <img
-                src="/cases/Caso2_before.png"
-                alt="Antes del tratamiento"
-                className="w-full h-full object-cover scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
-              <motion.span
-                className="absolute top-24 left-5 text-[10px] tracking-[0.25em] uppercase bg-black/50 backdrop-blur-sm text-white/90 px-2.5 py-1"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-              >
-                Antes
-              </motion.span>
-            </div>
-            <div className="relative overflow-hidden">
-              <img
-                src="/cases/Caso2_after.png"
-                alt="Después del tratamiento"
-                className="w-full h-full object-cover scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-l from-black/40 to-transparent" />
-              <motion.span
-                className="absolute top-24 right-5 text-[10px] tracking-[0.25em] uppercase bg-[#F2E6D8]/90 text-black px-2.5 py-1"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-              >
-                Después
-              </motion.span>
-            </div>
+    <div ref={root} className="relative min-h-screen">
+      {/* ════════ HERO — the photo first, the words on solid ground ════════ */}
+      <section className="relative">
+        <div className="wipe relative h-[52svh] min-h-[340px] sm:h-[62svh] overflow-hidden">
+          <div className="wipe-inner absolute inset-0 will-change-transform">
+            <StillCompare
+              beforeImage="/cases/Caso2_before.png"
+              afterImage="/cases/Caso2_after.png"
+              className="w-full h-full"
+              priority
+              alt="Antes y después del tratamiento"
+            />
           </div>
+          <div className="absolute inset-x-0 top-0 h-20 pointer-events-none bg-gradient-to-b from-[#0a0a0a]/50 to-transparent" />
+        </div>
 
-          {/* Center divider */}
-          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-1 bg-[#F2E6D8] z-10 shadow-[0_0_20px_rgba(242,230,216,0.5)]" />
+        <div className="container mx-auto px-5 sm:px-8 max-w-3xl text-center pt-14 sm:pt-16 pb-6">
+          <h1 className="font-display font-light text-[clamp(2.4rem,6vw,4.5rem)] leading-[1.02] text-[#f5f1ea] mb-5">
+            <span className="reveal-line line-mask"><span className="inline-block">Deja de esconder</span></span>
+            <span className="reveal-line line-mask"><span className="inline-block">tus <em className="italic text-[var(--cream)]">uñas.</em></span></span>
+          </h1>
+          <p className="text-sm sm:text-base font-light text-white/65 leading-relaxed mb-9">
+            Playa, sandalias, pies descalzos &mdash; vuelve a vivir sin limitaciones.
+          </p>
+          <a
+            href={BOOKSY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 bg-[var(--cream)] text-black px-9 py-4 text-xs sm:text-sm font-medium tracking-[0.18em] uppercase transition-[transform,box-shadow] duration-200 hover:shadow-[0_12px_50px_rgba(242,230,216,0.25)] hover:-translate-y-0.5 active:scale-[0.98]"
+          >
+            Agendar mi primera sesión &mdash; $120
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </section>
 
-          {/* Bottom gradient overlay for text */}
-          <div className="absolute bottom-0 inset-x-0 h-1/2 bg-gradient-to-t from-black via-black/80 to-transparent z-10" />
-
-          {/* Headline overlay at bottom */}
-          <div className="absolute bottom-0 inset-x-0 z-20 px-4 pb-8 sm:pb-12">
-            <div className="container mx-auto max-w-4xl text-center">
-              <motion.h1
-                className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 tracking-tight"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <span className="font-display font-light text-[#f5f1ea]">
-                  Deja de Esconder Tus Uñas.
-                </span>
-              </motion.h1>
-              <motion.p
-                className="text-lg sm:text-xl text-gray-300 mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-              >
-                Playa, sandalias, pies descalzos — vuelve a vivir sin limitaciones
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.6 }}
-              >
-                <MagneticButton>
-                  <Button
-                    size="lg"
-                    className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-base sm:text-lg px-8 sm:px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105"
-                    asChild
-                  >
-                    <a href={BOOKSY_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                      <Calendar className="w-5 h-5 flex-shrink-0" />
-                      AGENDAR MI PRIMERA SESIÓN — $120
-                    </a>
-                  </Button>
-                </MagneticButton>
-              </motion.div>
-            </div>
+      {/* ════════ PROOF BAR ════════ */}
+      <section className="py-12 sm:py-16">
+        <div className="container mx-auto px-5 sm:px-8 max-w-3xl">
+          <div className="stagger-up grid grid-cols-3 border-t border-b border-white/10">
+            {STATS.map((s) => (
+              <div key={s.label} className="text-center py-7">
+                <p className="font-display text-3xl sm:text-4xl text-[var(--cream)]">{s.figure}</p>
+                <p className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-white/40 mt-2">{s.label}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          SOCIAL PROOF COUNTER BAR — Big bold numbers
-      ═══════════════════════════════════════════════ */}
-      <section className="border-b border-zinc-800 bg-zinc-950">
-        <div className="container mx-auto px-4 py-10">
-          <FadeIn>
-            <div className="grid grid-cols-3 gap-8 max-w-3xl mx-auto text-center">
-              <div>
-                <div className="text-4xl sm:text-5xl font-bold text-[#F2E6D8]">
-                  <AnimatedCounter value={40} suffix="+" />
+      {/* ════════ TRANSFORMATION WALL — every case its own frame ════════ */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-5 sm:px-8 max-w-6xl">
+          <p className="reveal-line line-mask text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] mb-4">
+            <span className="inline-block">Casos reales</span>
+          </p>
+          <h2 className="font-display font-light text-[clamp(2rem,5vw,3.6rem)] leading-[1.05] text-[#f5f1ea] mb-3">
+            <span className="reveal-line line-mask"><span className="inline-block">Cada caso, una <em className="italic text-[var(--cream)]">transformación.</em></span></span>
+          </h2>
+          <p className="text-[11px] tracking-[0.25em] uppercase text-white/35 mb-12">
+            Desliza la línea para comparar
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {onicoplastiaCases.map((c, i) => (
+              <div key={c.id} className="wipe border border-white/15 bg-[#0a0a0a]">
+                <div className="wipe-inner relative aspect-[4/3] overflow-hidden will-change-transform">
+                  <BeforeAfterSlider
+                    beforeImage={c.beforeImage}
+                    afterImage={c.afterImage}
+                    className="w-full h-full"
+                    alt={c.title}
+                    hint={i === 0}
+                  />
                 </div>
-                <p className="text-xs sm:text-sm text-gray-500 mt-2 uppercase tracking-wider">Reseñas 5 Estrellas</p>
+                <div className="flex items-baseline justify-between gap-4 border-t border-white/15 px-5 py-4">
+                  <div className="min-w-0">
+                    <p className="font-display italic text-lg text-[#f5f1ea] truncate">{c.title}</p>
+                    <p className="text-[11px] text-white/45 mt-0.5 truncate">{c.description}</p>
+                  </div>
+                  <span className="font-display text-xl text-white/25 flex-shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                </div>
               </div>
-              <div>
-                <div className="text-4xl sm:text-5xl font-bold text-[#F2E6D8]">5.0</div>
-                <p className="text-xs sm:text-sm text-gray-500 mt-2 uppercase tracking-wider">Calificación Booksy</p>
-              </div>
-              <div>
-                <div className="text-4xl sm:text-5xl font-bold text-[#F2E6D8]">0</div>
-                <p className="text-xs sm:text-sm text-gray-500 mt-2 uppercase tracking-wider">Dolor</p>
-              </div>
-            </div>
-          </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          TRANSFORMATION WALL — All cases, full gallery
-          This IS the page. Let the work speak.
-      ═══════════════════════════════════════════════ */}
-      <section className="px-4 py-16 sm:py-20">
-        <div className="container mx-auto">
-          <FadeIn>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold">
-                <TextReveal
-                  text="Cada Caso, Una Transformación"
-                  className="font-display font-light text-[#f5f1ea]"
-                />
-              </h2>
-              <p className="text-gray-500 mt-3 text-sm">
-                Desliza para comparar antes y después
-              </p>
-            </div>
-          </FadeIn>
+      {/* ════════ PROCESS — three numbered movements ════════ */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-5 sm:px-8 max-w-4xl">
+          <h2 className="font-display font-light text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.05] text-[#f5f1ea] mb-12">
+            <span className="reveal-line line-mask"><span className="inline-block">Así de <em className="italic text-[var(--cream)]">simple.</em></span></span>
+          </h2>
 
-          <FadeIn delay={0.2}>
-            <TransformationGallery cases={onicoplastiaCases} />
-          </FadeIn>
-
-          <FadeIn delay={0.3}>
-            <div className="mt-12 text-center">
-              <MagneticButton>
-                <Button
-                  size="lg"
-                  className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-base px-8 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105"
-                  asChild
-                >
-                  <a href={BOOKSY_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                    <Calendar className="w-5 h-5 flex-shrink-0" />
-                    QUIERO MI TRANSFORMACIÓN
-                  </a>
-                </Button>
-              </MagneticButton>
-            </div>
-          </FadeIn>
+          <div className="stagger-up">
+            {STEPS.map((item) => (
+              <div key={item.step} className="grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] items-baseline gap-x-6 sm:gap-x-10 gap-y-1 py-7 border-t border-white/10">
+                <span className="font-display text-2xl sm:text-3xl text-white/25">{item.step}</span>
+                <div>
+                  <h3 className="text-base sm:text-lg text-[#f5f1ea]">{item.title}</h3>
+                  <p className="text-sm font-light text-white/50 leading-relaxed mt-1.5 max-w-xl">{item.desc}</p>
+                </div>
+                <span className="col-start-2 sm:col-start-3 text-[11px] tracking-[0.2em] uppercase text-[var(--gold)]/80">~{item.time}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          HOW IT WORKS — 3 steps, quick and clean
-      ═══════════════════════════════════════════════ */}
-      <section className="px-4 py-16 sm:py-20 bg-zinc-950/50 border-y border-zinc-800/50">
-        <div className="container mx-auto max-w-5xl">
-          <FadeIn>
-            <h2 className="text-3xl font-bold text-center mb-14">
-              <TextReveal
-                text="Así de Simple"
-                className="font-display font-light text-[#f5f1ea]"
-              />
+      {/* ════════ OFFER — one glass panel, one price ════════ */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-5 sm:px-8 max-w-xl">
+          <div className="glass-panel p-8 sm:p-12">
+            <h3 className="font-display font-light text-2xl sm:text-3xl text-[#f5f1ea] text-center mb-10">
+              Tu primera sesión <em className="italic text-[var(--cream)]">incluye</em>
+            </h3>
+
+            <div className="stagger-up mb-10">
+              {INCLUDED.map((item) => (
+                <div key={item} className="flex items-baseline gap-4 py-3 border-t border-white/10">
+                  <span className="w-1 h-1 rounded-full bg-[var(--gold)] flex-shrink-0 translate-y-[-3px]" />
+                  <span className="text-sm font-light text-white/75">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="text-center border-t border-white/10 pt-8">
+              <p className="font-display text-5xl sm:text-6xl text-[var(--cream)] mb-3">$120</p>
+              <p className="text-xs text-white/50">Primera sesión completa &mdash; hasta 2 hrs</p>
+              <p className="text-xs text-white/50 mt-1">Seguimientos: <span className="text-[var(--cream)]">$80</span></p>
+              <p className="text-[11px] text-white/35 mt-3">Aplica para manos o pies &mdash; mismo precio</p>
+              <p className="text-[11px] italic text-white/35 mt-4">vs. tratamiento láser: $699&ndash;$2,000</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════ TESTIMONIALS ════════ */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-5 sm:px-8 max-w-5xl">
+          <div className="text-center mb-12">
+            <h2 className="font-display font-light text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.05] text-[#f5f1ea] mb-4">
+              <span className="reveal-line line-mask"><span className="inline-block">Lo que dicen <em className="italic text-[var(--cream)]">nuestros clientes.</em></span></span>
             </h2>
-          </FadeIn>
+            <div className="flex items-center justify-center gap-1.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 fill-[var(--gold)] text-[var(--gold)]" />
+              ))}
+              <span className="text-xs text-white/45 ml-2">40+ reseñas verificadas</span>
+            </div>
+          </div>
 
-          <StaggerContainer className="grid md:grid-cols-3 gap-8">
-            {[
-              { step: "1", title: "Evaluación + Preparación", time: "30 min", desc: "Evaluamos tu caso, removemos el producto previo y limpiamos a fondo." },
-              { step: "2", title: "Reconstrucción + Fortalecimiento", time: "60 min", desc: "Reconstruimos la uña con prótesis especializada y la sellamos con tratamiento fortalecedor desde adentro." },
-              { step: "3", title: "Acabado Profesional", time: "30 min", desc: "GEL Polish profesional, hidratación de cutícula, y revisión final. Sales perfecta." },
-            ].map((item) => (
-              <StaggerItem key={item.step}>
-                <div className="text-center">
-                  <div className="bg-zinc-900/50 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-5 border border-zinc-800">
-                    <span className="text-xl font-bold text-[#F2E6D8]">{item.step}</span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-white mb-1">{item.title}</h3>
-                  <p className="text-xs text-[#F2E6D8]/60 mb-3">~{item.time}</p>
-                  <p className="text-gray-400 text-sm">{item.desc}</p>
-                </div>
-              </StaggerItem>
+          <div className="stagger-up grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
+            {TESTIMONIALS.map((t) => (
+              <figure key={t.name} className="border-t border-white/10 pt-6">
+                <blockquote className="text-sm font-light text-white/70 leading-relaxed italic">
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-5 text-[11px] tracking-[0.15em] uppercase">
+                  <span className="text-[var(--cream)]">{t.name}</span>
+                  <span className="text-white/35"> &mdash; {t.service}</span>
+                </figcaption>
+              </figure>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          OFFER STACK — What's included + price anchor
-      ═══════════════════════════════════════════════ */}
-      <section className="px-4 py-16 sm:py-20">
-        <div className="container mx-auto max-w-2xl">
-          <FadeIn>
-            <div className="rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-900 border border-zinc-800 p-8 sm:p-10 overflow-hidden relative">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-[#F2E6D8]/5 rounded-full blur-3xl" />
+      {/* ════════ FAQ ════════ */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-5 sm:px-8 max-w-3xl">
+          <h2 className="font-display font-light text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.05] text-[#f5f1ea] mb-10">
+            <span className="reveal-line line-mask"><span className="inline-block">Preguntas <em className="italic text-[var(--cream)]">frecuentes.</em></span></span>
+          </h2>
 
-              <div className="relative">
-                <h3 className="text-2xl font-bold text-center mb-8">
-                  <span className="text-[#F2E6D8]">Tu Primera Sesión</span> Incluye
-                </h3>
-
-                <div className="space-y-3 mb-8">
-                  {[
-                    "Evaluación personalizada completa",
-                    "Tratamiento fortalecedor certificado",
-                    "Reconstrucción con prótesis especializada",
-                    "GEL Polish profesional incluido",
-                    "Plan de seguimiento personalizado",
-                  ].map((item, i) => (
-                    <motion.div
-                      key={i}
-                      className="flex items-center gap-3"
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.08 * i, duration: 0.4 }}
-                    >
-                      <CheckCircle className="w-5 h-5 text-[#F2E6D8] flex-shrink-0" />
-                      <span className="text-gray-300">{item}</span>
-                    </motion.div>
-                  ))}
-                </div>
-
-                <div className="text-center pt-6 border-t border-zinc-800">
-                  <div className="flex items-baseline justify-center gap-2 mb-1">
-                    <span className="text-5xl font-bold text-[#F2E6D8]">$120</span>
-                  </div>
-                  <p className="text-sm text-gray-500 mb-1">Primera sesión completa &bull; Hasta 2 hrs</p>
-                  <p className="text-xs text-gray-500 mt-1">Seguimientos: <span className="text-[#F2E6D8] font-medium">$80</span></p>
-                  <p className="text-xs text-gray-600 mt-3">Aplica para manos o pies &bull; Mismo precio</p>
-
-                  <p className="text-xs text-gray-600 mt-4 italic">
-                    vs. tratamiento láser: $699–$2,000
-                  </p>
-                </div>
-              </div>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          TESTIMONIALS — Onicoplastia-specific reviews
-      ═══════════════════════════════════════════════ */}
-      <section className="px-4 py-16 sm:py-20">
-        <div className="container mx-auto max-w-4xl">
-          <FadeIn>
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold mb-2">
-                <TextReveal
-                  text="Lo Que Dicen Nuestros Clientes"
-                  className="font-display font-light text-[#f5f1ea]"
-                />
-              </h2>
-              <div className="flex items-center justify-center gap-1 mt-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-[#F2E6D8] text-[#F2E6D8]" />
-                ))}
-                <span className="text-sm text-gray-400 ml-2"><AnimatedCounter value={40} suffix="+" /> reseñas verificadas</span>
-              </div>
-            </div>
-          </FadeIn>
-
-          <StaggerContainer className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                quote: "Llevaba años escondiendo mis pies. Neycha me devolvió la confianza — ahora voy a la playa, uso sandalias, vivo sin pensar en eso.",
-                name: "María G.",
-                service: "Onicoplastia",
-              },
-              {
-                quote: "El tratamiento hizo una diferencia increíble. Mis uñas estaban dañadas por años de gel y ahora están más fuertes que nunca. Neycha es una profesional.",
-                name: "Carmen L.",
-                service: "Restauración de uñas",
-              },
-              {
-                quote: "Después del trauma en mi uña pensé que nunca volvería a verse normal. Una visita con Neycha y no podía creer el resultado. Vale cada centavo.",
-                name: "Ana P.",
-                service: "Onicoplastia por Trauma",
-              },
-            ].map((t, i) => (
-              <StaggerItem key={i}>
-                <div className="bg-zinc-900/30 p-6 rounded-xl border border-zinc-800 h-full flex flex-col">
-                  <div className="flex gap-1 mb-3">
-                    {[...Array(5)].map((_, j) => (
-                      <Star key={j} className="w-3.5 h-3.5 fill-[#F2E6D8] text-[#F2E6D8]" />
-                    ))}
-                  </div>
-                  <p className="text-gray-300 italic text-sm leading-relaxed flex-1">"{t.quote}"</p>
-                  <div className="flex items-center gap-2 text-xs text-gray-500 mt-4 pt-3 border-t border-zinc-800/50">
-                    <span className="text-[#F2E6D8] font-medium">{t.name}</span>
-                    <span>&bull;</span>
-                    <span>{t.service}</span>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════
-          FAQ — Quick objection handling
-      ═══════════════════════════════════════════════ */}
-      <section className="px-4 py-16 sm:py-20 relative overflow-hidden">
-        <div className="absolute top-1/4 left-0 w-72 h-72 bg-[#F2E6D8]/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-[#F2E6D8]/5 rounded-full blur-3xl" />
-
-        <div className="container mx-auto max-w-3xl relative">
-          <FadeIn>
-            <div className="text-center mb-10">
-              <MessageCircle className="w-10 h-10 text-[#F2E6D8] mx-auto mb-4" />
-              <h2 className="text-3xl font-bold">
-                <TextReveal
-                  text="Preguntas Frecuentes"
-                  className="font-display font-light text-[#f5f1ea]"
-                />
-              </h2>
-            </div>
-          </FadeIn>
-
-          <Accordion type="single" collapsible className="space-y-3">
-            {[
-              { q: "¿Qué es la onicoplastia?", a: "Tratamiento profesional de restauración de uñas afectadas por hongos, trauma u otras condiciones. Utilizamos tecnología profesional de fortalecimiento para reconstruir la uña desde adentro." },
-              { q: "¿Es doloroso?", a: "No. Es completamente indoloro — tan suave como un manicure regular." },
-              { q: "¿Cuánto tiempo dura?", a: "Hasta 2 horas. Incluye evaluación, tratamiento fortalecedor, prótesis y GEL Polish. Sales perfecta el mismo día." },
-              { q: "¿Cuál es la inversión?", a: "Primera evaluación: $120 (incluye todo, aplica para manos o pies). Seguimientos: $80. Comparado con láser ($699–$2,000), es una fracción del costo con resultados inmediatos." },
-              { q: "¿Qué hace especial este tratamiento?", a: "Combinamos fortalecimiento desde adentro con reconstrucción profesional. No solo uñas hermosas — uñas saludables. Evaluación personalizada y seguimiento continuo incluido." },
-              { q: "¿Cómo sé si mi caso necesita onicoplastia?", a: "Si tienes una uña con cambio de color, grosor, textura o forma por hongos, trauma u otra causa, es probable que la onicoplastia pueda ayudarte. Puedes mandarme una foto por WhatsApp antes de venir — te oriento sin compromiso si vale el viaje. O agenda directamente tu primera sesión ($120) para un diagnóstico definitivo en persona." },
-              { q: "¿Puedo saber el costo total antes de ir?", a: "La primera sesión es $120 (incluye evaluación completa, tratamiento fortalecedor, reconstrucción y GEL Polish). Los seguimientos son $80 cada 45 días. El número de sesiones varía según tu caso — esto se determina en la primera visita. No hay costos ocultos." },
-            ].map((faq, i) => (
+          <Accordion type="single" collapsible>
+            {FAQS.map((faq, i) => (
               <AccordionItem
                 key={i}
                 value={`item-${i}`}
-                className="group relative rounded-xl bg-zinc-900/50 backdrop-blur-sm border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-300 px-6 overflow-hidden"
+                className="border-b border-white/10"
               >
-                <AccordionTrigger className="text-left font-semibold hover:text-[#F2E6D8] py-5 relative text-sm sm:text-base">
+                <AccordionTrigger className="text-left text-sm sm:text-base font-normal text-[#f5f1ea] hover:text-[var(--cream)] hover:no-underline py-5">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-400 leading-relaxed pb-5 relative text-sm">
+                <AccordionContent className="text-sm font-light text-white/55 leading-relaxed pb-6">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
@@ -378,107 +272,50 @@ export default function Onicoplastia() {
         </div>
       </section>
 
+      {/* ════════ STANDARDS ════════ */}
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-5 sm:px-8 max-w-4xl">
+          <h2 className="font-display font-light text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.05] text-[#f5f1ea] mb-6">
+            <span className="reveal-line line-mask"><span className="inline-block">No es solo estética. <em className="italic text-[var(--cream)]">Es salud.</em></span></span>
+          </h2>
+          <p className="max-w-xl text-sm font-light text-white/60 leading-relaxed mb-12">
+            Los productos que usamos están entre los más limpios disponibles en el mercado.
+            Atender uñas y pies comprometidos exige ese estándar &mdash; y ese mismo cuidado se
+            queda con cada cliente, sea cual sea su caso.
+          </p>
 
-      {/* ═══════════════════════════════════════════════
-          PRODUCTOS PROFESIONALES — Formula standards grid
-      ═══════════════════════════════════════════════ */}
-      <section className="px-4 py-16 sm:py-20 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,230,216,0.02)_0%,transparent_60%)]" />
-        <div className="container mx-auto max-w-3xl relative">
-          <FadeIn>
-            <div className="text-center mb-10 max-w-2xl mx-auto">
-              <h2 className="text-2xl sm:text-3xl font-bold">
-                <TextReveal
-                  text="No Es Solo Estética. Es Salud."
-                  className="font-display font-light text-[#f5f1ea]"
-                />
-              </h2>
-              <p className="mt-4 text-sm sm:text-base text-gray-300 leading-relaxed">
-                Los productos que usamos están entre los más limpios disponibles en el mercado.
-                Atender uñas y pies comprometidos exige ese estándar — y ese mismo cuidado se
-                queda con cada cliente, sea cual sea su caso.
-              </p>
-            </div>
-          </FadeIn>
-          <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 gap-4" staggerDelay={0.08}>
-            {[
-              { name: "HEMA-Free", why: "Sin el monómero más asociado con reacciones alérgicas en servicios de uñas." },
-              { name: "Di-HEMA-Free", why: "Variante igualmente sensibilizante eliminada." },
-              { name: "TPO-Free", why: "Cumple el estándar europeo más estricto (UE 2025)." },
-              { name: "Vegano", why: "Sin ingredientes animales. Sin testeo animal." },
-              { name: "Hipoalergénico", why: "Apto para piel sensible y clientas con historial de reacciones en otros salones." },
-              { name: "Bajo Olor", why: "Ambiente respirable durante toda la sesión." },
-            ].map((s, i) => (
-              <StaggerItem key={i}>
-                <motion.div
-                  className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800 hover:border-[#F2E6D8]/30 transition-all duration-300 h-full"
-                  whileHover={{ y: -2, transition: { type: "spring", stiffness: 300, damping: 25 } }}
-                >
-                  <p className="text-xs font-bold text-[#F2E6D8] uppercase tracking-wider mb-1.5">{s.name}</p>
-                  <p className="text-[11px] text-gray-500 leading-relaxed">{s.why}</p>
-                </motion.div>
-              </StaggerItem>
+          <div className="stagger-up grid grid-cols-1 sm:grid-cols-2 gap-x-14">
+            {STANDARDS.map((s) => (
+              <div key={s.name} className="flex items-baseline justify-between gap-6 py-5 border-t border-white/10">
+                <h3 className="text-sm tracking-[0.12em] uppercase text-[#f5f1ea] whitespace-nowrap">{s.name}</h3>
+                <p className="text-xs text-white/45 font-light text-right leading-relaxed">{s.why}</p>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════
-          FINAL CTA — One button. One action.
-      ═══════════════════════════════════════════════ */}
-      <section id="faq-section" className="px-4 py-20 sm:py-24">
-        <div className="container mx-auto max-w-4xl">
-          <FadeIn>
-            <div className="relative rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-black p-12 sm:p-16 text-center border border-zinc-800 overflow-hidden">
-              <motion.div
-                className="absolute top-0 left-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-                animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              />
-              <motion.div
-                className="absolute bottom-0 right-0 w-96 h-96 bg-[#F2E6D8]/5 rounded-full blur-3xl"
-                animate={{ scale: [1.15, 1, 1.15], opacity: [0.5, 0.3, 0.5] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              />
+      {/* ════════ FINAL CTA ════════ */}
+      <section className="py-24 sm:py-36">
+        <div className="container mx-auto px-5 sm:px-8 text-center">
+          <h2 className="font-display font-light text-[clamp(2.2rem,5.5vw,4.2rem)] leading-[1.02] text-[#f5f1ea] mb-10">
+            <span className="reveal-line line-mask"><span className="inline-block">Tu transformación <em className="italic text-[var(--cream)]">te espera.</em></span></span>
+          </h2>
 
-              <div className="relative space-y-6">
-                <Sparkles className="w-10 h-10 text-[#F2E6D8] mx-auto" />
-
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-                  <TextReveal
-                    text="Tu Transformación Te Espera"
-                    className="font-display font-light text-[#f5f1ea]"
-                  />
-                </h2>
-
-                <MagneticButton>
-                  <Button
-                    size="lg"
-                    className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-base sm:text-lg px-8 sm:px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105"
-                    asChild
-                  >
-                    <a href={BOOKSY_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                      <Calendar className="w-5 h-5 flex-shrink-0" />
-                      AGENDAR MI PRIMERA SESIÓN
-                    </a>
-                  </Button>
-                </MagneticButton>
-
-                <button
-                  onClick={() => document.querySelector('#faq-section')?.previousElementSibling?.previousElementSibling?.scrollIntoView({ behavior: 'smooth' })}
-                  className="text-xs text-gray-500 hover:text-[#F2E6D8] transition-colors flex items-center gap-1 mx-auto"
-                >
-                  <ArrowUp className="w-3 h-3" />
-                  ¿Aún tienes dudas? Revisa las preguntas frecuentes
-                </button>
-
-                <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
-                  <span className="inline-block w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  Disponibilidad limitada &bull; Solo con cita previa &bull; Hatillo, PR
-                </div>
-              </div>
-            </div>
-          </FadeIn>
+          <div className="flex flex-col items-center gap-6">
+            <a
+              href={BOOKSY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-[var(--cream)] text-black px-12 py-5 text-sm font-medium tracking-[0.2em] uppercase transition-[transform,box-shadow] duration-200 hover:shadow-[0_12px_50px_rgba(242,230,216,0.25)] hover:-translate-y-0.5 active:scale-[0.98]"
+            >
+              Agendar mi primera sesión
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <p className="text-[10px] tracking-[0.25em] uppercase text-white/35">
+              Disponibilidad limitada &mdash; Solo con cita previa &mdash; Hatillo, PR
+            </p>
+          </div>
         </div>
       </section>
 
