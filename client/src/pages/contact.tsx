@@ -55,7 +55,7 @@ export default function Contact() {
             <h1 className="text-4xl sm:text-5xl font-bold mb-4">
               <TextReveal
                 text="Estamos Para Ti"
-                className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
+                className="font-display font-light text-[#f5f1ea]"
               />
             </h1>
             <motion.p
@@ -79,7 +79,7 @@ export default function Contact() {
                   transition={{ type: "spring", stiffness: 400, damping: 25 }}
                 >
                   <Button
-                    className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] text-lg sm:text-xl px-10 sm:px-14 py-7 font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
+                    className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] text-lg sm:text-xl px-10 sm:px-14 py-7 font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300"
                     onClick={handleBookingClick}
                   >
                     <Calendar className="w-6 h-6 mr-3" />
@@ -158,7 +158,7 @@ export default function Contact() {
                 Antes de Escribirnos
               </motion.p>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-                <TextReveal text="Preguntas Frecuentes" className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent" />
+                <TextReveal text="Preguntas Frecuentes" className="font-display font-light text-[#f5f1ea]" />
               </h2>
               <p className="mt-3 text-sm text-gray-500 max-w-md mx-auto">
                 El 90% de las dudas se responden aquí abajo. Léelas antes de escribir — nos ahorras tiempo a las dos.
@@ -382,7 +382,7 @@ export default function Contact() {
                 </motion.div>
 
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-                  <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">
+                  <span className="font-display font-light text-[#f5f1ea]">
                     ¿Listo Para Transformar Tus Uñas?
                   </span>
                 </h2>
@@ -399,7 +399,7 @@ export default function Contact() {
                       transition={{ type: "spring", stiffness: 400, damping: 25 }}
                     >
                       <Button
-                        className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 sm:px-14 py-7 text-lg sm:text-xl font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
+                        className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 sm:px-14 py-7 text-lg sm:text-xl font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300"
                         onClick={handleBookingClick}
                       >
                         <Calendar className="w-6 h-6 mr-3 flex-shrink-0" />

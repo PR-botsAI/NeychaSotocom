@@ -172,22 +172,25 @@ export default function Home() {
           <BeforeAfterSlider
             beforeImage={HERO_CASE.before}
             afterImage={HERO_CASE.after}
-            className="absolute inset-0"
+            className="w-full h-full"
             priority
             alt="Reconstrucción estética de uñas"
           />
           {/* Scrims keep type legible without burying the work */}
-          <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/35 to-[#0a0a0a]/60" />
-          <div className="absolute inset-x-0 top-0 h-24 pointer-events-none bg-gradient-to-b from-[#0a0a0a]/70 to-transparent" />
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#0a0a0a]/90 via-[#0a0a0a]/15 to-[#0a0a0a]/40" />
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#0a0a0a]/60 via-[#0a0a0a]/10 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-24 pointer-events-none bg-gradient-to-b from-[#0a0a0a]/60 to-transparent" />
         </div>
 
-        <div className="hero-content relative z-10 h-full flex flex-col justify-end pb-20 sm:pb-24">
+        {/* pointer-events-none so the slider underneath stays draggable;
+            interactive children re-enable themselves */}
+        <div className="hero-content relative z-10 h-full flex flex-col justify-end pb-20 sm:pb-24 pointer-events-none">
           <div className="container mx-auto px-5 sm:px-8">
-            <p className="hero-meta text-[11px] sm:text-xs tracking-[0.3em] uppercase text-[var(--cream)]/80 mb-5">
+            <p className="hero-meta text-[11px] sm:text-xs tracking-[0.3em] uppercase text-[var(--cream)]/90 mb-5 [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
               Estudio privado de onicoplastia &mdash; Hatillo, Puerto Rico
             </p>
 
-            <h1 className="font-display font-light text-[clamp(2.6rem,8.5vw,7rem)] leading-[0.98] tracking-[-0.01em] text-[#f5f1ea] mb-6">
+            <h1 className="font-display font-light text-[clamp(2.6rem,8.5vw,7rem)] leading-[0.98] tracking-[-0.01em] text-[#f5f1ea] mb-6 [text-shadow:0_2px_28px_rgba(0,0,0,0.65)]">
               <span className="hero-line line-mask"><span className="inline-block">El arte de</span></span>
               <span className="hero-line line-mask">
                 <span className="inline-block">
@@ -196,12 +199,12 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="hero-meta max-w-md text-sm sm:text-base font-light text-white/70 leading-relaxed mb-8">
+            <p className="hero-meta max-w-md text-sm sm:text-base font-light text-white/80 leading-relaxed mb-8 [text-shadow:0_1px_16px_rgba(0,0,0,0.7)]">
               Reconstrucción estética para uñas dañadas por hongos, trauma o años de gel.
               Sin dolor. Una clienta a la vez.
             </p>
 
-            <div className="hero-meta flex flex-wrap items-center gap-5">
+            <div className="hero-meta flex flex-wrap items-center gap-5 pointer-events-auto">
               <a
                 href={BOOKSY_URL}
                 target="_blank"
@@ -250,7 +253,7 @@ export default function Home() {
               <BeforeAfterSlider
                 beforeImage={c.beforeImage}
                 afterImage={c.afterImage}
-                className="absolute inset-0"
+                className="w-full h-full"
                 alt={c.title}
                 hint={i === 0}
               />

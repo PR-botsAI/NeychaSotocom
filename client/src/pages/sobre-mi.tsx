@@ -60,7 +60,7 @@ export default function SobreMi() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">
+                  <span className="font-display font-light text-[#f5f1ea]">
                     Soy Neycha Soto
                   </span>
                 </motion.h1>
@@ -226,7 +226,7 @@ export default function SobreMi() {
                     loading="lazy"
                   />
                   <div className="absolute bottom-2 left-2 right-2 flex justify-between">
-                    <span className="text-[9px] font-bold uppercase bg-red-600/80 text-white px-1.5 py-0.5 rounded group-hover:opacity-0 transition-opacity">Antes</span>
+                    <span className="text-[9px] font-bold uppercase bg-black/60 backdrop-blur-sm text-white px-1.5 py-0.5 rounded group-hover:opacity-0 transition-opacity">Antes</span>
                     <span className="text-[9px] font-bold uppercase bg-[#F2E6D8] text-black px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">Después</span>
                   </div>
                 </div>
@@ -262,7 +262,7 @@ export default function SobreMi() {
 
               <div className="relative space-y-5">
                 <h2 className="text-2xl sm:text-3xl font-bold">
-                  <span className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent">
+                  <span className="font-display font-light text-[#f5f1ea]">
                     ¿Lista para tu transformación?
                   </span>
                 </h2>
@@ -273,7 +273,7 @@ export default function SobreMi() {
                 <div className="flex justify-center items-center pt-2">
                   <MagneticButton>
                     <Button
-                      className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 py-7 text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300 animate-pulse-glow"
+                      className="bg-[#F2E6D8] text-black hover:bg-[#E6D0B8] px-10 py-7 text-lg font-bold shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all duration-300"
                       onClick={() => window.open(BOOKSY_URL, "_blank")}
                     >
                       <Calendar className="w-5 h-5 mr-2" />

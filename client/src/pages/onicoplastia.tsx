@@ -37,7 +37,7 @@ export default function Onicoplastia() {
               />
               <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
               <motion.span
-                className="absolute top-6 left-6 text-sm font-bold uppercase bg-red-600/90 text-white px-4 py-2 rounded-lg tracking-wider"
+                className="absolute top-24 left-5 text-[10px] tracking-[0.25em] uppercase bg-black/50 backdrop-blur-sm text-white/90 px-2.5 py-1"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -53,7 +53,7 @@ export default function Onicoplastia() {
               />
               <div className="absolute inset-0 bg-gradient-to-l from-black/40 to-transparent" />
               <motion.span
-                className="absolute top-6 right-6 text-sm font-bold uppercase bg-[#F2E6D8] text-black px-4 py-2 rounded-lg tracking-wider"
+                className="absolute top-24 right-5 text-[10px] tracking-[0.25em] uppercase bg-[#F2E6D8]/90 text-black px-2.5 py-1"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
@@ -78,7 +78,7 @@ export default function Onicoplastia() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
-                <span className="bg-gradient-to-r from-white via-[#F2E6D8] to-white bg-clip-text text-transparent">
+                <span className="font-display font-light text-[#f5f1ea]">
                   Deja de Esconder Tus Uñas.
                 </span>
               </motion.h1>
@@ -98,7 +98,7 @@ export default function Onicoplastia() {
                 <MagneticButton>
                   <Button
                     size="lg"
-                    className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-base sm:text-lg px-8 sm:px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105 animate-pulse-glow"
+                    className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-base sm:text-lg px-8 sm:px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105"
                     asChild
                   >
                     <a href={BOOKSY_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
@@ -150,7 +150,7 @@ export default function Onicoplastia() {
               <h2 className="text-3xl sm:text-4xl font-bold">
                 <TextReveal
                   text="Cada Caso, Una Transformación"
-                  className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
+                  className="font-display font-light text-[#f5f1ea]"
                 />
               </h2>
               <p className="text-gray-500 mt-3 text-sm">
@@ -191,7 +191,7 @@ export default function Onicoplastia() {
             <h2 className="text-3xl font-bold text-center mb-14">
               <TextReveal
                 text="Así de Simple"
-                className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
+                className="font-display font-light text-[#f5f1ea]"
               />
             </h2>
           </FadeIn>
@@ -281,7 +281,7 @@ export default function Onicoplastia() {
               <h2 className="text-3xl font-bold mb-2">
                 <TextReveal
                   text="Lo Que Dicen Nuestros Clientes"
-                  className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
+                  className="font-display font-light text-[#f5f1ea]"
                 />
               </h2>
               <div className="flex items-center justify-center gap-1 mt-3">
@@ -345,7 +345,7 @@ export default function Onicoplastia() {
               <h2 className="text-3xl font-bold">
                 <TextReveal
                   text="Preguntas Frecuentes"
-                  className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
+                  className="font-display font-light text-[#f5f1ea]"
                 />
               </h2>
             </div>
@@ -390,7 +390,7 @@ export default function Onicoplastia() {
               <h2 className="text-2xl sm:text-3xl font-bold">
                 <TextReveal
                   text="No Es Solo Estética. Es Salud."
-                  className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
+                  className="font-display font-light text-[#f5f1ea]"
                 />
               </h2>
               <p className="mt-4 text-sm sm:text-base text-gray-300 leading-relaxed">
@@ -447,14 +447,14 @@ export default function Onicoplastia() {
                 <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
                   <TextReveal
                     text="Tu Transformación Te Espera"
-                    className="bg-gradient-to-r from-[#F2E6D8] via-white to-[#F2E6D8] bg-clip-text text-transparent"
+                    className="font-display font-light text-[#f5f1ea]"
                   />
                 </h2>
 
                 <MagneticButton>
                   <Button
                     size="lg"
-                    className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-base sm:text-lg px-8 sm:px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105 animate-pulse-glow"
+                    className="bg-[#F2E6D8] hover:bg-[#E6D0B8] text-black font-bold text-base sm:text-lg px-8 sm:px-12 py-6 shadow-2xl hover:shadow-[#F2E6D8]/30 transition-all hover:scale-105"
                     asChild
                   >
                     <a href={BOOKSY_URL} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">

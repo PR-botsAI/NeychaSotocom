@@ -56,13 +56,13 @@ export default function Navbar() {
       <div className="container mx-auto px-5 sm:px-8 flex h-16 items-center justify-between">
         <Link
           href="/"
-          className="font-display text-lg text-[#f5f1ea] hover:text-[var(--cream)] transition-colors duration-200"
+          className="font-display text-base lg:text-lg text-[#f5f1ea] hover:text-[var(--cream)] transition-colors duration-200 mr-6 shrink-0"
         >
-          Neycha Soto
+          Neychasoto.com
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-5 lg:gap-8">
           {NAV_LINKS.map((item) => {
             const active = isActive(item.href);
             return (

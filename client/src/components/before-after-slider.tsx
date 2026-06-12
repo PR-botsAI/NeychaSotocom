@@ -71,7 +71,11 @@ export function BeforeAfterSlider({
     const onPointerDown = (e: PointerEvent) => {
       interacted.current = true;
       dragging.current = true;
-      container.setPointerCapture(e.pointerId);
+      try {
+        container.setPointerCapture(e.pointerId);
+      } catch {
+        // synthetic events and some stylus drivers have no capturable pointer
+      }
       setFromClientX(e.clientX);
     };
     const onPointerMove = (e: PointerEvent) => {

@@ -26,6 +26,7 @@ export function initSmoothScroll(): (() => void) | undefined {
   });
 
   lenis.on("scroll", ScrollTrigger.update);
+  (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
 
   const tick = (time: number) => lenis?.raf(time * 1000);
   gsap.ticker.add(tick);
@@ -35,6 +36,7 @@ export function initSmoothScroll(): (() => void) | undefined {
     gsap.ticker.remove(tick);
     lenis?.destroy();
     lenis = null;
+    delete (window as unknown as { __lenis?: Lenis }).__lenis;
   };
 }
 
