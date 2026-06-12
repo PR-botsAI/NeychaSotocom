@@ -69,6 +69,9 @@ function Router() {
         </AnimatePresence>
       </main>
       <Footer />
+      {/* Clearance for the fixed mobile booking bar so it never covers the
+          footer's last line when scrolled to the bottom */}
+      <div className="h-28 md:hidden" aria-hidden="true" />
       <StickyMobileCTA />
     </div>
   );

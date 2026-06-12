@@ -318,8 +318,6 @@ export default function Onicoplastia() {
           </div>
         </div>
       </section>
-
-      <div className="h-16 md:hidden" />
     </div>
   );
 }

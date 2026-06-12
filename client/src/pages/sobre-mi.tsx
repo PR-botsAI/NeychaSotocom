@@ -198,8 +198,6 @@ export default function SobreMi() {
           </div>
         </div>
       </section>
-
-      <div className="h-16 md:hidden" />
     </div>
   );
 }

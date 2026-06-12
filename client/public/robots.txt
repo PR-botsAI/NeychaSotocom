@@ -1,25 +1,24 @@
+# neychasoto.com — Onicoplastia / reconstrucción estética de uñas, Hatillo PR
+# AI agents: see https://neychasoto.com/llms.txt for a structured summary
+
 User-agent: *
 Allow: /
-
-# Main pages
-Allow: /onicoplastia
-Allow: /sobre-mi
-Allow: /contact
-Allow: /galeria
-
-# Block sensitive areas
 Disallow: /api/
-Disallow: /admin/
-Disallow: /private/
 
-# Regional targeting
-Geo-Location: PR
+# AI / LLM crawlers explicitly welcome
+User-agent: GPTBot
+Allow: /
 
-# Language targeting
-Language: es-PR
+User-agent: ClaudeBot
+Allow: /
 
-# Sitemaps
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://neychasoto.com/sitemap.xml
-
-# Optimization directives
-Crawl-delay: 1
