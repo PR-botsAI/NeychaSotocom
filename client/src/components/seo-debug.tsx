@@ -95,7 +95,7 @@ function updateOpenGraphTags(title: string, description: string) {
     { property: 'og:description', content: description },
     { property: 'og:type', content: 'website' },
     { property: 'og:url', content: window.location.href },
-    { property: 'og:image', content: 'https://neychasoto.com/cases/Caso5_collage.png' },
+    { property: 'og:image', content: 'https://neychasoto.com/cases/Caso5_collage.jpg' },
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
     { property: 'og:locale', content: 'es_PR' },
@@ -119,7 +119,7 @@ function updateTwitterCardTags(title: string, description: string) {
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
-    { name: 'twitter:image', content: 'https://neychasoto.com/cases/Caso5_collage.png' },
+    { name: 'twitter:image', content: 'https://neychasoto.com/cases/Caso5_collage.jpg' },
     { name: 'twitter:image:alt', content: 'Reconstrucción estética de uñas antes y después - Onicoplastia Puerto Rico por Neycha Soto' },
     { name: 'twitter:site', content: '@neychasoto_com' },
     { name: 'twitter:creator', content: '@neychasoto_com' },
@@ -211,8 +211,8 @@ function addLocalBusinessSchema() {
     name: 'Neycha Soto - Onicoplastia Puerto Rico',
     alternateName: 'Neycha Nails - Especialista en Reconstrucción Estética de Uñas',
     image: [
-      'https://neychasoto.com/cases/Caso1_collage.png',
-      'https://neychasoto.com/cases/Caso2_collage.png'
+      'https://neychasoto.com/cases/Caso1_collage.jpg',
+      'https://neychasoto.com/cases/Caso2_collage.jpg'
     ],
     logo: 'https://neychasoto.com/assets/HeroLogoWhiteTrasparent.png',
     url: 'https://neychasoto.com',

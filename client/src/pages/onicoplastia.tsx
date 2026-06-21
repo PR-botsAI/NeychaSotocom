@@ -83,8 +83,8 @@ export default function Onicoplastia() {
         <div className="wipe relative h-[52svh] min-h-[340px] sm:h-[62svh] overflow-hidden">
           <div className="wipe-inner absolute inset-0 will-change-transform">
             <StillCompare
-              beforeImage="/cases/Caso2_before.png"
-              afterImage="/cases/Caso2_after.png"
+              beforeImage="/cases/Caso2_before.webp"
+              afterImage="/cases/Caso2_after.webp"
               className="w-full h-full"
               priority
               alt="Antes y después del tratamiento"

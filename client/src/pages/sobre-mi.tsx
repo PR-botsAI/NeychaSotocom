@@ -20,10 +20,10 @@ const COMMON_CASES = [
 ];
 
 const MINI_CASES = [
-  { before: "/cases/Caso1_before.png", after: "/cases/Caso1_After.png" },
-  { before: "/cases/Caso3_before.png", after: "/cases/Caso3_after.png" },
-  { before: "/cases/Caso4_before.png", after: "/cases/Caso4_after.png" },
-  { before: "/cases/Caso6_before.png", after: "/cases/Caso6_after.png" },
+  { before: "/cases/Caso1_before.webp", after: "/cases/Caso1_After.webp" },
+  { before: "/cases/Caso3_before.webp", after: "/cases/Caso3_after.webp" },
+  { before: "/cases/Caso4_before.webp", after: "/cases/Caso4_after.webp" },
+  { before: "/cases/Caso6_before.webp", after: "/cases/Caso6_after.webp" },
 ];
 
 export default function SobreMi() {

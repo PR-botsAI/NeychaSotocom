@@ -11,12 +11,12 @@ const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_1068
 
 // Collage images — mix of before/after to create a visual wall of proof
 const collageImages = [
-  { src: "/cases/Caso1_before.png", label: "antes" },
-  { src: "/cases/Caso1_After.png", label: "después" },
-  { src: "/cases/Caso2_before.png", label: "antes" },
-  { src: "/cases/Caso2_after.png", label: "después" },
-  { src: "/cases/Caso3_before.png", label: "antes" },
-  { src: "/cases/Caso3_after.png", label: "después" },
+  { src: "/cases/Caso1_before.webp", label: "antes" },
+  { src: "/cases/Caso1_After.webp", label: "después" },
+  { src: "/cases/Caso2_before.webp", label: "antes" },
+  { src: "/cases/Caso2_after.webp", label: "después" },
+  { src: "/cases/Caso3_before.webp", label: "antes" },
+  { src: "/cases/Caso3_after.webp", label: "después" },
 ];
 
 export default function Hero() {

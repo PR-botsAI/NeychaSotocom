@@ -8,7 +8,7 @@ import { cases } from "@/data/cases";
 
 const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
 
-const HERO_CASE = { before: "/cases/Caso5_before.png", after: "/cases/Caso5_after.png" };
+const HERO_CASE = { before: "/cases/Caso5_before.webp", after: "/cases/Caso5_after.webp" };
 const GALLERY_CASES = cases.slice(0, 4);
 
 const STANDARDS = [

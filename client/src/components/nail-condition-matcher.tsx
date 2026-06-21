@@ -10,22 +10,22 @@ const conditions = [
     id: 1,
     title: "Hongos en las Uñas",
     description: "¿Tienes manchas amarillas o blancas? ¿Uñas quebradizas?",
-    before: "/assets/cases/Caso1_before.png",
-    after: "/assets/cases/Caso1_after.png"
+    before: "/assets/cases/Caso1_before.webp",
+    after: "/assets/cases/Caso1_after.webp"
   },
   {
     id: 2,
     title: "Uñas Débiles",
     description: "¿Se te parten o pelan las uñas fácilmente?",
-    before: "/assets/cases/Caso2_before.png",
-    after: "/assets/cases/Caso2_after.png"
+    before: "/assets/cases/Caso2_before.webp",
+    after: "/assets/cases/Caso2_after.webp"
   },
   {
     id: 3,
     title: "Uñas Irregulares",
     description: "¿Notas que tus uñas crecen de forma irregular?",
-    before: "/assets/cases/Caso3_before.png",
-    after: "/assets/cases/Caso3_after.png"
+    before: "/assets/cases/Caso3_before.webp",
+    after: "/assets/cases/Caso3_after.webp"
   }
 ];
 
