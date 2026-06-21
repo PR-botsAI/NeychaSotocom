@@ -3,7 +3,7 @@ import { ArrowRight, Star } from "lucide-react";
 import { useEditorialMotion } from "@/hooks/use-editorial-motion";
 import { BeforeAfterSlider } from "@/components/before-after-slider";
 import { StillCompare } from "@/components/still-compare";
-import { ProcessFlow } from "@/components/process-flow";
+import { NailJourney } from "@/components/nail-journey";
 import {
   Accordion,
   AccordionContent,
@@ -169,10 +169,16 @@ export default function Onicoplastia() {
           <h2 className="font-display font-light text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.05] text-[#f5f1ea] mb-4">
             <span className="reveal-line line-mask"><span className="inline-block">Así de <em className="italic text-[var(--cream)]">simple.</em></span></span>
           </h2>
-          <p className="text-sm font-light text-white/45 mb-10 max-w-md">
-            Cada visita es un proceso cuidado, paso a paso. Mira qué incluye según sea tu primera vez o un seguimiento.
+          <p className="text-sm font-light text-white/45 mb-14 max-w-md">
+            De una uña dañada a una apariencia natural — capa por capa, desde el lecho de la uña.
           </p>
-          <ProcessFlow />
+
+          {/* Illustrated nail journey (side cross-section) */}
+          <NailJourney />
+
+          <p className="text-[11px] font-light text-white/35 mt-12 pt-6 border-t border-white/10">
+            En seguimientos ($80) omitimos el análisis inicial — el resto del proceso es igual.
+          </p>
         </div>
       </section>
 
