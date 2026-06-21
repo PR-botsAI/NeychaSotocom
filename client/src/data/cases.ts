@@ -4,7 +4,7 @@ export const cases: Case[] = [
   {
     id: 1,
     title: "Confianza Restaurada",
-    description: "Reconstrucción estética profesional — apariencia natural al instante.",
+    description: "Engrosamiento y manchas de años → reconstruida con apariencia natural el mismo día.",
     beforeImage: "/cases/Caso1_before.webp",
     afterImage: "/cases/Caso1_After.webp",
     collageImage: "/cases/Caso1_collage.webp",
@@ -20,7 +20,7 @@ export const cases: Case[] = [
   {
     id: 2,
     title: "Transformación Estética",
-    description: "Prótesis especializada con apariencia natural.",
+    description: "Uña amarillenta y estriada → limpiada y devuelta a un acabado natural.",
     beforeImage: "/cases/Caso2_before.webp",
     afterImage: "/cases/Caso2_after.webp",
     collageImage: "/cases/Caso2_collage.webp",
@@ -36,7 +36,7 @@ export const cases: Case[] = [
   {
     id: 3,
     title: "Belleza Natural",
-    description: "Apariencia natural con método profesional y seguro.",
+    description: "Superficie opaca e irregular → alisada y reconstruida, lista para lucir.",
     beforeImage: "/cases/Caso3_before.webp",
     afterImage: "/cases/Caso3_after.webp",
     collageImage: "/cases/Caso3_collage.webp",
@@ -52,7 +52,7 @@ export const cases: Case[] = [
   {
     id: 4,
     title: "Nueva Confianza",
-    description: "Uñas hermosas mientras cuidamos su salud a largo plazo.",
+    description: "Uña fina y debilitada por años de gel → fortalecida desde adentro mientras crece sana.",
     beforeImage: "/cases/Caso4_before.webp",
     afterImage: "/cases/Caso4_after.webp",
     collageImage: "/cases/Caso4_collage.webp",
@@ -68,7 +68,7 @@ export const cases: Case[] = [
   {
     id: 5,
     title: "Belleza Renovada",
-    description: "Recupera la confianza en tus uñas. Profesional y seguro.",
+    description: "Uña dañada y levantada → prótesis especializada, apariencia natural al instante.",
     beforeImage: "/cases/Caso5_before.webp",
     afterImage: "/cases/Caso5_after.webp",
     collageImage: "/cases/Caso5_collage.webp",
@@ -84,7 +84,7 @@ export const cases: Case[] = [
   {
     id: 6,
     title: "Cambio Positivo",
-    description: "Vuelve a mostrar tus uñas con confianza.",
+    description: "De esconder los pies a mostrarlos → un resultado natural que perdura.",
     beforeImage: "/cases/Caso6_before.webp",
     afterImage: "/cases/Caso6_after.webp",
     collageImage: "/cases/Caso6_collage.webp",
