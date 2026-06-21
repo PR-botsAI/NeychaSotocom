@@ -3,6 +3,7 @@ import { ArrowRight, Star } from "lucide-react";
 import { useEditorialMotion } from "@/hooks/use-editorial-motion";
 import { BeforeAfterSlider } from "@/components/before-after-slider";
 import { StillCompare } from "@/components/still-compare";
+import { ProcessFlow } from "@/components/process-flow";
 import {
   Accordion,
   AccordionContent,
@@ -17,12 +18,6 @@ const STATS = [
   { figure: "40+", label: "Reseñas 5 estrellas" },
   { figure: "5.0", label: "Calificación Booksy" },
   { figure: "0", label: "Dolor" },
-];
-
-const STEPS = [
-  { step: "01", title: "Evaluación + Preparación", time: "30 min", desc: "Evaluamos tu caso, removemos el producto previo y limpiamos a fondo." },
-  { step: "02", title: "Reconstrucción + Fortalecimiento", time: "60 min", desc: "Reconstruimos la uña con prótesis especializada y la sellamos con tratamiento fortalecedor desde adentro." },
-  { step: "03", title: "Acabado Profesional", time: "30 min", desc: "GEL Polish profesional, hidratación de cutícula, y revisión final. Sales perfecta." },
 ];
 
 const INCLUDED = [
@@ -165,25 +160,19 @@ export default function Onicoplastia() {
         </div>
       </section>
 
-      {/* ════════ PROCESS — three numbered movements ════════ */}
+      {/* ════════ PROCESS — interactive: first visit vs follow-up ════════ */}
       <section className="py-16 sm:py-24">
         <div className="container mx-auto px-5 sm:px-8 max-w-4xl">
-          <h2 className="font-display font-light text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.05] text-[#f5f1ea] mb-12">
+          <p className="reveal-line line-mask text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] mb-4">
+            <span className="inline-block">El proceso</span>
+          </p>
+          <h2 className="font-display font-light text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.05] text-[#f5f1ea] mb-4">
             <span className="reveal-line line-mask"><span className="inline-block">Así de <em className="italic text-[var(--cream)]">simple.</em></span></span>
           </h2>
-
-          <div className="stagger-up">
-            {STEPS.map((item) => (
-              <div key={item.step} className="grid grid-cols-[auto_1fr] sm:grid-cols-[auto_1fr_auto] items-baseline gap-x-6 sm:gap-x-10 gap-y-1 py-7 border-t border-white/10">
-                <span className="font-display text-2xl sm:text-3xl text-white/25">{item.step}</span>
-                <div>
-                  <h3 className="text-base sm:text-lg text-[#f5f1ea]">{item.title}</h3>
-                  <p className="text-sm font-light text-white/50 leading-relaxed mt-1.5 max-w-xl">{item.desc}</p>
-                </div>
-                <span className="col-start-2 sm:col-start-3 text-[11px] tracking-[0.2em] uppercase text-[var(--gold)]/80">~{item.time}</span>
-              </div>
-            ))}
-          </div>
+          <p className="text-sm font-light text-white/45 mb-10 max-w-md">
+            Cada visita es un proceso cuidado, paso a paso. Mira qué incluye según sea tu primera vez o un seguimiento.
+          </p>
+          <ProcessFlow />
         </div>
       </section>
 
@@ -208,7 +197,7 @@ export default function Onicoplastia() {
               <p className="font-display text-5xl sm:text-6xl text-[var(--cream)] mb-3">$120</p>
               <p className="text-xs text-white/50">Primera sesión completa &mdash; hasta 2 hrs</p>
               <p className="text-xs text-white/50 mt-1">Seguimientos: <span className="text-[var(--cream)]">$80</span></p>
-              <p className="text-[11px] text-white/35 mt-3">Aplica para manos o pies &mdash; mismo precio</p>
+              <p className="text-[11px] text-white/35 mt-3">Pies o manos &mdash; cada servicio se cobra por separado</p>
               <p className="text-[11px] italic text-white/35 mt-4">vs. tratamiento láser: $699&ndash;$2,000</p>
             </div>
           </div>
