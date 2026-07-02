@@ -12,11 +12,11 @@ const CREDENTIALS = [
 ];
 
 const COMMON_CASES = [
-  { name: "Hongos en las uñas", desc: "Uñas amarillas, gruesas o quebradizas después de años intentando de todo. Reconstruimos su apariencia desde la primera visita, mientras la uña natural se recupera." },
+  { name: "Hongos en las uñas", desc: "Uñas amarillas, gruesas o quebradizas después de años intentando de todo. Reconstruimos su apariencia desde la primera visita, en un ambiente limpio donde la uña natural puede crecer debajo." },
   { name: "Uñas engrosadas por los años", desc: "Con el tiempo la uña cambia de forma y de grosor. La alisamos y le devolvemos una apariencia natural y cuidada." },
   { name: "Trauma o accidente", desc: "Uñas levantadas, deformadas o perdidas por un golpe. Prótesis especializada con apariencia natural al instante." },
-  { name: "Daño por gel o acrílico", desc: "Uñas finas y debilitadas por años de producto o una remoción agresiva. Las fortalecemos desde adentro mientras crecen sanas." },
-  { name: "Pies comprometidos", desc: "Diabetes, psoriasis u otras condiciones: la formación en enfermería me permite evaluar cada caso con criterio. Si lo tuyo requiere precaución médica, te lo digo con honestidad." },
+  { name: "Daño por gel o acrílico", desc: "Uñas finas y debilitadas por años de producto o una remoción agresiva. Las reconstruimos y las cuidamos mientras crecen." },
+  { name: "Condiciones especiales", desc: "Diabetes, psoriasis u otras condiciones: te atiendo con productos hipoalergénicos y protocolos rigurosos de higiene. Somos un servicio estético, no médico — si tu caso necesita atención médica, te lo digo con honestidad para que lo consultes con tu médico." },
 ];
 
 const MINI_CASES = [
@@ -43,7 +43,7 @@ export default function SobreMi() {
               />
               <img
                 src="/assets/neycha-profile.png?v=transparent"
-                alt="Neycha Soto — Enfermera registrada y especialista en onicoplastia en Hatillo, PR"
+                alt="Neycha Soto — Especialista certificada en onicoplastia en Hatillo, PR"
                 className="relative w-56 h-56 sm:w-72 sm:h-72 object-contain drop-shadow-[0_8px_24px_rgba(242,230,216,0.18)]"
               />
             </div>
@@ -56,7 +56,7 @@ export default function SobreMi() {
                 <span className="reveal-line line-mask"><span className="inline-block">Soy <em className="italic text-[var(--cream)]">Neycha Soto.</em></span></span>
               </h1>
               <p className="text-sm sm:text-base font-light text-white/65 mb-6">
-                Enfermera registrada y especialista certificada en onicoplastia
+                Especialista certificada en onicoplastia
               </p>
               <p className="text-[11px] tracking-[0.2em] uppercase text-white/40">
                 Certificada en Onicoplastia &mdash; 50+ Reseñas 5.0 &mdash; Hatillo, PR

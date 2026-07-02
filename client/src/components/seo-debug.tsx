@@ -64,13 +64,13 @@ function getPageTitle(location: string): string {
 function getPageDescription(location: string): string {
   switch (location) {
     case '/':
-      return '¿Llevas años escondiendo tus pies o manos? Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. Primera visita $120. Neycha Soto, enfermera certificada en Hatillo, PR.';
+      return '¿Llevas años escondiendo tus pies o manos? Reconstrucción estética de uñas dañadas por hongos, trauma u otras condiciones. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. Primera visita $120. Neycha Soto, especialista certificada en onicoplastia en Hatillo, PR.';
     case '/onicoplastia':
       return 'Reconstrucción estética de uñas: ve casos reales antes y después. Apariencia perfecta para uñas dañadas por hongos o trauma. Para hombres y mujeres. Neycha Soto, especialista certificada en Hatillo, PR. Primera visita $120, seguimientos $80.';
     case '/contact':
       return 'Reserva tu cita de reconstrucción estética de uñas con Neycha Soto en Hatillo, Puerto Rico. Para hombres y mujeres. Sal usando sandalias con confianza. Primera visita $120. Estudio privado, solo con cita.';
     default:
-      return 'Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Neycha Soto, especialista en onicoplastia en Hatillo, Puerto Rico. Apariencia perfecta para hombres y mujeres. Vive con confianza.';
+      return 'Reconstrucción estética de uñas dañadas por hongos, trauma u otras condiciones. Neycha Soto, especialista en onicoplastia en Hatillo, Puerto Rico. Apariencia perfecta para hombres y mujeres. Vive con confianza.';
   }
 }
 
@@ -150,13 +150,13 @@ function addStructuredData(location: string) {
       '@context': 'https://schema.org',
       '@type': 'Service',
       name: 'Onicoplastia - Reconstrucción Estética de Uñas',
-      description: 'Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. No es un tratamiento médico curativo; condiciones subyacentes pueden requerir seguimiento. Especialista certificada en Hatillo, PR.',
+      description: 'Reconstrucción estética de uñas dañadas por hongos, trauma u otras condiciones. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. No es un tratamiento médico curativo; condiciones subyacentes pueden requerir seguimiento. Especialista certificada en Hatillo, PR.',
       serviceType: 'Reconstrucción estética de uñas',
       areaServed: 'Hatillo, Puerto Rico',
       provider: {
         '@type': 'Person',
         name: 'Neycha Soto',
-        jobTitle: 'Enfermera Registrada y Especialista Certificada en Uñas',
+        jobTitle: 'Especialista Certificada en Onicoplastia',
         worksFor: {
           '@type': 'LocalBusiness',
           name: 'Neycha Soto Nail Specialist',
@@ -184,7 +184,7 @@ function addStructuredData(location: string) {
       '@type': 'WebSite',
       name: 'Neycha Soto - Reconstrucción Estética de Uñas',
       url: 'https://neychasoto.com',
-      description: 'Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. Enfermera registrada certificada en Hatillo, Puerto Rico.',
+      description: 'Reconstrucción estética de uñas dañadas por hongos, trauma u otras condiciones. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. Especialista certificada en onicoplastia en Hatillo, Puerto Rico.',
       potentialAction: {
         '@type': 'SearchAction',
         target: 'https://neychasoto.com/?s={search_term_string}',
@@ -217,7 +217,7 @@ function addLocalBusinessSchema() {
     logo: 'https://neychasoto.com/assets/HeroLogoWhiteTrasparent.png',
     url: 'https://neychasoto.com',
     telephone: '+1-939-429-0292',
-    description: 'Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. Enfermera certificada en Hatillo, Puerto Rico. Primera visita $120, seguimientos $80. Solo con cita previa.',
+    description: 'Reconstrucción estética de uñas dañadas por hongos, trauma u otras condiciones. Sal usando sandalias con apariencia perfecta. Para hombres y mujeres. Especialista certificada en onicoplastia en Hatillo, Puerto Rico. Primera visita $120, seguimientos $80. Solo con cita previa.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '166 Avenida Dr Susoni, Unit 166',
@@ -251,7 +251,7 @@ function addLocalBusinessSchema() {
           itemOffered: {
             '@type': 'Service',
             name: 'Onicoplastia - Primera Visita',
-            description: 'Reconstrucción estética de uñas dañadas por hongos, trauma o condiciones médicas. Sal usando sandalias con apariencia perfecta. Incluye tratamiento fortalecedor y GEL Polish. $120. No es un tratamiento médico curativo.'
+            description: 'Reconstrucción estética de uñas dañadas por hongos, trauma u otras condiciones. Sal usando sandalias con apariencia perfecta. Incluye tratamiento fortalecedor y GEL Polish. $120. No es un tratamiento médico curativo.'
           }
         },
         {

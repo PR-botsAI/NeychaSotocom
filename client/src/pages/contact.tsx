@@ -22,8 +22,8 @@ const WHATSAPP_URL = "https://wa.me/19394290292";
 
 const FAQS = [
   {
-    q: "¿Cuánto cuesta cada servicio?",
-    a: "Onicoplastia: $120 primera sesión (hasta 2 hrs), $80 seguimientos. Manicura Premium: desde $35. Pedicura Spa: desde $60. Los precios son por sesión, no por uña. Todo incluido — no hay costos ocultos.",
+    q: "¿Cuánto cuesta el servicio?",
+    a: "Nuestra especialidad es la onicoplastia: $120 la primera sesión (hasta 2 horas — evaluación, reconstrucción y acabado incluidos) y $80 los seguimientos. El precio es por sesión, no por uña, y no hay costos ocultos. También ofrecemos manicura y pedicura para clientes del estudio — pregunta por disponibilidad al reservar.",
   },
   {
     q: "¿Cómo agendo mi cita?",
@@ -51,7 +51,7 @@ const FAQS = [
   },
   {
     q: "Tengo una condición especial (psoriasis, hongos, diabetes). ¿Pueden atenderme?",
-    a: "En la mayoría de casos sí — la formación en enfermería nos ayuda a evaluar contraindicaciones. Si tu caso requiere precaución médica, te lo indicamos. Para condiciones de pie comprometido usamos una línea farmacéutica especializada.",
+    a: "En la mayoría de los casos sí — y con total transparencia: somos un servicio estético, no médico. No diagnosticamos ni tratamos condiciones de salud; si algo merece atención médica, te lo decimos con honestidad para que lo consultes con tu médico o podólogo. Lo que sí ofrecemos: productos hipoalergénicos de alta calidad, protocolos rigurosos de higiene, y un estudio privado donde puedes atenderte con total tranquilidad.",
   },
   {
     q: "¿Qué hace diferentes sus productos?",

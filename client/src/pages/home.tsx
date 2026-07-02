@@ -23,8 +23,8 @@ const STANDARDS = [
 const TRUST = [
   {
     figure: "RN",
-    label: "Formación en enfermería",
-    desc: "UPRA — disciplina e higiene clínica aplicadas a cada sesión.",
+    label: "Higiene de nivel clínico",
+    desc: "Formación en enfermería (UPRA), aplicada a la limpieza y el detalle de cada sesión.",
   },
   {
     figure: "5.0",
