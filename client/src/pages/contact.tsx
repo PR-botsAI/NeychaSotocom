@@ -75,28 +75,28 @@ const WHATSAPP_RULES = [
 ];
 
 const BOOKING_RULES = [
-  "No se aceptan walk-ins",
-  "No hay área de espera",
-  "Evaluación requerida para clientes nuevos",
-  "No se permiten acompañantes",
+  { rule: "Solo con cita previa", why: "Aparto tu tiempo exclusivamente para ti — sin filas ni prisas." },
+  { rule: "Sin sala de espera", why: "Tu cita comienza a tu hora, en un ambiente íntimo y privado." },
+  { rule: "Evaluación para clientes nuevos", why: "Conocer tu caso primero es lo que nos permite darte el mejor resultado." },
+  { rule: "Un espacio solo para ti", why: "Para cuidar tu privacidad y mi concentración, la cita es individual (sin acompañantes)." },
 ];
 
 const POLICIES = [
   {
-    q: "Depósito para clientes nuevos",
-    a: "Para confirmar tu espacio se requiere un depósito del 50% del valor del servicio. Ese monto se abona al total de tu factura el día de la cita. Si cancelas o reprogramas con menos de 48 horas de anticipación, el depósito no se devuelve y se retiene en su totalidad.",
+    q: "El depósito, explicado",
+    a: "Cuando reservas, aparto ese tiempo únicamente para ti. Por eso pedimos un depósito del 50% del servicio — que se aplica completo a tu factura el día de la cita, así que no es un costo adicional: es parte de tu tratamiento. Si necesitas mover tu cita, con gusto la reprogramamos; solo te pedimos avisarnos con al menos 48 horas de anticipación. Dentro de ese margen conservamos el depósito, porque ese espacio ya estaba guardado para ti.",
   },
   {
-    q: "Programa Trusted Clients",
-    a: "Después de completar 3 citas consecutivas con éxito, obtienes el estatus de Trusted Client y puedes reservar tus próximas citas sin necesidad de depósito por adelantado.",
+    q: "Trusted Clients — cuando ya nos conocemos",
+    a: "Después de 3 citas, te damos la bienvenida como Trusted Client: reservas tus próximas citas sin depósito por adelantado. Es nuestra manera de agradecerte la confianza y hacerte todo más sencillo.",
   },
   {
-    q: "Inasistencias (No-Show) y tardanzas",
-    a: "Valoramos la puntualidad para brindar un servicio de excelencia. No generamos cargos automáticos adicionales por faltar, pero el incumplimiento afecta tu historial. Tardanzas: si llegas tarde y esto impide realizar el servicio, la cita se considera cancelada y cuenta como una falta. No-Show (no te presentas y no avisas): pierdes automáticamente tu estatus de Trusted Client.",
+    q: "Puntualidad e imprevistos",
+    a: "La vida pasa, lo entendemos. No hacemos cargos automáticos por faltar — solo te pedimos avisar si algo cambia. Si llegas muy tarde y ya no alcanzamos a completar tu servicio, tendremos que reprogramarlo. Un mensajito a tiempo siempre lo resuelve todo.",
   },
   {
-    q: "Pérdida de estatus y penalidades",
-    a: "El beneficio de reservar sin depósito se basa en el compromiso mutuo. Como Trusted Client, al acumular 2 faltas (cancelaciones tarde o tardanzas) o incurrir en 1 solo No-Show (sin contacto), se revoca tu beneficio de confianza. Consecuencia: deberás volver a pagar el depósito del 50% para cualquier reserva futura, tal como un cliente nuevo.",
+    q: "Sobre el beneficio sin depósito",
+    a: "El privilegio de reservar sin depósito se basa en la confianza mutua. Si llegaran a acumularse dos cancelaciones muy tardías, o una sola inasistencia sin aviso, volvemos al depósito del 50% en tu próxima reserva — sin penalidades ni dramas. Y como todo aquí, esa confianza se puede volver a ganar con tus próximas visitas.",
   },
 ];
 
@@ -166,24 +166,28 @@ export default function Contact() {
             <span className="inline-block">Antes de reservar</span>
           </p>
           <h2 className="font-display font-light text-[clamp(1.9rem,4.5vw,3.2rem)] leading-[1.05] text-[#f5f1ea] mb-4">
-            <span className="reveal-line line-mask"><span className="inline-block">Políticas de <em className="italic text-[var(--cream)]">reserva.</em></span></span>
+            <span className="reveal-line line-mask"><span className="inline-block">Reservar, con <em className="italic text-[var(--cream)]">cuidado.</em></span></span>
           </h2>
-          <p className="text-sm font-light text-white/45 mb-10 max-w-md">
-            Atiendo una clienta a la vez. Estas reglas protegen tu espacio y el de las demás &mdash; léelas si las necesitas.
+          <p className="text-sm font-light text-white/55 mb-10 max-w-lg leading-relaxed">
+            Como te atiendo a ti sola, sin prisa, tu cita es un momento reservado solo para ti.
+            Aquí te explico con transparencia cómo funciona &mdash; para que llegues con toda tranquilidad.
           </p>
 
-          {/* quick booking rules */}
-          <div className="stagger-up grid grid-cols-1 sm:grid-cols-2 gap-x-10">
+          {/* how the studio works — rule + the reason behind it */}
+          <div className="stagger-up grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
             {BOOKING_RULES.map((r) => (
-              <div key={r} className="flex items-center gap-3 py-4 border-t border-white/10">
-                <Check className="w-4 h-4 text-[var(--gold)] flex-shrink-0" />
-                <span className="text-sm font-light text-white/75">{r}</span>
+              <div key={r.rule} className="flex items-start gap-3 py-3 border-t border-white/10">
+                <Check className="w-4 h-4 text-[var(--gold)] flex-shrink-0 mt-0.5" />
+                <span>
+                  <span className="block text-sm text-[#f5f1ea]">{r.rule}</span>
+                  <span className="block text-xs font-light text-white/45 mt-1 leading-relaxed">{r.why}</span>
+                </span>
               </div>
             ))}
           </div>
 
-          {/* detailed payment & cancellation policy */}
-          <p className="text-[11px] tracking-[0.25em] uppercase text-white/40 mt-14 mb-4">Pagos y cancelaciones</p>
+          {/* deposit & cancellation — reassuring, collapsible */}
+          <p className="text-[11px] tracking-[0.25em] uppercase text-white/40 mt-14 mb-4">El depósito y las cancelaciones</p>
           <Accordion type="single" collapsible>
             {POLICIES.map((p, i) => (
               <AccordionItem key={i} value={`pol-${i}`} className="border-b border-white/10">
@@ -196,6 +200,21 @@ export default function Contact() {
               </AccordionItem>
             ))}
           </Accordion>
+
+          <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4">
+            <p className="text-sm font-light text-white/55">
+              ¿Con dudas antes de reservar? Es normal &mdash; damos el primer paso juntas.
+            </p>
+            <a
+              href={BOOKSY_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 text-xs tracking-[0.2em] uppercase text-[var(--cream)] border-b border-[var(--cream)]/40 hover:border-[var(--cream)] pb-1 transition-colors duration-200 self-start"
+            >
+              Agenda tu evaluación
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
+            </a>
+          </div>
         </div>
       </section>
 

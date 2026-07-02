@@ -15,7 +15,7 @@ import { cases } from "@/data/cases";
 const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_106809_hatillo";
 
 const STATS = [
-  { figure: "40+", label: "Reseñas 5 estrellas" },
+  { figure: "50+", label: "Reseñas 5 estrellas" },
   { figure: "5.0", label: "Calificación Booksy" },
   { figure: "0", label: "Dolor" },
 ];
@@ -221,7 +221,7 @@ export default function Onicoplastia() {
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-3.5 h-3.5 fill-[var(--gold)] text-[var(--gold)]" />
               ))}
-              <span className="text-xs text-white/45 ml-2">40+ reseñas verificadas</span>
+              <span className="text-xs text-white/45 ml-2">50+ reseñas verificadas</span>
             </div>
           </div>
 

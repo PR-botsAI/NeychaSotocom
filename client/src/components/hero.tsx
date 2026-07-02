@@ -92,7 +92,7 @@ export default function Hero() {
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-[#F2E6D8]/10 border border-[#F2E6D8]/20 px-3 py-1.5 text-xs font-semibold text-[#F2E6D8]">
               <Star className="w-3 h-3 fill-[#F2E6D8]" />
-              5.0/5 &bull; <AnimatedCounter value={40} suffix="+" /> Reseñas
+              5.0/5 &bull; <AnimatedCounter value={50} suffix="+" /> Reseñas
             </span>
           </motion.div>
 

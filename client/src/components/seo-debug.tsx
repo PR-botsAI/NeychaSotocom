@@ -273,7 +273,7 @@ function addLocalBusinessSchema() {
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: '5.0',
-      reviewCount: '40',
+      reviewCount: '50',
       bestRating: '5',
       worstRating: '1'
     }

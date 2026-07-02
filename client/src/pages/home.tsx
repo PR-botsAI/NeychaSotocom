@@ -28,7 +28,7 @@ const TRUST = [
   },
   {
     figure: "5.0",
-    label: "40+ reseñas verificadas",
+    label: "50+ reseñas verificadas",
     desc: "Calificación perfecta en Booksy. Clientes reales, resultados reales.",
   },
   {

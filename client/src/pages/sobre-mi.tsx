@@ -7,7 +7,7 @@ const BOOKSY_URL = "https://booksy.com/en-us/800178_neycha-nails_nail-salon_1068
 const CREDENTIALS = [
   { label: "Enfermera Registrada (RN)", desc: "Formación en la UPRA, Arecibo — licencia vigente. Higiene clínica y disciplina aplicadas a la estética." },
   { label: "Certificación en Onicoplastia", desc: "Certificación internacional en sistemas profesionales de fortalecimiento de uñas — una de las pocas técnicas en PR." },
-  { label: "40+ Reseñas 5.0/5", desc: "Calificación perfecta en Booksy — clientes reales, resultados reales." },
+  { label: "50+ Reseñas 5.0/5", desc: "Calificación perfecta en Booksy — clientes reales, resultados reales." },
   { label: "Estándares HEMA/TPO-Free", desc: "Productos sin los alérgenos más comunes en servicios de uñas." },
 ];
 
@@ -59,7 +59,7 @@ export default function SobreMi() {
                 Enfermera registrada y especialista certificada en onicoplastia
               </p>
               <p className="text-[11px] tracking-[0.2em] uppercase text-white/40">
-                Certificada en Onicoplastia &mdash; 40+ Reseñas 5.0 &mdash; Hatillo, PR
+                Certificada en Onicoplastia &mdash; 50+ Reseñas 5.0 &mdash; Hatillo, PR
               </p>
             </div>
           </div>

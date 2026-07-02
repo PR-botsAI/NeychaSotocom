@@ -42,7 +42,7 @@ export default function MeetTheArtist() {
             {/* Stats row */}
             <div className="grid grid-cols-3 gap-4 pt-4 max-w-md mx-auto">
               <div className="text-center p-3 rounded-lg bg-zinc-900/50 border border-zinc-800">
-                <div className="text-xl sm:text-2xl font-bold text-[#F2E6D8]"><AnimatedCounter value={40} suffix="+" /></div>
+                <div className="text-xl sm:text-2xl font-bold text-[#F2E6D8]"><AnimatedCounter value={50} suffix="+" /></div>
                 <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">Reseñas 5.0</p>
               </div>
               <div className="text-center p-3 rounded-lg bg-zinc-900/50 border border-zinc-800">
