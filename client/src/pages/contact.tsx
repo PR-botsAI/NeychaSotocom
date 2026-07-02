@@ -84,7 +84,7 @@ const BOOKING_RULES = [
 const POLICIES = [
   {
     q: "El depósito, explicado",
-    a: "Cuando reservas, aparto ese tiempo únicamente para ti. Por eso pedimos un depósito del 50% del servicio — que se aplica completo a tu factura el día de la cita, así que no es un costo adicional: es parte de tu tratamiento. Si necesitas mover tu cita, con gusto la reprogramamos; solo te pedimos avisarnos con al menos 48 horas de anticipación. Dentro de ese margen conservamos el depósito, porque ese espacio ya estaba guardado para ti.",
+    a: "Cuando reservas, aparto ese tiempo únicamente para ti. Por eso pedimos un depósito del 50% del servicio — que se aplica completo a tu factura el día de la cita, así que no es un costo adicional: es parte de tu tratamiento. Si necesitas mover tu cita, con gusto la reprogramamos; solo te pedimos avisarnos con al menos 48 horas de anticipación. Si cancelas o reprogramas con menos de 48 horas — o no puedes asistir — el depósito no se reembolsa, porque ese espacio ya quedó guardado para ti.",
   },
   {
     q: "Trusted Clients — cuando ya nos conocemos",
