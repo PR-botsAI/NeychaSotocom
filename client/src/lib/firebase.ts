@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics, isSupported } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -11,13 +10,9 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
+// Analytics is loaded via the standard GA4 gtag.js snippet in index.html
+// (reliable across ad-blockers/SPAs). Firebase's getAnalytics() was removed
+// to avoid double-counting pageviews for the same measurement id.
 const app = initializeApp(firebaseConfig);
-
-// Initialize analytics safely (handles ad-blockers, SSR, privacy browsers)
-isSupported().then((supported) => {
-  if (supported) {
-    getAnalytics(app);
-  }
-});
 
 export default app;
