@@ -78,10 +78,10 @@ export default function SobreMi() {
               cada persona que se sienta en mi silla.
             </p>
             <p>
-              En estos años, lo que más se me ha quedado no son las uñas — son las
-              historias. Personas que llevaban años escondiendo las manos, evitando
-              las fotos, sin quitarse los zapatos frente a nadie. Ver a alguien
-              dejar de esconderse es lo que hace que este trabajo valga la pena.
+              Con los años aprendí que esto no se trata solo de las uñas — se trata
+              de la persona. He atendido clientas que llevaban años escondiendo las
+              manos, evitando las fotos, sin quitarse los zapatos frente a nadie.
+              Verlas dejar de esconderse es lo que hace que este trabajo valga la pena.
             </p>
 
             <p className="reveal-line line-mask py-4">
