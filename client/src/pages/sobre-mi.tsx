@@ -71,17 +71,17 @@ export default function SobreMi() {
         <div className="container mx-auto max-w-2xl">
           <div className="space-y-7 text-[15px] sm:text-base font-light text-white/70 leading-relaxed">
             <p>
-              Vengo del campo de la salud: soy enfermera registrada, formada en la
-              UPRA — Universidad de Puerto Rico, Arecibo — con licencia vigente.
-              Hoy mi práctica es la onicoplastia, pero el estándar lo traje conmigo:
-              higiene clínica, precisión, y un respeto profundo por cada persona
-              que se sienta en mi silla.
+              Llevo cerca de seis años en este oficio — los últimos dos enfocada
+              de lleno en la onicoplastia. Antes me formé como enfermera registrada
+              en la UPRA de Arecibo; hoy mi trabajo es estético, pero ese estándar
+              se me quedó: higiene rigurosa, mano precisa, y tomarme en serio a
+              cada persona que se sienta en mi silla.
             </p>
             <p>
-              Las uñas me salvaron — y desde entonces me toca devolver el favor.
-              Porque esto va mucho más allá de arreglar una uña: es ver a alguien
-              dar la mano sin esconderla, volver a la playa, vivir sin pensar en
-              sus pies.
+              En estos años, lo que más se me ha quedado no son las uñas — son las
+              historias. Personas que llevaban años escondiendo las manos, evitando
+              las fotos, sin quitarse los zapatos frente a nadie. Ver a alguien
+              dejar de esconderse es lo que hace que este trabajo valga la pena.
             </p>
 
             <p className="reveal-line line-mask py-4">
